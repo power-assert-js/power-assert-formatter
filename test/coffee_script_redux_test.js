@@ -1,4 +1,4 @@
-var formatter = require('../lib/power-assert-formatter'),
+var formatter = require('../lib/power-assert-formatter')(),
     empower = require('empower'),
     espower = require('espower'),
     esprima = require('esprima'),
