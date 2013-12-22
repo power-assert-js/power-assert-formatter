@@ -1,0 +1,12 @@
+{
+    "name": "power-assert-formatter",
+    "version": "0.3.0",
+    "main": "lib/power-assert-formatter.js",
+    "ignore": [
+        "**/.*",
+        "Gruntfile.js",
+        "node_modules",
+        "package.json",
+        "test"
+    ]
+}

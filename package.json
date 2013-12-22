@@ -1,0 +1,55 @@
+{
+  "name": "power-assert-formatter",
+  "description": "Power Assert output formatter",
+  "version": "0.3.0",
+  "keywords": [
+    "test",
+    "testing",
+    "assert",
+    "assertion",
+    "power-assert"
+  ],
+  "homepage": "http://github.com/twada/power-assert-formatter",
+  "author": {
+    "name": "Takuto Wada",
+    "email": "takuto.wada@gmail.com",
+    "url": "http://github.com/twada"
+  },
+  "scripts": {
+    "test": "grunt test",
+    "coveralls": "grunt coverage && cat ./coverage.lcov | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "main": "./lib/power-assert-formatter",
+  "directories": {
+    "lib": "./lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/twada/power-assert-formatter.git"
+  },
+  "devDependencies": {
+    "espower": "~0.3.0",
+    "empower": "0.3.0-dev",
+    "esprima": "~1.0.4",
+    "escodegen": "~1.0.1",
+    "coffee-script-redux": "2.0.0-beta7",
+    "grunt": "~0.4.2",
+    "load-grunt-tasks": "~0.2.1",
+    "grunt-mocha-test": "~0.8.1",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-bump": "~0.0.13",
+    "mocha-lcov-reporter": "~0.0.1",
+    "blanket": "~1.1.5",
+    "coveralls": "~2.6.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/twada/power-assert-formatter/master/MIT-LICENSE.txt"
+    }
+  ],
+  "bugs": {
+    "url": "http://github.com/twada/power-assert-formatter/issues"
+  }
+}
