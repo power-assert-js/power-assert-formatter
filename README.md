@@ -1,6 +1,10 @@
 power-assert-formatter
 ================================
 
+[![Build Status](https://travis-ci.org/twada/power-assert-formatter.png?branch=master)](https://travis-ci.org/twada/power-assert-formatter)
+[![Coverage Status](https://coveralls.io/repos/twada/power-assert-formatter/badge.png?branch=master)](https://coveralls.io/r/twada/power-assert-formatter?branch=master)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+
 Power Assert output formatter.
 
 
