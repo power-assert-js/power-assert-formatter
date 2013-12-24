@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "espower": "~0.3.0",
-    "empower": "~0.3.0",
+    "empower": "~0.3.1",
     "esprima": "~1.0.4",
     "escodegen": "~1.0.1",
     "coffee-script-redux": "2.0.0-beta7",
