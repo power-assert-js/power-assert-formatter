@@ -7,6 +7,17 @@
         "Gruntfile.js",
         "node_modules",
         "package.json",
-        "test"
-    ]
+        "coverage",
+        "test",
+        "test_helper.js"
+    ],
+    "devDependencies": {
+        "empower": "~0.3.2",
+        "espower": "~0.3.0",
+        "esprima": "~1.0.4",
+        "escodegen": "~0.0.28",
+        "mocha": "~1.16.2",
+        "requirejs": "~2.1.5",
+        "assert": "Jxck/assert"
+    }
 }
