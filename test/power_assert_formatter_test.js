@@ -606,6 +606,26 @@ suite('power-assert-formatter', function () {
     });
 
 
+    test('Japanese zenkaku string literal adjustment', function () {
+        var piyo = 'うえお';
+        var concat = function (a, b) {
+            return a + b;
+        };
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert.equal(concat("ほげ", piyo), concat("あい", piyo));'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert.equal(concat("ほげ", piyo), concat("あい", piyo));',
+            '             |              |      |              |      ',
+            '             |              |      "あいうえお"   "うえお"',
+            '             "ほげうえお"   "うえお"                     ',
+            ''
+        ]);
+
+    });
+
+
     test('Japanese hankaku width', function () {
         var fuga = 'ｱｲ',
             piyo = 'ｳｴｵ';
