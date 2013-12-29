@@ -14,7 +14,7 @@ DESCRIPTION
 ---------------------------------------
 `power-assert-formatter` is a formatter for Power Assert output.
 
-Please note that `power-assert-formatter` is a alpha version product. Pull-requests, issue reports and patches are always welcomed. See [power-assert](http://github.com/twada/power-assert) project for more documentation.
+Please note that `power-assert-formatter` is a beta version product. Pull-requests, issue reports and patches are always welcomed. See [power-assert](http://github.com/twada/power-assert) project for more documentation.
 
 
 AUTHOR
