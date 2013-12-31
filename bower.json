@@ -12,8 +12,8 @@
         "test_helper.js"
     ],
     "devDependencies": {
-        "empower": "~0.3.2",
-        "espower": "~0.3.0",
+        "empower": "~0.3.3",
+        "espower": "~0.3.1",
         "esprima": "~1.0.4",
         "escodegen": "~1.0.1",
         "mocha": "~1.16.2",
