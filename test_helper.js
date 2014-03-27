@@ -27,11 +27,6 @@
         escodegen = window.escodegen;
     }
 
-function extractBodyFrom (source) {
-    var tree = esprima.parse(source, {tolerant: true, loc: true, range: true});
-    return tree.body[0];
-}
-
 function extractBodyOfAssertionAsCode (node) {
     var expression;
     if (node.type === 'ExpressionStatement') {
@@ -42,7 +37,7 @@ function extractBodyOfAssertionAsCode (node) {
 
 function applyEspower (line, options) {
     options = options || {destructive: false, source: line, path: '/path/to/some_test.js', powerAssertVariableName: 'assert'};
-    var tree = extractBodyFrom(line);
+    var tree = esprima.parse(line, {tolerant: true, loc: true, range: true, tokens: true});
     return espower(tree, options);
 }
 
