@@ -37,7 +37,7 @@ function extractBodyOfAssertionAsCode (node) {
 
 function applyEspower (line, options) {
     options = options || {destructive: false, source: line, path: '/path/to/some_test.js', powerAssertVariableName: 'assert'};
-    var tree = esprima.parse(line, {tolerant: true, loc: true, range: true, tokens: true});
+    var tree = esprima.parse(line, {tolerant: true, loc: true, tokens: true});
     return espower(tree, options);
 }
 
