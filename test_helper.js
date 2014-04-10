@@ -27,14 +27,6 @@
         escodegen = window.escodegen;
     }
 
-function extractBodyOfAssertionAsCode (node) {
-    var expression;
-    if (node.type === 'ExpressionStatement') {
-        expression = node.expression;
-    }
-    return escodegen.generate(expression.arguments[0], {format: {compact: true}});
-}
-
 function applyEspower (line, options) {
     options = options || {destructive: false, source: line, path: '/path/to/some_test.js', powerAssertVariableName: 'assert'};
     var tree = esprima.parse(line, {tolerant: true, loc: true, tokens: true});
@@ -46,8 +38,7 @@ function weave (line, options) {
 }
 
 return {
-    weave: weave,
-    extractBodyOfAssertionAsCode: extractBodyOfAssertionAsCode
+    weave: weave
 };
 
 }));

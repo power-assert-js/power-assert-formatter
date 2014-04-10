@@ -49,6 +49,22 @@ var weave = testHelper.weave,
 
 suite('power-assert-formatter', function () {
 
+
+    test('line number detection', function () {
+        var falsyStr = '';
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('var i = 0;\n\nassert(falsyStr);'));
+        }, [
+            '# /path/to/some_test.js:3',
+            '',
+            'assert(falsyStr);',
+            '       |         ',
+            '       ""        ',
+            ''
+        ]);
+    });
+
+
     test('Identifier with empty string', function () {
         var falsyStr = '';
         assertPowerAssertContextFormatting(function () {
