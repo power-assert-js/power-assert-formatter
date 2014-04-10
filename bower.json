@@ -11,6 +11,9 @@
         "test",
         "test_helper.js"
     ],
+    "dependencies": {
+        "estraverse": "~1.5.0"
+    },
     "devDependencies": {
         "empower": "~0.6.0",
         "espower": "~0.6.0",
