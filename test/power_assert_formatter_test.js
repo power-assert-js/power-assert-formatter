@@ -375,6 +375,58 @@ suite('power-assert-formatter', function () {
     });
 
 
+    test('CallExpression with computed MemberExpression with Identifier key: assert(foo[propName]());', function () {
+        var propName = 'bar',
+            foo = {
+                bar: function () {
+                    return false;
+                }
+            };
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(foo[propName]());'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(foo[propName]());',
+            '       |  ||            ',
+            '       |  |"bar"        ',
+            '       {} false         ',
+            ''
+        ]);
+    });
+
+
+    test('CallExpression with deep computed MemberExpression: assert(foo[hoge[fuga[piyo]]]());', function () {
+        var piyo = 'piyoKey',
+            fuga = {
+                piyoKey: 'fugaKey'
+            },
+            hoge = {
+                fugaKey: 'func'
+            },
+            foo = {
+                func: function () {
+                    return false;
+                }
+            };
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(foo[hoge[fuga[piyo]]]());'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(foo[hoge[fuga[piyo]]]());',
+            '       |  ||   ||   ||          ',
+            '       |  ||   ||   |"piyoKey"  ',
+            '       |  ||   ||   "fugaKey"   ',
+            '       |  ||   |{"piyoKey":"fugaKey"}',
+            '       |  ||   "func"           ',
+            '       |  |{"fugaKey":"func"}   ',
+            '       {} false                 ',
+            ''
+        ]);
+    });
+
+
     test('computed MemberExpression chain with various key: assert(foo[propName]["baz"][keys()[0]]);', function () {
         var keys = function () { return ["toto"]; },
             propName = "bar",
