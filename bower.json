@@ -12,7 +12,8 @@
         "test_helper.js"
     ],
     "dependencies": {
-        "estraverse": "~1.5.0"
+        "estraverse": "~1.5.0",
+        "jsondiffpatch": "~0.1.5"
     },
     "devDependencies": {
         "empower": "~0.6.0",
