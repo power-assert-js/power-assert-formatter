@@ -9,7 +9,7 @@ var require = {
         estraverse: "../bower_components/estraverse/estraverse",
         mocha: "../bower_components/mocha/mocha",
         requirejs: "../bower_components/requirejs/require",
-        jsondiffpatch: "../bower_components/jsondiffpatch/build/bundle"
+        jsondiffpatch: "../bower_components/jsondiffpatch/build/bundle-full"
     },
     shim: {
         assert: {
