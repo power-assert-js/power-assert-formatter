@@ -1104,6 +1104,26 @@ suite('power-assert-formatter', function () {
         ]);
     });
 
+
+    test.only('spockish diff: assert(str1 === str2);', function () {
+        var str1 = 'abcdef', str2 = 'abcdff';
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(str1 === str2);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(str1 === str2);',
+            '       |    |   |     ',
+            '       |    |   "abcdff"',
+            '       |    false     ',
+            '       "abcdef"       ',
+            '',
+            'str1 : abcd(e)f',
+            'str2 : abcd(f)f',
+            ''
+        ]);
+    });
+
 });
 
 }));
