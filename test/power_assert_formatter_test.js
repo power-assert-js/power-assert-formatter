@@ -1125,7 +1125,7 @@ suite('power-assert-formatter', function () {
     });
 
 
-    test.only('spockish diff with multibyte characters: assert(str1 === str2);', function () {
+    test('spockish diff with multibyte characters: assert(str1 === str2);', function () {
         var str1 = 'あいうえおかきくけこ', str2 = 'あれうえおかきくげこ';
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(str1 === str2);'));
@@ -1140,6 +1140,25 @@ suite('power-assert-formatter', function () {
             '',
             'str1 : あ(い)うえおかきく(け)こ',
             'str2 : あ(れ)うえおかきく(げ)こ',
+            ''
+        ]);
+    });
+
+
+    test.only('spockish diff with literal: assert(str1 === "abcdff");', function () {
+        var str1 = 'abcdef';
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(str1 === "abcdff");'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(str1 === "abcdff");',
+            '       |    |             ',
+            '       |    false         ',
+            '       "abcdef"           ',
+            '',
+            'str1 : abcd(e)f',
+            'literal : abcd(f)f',
             ''
         ]);
     });
