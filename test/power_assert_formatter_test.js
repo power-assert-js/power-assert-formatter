@@ -1158,7 +1158,7 @@ suite('power-assert-formatter', function () {
             '       "abcdef"           ',
             '',
             'str1 : abcd(e)f',
-            'literal : abcd(f)f',
+            '[right] : abcd(f)f',
             ''
         ]);
     });
