@@ -1105,7 +1105,9 @@ suite('power-assert-formatter', function () {
     });
 
 
-    test('spockish diff: assert(str1 === str2);', function () {
+suite.only('spockish diff', function () {
+
+    test('assert(str1 === str2);', function () {
         var str1 = 'abcdef', str2 = 'abcdff';
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(str1 === str2);'));
@@ -1118,8 +1120,8 @@ suite('power-assert-formatter', function () {
             '       |    false     ',
             '       "abcdef"       ',
             '',
-            'str1 : abcd(e)f',
-            'str2 : abcd(f)f',
+            'str1: abcd(e)   f',
+            'str2: abcd   (f)f',
             ''
         ]);
     });
@@ -1138,14 +1140,14 @@ suite('power-assert-formatter', function () {
             '       |    false     ',
             '       "あいうえおかきくけこ"',
             '',
-            'str1 : あ(い)うえおかきく(け)こ',
-            'str2 : あ(れ)うえおかきく(げ)こ',
+            'str1: あ(い)    うえおかきく(け)    こ',
+            'str2: あ    (れ)うえおかきく    (げ)こ',
             ''
         ]);
     });
 
 
-    test.only('spockish diff with literal: assert(str1 === "abcdff");', function () {
+    test('spockish diff with literal: assert(str1 === "abcdff");', function () {
         var str1 = 'abcdef';
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(str1 === "abcdff");'));
@@ -1157,11 +1159,12 @@ suite('power-assert-formatter', function () {
             '       |    false         ',
             '       "abcdef"           ',
             '',
-            'str1 : abcd(e)f',
-            '[right] : abcd(f)f',
+            'str1   : abcd(e)   f',
+            '[right]: abcd   (f)f',
             ''
         ]);
     });
+});
 
 });
 
