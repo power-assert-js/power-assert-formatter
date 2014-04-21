@@ -1120,8 +1120,8 @@ suite.only('spockish diff', function () {
             '       |    false     ',
             '       "abcdef"       ',
             '',
-            'str1: abcd(e)   f',
-            'str2: abcd   (f)f',
+            'str1: abcd(e)f',
+            'str2: abcd(f)f',
             ''
         ]);
     });
@@ -1140,8 +1140,8 @@ suite.only('spockish diff', function () {
             '       |    false     ',
             '       "あいうえおかきくけこ"',
             '',
-            'str1: あ(い)    うえおかきく(け)    こ',
-            'str2: あ    (れ)うえおかきく    (げ)こ',
+            'str1: あ(い)うえおかきく(け)こ',
+            'str2: あ(れ)うえおかきく(げ)こ',
             ''
         ]);
     });
@@ -1159,8 +1159,8 @@ suite.only('spockish diff', function () {
             '       |    false         ',
             '       "abcdef"           ',
             '',
-            'str1   : abcd(e)   f',
-            '[right]: abcd   (f)f',
+            'str1   : abcd(e)f',
+            '[right]: abcd(f)f',
             ''
         ]);
     });
