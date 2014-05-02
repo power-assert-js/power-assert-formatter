@@ -48,9 +48,9 @@ suite('lineSeparator option', function () {
                 baseAssert.equal(e.message, [
                     '# /path/to/some_test.js:1',
                     '',
-                    'assert(falsyNum);',
-                    '       |         ',
-                    '       0         ',
+                    'assert(falsyNum)',
+                    '       |        ',
+                    '       0        ',
                     ''
                 ].join(expectedSeparator));
             }

@@ -57,9 +57,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:3',
             '',
-            'assert(falsyStr);',
-            '       |         ',
-            '       ""        ',
+            'assert(falsyStr)',
+            '       |        ',
+            '       ""       ',
             ''
         ]);
     });
@@ -72,9 +72,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(falsyStr);',
-            '       |         ',
-            '       ""        ',
+            'assert(falsyStr)',
+            '       |        ',
+            '       ""       ',
             ''
         ]);
     });
@@ -87,9 +87,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(falsyNum);',
-            '       |         ',
-            '       0         ',
+            'assert(falsyNum)',
+            '       |        ',
+            '       0        ',
             ''
         ]);
     });
@@ -102,10 +102,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(!truth);',
-            '       ||      ',
-            '       |true   ',
-            '       false   ',
+            'assert(!truth)',
+            '       ||     ',
+            '       |true  ',
+            '       false  ',
             ''
         ]);
     });
@@ -118,11 +118,11 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(!!some);',
-            '       |||     ',
-            '       ||""    ',
-            '       |true   ',
-            '       false   ',
+            'assert(!!some)',
+            '       |||    ',
+            '       ||""   ',
+            '       |true  ',
+            '       false  ',
             ''
         ]);
     });
@@ -134,10 +134,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(typeof foo !== "undefined");',
-            '       |          |                ',
-            '       |          false            ',
-            '       "undefined"                 ',
+            'assert(typeof foo !== "undefined")',
+            '       |          |               ',
+            '       |          false           ',
+            '       "undefined"                ',
             ''
         ]);
     });
@@ -149,10 +149,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert({}.hoge === "xxx");',
-            '          |    |          ',
-            '          |    false      ',
-            '          undefined       ',
+            'assert({}.hoge === "xxx")',
+            '          |    |         ',
+            '          |    false     ',
+            '          undefined      ',
             ''
         ]);
     });
@@ -169,11 +169,11 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert((delete foo.bar) === false);',
-            '        |      |   |    |          ',
-            '        |      |   |    false      ',
-            '        |      |   {"baz":false}   ',
-            '        true   {"bar":{"baz":false}}',
+            'assert(delete foo.bar === false)',
+            '       |      |   |   |         ',
+            '       |      |   |   false     ',
+            '       |      |   {"baz":false} ',
+            '       true   {"bar":{"baz":false}}',
             ''
         ]);
     });
@@ -185,9 +185,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert((delete nonexistent) === false);',
-            '        |                   |          ',
-            '        true                false      ',
+            'assert(delete nonexistent === false)',
+            '       |                  |         ',
+            '       true               false     ',
             ''
         ]);
     });
@@ -201,11 +201,11 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(fuga === piyo);',
-            '       |    |   |     ',
-            '       |    |   8     ',
-            '       |    false     ',
-            '       "foo"          ',
+            'assert(fuga === piyo)',
+            '       |    |   |    ',
+            '       |    |   8    ',
+            '       |    false    ',
+            '       "foo"         ',
             ''
         ]);
     });
@@ -219,11 +219,11 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(fuga !== piyo);',
-            '       |    |   |     ',
-            '       |    |   "foo" ',
-            '       |    false     ',
-            '       "foo"          ',
+            'assert(fuga !== piyo)',
+            '       |    |   |    ',
+            '       |    |   "foo"',
+            '       |    false    ',
+            '       "foo"         ',
             ''
         ]);
     });
@@ -236,9 +236,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(fuga !== 4);',
-            '       |    |      ',
-            '       4    false  ',
+            'assert(fuga !== 4)',
+            '       |    |     ',
+            '       4    false ',
             ''
         ]);
     });
@@ -250,9 +250,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(4 !== 4);',
-            '         |      ',
-            '         false  ',
+            'assert(4 !== 4)',
+            '         |     ',
+            '         false ',
             ''
         ]);
     });
@@ -266,12 +266,12 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(ary1.length === ary2.length);',
-            '       |    |      |   |    |       ',
-            '       |    |      |   |    3       ',
+            'assert(ary1.length === ary2.length)',
+            '       |    |      |   |    |      ',
+            '       |    |      |   |    3      ',
             '       |    |      |   ["aaa","bbb","ccc"]',
-            '       |    2      false            ',
-            '       ["foo","bar"]                ',
+            '       |    2      false           ',
+            '       ["foo","bar"]               ',
             ''
         ]);
     });
@@ -284,11 +284,11 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(5 < actual && actual < 13);',
-            '         | |      |  |      |     ',
-            '         | |      |  16     false ',
-            '         | 16     false           ',
-            '         true                     ',
+            'assert(5 < actual && actual < 13)',
+            '         | |      |  |      |    ',
+            '         | |      |  16     false',
+            '         | 16     false          ',
+            '         true                    ',
             ''
         ]);
     });
@@ -301,11 +301,11 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert.ok(actual < 5 || 13 < actual);',
-            '          |      |   |     | |       ',
-            '          |      |   |     | 10      ',
-            '          |      |   false false     ',
-            '          10     false               ',
+            'assert.ok(actual < 5 || 13 < actual)',
+            '          |      |   |     | |      ',
+            '          |      |   |     | 10     ',
+            '          |      |   false false    ',
+            '          10     false              ',
             ''
         ]);
     });
@@ -318,10 +318,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(2 > actual && actual < 13);',
-            '         | |      |               ',
-            '         | 5      false           ',
-            '         false                    ',
+            'assert(2 > actual && actual < 13)',
+            '         | |      |              ',
+            '         | 5      false          ',
+            '         false                   ',
             ''
         ]);
     });
@@ -338,8 +338,8 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(foo.bar.baz);',
-            '       |   |   |    ',
+            'assert(foo.bar.baz)',
+            '       |   |   |   ',
             '       |   |   false',
             '       |   {"baz":false}',
             '       {"bar":{"baz":false}}',
@@ -359,8 +359,8 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(foo["bar"].baz);',
-            '       |  |       |    ',
+            'assert(foo["bar"].baz)',
+            '       |  |       |   ',
             '       |  |       false',
             '       |  {"baz":false}',
             '       {"bar":{"baz":false}}',
@@ -381,10 +381,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(foo[propName].baz);',
-            '       |  ||         |    ',
+            'assert(foo[propName].baz)',
+            '       |  ||         |   ',
             '       |  |"bar"     false',
-            '       |  {"baz":false}   ',
+            '       |  {"baz":false}  ',
             '       {"bar":{"baz":false}}',
             ''
         ]);
@@ -403,10 +403,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(foo[propName]());',
-            '       |  ||            ',
-            '       |  |"bar"        ',
-            '       {} false         ',
+            'assert(foo[propName]())',
+            '       |  ||           ',
+            '       |  |"bar"       ',
+            '       {} false        ',
             ''
         ]);
     });
@@ -430,14 +430,14 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(foo[hoge[fuga[piyo]]]());',
-            '       |  ||   ||   ||          ',
-            '       |  ||   ||   |"piyoKey"  ',
-            '       |  ||   ||   "fugaKey"   ',
+            'assert(foo[hoge[fuga[piyo]]]())',
+            '       |  ||   ||   ||         ',
+            '       |  ||   ||   |"piyoKey" ',
+            '       |  ||   ||   "fugaKey"  ',
             '       |  ||   |{"piyoKey":"fugaKey"}',
-            '       |  ||   "func"           ',
-            '       |  |{"fugaKey":"func"}   ',
-            '       {} false                 ',
+            '       |  ||   "func"          ',
+            '       |  |{"fugaKey":"func"}  ',
+            '       {} false                ',
             ''
         ]);
     });
@@ -458,14 +458,14 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(foo[propName]["baz"][keys()[0]]);',
-            '       |  ||        |      ||     |     ',
+            'assert(foo[propName]["baz"][keys()[0]])',
+            '       |  ||        |      ||     |    ',
             '       |  ||        |      ||     "toto"',
-            '       |  ||        |      |["toto"]    ',
-            '       |  ||        |      false        ',
-            '       |  |"bar"    {"toto":false}      ',
-            '       |  {"baz":{"toto":false}}        ',
-            '       {"bar":{"baz":{"toto":false}}}   ',
+            '       |  ||        |      |["toto"]   ',
+            '       |  ||        |      false       ',
+            '       |  |"bar"    {"toto":false}     ',
+            '       |  {"baz":{"toto":false}}       ',
+            '       {"bar":{"baz":{"toto":false}}}  ',
             ''
         ]);
     });
@@ -478,9 +478,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(func());',
-            '       |       ',
-            '       false   ',
+            'assert(func())',
+            '       |      ',
+            '       false  ',
             ''
         ]);
     });
@@ -497,9 +497,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(obj.age());',
-            '       |   |      ',
-            '       {}  0      ',
+            'assert(obj.age())',
+            '       |   |     ',
+            '       {}  0     ',
             ''
         ]);
     });
@@ -515,9 +515,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(isFalsy(positiveInt));',
-            '       |       |             ',
-            '       false   50            ',
+            'assert(isFalsy(positiveInt))',
+            '       |       |            ',
+            '       false   50           ',
             ''
         ]);
     });
@@ -537,10 +537,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(sum(one, two, three) === seven);',
-            '       |   |    |    |      |   |      ',
-            '       |   |    |    |      |   7      ',
-            '       6   1    2    3      false      ',
+            'assert(sum(one, two, three) === seven)',
+            '       |   |    |    |      |   |     ',
+            '       |   |    |    |      |   7     ',
+            '       6   1    2    3      false     ',
             ''
         ]);
     });
@@ -560,10 +560,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(sum(sum(one, two), three) === sum(sum(two, three), seven));',
-            '       |   |   |    |     |      |   |   |   |    |       |       ',
-            '       |   |   |    |     |      |   12  5   2    3       7       ',
-            '       6   3   1    2     3      false                            ',
+            'assert(sum(sum(one, two), three) === sum(sum(two, three), seven))',
+            '       |   |   |    |     |      |   |   |   |    |       |      ',
+            '       |   |   |    |     |      |   12  5   2    3       7      ',
+            '       6   3   1    2     3      false                           ',
             ''
         ]);
     });
@@ -587,11 +587,11 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(math.calc.sum(one, two, three) === seven);',
-            '       |    |    |   |    |    |      |   |      ',
-            '       |    |    |   |    |    |      |   7      ',
-            '       |    {}   6   1    2    3      false      ',
-            '       {"calc":{}}                               ',
+            'assert(math.calc.sum(one, two, three) === seven)',
+            '       |    |    |   |    |    |      |   |     ',
+            '       |    |    |   |    |    |      |   7     ',
+            '       |    {}   6   1    2    3      false     ',
+            '       {"calc":{}}                              ',
             ''
         ]);
     });
@@ -604,12 +604,12 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert((three * (seven * ten)) === three);',
-            '        |     |  |     | |     |   |      ',
-            '        |     |  |     | |     |   3      ',
-            '        |     |  |     | 10    false      ',
-            '        |     |  7     70                 ',
-            '        3     210                         ',
+            'assert(three * (seven * ten) === three)',
+            '       |     |  |     | |    |   |     ',
+            '       |     |  |     | |    |   3     ',
+            '       |     |  |     | 10   false     ',
+            '       |     |  7     70               ',
+            '       3     210                       ',
             ''
         ]);
     });
@@ -623,11 +623,11 @@ suite('power-assert-formatter', function () {
         }, [
             'comment # /path/to/some_test.js:1',
             '',
-            'assert.ok(hoge === fuga, "comment");',
-            '          |    |   |                ',
-            '          |    |   "bar"            ',
-            '          |    false                ',
-            '          "foo"                     ',
+            'assert.ok(hoge === fuga, "comment")',
+            '          |    |   |               ',
+            '          |    |   "bar"           ',
+            '          |    false               ',
+            '          "foo"                    ',
             ''
         ]);
     });
@@ -641,10 +641,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(longString === anotherLongString);',
-            '       |          |   |                  ',
+            'assert(longString === anotherLongString)',
+            '       |          |   |                 ',
             '       |          |   "yet another loooooooooooooooooooooooooooooooooooooooooooooooooooong message"',
-            '       |          false                  ',
+            '       |          false                 ',
             '       "very very loooooooooooooooooooooooooooooooooooooooooooooooooooong message"',
             ''
         ]);
@@ -662,12 +662,12 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(!concat(fuga, piyo));',
-            '       ||      |     |      ',
+            'assert(!concat(fuga, piyo))',
+            '       ||      |     |     ',
             '       ||      |     "うえお"',
-            '       ||      "あい"       ',
-            '       |"あいうえお"        ',
-            '       false                ',
+            '       ||      "あい"      ',
+            '       |"あいうえお"       ',
+            '       false               ',
             ''
         ]);
 
@@ -684,10 +684,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert.equal(concat("ほげ", piyo), concat("あい", piyo));',
-            '             |              |      |              |      ',
+            'assert.equal(concat("ほげ", piyo), concat("あい", piyo))',
+            '             |              |      |              |     ',
             '             |              |      "あいうえお"   "うえお"',
-            '             "ほげうえお"   "うえお"                     ',
+            '             "ほげうえお"   "うえお"                    ',
             ''
         ]);
 
@@ -705,11 +705,11 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(!concat(fuga, piyo));',
-            '       ||      |     |      ',
-            '       ||      "ｱｲ"  "ｳｴｵ"  ',
-            '       |"ｱｲｳｴｵ"             ',
-            '       false                ',
+            'assert(!concat(fuga, piyo))',
+            '       ||      |     |     ',
+            '       ||      "ｱｲ"  "ｳｴｵ" ',
+            '       |"ｱｲｳｴｵ"            ',
+            '       false               ',
             ''
         ]);
 
@@ -726,11 +726,11 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert.ok(cyclic[two] === cyclic);',
-            '          |     ||    |   |       ',
+            'assert.ok(cyclic[two] === cyclic)',
+            '          |     ||    |   |      ',
             '          |     ||    |   ["foo","#Circular#","baz"]',
-            '          |     |2    false       ',
-            '          |     "baz"             ',
+            '          |     |2    false      ',
+            '          |     "baz"            ',
             '          ["foo","#Circular#","baz"]',
             ''
         ]);
@@ -744,12 +744,13 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(typeof + twoStr === -twoStr);',
-            '       |      | |      |   ||       ',
-            '       |      | |      |   |"2"     ',
-            '       |      | |      |   -2       ',
-            '       |      2 "2"    false        ',
-            '       "number"                     ',
+            'assert(typeof +twoStr === -twoStr)',
+            '       |      ||      |   ||      ',
+            '       |      ||      |   |"2"    ',
+            '       |      ||      |   -2      ',
+            '       |      |"2"    false       ',
+            '       |      2                   ',
+            '       "number"                   ',
             ''
         ]);
     });
@@ -762,9 +763,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(minusOne += 1);',
-            '                |     ',
-            '                0     ',
+            'assert(minusOne += 1)',
+            '                |    ',
+            '                0    ',
             ''
         ]);
     });
@@ -777,10 +778,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert((dog.age += 1) === four);',
-            '                |     |   |     ',
-            '                |     |   4     ',
-            '                3     false     ',
+            'assert((dog.age += 1) === four)',
+            '                |     |   |    ',
+            '                |     |   4    ',
+            '                3     false    ',
             ''
         ]);
     });
@@ -793,12 +794,12 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert([foo, bar].length === four);',
-            '        |    |    |      |   |     ',
-            '        |    |    |      |   4     ',
-            '        |    |    2      false     ',
-            '        |    "fuga"                ',
-            '        "hoge"                     ',
+            'assert([foo,bar].length === four)',
+            '        |   |    |      |   |    ',
+            '        |   |    |      |   4    ',
+            '        |   |    2      false    ',
+            '        |   "fuga"               ',
+            '        "hoge"                   ',
             ''
         ]);
     });
@@ -811,12 +812,13 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(typeof [[foo.bar, baz(moo)], + fourStr] === "number");',
-            '       |        |   |    |   |      | |        |             ',
-            '       |        |   |    |   "boo"  4 "4"      false         ',
-            '       |        |   |    null                                ',
-            '       |        |   "fuga"                                   ',
-            '       "object" {"bar":"fuga"}                               ',
+            'assert(typeof [[foo.bar,baz(moo)],+fourStr] === "number")',
+            '       |        |   |   |   |     ||        |            ',
+            '       |        |   |   |   |     |"4"      false        ',
+            '       |        |   |   |   "boo" 4                      ',
+            '       |        |   |   null                             ',
+            '       |        |   "fuga"                               ',
+            '       "object" {"bar":"fuga"}                           ',
             ''
         ]);
     });
@@ -829,9 +831,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(++minusOne);',
-            '       |           ',
-            '       0           ',
+            'assert(++minusOne)',
+            '       |          ',
+            '       0          ',
             ''
         ]);
     });
@@ -844,9 +846,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(zero--);',
-            '       |       ',
-            '       0       ',
+            'assert(zero--)',
+            '       |      ',
+            '       0      ',
             ''
         ]);
     });
@@ -859,9 +861,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(truthy ? falsy : anotherFalsy);',
-            '       |        |                     ',
-            '       "truthy" 0                     ',
+            'assert(truthy ? falsy : anotherFalsy)',
+            '       |        |                    ',
+            '       "truthy" 0                    ',
             ''
         ]);
     });
@@ -874,9 +876,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(falsy ? truthy : truthy ? anotherFalsy : truthy);',
-            '       |                |        |                      ',
-            '       0                "truthy" null                   ',
+            'assert(falsy ? truthy : truthy ? anotherFalsy : truthy)',
+            '       |                |        |                     ',
+            '       0                "truthy" null                  ',
             ''
         ]);
     });
@@ -889,9 +891,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(/^not/.exec(str));',
-            '              |    |     ',
-            '              null "ok"  ',
+            'assert(/^not/.exec(str))',
+            '              |    |    ',
+            '              null "ok" ',
             ''
         ]);
     });
@@ -905,9 +907,9 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(!({foo: bar, hoge: fuga}));',
-            '       |       |          |       ',
-            '       false   "toto"     100     ',
+            'assert(!{foo: bar,hoge: fuga})',
+            '       |      |         |     ',
+            '       false  "toto"    100   ',
             ''
         ]);
     });
@@ -921,10 +923,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(!({ foo: bar.baz, name: nameOf({firstName: first, lastName: last}) }));',
-            '       |        |   |          |                  |                |          ',
-            '       |        |   "BAZ"      "Brendan Eich"     "Brendan"        "Eich"     ',
-            '       false    {"baz":"BAZ"}                                                 ',
+            'assert(!{foo: bar.baz,name: nameOf({firstName: first,lastName: last})})',
+            '       |      |   |         |                  |               |       ',
+            '       |      |   "BAZ"     "Brendan Eich"     "Brendan"       "Eich"  ',
+            '       false  {"baz":"BAZ"}                                            ',
             ''
         ]);
     });
@@ -937,13 +939,13 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(!(new Array(foo, bar, baz)));',
-            '       | |         |    |    |      ',
-            '       | |         |    |    "baz"  ',
-            '       | |         |    "bar"       ',
-            '       | |         "foo"            ',
-            '       | ["foo","bar","baz"]        ',
-            '       false                        ',
+            'assert(!new Array(foo, bar, baz))',
+            '       ||         |    |    |    ',
+            '       ||         |    |    "baz"',
+            '       ||         |    "bar"     ',
+            '       ||         "foo"          ',
+            '       |["foo","bar","baz"]      ',
+            '       false                     ',
             ''
         ]);
     });
@@ -956,15 +958,15 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(baz === new Array(foo, bar, baz)[1]);',
-            '       |   |   |         |    |    |   |    ',
+            'assert(baz === new Array(foo, bar, baz)[1])',
+            '       |   |   |         |    |    |   |   ',
             '       |   |   |         |    |    |   "bar"',
-            '       |   |   |         |    |    "baz"    ',
-            '       |   |   |         |    "bar"         ',
-            '       |   |   |         "foo"              ',
-            '       |   |   ["foo","bar","baz"]          ',
-            '       |   false                            ',
-            '       "baz"                                ',
+            '       |   |   |         |    |    "baz"   ',
+            '       |   |   |         |    "bar"        ',
+            '       |   |   |         "foo"             ',
+            '       |   |   ["foo","bar","baz"]         ',
+            '       |   false                           ',
+            '       "baz"                               ',
             ''
         ]);
     });
@@ -977,12 +979,12 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert(baz === (function (a, b) { return a + b; })(foo, bar));',
-            '       |   |   |                                   |    |     ',
-            '       |   |   |                                   |    "bar" ',
-            '       |   |   "foobar"                            "foo"      ',
-            '       |   false                                              ',
-            '       "baz"                                                  ',
+            'assert(baz === function (a, b) {return a + b;}(foo, bar))',
+            '       |   |   |                               |    |    ',
+            '       |   |   |                               |    "bar"',
+            '       |   |   "foobar"                        "foo"     ',
+            '       |   false                                         ',
+            '       "baz"                                             ',
             ''
         ]);
     });
@@ -1042,10 +1044,10 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert.strictEqual(obj.truthy(), three == threeInStr);',
-            '                   |   |         |     |  |           ',
-            '                   |   |         |     |  "3"         ',
-            '                   {}  "true"    3     true           ',
+            'assert.strictEqual(obj.truthy(), three == threeInStr)',
+            '                   |   |         |     |  |          ',
+            '                   |   |         |     |  "3"        ',
+            '                   {}  "true"    3     true          ',
             ''
         ]);
     });
@@ -1074,11 +1076,11 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert.deepEqual(alice || bob, {name: kenName, age: four});',
-            '                 |     |              |             |      ',
-            '                 |     |              "ken"         4      ',
-            '                 |     {"name":"alice","age":3}            ',
-            '                 {"name":"alice","age":3}                  ',
+            'assert.deepEqual(alice || bob, {name: kenName,age: four})',
+            '                 |     |              |            |     ',
+            '                 |     |              "ken"        4     ',
+            '                 |     {"name":"alice","age":3}          ',
+            '                 {"name":"alice","age":3}                ',
             ''
         ]);
     });
@@ -1091,15 +1093,15 @@ suite('power-assert-formatter', function () {
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert.notDeepEqual([foo, bar, baz], new Array(foo, bar, baz));',
-            '                     |    |    |     |         |    |    |     ',
-            '                     |    |    |     |         |    |    {"name":"hoge"}',
-            '                     |    |    |     |         |    ["toto","tata"]',
-            '                     |    |    |     |         "foo"           ',
-            '                     |    |    |     ["foo",["toto","tata"],{"name":"hoge"}]',
-            '                     |    |    {"name":"hoge"}                 ',
-            '                     |    ["toto","tata"]                      ',
-            '                     "foo"                                     ',
+            'assert.notDeepEqual([foo,bar,baz], new Array(foo, bar, baz))',
+            '                     |   |   |     |         |    |    |    ',
+            '                     |   |   |     |         |    |    {"name":"hoge"}',
+            '                     |   |   |     |         |    ["toto","tata"]',
+            '                     |   |   |     |         "foo"          ',
+            '                     |   |   |     ["foo",["toto","tata"],{"name":"hoge"}]',
+            '                     |   |   {"name":"hoge"}                ',
+            '                     |   ["toto","tata"]                    ',
+            '                     "foo"                                  ',
             ''
         ]);
     });
