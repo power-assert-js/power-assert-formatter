@@ -1166,6 +1166,27 @@ suite.only('spockish diff', function () {
             ''
         ]);
     });
+
+
+    test('Looooong string diff', function () {
+        var longString = 'very very looooooooooo  ooooooooooooooooooooooooooooooooooooooooong message';
+        var anotherLongString = 'yet another looooooooooo oooooooo0000ooooooooooooooooooooooooooooooong massage';
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(longString === anotherLongString);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(longString === anotherLongString)',
+            '       |          |   |                 ',
+            '       |          |   "yet another looooooooooo oooooooo0000ooooooooooooooooooooooooooooooong massage"',
+            '       |          false                 ',
+            '       "very very looooooooooo  ooooooooooooooooooooooooooooooooooooooooong message"',
+            '',
+            'longString       : (very v)er(y) loo...ooo ( )oooooooo(oo)oooo...oooong m(e)ssage',
+            'anotherLongString: (yet anoth)er loo...ooo oooooooo(0000)oooo...oooong m(a)ssage',
+            ''
+        ]);
+    });
 });
 
 });
