@@ -1122,8 +1122,14 @@ suite.only('spockish diff', function () {
             '       |    false    ',
             '       "abcdef"      ',
             '',
-            'str1: abcd(e)f',
-            'str2: abcd(f)f',
+            '--- str1',
+            '+++ str2',
+            '@@ -1,6 +1,6 @@',
+            ' abcd',
+            '-e',
+            '+f',
+            ' f',
+            '',
             ''
         ]);
     });
@@ -1142,8 +1148,17 @@ suite.only('spockish diff', function () {
             '       |    false    ',
             '       "あいうえおかきくけこ"',
             '',
-            'str1: あ(い)うえおかきく(け)こ',
-            'str2: あ(れ)うえおかきく(げ)こ',
+            '--- str1',
+            '+++ str2',
+            '@@ -1,10 +1,10 @@',
+            ' あ',
+            '-い',
+            '+れ',
+            ' うえおかきく',
+            '-け',
+            '+げ',
+            ' こ',
+            '',
             ''
         ]);
     });
@@ -1161,8 +1176,14 @@ suite.only('spockish diff', function () {
             '       |    false        ',
             '       "abcdef"          ',
             '',
-            'str1   : abcd(e)f',
-            '[right]: abcd(f)f',
+            '--- str1',
+            '+++ right(Literal)',
+            '@@ -1,6 +1,6 @@',
+            ' abcd',
+            '-e',
+            '+f',
+            ' f',
+            '',
             ''
         ]);
     });
@@ -1182,8 +1203,27 @@ suite.only('spockish diff', function () {
             '       |          false                 ',
             '       "very very looooooooooo  ooooooooooooooooooooooooooooooooooooooooong message"',
             '',
-            'longString       : (very v)er(y) loo...ooo ( )oooooooo(oo)oooo...oooong m(e)ssage',
-            'anotherLongString: (yet anoth)er loo...ooo oooooooo(0000)oooo...oooong m(a)ssage',
+            '--- longString',
+            '+++ anotherLongString',
+            '@@ -1,13 +1,15 @@',
+            '-very v',
+            '+yet anoth',
+            ' er',
+            '-y',
+            '  loo',
+            '@@ -22,19 +22,20 @@',
+            ' ooo ',
+            '- ',
+            ' oooooooo',
+            '-oo',
+            '+0000',
+            ' oooo',
+            '@@ -65,14 +65,14 @@',
+            ' oooong m',
+            '-e',
+            '+a',
+            ' ssage',
+            '',
             ''
         ]);
     });
