@@ -9,11 +9,14 @@ var require = {
         estraverse: "../bower_components/estraverse/estraverse",
         mocha: "../bower_components/mocha/mocha",
         requirejs: "../bower_components/requirejs/require",
-        jsondiffpatch: "../bower_components/jsondiffpatch/build/bundle-full"
+        diff_match_patch: "../bower_components/google-diff-match-patch-js/diff_match_patch"
     },
     shim: {
         assert: {
             exports: "assert"
+        },
+        diff_match_patch: {
+            exports: "diff_match_patch"
         },
         escodegen: {
             exports: "escodegen"
