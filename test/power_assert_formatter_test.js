@@ -628,6 +628,13 @@ suite('power-assert-formatter', function () {
             '          |    |   "bar"           ',
             '          |    false               ',
             '          "foo"                    ',
+            '',
+            '--- hoge',
+            '+++ fuga',
+            '@@ -1,3 +1,3 @@',
+            '-foo',
+            '+bar',
+            '',
             ''
         ]);
     });
@@ -646,6 +653,16 @@ suite('power-assert-formatter', function () {
             '       |          |   "yet another loooooooooooooooooooooooooooooooooooooooooooooooooooong message"',
             '       |          false                 ',
             '       "very very loooooooooooooooooooooooooooooooooooooooooooooooooooong message"',
+            '',
+            '--- longString',
+            '+++ anotherLongString',
+            '@@ -1,13 +1,15 @@',
+            '-very v',
+            '+yet anoth',
+            ' er',
+            '-y',
+            '  loo',
+            '',
             ''
         ]);
     });
@@ -819,6 +836,13 @@ suite('power-assert-formatter', function () {
             '       |        |   |   null                             ',
             '       |        |   "fuga"                               ',
             '       "object" {"bar":"fuga"}                           ',
+            '',
+            '--- left(UnaryExpression)',
+            '+++ right(Literal)',
+            '@@ -1,6 +1,6 @@',
+            '-object',
+            '+number',
+            '',
             ''
         ]);
     });
@@ -967,6 +991,14 @@ suite('power-assert-formatter', function () {
             '       |   |   ["foo","bar","baz"]         ',
             '       |   false                           ',
             '       "baz"                               ',
+            '',
+            '--- baz',
+            '+++ right(MemberExpression)',
+            '@@ -1,3 +1,3 @@',
+            ' ba',
+            '-z',
+            '+r',
+            '',
             ''
         ]);
     });
@@ -985,6 +1017,15 @@ suite('power-assert-formatter', function () {
             '       |   |   "foobar"                        "foo"     ',
             '       |   false                                         ',
             '       "baz"                                             ',
+            '',
+            '--- baz',
+            '+++ right(CallExpression)',
+            '@@ -1,3 +1,6 @@',
+            '+foo',
+            ' ba',
+            '-z',
+            '+r',
+            '',
             ''
         ]);
     });
@@ -1107,8 +1148,6 @@ suite('power-assert-formatter', function () {
     });
 
 
-suite.only('spockish diff', function () {
-
     test('assert(str1 === str2);', function () {
         var str1 = 'abcdef', str2 = 'abcdff';
         assertPowerAssertContextFormatting(function () {
@@ -1189,7 +1228,7 @@ suite.only('spockish diff', function () {
     });
 
 
-    test('Looooong string diff', function () {
+    test('Multi hunk diff', function () {
         var longString = 'very very looooooooooo  ooooooooooooooooooooooooooooooooooooooooong message';
         var anotherLongString = 'yet another looooooooooo oooooooo0000ooooooooooooooooooooooooooooooong massage';
         assertPowerAssertContextFormatting(function () {
@@ -1227,8 +1266,6 @@ suite.only('spockish diff', function () {
             ''
         ]);
     });
-});
-
 });
 
 }));
