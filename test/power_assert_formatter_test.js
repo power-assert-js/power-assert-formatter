@@ -1266,6 +1266,99 @@ suite('power-assert-formatter', function () {
             ''
         ]);
     });
+
+
+    test('Line level diff', function () {
+        var html1,html2;
+
+        html1  = '<!doctype html>\n';
+        html1 += '<html>\n';
+        html1 += '<head>\n';
+        html1 += '    <title>Example Domain</title>\n';
+        html1 += '\n';
+        html1 += '    <meta charset="utf-8" />\n';
+        html1 += '    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />\n';
+        html1 += '    <meta name="viewport" content="width=device-width, initial-scale=1" />\n';
+        html1 += '    <style type="text/css">\n';
+        html1 += '    body {\n';
+        html1 += '        background-color: #f0f0f2;\n';
+        html1 += '        margin: 0;\n';
+        html1 += '        padding: 0;\n';
+        html1 += '        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;\n';
+        html1 += '        \n';
+        html1 += '    }\n';
+        html1 += '    div {\n';
+        html1 += '        width: 600px;\n';
+        html1 += '        margin: 5em auto;\n';
+        html1 += '        padding: 50px;\n';
+        html1 += '        background-color: #fff;\n';
+        html1 += '        border-radius: 1em;\n';
+        html1 += '    }\n';
+        html1 += '    a:link, a:visited {\n';
+        html1 += '        color: #38488f;\n';
+        html1 += '        text-decoration: none;\n';
+        html1 += '    }\n';
+        html1 += '    @media (max-width: 700px) {\n';
+        html1 += '        body {\n';
+        html1 += '            background-color: #fff;\n';
+        html1 += '        }\n';
+        html1 += '        div {\n';
+        html1 += '            width: auto;\n';
+        html1 += '            margin: 0 auto;\n';
+        html1 += '            border-radius: 0;\n';
+        html1 += '            padding: 1em;\n';
+        html1 += '        }\n';
+        html1 += '    }\n';
+        html1 += '    </style>\n';
+        html1 += '</head>\n';
+        html1 += '\n';
+        html1 += '<body>\n';
+        html1 += '<div>\n';
+        html1 += '    <h1>Example Domain</h1>\n';
+        html1 += '    <p>This domain is established to be used for illustrative examples in documents. You may use this\n';
+        html1 += '    domain in examples without prior coordination or asking for permission.</p>\n';
+        html1 += '    <p><a href="http://www.iana.org/domains/example">More information...</a></p>\n';
+        html1 += '</div>\n';
+        html1 += '</body>\n';
+        html1 += '</html>';
+        
+        html2 = html1.replace(/Example Domain/gm, 'Example Site');
+
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(html1 === html2);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(html1 === html2)',
+            '       |     |   |     ',
+            '       |     |   "<!doctype html>\\n<html>\\n<head>\\n    <title>Example Site</title>\\n\\n    <meta charset=\\"utf-8\\" />\\n    <meta http-equiv=\\"Content-type\\" content=\\"text/html; charset=utf-8\\" />\\n    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\" />\\n    <style type=\\"text/css\\">\\n    body {\\n        background-color: #f0f0f2;\\n        margin: 0;\\n        padding: 0;\\n        font-family: \\"Open Sans\\", \\"Helvetica Neue\\", Helvetica, Arial, sans-serif;\\n        \\n    }\\n    div {\\n        width: 600px;\\n        margin: 5em auto;\\n        padding: 50px;\\n        background-color: #fff;\\n        border-radius: 1em;\\n    }\\n    a:link, a:visited {\\n        color: #38488f;\\n        text-decoration: none;\\n    }\\n    @media (max-width: 700px) {\\n        body {\\n            background-color: #fff;\\n        }\\n        div {\\n            width: auto;\\n            margin: 0 auto;\\n            border-radius: 0;\\n            padding: 1em;\\n        }\\n    }\\n    </style>\\n</head>\\n\\n<body>\\n<div>\\n    <h1>Example Site</h1>\\n    <p>This domain is established to be used for illustrative examples in documents. You may use this\\n    domain in examples without prior coordination or asking for permission.</p>\\n    <p><a href=\\"http://www.iana.org/domains/example\\">More information...</a></p>\\n</div>\\n</body>\\n</html>"',
+            '       |     false     ',
+            '       "<!doctype html>\\n<html>\\n<head>\\n    <title>Example Domain</title>\\n\\n    <meta charset=\\"utf-8\\" />\\n    <meta http-equiv=\\"Content-type\\" content=\\"text/html; charset=utf-8\\" />\\n    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\" />\\n    <style type=\\"text/css\\">\\n    body {\\n        background-color: #f0f0f2;\\n        margin: 0;\\n        padding: 0;\\n        font-family: \\"Open Sans\\", \\"Helvetica Neue\\", Helvetica, Arial, sans-serif;\\n        \\n    }\\n    div {\\n        width: 600px;\\n        margin: 5em auto;\\n        padding: 50px;\\n        background-color: #fff;\\n        border-radius: 1em;\\n    }\\n    a:link, a:visited {\\n        color: #38488f;\\n        text-decoration: none;\\n    }\\n    @media (max-width: 700px) {\\n        body {\\n            background-color: #fff;\\n        }\\n        div {\\n            width: auto;\\n            margin: 0 auto;\\n            border-radius: 0;\\n            padding: 1em;\\n        }\\n    }\\n    </style>\\n</head>\\n\\n<body>\\n<div>\\n    <h1>Example Domain</h1>\\n    <p>This domain is established to be used for illustrative examples in documents. You may use this\\n    domain in examples without prior coordination or asking for permission.</p>\\n    <p><a href=\\"http://www.iana.org/domains/example\\">More information...</a></p>\\n</div>\\n</body>\\n</html>"',
+            '',
+            '--- html1',
+            '+++ html2',
+            '@@ -27,42 +27,40 @@',
+            ' ad>',
+            '',
+            '-    <title>Example Domain</title>',
+            '',
+            '+    <title>Example Site</title>',
+            '',
+            ' ',
+            '   ',
+            '@@ -947,36 +947,34 @@',
+            ' iv>',
+            '',
+            '-    <h1>Example Domain</h1>',
+            '',
+            '+    <h1>Example Site</h1>',
+            '',
+            '     ',
+            '',
+            ''
+        ]);
+    });
+
 });
 
 }));
