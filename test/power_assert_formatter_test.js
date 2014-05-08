@@ -1032,6 +1032,22 @@ suite('power-assert-formatter', function () {
 
 
 
+    test('Bug reproduction: BinaryExpression with Literal in FunctionExpression: ', function () {
+        var ary = ['foo', 'bar', 'baz', 'hoge'];
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(ary.every(function (element, index, array) { return element.length === 3; }));'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(ary.every(function (element, index, array) {return element.length === 3;}))',
+            '       |   |                                                                      ',
+            '       |   false                                                                  ',
+            '       ["foo","bar","baz","hoge"]                                                 ',
+            ''
+        ]);
+    });
+
+
 
     test('equal with Literal and Identifier: assert.equal(1, minusOne);', function () {
         var minusOne = -1;
