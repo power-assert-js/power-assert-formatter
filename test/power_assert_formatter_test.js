@@ -153,6 +153,11 @@ suite('power-assert-formatter', function () {
             '          |    |         ',
             '          |    false     ',
             '          undefined      ',
+            '',
+            '$$$ [string] "xxx"',
+            '### [undefined] {}.hoge',
+            '$ xxx',
+            '# undefined',
             ''
         ]);
     });
@@ -174,6 +179,11 @@ suite('power-assert-formatter', function () {
             '       |      |   |   false     ',
             '       |      |   {"baz":false} ',
             '       true   {"bar":{"baz":false}}',
+            '',
+            '$$$ [boolean] false',
+            '### [boolean] delete foo.bar',
+            '$ false',
+            '# true',
             ''
         ]);
     });
@@ -188,6 +198,11 @@ suite('power-assert-formatter', function () {
             'assert(delete nonexistent === false)',
             '       |                  |         ',
             '       true               false     ',
+            '',
+            '$$$ [boolean] false',
+            '### [boolean] delete nonexistent',
+            '$ false',
+            '# true',
             ''
         ]);
     });
@@ -206,6 +221,11 @@ suite('power-assert-formatter', function () {
             '       |    |   8    ',
             '       |    false    ',
             '       "foo"         ',
+            '',
+            '$$$ [number] piyo',
+            '### [string] fuga',
+            '$ 8',
+            '# foo',
             ''
         ]);
     });
@@ -272,6 +292,11 @@ suite('power-assert-formatter', function () {
             '       |    |      |   ["aaa","bbb","ccc"]',
             '       |    2      false           ',
             '       ["foo","bar"]               ',
+            '',
+            '$$$ [number] ary2.length',
+            '### [number] ary1.length',
+            '$ 3',
+            '# 2',
             ''
         ]);
     });
@@ -541,6 +566,11 @@ suite('power-assert-formatter', function () {
             '       |   |    |    |      |   |     ',
             '       |   |    |    |      |   7     ',
             '       6   1    2    3      false     ',
+            '',
+            '$$$ [number] seven',
+            '### [number] sum(one, two, three)',
+            '$ 7',
+            '# 6',
             ''
         ]);
     });
@@ -564,6 +594,11 @@ suite('power-assert-formatter', function () {
             '       |   |   |    |     |      |   |   |   |    |       |      ',
             '       |   |   |    |     |      |   12  5   2    3       7      ',
             '       6   3   1    2     3      false                           ',
+            '',
+            '$$$ [number] sum(sum(two, three), seven)',
+            '### [number] sum(sum(one, two), three)',
+            '$ 12',
+            '# 6',
             ''
         ]);
     });
@@ -592,6 +627,11 @@ suite('power-assert-formatter', function () {
             '       |    |    |   |    |    |      |   7     ',
             '       |    {}   6   1    2    3      false     ',
             '       {"calc":{}}                              ',
+            '',
+            '$$$ [number] seven',
+            '### [number] math.calc.sum(one, two, three)',
+            '$ 7',
+            '# 6',
             ''
         ]);
     });
@@ -610,6 +650,11 @@ suite('power-assert-formatter', function () {
             '       |     |  |     | 10   false     ',
             '       |     |  7     70               ',
             '       3     210                       ',
+            '',
+            '$$$ [number] three',
+            '### [number] three * (seven * ten)',
+            '$ 3',
+            '# 210',
             ''
         ]);
     });
@@ -629,8 +674,8 @@ suite('power-assert-formatter', function () {
             '          |    false               ',
             '          "foo"                    ',
             '',
-            '--- fuga',
-            '+++ hoge',
+            '--- [string] fuga',
+            '+++ [string] hoge',
             '@@ -1,3 +1,3 @@',
             '-bar',
             '+foo',
@@ -654,8 +699,8 @@ suite('power-assert-formatter', function () {
             '       |          false                 ',
             '       "very very loooooooooooooooooooooooooooooooooooooooooooooooooooong message"',
             '',
-            '--- anotherLongString',
-            '+++ longString',
+            '--- [string] anotherLongString',
+            '+++ [string] longString',
             '@@ -1,15 +1,13 @@',
             '-yet anoth',
             '+very v',
@@ -768,6 +813,11 @@ suite('power-assert-formatter', function () {
             '       |      |"2"    false       ',
             '       |      2                   ',
             '       "number"                   ',
+            '',
+            '$$$ [number] -twoStr',
+            '### [string] typeof +twoStr',
+            '$ -2',
+            '# number',
             ''
         ]);
     });
@@ -799,6 +849,11 @@ suite('power-assert-formatter', function () {
             '                |     |   |    ',
             '                |     |   4    ',
             '                3     false    ',
+            '',
+            '$$$ [number] four',
+            '### [number] dog.age += 1',
+            '$ 4',
+            '# 3',
             ''
         ]);
     });
@@ -817,6 +872,11 @@ suite('power-assert-formatter', function () {
             '        |   |    2      false    ',
             '        |   "fuga"               ',
             '        "hoge"                   ',
+            '',
+            '$$$ [number] four',
+            '### [number] [foo,bar].length',
+            '$ 4',
+            '# 2',
             ''
         ]);
     });
@@ -837,8 +897,8 @@ suite('power-assert-formatter', function () {
             '       |        |   "fuga"                               ',
             '       "object" {"bar":"fuga"}                           ',
             '',
-            '--- right(Literal)',
-            '+++ left(UnaryExpression)',
+            '--- [string] "number"',
+            '+++ [string] typeof [[foo.bar,baz(moo)],+fourStr]',
             '@@ -1,6 +1,6 @@',
             '-number',
             '+object',
@@ -992,8 +1052,8 @@ suite('power-assert-formatter', function () {
             '       |   false                           ',
             '       "baz"                               ',
             '',
-            '--- right(MemberExpression)',
-            '+++ baz',
+            '--- [string] new Array(foo, bar, baz)[1]',
+            '+++ [string] baz',
             '@@ -1,3 +1,3 @@',
             ' ba',
             '-r',
@@ -1018,8 +1078,8 @@ suite('power-assert-formatter', function () {
             '       |   false                                         ',
             '       "baz"                                             ',
             '',
-            '--- right(CallExpression)',
-            '+++ baz',
+            '--- [string] function (a, b) {return a + b;}(foo, bar)',
+            '+++ [string] baz',
             '@@ -1,6 +1,3 @@',
             '-foo',
             ' ba',
@@ -1177,8 +1237,8 @@ suite('power-assert-formatter', function () {
             '       |    false    ',
             '       "abcdef"      ',
             '',
-            '--- str2',
-            '+++ str1',
+            '--- [string] str2',
+            '+++ [string] str1',
             '@@ -1,6 +1,6 @@',
             ' abcd',
             '-f',
@@ -1203,8 +1263,8 @@ suite('power-assert-formatter', function () {
             '       |    false    ',
             '       "あいうえおかきくけこ"',
             '',
-            '--- str2',
-            '+++ str1',
+            '--- [string] str2',
+            '+++ [string] str1',
             '@@ -1,10 +1,10 @@',
             ' あ',
             '-れ',
@@ -1231,8 +1291,8 @@ suite('power-assert-formatter', function () {
             '       |    false        ',
             '       "abcdef"          ',
             '',
-            '--- right(Literal)',
-            '+++ str1',
+            '--- [string] "abcdff"',
+            '+++ [string] str1',
             '@@ -1,6 +1,6 @@',
             ' abcd',
             '-f',
@@ -1258,8 +1318,8 @@ suite('power-assert-formatter', function () {
             '       |          false                 ',
             '       "very very looooooooooo  ooooooooooooooooooooooooooooooooooooooooong message"',
             '',
-            '--- anotherLongString',
-            '+++ longString',
+            '--- [string] anotherLongString',
+            '+++ [string] longString',
             '@@ -1,15 +1,13 @@',
             '-yet anoth',
             '+very v',
@@ -1351,8 +1411,8 @@ suite('power-assert-formatter', function () {
             '       |     false     ',
             '       "<!doctype html>\\n<html>\\n<head>\\n    <title>Example Domain</title>\\n\\n    <meta charset=\\"utf-8\\" />\\n    <meta http-equiv=\\"Content-type\\" content=\\"text/html; charset=utf-8\\" />\\n    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\" />\\n    <style type=\\"text/css\\">\\n    body {\\n        background-color: #f0f0f2;\\n        margin: 0;\\n        padding: 0;\\n        font-family: \\"Open Sans\\", \\"Helvetica Neue\\", Helvetica, Arial, sans-serif;\\n        \\n    }\\n    div {\\n        width: 600px;\\n        margin: 5em auto;\\n        padding: 50px;\\n        background-color: #fff;\\n        border-radius: 1em;\\n    }\\n    a:link, a:visited {\\n        color: #38488f;\\n        text-decoration: none;\\n    }\\n    @media (max-width: 700px) {\\n        body {\\n            background-color: #fff;\\n        }\\n        div {\\n            width: auto;\\n            margin: 0 auto;\\n            border-radius: 0;\\n            padding: 1em;\\n        }\\n    }\\n    </style>\\n</head>\\n\\n<body>\\n<div>\\n    <h1>Example Domain</h1>\\n    <p>This domain is established to be used for illustrative examples in documents. You may use this\\n    domain in examples without prior coordination or asking for permission.</p>\\n    <p><a href=\\"http://www.iana.org/domains/example\\">More information...</a></p>\\n</div>\\n</body>\\n</html>"',
             '',
-            '--- html2',
-            '+++ html1',
+            '--- [string] html2',
+            '+++ [string] html1',
             '@@ -27,40 +27,42 @@',
             ' ad>',
             '',
