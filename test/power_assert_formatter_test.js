@@ -156,7 +156,7 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [string] "xxx"',
             '### [undefined] {}.hoge',
-            '$ xxx',
+            '$ "xxx"',
             '# undefined',
             ''
         ]);
@@ -225,7 +225,7 @@ suite('power-assert-formatter', function () {
             '$$$ [number] piyo',
             '### [string] fuga',
             '$ 8',
-            '# foo',
+            '# "foo"',
             ''
         ]);
     });
@@ -817,7 +817,7 @@ suite('power-assert-formatter', function () {
             '$$$ [number] -twoStr',
             '### [string] typeof +twoStr',
             '$ -2',
-            '# number',
+            '# "number"',
             ''
         ]);
     });
