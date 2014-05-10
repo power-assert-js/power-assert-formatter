@@ -1549,6 +1549,27 @@ suite('power-assert-formatter', function () {
     });
 
 
+    test('User-defined anonymous class: assert.deepEqual(alice, new Person(kenName, four));', function () {
+        var Person = function(name, age) {
+            this.name = name;
+            this.age = age;
+        };
+        var alice = new Person('alice', 3), kenName = 'ken', four = 4;
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert.deepEqual(alice, new Person(kenName, four));'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert.deepEqual(alice, new Person(kenName, four))',
+            '                 |      |          |        |     ',
+            '                 |      |          "ken"    4     ',
+            '                 |      Object:{name:"ken",age:4} ',
+            '                 Object:{name:"alice",age:3}      ',
+            ''
+        ]);
+    });
+
+
 });
 
 }));
