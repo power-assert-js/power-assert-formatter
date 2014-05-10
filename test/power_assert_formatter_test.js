@@ -177,8 +177,8 @@ suite('power-assert-formatter', function () {
             'assert(delete foo.bar === false)',
             '       |      |   |   |         ',
             '       |      |   |   false     ',
-            '       |      |   {"baz":false} ',
-            '       true   {"bar":{"baz":false}}',
+            '       |      |   {baz:false}   ',
+            '       true   {bar:#OBJECT#}    ',
             '',
             '$$$ [boolean] false',
             '### [boolean] delete foo.bar',
@@ -388,8 +388,8 @@ suite('power-assert-formatter', function () {
             'assert(foo.bar.baz)',
             '       |   |   |   ',
             '       |   |   false',
-            '       |   {"baz":false}',
-            '       {"bar":{"baz":false}}',
+            '       |   {baz:false}',
+            '       {bar:#OBJECT#}',
             ''
         ]);
     });
@@ -409,8 +409,8 @@ suite('power-assert-formatter', function () {
             'assert(foo["bar"].baz)',
             '       |  |       |   ',
             '       |  |       false',
-            '       |  {"baz":false}',
-            '       {"bar":{"baz":false}}',
+            '       |  {baz:false} ',
+            '       {bar:#OBJECT#} ',
             ''
         ]);
     });
@@ -431,8 +431,8 @@ suite('power-assert-formatter', function () {
             'assert(foo[propName].baz)',
             '       |  ||         |   ',
             '       |  |"bar"     false',
-            '       |  {"baz":false}  ',
-            '       {"bar":{"baz":false}}',
+            '       |  {baz:false}    ',
+            '       {bar:#OBJECT#}    ',
             ''
         ]);
     });
@@ -453,7 +453,8 @@ suite('power-assert-formatter', function () {
             'assert(foo[propName]())',
             '       |  ||           ',
             '       |  |"bar"       ',
-            '       {} false        ',
+            '       |  false        ',
+            '       {bar:#FUNCTION#}',
             ''
         ]);
     });
@@ -481,10 +482,11 @@ suite('power-assert-formatter', function () {
             '       |  ||   ||   ||         ',
             '       |  ||   ||   |"piyoKey" ',
             '       |  ||   ||   "fugaKey"  ',
-            '       |  ||   |{"piyoKey":"fugaKey"}',
+            '       |  ||   |{piyoKey:"fugaKey"}',
             '       |  ||   "func"          ',
-            '       |  |{"fugaKey":"func"}  ',
-            '       {} false                ',
+            '       |  |{fugaKey:"func"}    ',
+            '       |  false                ',
+            '       {func:#FUNCTION#}       ',
             ''
         ]);
     });
@@ -510,9 +512,9 @@ suite('power-assert-formatter', function () {
             '       |  ||        |      ||     "toto"',
             '       |  ||        |      |["toto"]   ',
             '       |  ||        |      false       ',
-            '       |  |"bar"    {"toto":false}     ',
-            '       |  {"baz":{"toto":false}}       ',
-            '       {"bar":{"baz":{"toto":false}}}  ',
+            '       |  |"bar"    {toto:false}       ',
+            '       |  {baz:#OBJECT#}               ',
+            '       {bar:#OBJECT#}                  ',
             ''
         ]);
     });
@@ -546,7 +548,8 @@ suite('power-assert-formatter', function () {
             '',
             'assert(obj.age())',
             '       |   |     ',
-            '       {}  0     ',
+            '       |   0     ',
+            '       {age:#FUNCTION#}',
             ''
         ]);
     });
@@ -647,8 +650,9 @@ suite('power-assert-formatter', function () {
             'assert(math.calc.sum(one, two, three) === seven)',
             '       |    |    |   |    |    |      |   |     ',
             '       |    |    |   |    |    |      |   7     ',
-            '       |    {}   6   1    2    3      false     ',
-            '       {"calc":{}}                              ',
+            '       |    |    6   1    2    3      false     ',
+            '       |    {sum:#FUNCTION#}                    ',
+            '       {calc:#OBJECT#}                          ',
             '',
             '$$$ [number] seven',
             '### [number] math.calc.sum(one, two, three)',
@@ -812,10 +816,10 @@ suite('power-assert-formatter', function () {
             '',
             'assert.ok(cyclic[two] === cyclic)',
             '          |     ||    |   |      ',
-            '          |     ||    |   ["foo","#Circular#","baz"]',
+            '          |     ||    |   ["foo",#ARRAY#,"baz"]',
             '          |     |2    false      ',
             '          |     "baz"            ',
-            '          ["foo","#Circular#","baz"]',
+            '          ["foo",#ARRAY#,"baz"]  ',
             ''
         ]);
     });
@@ -917,7 +921,7 @@ suite('power-assert-formatter', function () {
             '       |        |   |   |   "boo" 4                      ',
             '       |        |   |   null                             ',
             '       |        |   "fuga"                               ',
-            '       "object" {"bar":"fuga"}                           ',
+            '       "object" {bar:"fuga"}                             ',
             '',
             '--- [string] "number"',
             '+++ [string] typeof [[foo.bar,baz(moo)],+fourStr]',
@@ -1032,7 +1036,7 @@ suite('power-assert-formatter', function () {
             'assert(!{foo: bar.baz,name: nameOf({firstName: first,lastName: last})})',
             '       |      |   |         |                  |               |       ',
             '       |      |   "BAZ"     "Brendan Eich"     "Brendan"       "Eich"  ',
-            '       false  {"baz":"BAZ"}                                            ',
+            '       false  {baz:"BAZ"}                                              ',
             ''
         ]);
     });
@@ -1186,7 +1190,8 @@ suite('power-assert-formatter', function () {
             'assert.strictEqual(obj.truthy(), three == threeInStr)',
             '                   |   |         |     |  |          ',
             '                   |   |         |     |  "3"        ',
-            '                   {}  "true"    3     true          ',
+            '                   |   "true"    3     true          ',
+            '                   {truthy:#FUNCTION#}               ',
             ''
         ]);
     });
@@ -1202,7 +1207,7 @@ suite('power-assert-formatter', function () {
             'assert.notStrictEqual(typeof undefinedVar, types.undef)',
             '                      |                    |     |     ',
             '                      |                    |     "undefined"',
-            '                      "undefined"          {"undef":"undefined"}',
+            '                      "undefined"          {undef:"undefined"}',
             ''
         ]);
     });
@@ -1218,8 +1223,8 @@ suite('power-assert-formatter', function () {
             'assert.deepEqual(alice || bob, {name: kenName,age: four})',
             '                 |     |              |            |     ',
             '                 |     |              "ken"        4     ',
-            '                 |     {"name":"alice","age":3}          ',
-            '                 {"name":"alice","age":3}                ',
+            '                 |     {name:"alice",age:3}              ',
+            '                 {name:"alice",age:3}                    ',
             ''
         ]);
     });
@@ -1234,11 +1239,11 @@ suite('power-assert-formatter', function () {
             '',
             'assert.notDeepEqual([foo,bar,baz], new Array(foo, bar, baz))',
             '                     |   |   |     |         |    |    |    ',
-            '                     |   |   |     |         |    |    {"name":"hoge"}',
+            '                     |   |   |     |         |    |    {name:"hoge"}',
             '                     |   |   |     |         |    ["toto","tata"]',
             '                     |   |   |     |         "foo"          ',
-            '                     |   |   |     ["foo",["toto","tata"],{"name":"hoge"}]',
-            '                     |   |   {"name":"hoge"}                ',
+            '                     |   |   |     ["foo",#ARRAY#,#OBJECT#] ',
+            '                     |   |   {name:"hoge"}                  ',
             '                     |   ["toto","tata"]                    ',
             '                     "foo"                                  ',
             ''
