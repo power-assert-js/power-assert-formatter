@@ -1696,7 +1696,7 @@ suite('power-assert-formatter', function () {
     });
 
 
-    test('User-defined class with user-defined member: assert.deepEqual(session1, session2);', function () {
+    test('User-defined class with user-defined member: assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice));', function () {
         function PairProgramming(driver, navigator) {
             this.driver = driver;
             this.navigator = navigator;
@@ -1706,18 +1706,20 @@ suite('power-assert-formatter', function () {
             this.age = age;
         }
         var alice = new Person('alice', 3),
-            ken = new Person('ken', 4),
-            session1 = new PairProgramming(alice, ken),
-            session2 = new PairProgramming(ken, alice);
+            ken = new Person('ken', 4);
         assertPowerAssertContextFormatting(function () {
-            eval(weave('assert.deepEqual(session1, session2);'));
+            eval(weave('assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice));'));
         }, [
             '# /path/to/some_test.js:1',
             '',
-            'assert.deepEqual(session1, session2)',
-            '                 |         |        ',
-            '                 |         PairProgramming{driver:#Person#,navigator:#Person#}',
-            '                 PairProgramming{driver:#Person#,navigator:#Person#}',
+            'assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice))',
+            '                 |                   |      |     |                   |    |      ',
+            '                 |                   |      |     |                   |    Person{name:"alice",age:3}',
+            '                 |                   |      |     |                   Person{name:"ken",age:4}',
+            '                 |                   |      |     PairProgramming{driver:#Person#,navigator:#Person#}',
+            '                 |                   |      Person{name:"ken",age:4}              ',
+            '                 |                   Person{name:"alice",age:3}                   ',
+            '                 PairProgramming{driver:#Person#,navigator:#Person#}              ',
             ''
         ]);
     });
