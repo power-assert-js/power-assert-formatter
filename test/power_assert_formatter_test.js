@@ -231,7 +231,7 @@ suite('power-assert-formatter', function () {
     });
 
 
-    test('assert(truthy == falsy);', function () {
+    test('Loose equality: assert(truthy == falsy);', function () {
         var truthy = '1',
             falsy = false;
         assertPowerAssertContextFormatting(function () {
@@ -266,6 +266,70 @@ suite('power-assert-formatter', function () {
             '       |    |   "foo"',
             '       |    false    ',
             '       "foo"         ',
+            ''
+        ]);
+    });
+
+
+    test('Literal and UnaryExpression: assert(4 === -4);', function () {
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(4 === -4);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(4 === -4)',
+            '         |   |  ',
+            '         |   -4 ',
+            '         false  ',
+            '',
+            '$$$ [number] -4',
+            '### [number] 4',
+            '$ -4',
+            '# 4',
+            ''
+        ]);
+    });
+
+
+    test('assert(nan1 === nan2);', function () {
+        var nan1 = NaN,
+            nan2 = NaN;
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(nan1 === nan2);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(nan1 === nan2)',
+            '       |    |   |    ',
+            '       |    |   NaN  ',
+            '       NaN  false    ',
+            '',
+            '$$$ [number] nan2',
+            '### [number] nan1',
+            '$ NaN',
+            '# NaN',
+            ''
+        ]);
+    });
+
+
+    test('assert(positiveInfinity === negativeInfinity);', function () {
+        var positiveInfinity = Infinity,
+            negativeInfinity = -Infinity;
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(positiveInfinity === negativeInfinity);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(positiveInfinity === negativeInfinity)',
+            '       |                |   |                ',
+            '       |                |   -Infinity        ',
+            '       Infinity         false                ',
+            '',
+            '$$$ [number] negativeInfinity',
+            '### [number] positiveInfinity',
+            '$ -Infinity',
+            '# Infinity',
             ''
         ]);
     });
