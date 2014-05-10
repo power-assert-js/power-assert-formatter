@@ -231,6 +231,28 @@ suite('power-assert-formatter', function () {
     });
 
 
+    test('assert(truthy == falsy);', function () {
+        var truthy = '1',
+            falsy = false;
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(truthy == falsy);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(truthy == falsy)',
+            '       |      |  |     ',
+            '       |      |  false ',
+            '       "1"    false    ',
+            '',
+            '$$$ [boolean] falsy',
+            '### [string] truthy',
+            '$ false',
+            '# "1"',
+            ''
+        ]);
+    });
+
+
     test('assert(fuga !== piyo);', function () {
         var fuga = 'foo',
             piyo = 'foo';
