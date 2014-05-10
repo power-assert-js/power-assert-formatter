@@ -153,6 +153,11 @@ suite('power-assert-formatter', function () {
             '          |    |         ',
             '          |    false     ',
             '          undefined      ',
+            '',
+            '$$$ [string] "xxx"',
+            '### [undefined] {}.hoge',
+            '$ "xxx"',
+            '# undefined',
             ''
         ]);
     });
@@ -174,6 +179,11 @@ suite('power-assert-formatter', function () {
             '       |      |   |   false     ',
             '       |      |   {"baz":false} ',
             '       true   {"bar":{"baz":false}}',
+            '',
+            '$$$ [boolean] false',
+            '### [boolean] delete foo.bar',
+            '$ false',
+            '# true',
             ''
         ]);
     });
@@ -188,6 +198,11 @@ suite('power-assert-formatter', function () {
             'assert(delete nonexistent === false)',
             '       |                  |         ',
             '       true               false     ',
+            '',
+            '$$$ [boolean] false',
+            '### [boolean] delete nonexistent',
+            '$ false',
+            '# true',
             ''
         ]);
     });
@@ -206,6 +221,33 @@ suite('power-assert-formatter', function () {
             '       |    |   8    ',
             '       |    false    ',
             '       "foo"         ',
+            '',
+            '$$$ [number] piyo',
+            '### [string] fuga',
+            '$ 8',
+            '# "foo"',
+            ''
+        ]);
+    });
+
+
+    test('assert(truthy == falsy);', function () {
+        var truthy = '1',
+            falsy = false;
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(truthy == falsy);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(truthy == falsy)',
+            '       |      |  |     ',
+            '       |      |  false ',
+            '       "1"    false    ',
+            '',
+            '$$$ [boolean] falsy',
+            '### [string] truthy',
+            '$ false',
+            '# "1"',
             ''
         ]);
     });
@@ -272,6 +314,11 @@ suite('power-assert-formatter', function () {
             '       |    |      |   ["aaa","bbb","ccc"]',
             '       |    2      false           ',
             '       ["foo","bar"]               ',
+            '',
+            '$$$ [number] ary2.length',
+            '### [number] ary1.length',
+            '$ 3',
+            '# 2',
             ''
         ]);
     });
@@ -541,6 +588,11 @@ suite('power-assert-formatter', function () {
             '       |   |    |    |      |   |     ',
             '       |   |    |    |      |   7     ',
             '       6   1    2    3      false     ',
+            '',
+            '$$$ [number] seven',
+            '### [number] sum(one, two, three)',
+            '$ 7',
+            '# 6',
             ''
         ]);
     });
@@ -564,6 +616,11 @@ suite('power-assert-formatter', function () {
             '       |   |   |    |     |      |   |   |   |    |       |      ',
             '       |   |   |    |     |      |   12  5   2    3       7      ',
             '       6   3   1    2     3      false                           ',
+            '',
+            '$$$ [number] sum(sum(two, three), seven)',
+            '### [number] sum(sum(one, two), three)',
+            '$ 12',
+            '# 6',
             ''
         ]);
     });
@@ -592,6 +649,11 @@ suite('power-assert-formatter', function () {
             '       |    |    |   |    |    |      |   7     ',
             '       |    {}   6   1    2    3      false     ',
             '       {"calc":{}}                              ',
+            '',
+            '$$$ [number] seven',
+            '### [number] math.calc.sum(one, two, three)',
+            '$ 7',
+            '# 6',
             ''
         ]);
     });
@@ -610,6 +672,11 @@ suite('power-assert-formatter', function () {
             '       |     |  |     | 10   false     ',
             '       |     |  7     70               ',
             '       3     210                       ',
+            '',
+            '$$$ [number] three',
+            '### [number] three * (seven * ten)',
+            '$ 3',
+            '# 210',
             ''
         ]);
     });
@@ -628,6 +695,13 @@ suite('power-assert-formatter', function () {
             '          |    |   "bar"           ',
             '          |    false               ',
             '          "foo"                    ',
+            '',
+            '--- [string] fuga',
+            '+++ [string] hoge',
+            '@@ -1,3 +1,3 @@',
+            '-bar',
+            '+foo',
+            '',
             ''
         ]);
     });
@@ -646,6 +720,16 @@ suite('power-assert-formatter', function () {
             '       |          |   "yet another loooooooooooooooooooooooooooooooooooooooooooooooooooong message"',
             '       |          false                 ',
             '       "very very loooooooooooooooooooooooooooooooooooooooooooooooooooong message"',
+            '',
+            '--- [string] anotherLongString',
+            '+++ [string] longString',
+            '@@ -1,15 +1,13 @@',
+            '-yet anoth',
+            '+very v',
+            ' er',
+            '+y',
+            '  loo',
+            '',
             ''
         ]);
     });
@@ -751,6 +835,11 @@ suite('power-assert-formatter', function () {
             '       |      |"2"    false       ',
             '       |      2                   ',
             '       "number"                   ',
+            '',
+            '$$$ [number] -twoStr',
+            '### [string] typeof +twoStr',
+            '$ -2',
+            '# "number"',
             ''
         ]);
     });
@@ -782,6 +871,11 @@ suite('power-assert-formatter', function () {
             '                |     |   |    ',
             '                |     |   4    ',
             '                3     false    ',
+            '',
+            '$$$ [number] four',
+            '### [number] dog.age += 1',
+            '$ 4',
+            '# 3',
             ''
         ]);
     });
@@ -800,6 +894,11 @@ suite('power-assert-formatter', function () {
             '        |   |    2      false    ',
             '        |   "fuga"               ',
             '        "hoge"                   ',
+            '',
+            '$$$ [number] four',
+            '### [number] [foo,bar].length',
+            '$ 4',
+            '# 2',
             ''
         ]);
     });
@@ -819,6 +918,13 @@ suite('power-assert-formatter', function () {
             '       |        |   |   null                             ',
             '       |        |   "fuga"                               ',
             '       "object" {"bar":"fuga"}                           ',
+            '',
+            '--- [string] "number"',
+            '+++ [string] typeof [[foo.bar,baz(moo)],+fourStr]',
+            '@@ -1,6 +1,6 @@',
+            '-number',
+            '+object',
+            '',
             ''
         ]);
     });
@@ -967,6 +1073,14 @@ suite('power-assert-formatter', function () {
             '       |   |   ["foo","bar","baz"]         ',
             '       |   false                           ',
             '       "baz"                               ',
+            '',
+            '--- [string] new Array(foo, bar, baz)[1]',
+            '+++ [string] baz',
+            '@@ -1,3 +1,3 @@',
+            ' ba',
+            '-r',
+            '+z',
+            '',
             ''
         ]);
     });
@@ -985,10 +1099,35 @@ suite('power-assert-formatter', function () {
             '       |   |   "foobar"                        "foo"     ',
             '       |   false                                         ',
             '       "baz"                                             ',
+            '',
+            '--- [string] function (a, b) {return a + b;}(foo, bar)',
+            '+++ [string] baz',
+            '@@ -1,6 +1,3 @@',
+            '-foo',
+            ' ba',
+            '-r',
+            '+z',
+            '',
             ''
         ]);
     });
 
+
+
+    test('Bug reproduction: BinaryExpression with Literal in FunctionExpression: ', function () {
+        var ary = ['foo', 'bar', 'baz', 'hoge'];
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(ary.every(function (element, index, array) { return element.length === 3; }));'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(ary.every(function (element, index, array) {return element.length === 3;}))',
+            '       |   |                                                                      ',
+            '       |   false                                                                  ',
+            '       ["foo","bar","baz","hoge"]                                                 ',
+            ''
+        ]);
+    });
 
 
 
@@ -1102,6 +1241,218 @@ suite('power-assert-formatter', function () {
             '                     |   |   {"name":"hoge"}                ',
             '                     |   ["toto","tata"]                    ',
             '                     "foo"                                  ',
+            ''
+        ]);
+    });
+
+
+    test('assert(str1 === str2);', function () {
+        var str1 = 'abcdef', str2 = 'abcdff';
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(str1 === str2);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(str1 === str2)',
+            '       |    |   |    ',
+            '       |    |   "abcdff"',
+            '       |    false    ',
+            '       "abcdef"      ',
+            '',
+            '--- [string] str2',
+            '+++ [string] str1',
+            '@@ -1,6 +1,6 @@',
+            ' abcd',
+            '-f',
+            '+e',
+            ' f',
+            '',
+            ''
+        ]);
+    });
+
+
+    test('spockish diff with multibyte characters: assert(str1 === str2);', function () {
+        var str1 = 'あいうえおかきくけこ', str2 = 'あれうえおかきくげこ';
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(str1 === str2);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(str1 === str2)',
+            '       |    |   |    ',
+            '       |    |   "あれうえおかきくげこ"',
+            '       |    false    ',
+            '       "あいうえおかきくけこ"',
+            '',
+            '--- [string] str2',
+            '+++ [string] str1',
+            '@@ -1,10 +1,10 @@',
+            ' あ',
+            '-れ',
+            '+い',
+            ' うえおかきく',
+            '-げ',
+            '+け',
+            ' こ',
+            '',
+            ''
+        ]);
+    });
+
+
+    test('spockish diff with literal: assert(str1 === "abcdff");', function () {
+        var str1 = 'abcdef';
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(str1 === "abcdff");'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(str1 === "abcdff")',
+            '       |    |            ',
+            '       |    false        ',
+            '       "abcdef"          ',
+            '',
+            '--- [string] "abcdff"',
+            '+++ [string] str1',
+            '@@ -1,6 +1,6 @@',
+            ' abcd',
+            '-f',
+            '+e',
+            ' f',
+            '',
+            ''
+        ]);
+    });
+
+
+    test('Multi hunk diff', function () {
+        var longString = 'very very looooooooooo  ooooooooooooooooooooooooooooooooooooooooong message';
+        var anotherLongString = 'yet another looooooooooo oooooooo0000ooooooooooooooooooooooooooooooong massage';
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(longString === anotherLongString);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(longString === anotherLongString)',
+            '       |          |   |                 ',
+            '       |          |   "yet another looooooooooo oooooooo0000ooooooooooooooooooooooooooooooong massage"',
+            '       |          false                 ',
+            '       "very very looooooooooo  ooooooooooooooooooooooooooooooooooooooooong message"',
+            '',
+            '--- [string] anotherLongString',
+            '+++ [string] longString',
+            '@@ -1,15 +1,13 @@',
+            '-yet anoth',
+            '+very v',
+            ' er',
+            '+y',
+            '  loo',
+            '@@ -20,20 +20,19 @@',
+            ' ooo ',
+            '+ ',
+            ' oooooooo',
+            '-0000',
+            '+oo',
+            ' oooo',
+            '@@ -62,14 +62,14 @@',
+            ' oooong m',
+            '-a',
+            '+e',
+            ' ssage',
+            '',
+            ''
+        ]);
+    });
+
+
+    test('Line level diff', function () {
+        var html1,html2;
+
+        html1  = '<!doctype html>\n';
+        html1 += '<html>\n';
+        html1 += '<head>\n';
+        html1 += '    <title>Example Domain</title>\n';
+        html1 += '\n';
+        html1 += '    <meta charset="utf-8" />\n';
+        html1 += '    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />\n';
+        html1 += '    <meta name="viewport" content="width=device-width, initial-scale=1" />\n';
+        html1 += '    <style type="text/css">\n';
+        html1 += '    body {\n';
+        html1 += '        background-color: #f0f0f2;\n';
+        html1 += '        margin: 0;\n';
+        html1 += '        padding: 0;\n';
+        html1 += '        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;\n';
+        html1 += '        \n';
+        html1 += '    }\n';
+        html1 += '    div {\n';
+        html1 += '        width: 600px;\n';
+        html1 += '        margin: 5em auto;\n';
+        html1 += '        padding: 50px;\n';
+        html1 += '        background-color: #fff;\n';
+        html1 += '        border-radius: 1em;\n';
+        html1 += '    }\n';
+        html1 += '    a:link, a:visited {\n';
+        html1 += '        color: #38488f;\n';
+        html1 += '        text-decoration: none;\n';
+        html1 += '    }\n';
+        html1 += '    @media (max-width: 700px) {\n';
+        html1 += '        body {\n';
+        html1 += '            background-color: #fff;\n';
+        html1 += '        }\n';
+        html1 += '        div {\n';
+        html1 += '            width: auto;\n';
+        html1 += '            margin: 0 auto;\n';
+        html1 += '            border-radius: 0;\n';
+        html1 += '            padding: 1em;\n';
+        html1 += '        }\n';
+        html1 += '    }\n';
+        html1 += '    </style>\n';
+        html1 += '</head>\n';
+        html1 += '\n';
+        html1 += '<body>\n';
+        html1 += '<div>\n';
+        html1 += '    <h1>Example Domain</h1>\n';
+        html1 += '    <p>This domain is established to be used for illustrative examples in documents. You may use this\n';
+        html1 += '    domain in examples without prior coordination or asking for permission.</p>\n';
+        html1 += '    <p><a href="http://www.iana.org/domains/example">More information...</a></p>\n';
+        html1 += '</div>\n';
+        html1 += '</body>\n';
+        html1 += '</html>';
+        
+        html2 = html1.replace(/Example Domain/gm, 'Example Site');
+
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(html1 === html2);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(html1 === html2)',
+            '       |     |   |     ',
+            '       |     |   "<!doctype html>\\n<html>\\n<head>\\n    <title>Example Site</title>\\n\\n    <meta charset=\\"utf-8\\" />\\n    <meta http-equiv=\\"Content-type\\" content=\\"text/html; charset=utf-8\\" />\\n    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\" />\\n    <style type=\\"text/css\\">\\n    body {\\n        background-color: #f0f0f2;\\n        margin: 0;\\n        padding: 0;\\n        font-family: \\"Open Sans\\", \\"Helvetica Neue\\", Helvetica, Arial, sans-serif;\\n        \\n    }\\n    div {\\n        width: 600px;\\n        margin: 5em auto;\\n        padding: 50px;\\n        background-color: #fff;\\n        border-radius: 1em;\\n    }\\n    a:link, a:visited {\\n        color: #38488f;\\n        text-decoration: none;\\n    }\\n    @media (max-width: 700px) {\\n        body {\\n            background-color: #fff;\\n        }\\n        div {\\n            width: auto;\\n            margin: 0 auto;\\n            border-radius: 0;\\n            padding: 1em;\\n        }\\n    }\\n    </style>\\n</head>\\n\\n<body>\\n<div>\\n    <h1>Example Site</h1>\\n    <p>This domain is established to be used for illustrative examples in documents. You may use this\\n    domain in examples without prior coordination or asking for permission.</p>\\n    <p><a href=\\"http://www.iana.org/domains/example\\">More information...</a></p>\\n</div>\\n</body>\\n</html>"',
+            '       |     false     ',
+            '       "<!doctype html>\\n<html>\\n<head>\\n    <title>Example Domain</title>\\n\\n    <meta charset=\\"utf-8\\" />\\n    <meta http-equiv=\\"Content-type\\" content=\\"text/html; charset=utf-8\\" />\\n    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\" />\\n    <style type=\\"text/css\\">\\n    body {\\n        background-color: #f0f0f2;\\n        margin: 0;\\n        padding: 0;\\n        font-family: \\"Open Sans\\", \\"Helvetica Neue\\", Helvetica, Arial, sans-serif;\\n        \\n    }\\n    div {\\n        width: 600px;\\n        margin: 5em auto;\\n        padding: 50px;\\n        background-color: #fff;\\n        border-radius: 1em;\\n    }\\n    a:link, a:visited {\\n        color: #38488f;\\n        text-decoration: none;\\n    }\\n    @media (max-width: 700px) {\\n        body {\\n            background-color: #fff;\\n        }\\n        div {\\n            width: auto;\\n            margin: 0 auto;\\n            border-radius: 0;\\n            padding: 1em;\\n        }\\n    }\\n    </style>\\n</head>\\n\\n<body>\\n<div>\\n    <h1>Example Domain</h1>\\n    <p>This domain is established to be used for illustrative examples in documents. You may use this\\n    domain in examples without prior coordination or asking for permission.</p>\\n    <p><a href=\\"http://www.iana.org/domains/example\\">More information...</a></p>\\n</div>\\n</body>\\n</html>"',
+            '',
+            '--- [string] html2',
+            '+++ [string] html1',
+            '@@ -27,40 +27,42 @@',
+            ' ad>',
+            '',
+            '-    <title>Example Site</title>',
+            '',
+            '+    <title>Example Domain</title>',
+            '',
+            ' ',
+            '   ',
+            '@@ -949,34 +949,36 @@',
+            ' iv>',
+            '',
+            '-    <h1>Example Site</h1>',
+            '',
+            '+    <h1>Example Domain</h1>',
+            '',
+            '     ',
+            '',
             ''
         ]);
     });
