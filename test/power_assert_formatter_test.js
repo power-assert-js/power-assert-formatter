@@ -1528,6 +1528,111 @@ suite('power-assert-formatter', function () {
 
 
 
+    suite('Wrapper objects', function () {
+
+        test('String object loose equality', function () {
+            var orig = 'abcdef', str1 = new String(orig), str2 = new String(orig);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(str1 == str2);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(str1 == str2)',
+                '       |    |  |    ',
+                '       |    |  new String("abcdef")',
+                '       |    false   ',
+                '       new String("abcdef")',
+                ''
+            ]);
+        });
+
+        test('Number object loose equality', function () {
+            var eightStr = '8', num1 = new Number(eightStr);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(num1 == new Number(eightStr));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(num1 == new Number(eightStr))',
+                '       |    |  |          |         ',
+                '       |    |  |          "8"       ',
+                '       |    |  new Number(8)        ',
+                '       |    false                   ',
+                '       new Number(8)                ',
+                ''
+            ]);
+        });
+
+        test('Boolean object loose equality', function () {
+            var oneStr = '1', bool1 = new Boolean(oneStr);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(bool1 == new Boolean(oneStr));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(bool1 == new Boolean(oneStr))',
+                '       |     |  |           |       ',
+                '       |     |  |           "1"     ',
+                '       |     |  new Boolean(true)   ',
+                '       |     false                  ',
+                '       new Boolean(true)            ',
+                ''
+            ]);
+        });
+
+        test('Date object loose equality', function () {
+            var dateStr = '1990-01-01',
+                dateObj = new Date(dateStr);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(dateObj == dateStr);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(dateObj == dateStr)',
+                '       |       |  |       ',
+                '       |       |  "1990-01-01"',
+                '       |       false      ',
+                '       new Date("1990-01-01T00:00:00.000Z")',
+                ''
+            ]);
+        });
+
+        test('Date object strict equality', function () {
+            var dateStr = '1990-01-01',
+                dateObj = new Date(dateStr);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(dateObj === dateStr);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(dateObj === dateStr)',
+                '       |       |   |       ',
+                '       |       |   "1990-01-01"',
+                '       |       false       ',
+                '       new Date("1990-01-01T00:00:00.000Z")',
+                ''
+            ]);
+        });
+
+
+        test('RegExp object loose equality', function () {
+            var pattern = '^not', flag = 'g', re = /^not/g;
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(re == new RegExp(pattern, flag));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(re == new RegExp(pattern, flag))',
+                '       |  |  |          |        |     ',
+                '       |  |  /^not/g    "^not"   "g"   ',
+                '       |  false                        ',
+                '       /^not/g                         ',
+                ''
+            ]);
+        });
+
+    });
+
     test('User-defined class: assert.deepEqual(alice, new Person(kenName, four));', function () {
         function Person(name, age) {
             this.name = name;
