@@ -1675,6 +1675,26 @@ suite('power-assert-formatter', function () {
     });
 
 
+    test('User-defined class with Date member: assert.deepEqual(alice, bob);', function () {
+        function Person(name, birthday) {
+            this.name = name;
+            this.birthday = birthday;
+        }
+        var alice = new Person('alice', new Date('1990-01-01')),
+            bob = new Person('bob', new Date('1985-04-01'));
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert.deepEqual(alice, bob);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert.deepEqual(alice, bob)',
+            '                 |      |   ',
+            '                 |      Person:{name:"bob",birthday:new Date("1985-04-01T00:00:00.000Z")}',
+            '                 Person:{name:"alice",birthday:new Date("1990-01-01T00:00:00.000Z")}',
+            ''
+        ]);
+    });
+
 });
 
 }));
