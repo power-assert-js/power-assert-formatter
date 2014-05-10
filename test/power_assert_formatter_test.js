@@ -177,8 +177,8 @@ suite('power-assert-formatter', function () {
             'assert(delete foo.bar === false)',
             '       |      |   |   |         ',
             '       |      |   |   false     ',
-            '       |      |   {baz:false}   ',
-            '       true   {bar:#OBJECT#}    ',
+            '       |      |   Object:{baz:false}',
+            '       true   Object:{bar:#Object#}',
             '',
             '$$$ [boolean] false',
             '### [boolean] delete foo.bar',
@@ -452,8 +452,8 @@ suite('power-assert-formatter', function () {
             'assert(foo.bar.baz)',
             '       |   |   |   ',
             '       |   |   false',
-            '       |   {baz:false}',
-            '       {bar:#OBJECT#}',
+            '       |   Object:{baz:false}',
+            '       Object:{bar:#Object#}',
             ''
         ]);
     });
@@ -473,8 +473,8 @@ suite('power-assert-formatter', function () {
             'assert(foo["bar"].baz)',
             '       |  |       |   ',
             '       |  |       false',
-            '       |  {baz:false} ',
-            '       {bar:#OBJECT#} ',
+            '       |  Object:{baz:false}',
+            '       Object:{bar:#Object#}',
             ''
         ]);
     });
@@ -495,8 +495,8 @@ suite('power-assert-formatter', function () {
             'assert(foo[propName].baz)',
             '       |  ||         |   ',
             '       |  |"bar"     false',
-            '       |  {baz:false}    ',
-            '       {bar:#OBJECT#}    ',
+            '       |  Object:{baz:false}',
+            '       Object:{bar:#Object#}',
             ''
         ]);
     });
@@ -518,7 +518,7 @@ suite('power-assert-formatter', function () {
             '       |  ||           ',
             '       |  |"bar"       ',
             '       |  false        ',
-            '       {bar:#FUNCTION#}',
+            '       Object:{bar:#function#}',
             ''
         ]);
     });
@@ -546,11 +546,11 @@ suite('power-assert-formatter', function () {
             '       |  ||   ||   ||         ',
             '       |  ||   ||   |"piyoKey" ',
             '       |  ||   ||   "fugaKey"  ',
-            '       |  ||   |{piyoKey:"fugaKey"}',
+            '       |  ||   |Object:{piyoKey:"fugaKey"}',
             '       |  ||   "func"          ',
-            '       |  |{fugaKey:"func"}    ',
+            '       |  |Object:{fugaKey:"func"}',
             '       |  false                ',
-            '       {func:#FUNCTION#}       ',
+            '       Object:{func:#function#}',
             ''
         ]);
     });
@@ -576,9 +576,9 @@ suite('power-assert-formatter', function () {
             '       |  ||        |      ||     "toto"',
             '       |  ||        |      |["toto"]   ',
             '       |  ||        |      false       ',
-            '       |  |"bar"    {toto:false}       ',
-            '       |  {baz:#OBJECT#}               ',
-            '       {bar:#OBJECT#}                  ',
+            '       |  |"bar"    Object:{toto:false}',
+            '       |  Object:{baz:#Object#}        ',
+            '       Object:{bar:#Object#}           ',
             ''
         ]);
     });
@@ -613,7 +613,7 @@ suite('power-assert-formatter', function () {
             'assert(obj.age())',
             '       |   |     ',
             '       |   0     ',
-            '       {age:#FUNCTION#}',
+            '       Object:{age:#function#}',
             ''
         ]);
     });
@@ -715,8 +715,8 @@ suite('power-assert-formatter', function () {
             '       |    |    |   |    |    |      |   |     ',
             '       |    |    |   |    |    |      |   7     ',
             '       |    |    6   1    2    3      false     ',
-            '       |    {sum:#FUNCTION#}                    ',
-            '       {calc:#OBJECT#}                          ',
+            '       |    Object:{sum:#function#}             ',
+            '       Object:{calc:#Object#}                   ',
             '',
             '$$$ [number] seven',
             '### [number] math.calc.sum(one, two, three)',
@@ -880,10 +880,10 @@ suite('power-assert-formatter', function () {
             '',
             'assert.ok(cyclic[two] === cyclic)',
             '          |     ||    |   |      ',
-            '          |     ||    |   ["foo",#ARRAY#,"baz"]',
+            '          |     ||    |   ["foo",#Array#,"baz"]',
             '          |     |2    false      ',
             '          |     "baz"            ',
-            '          ["foo",#ARRAY#,"baz"]  ',
+            '          ["foo",#Array#,"baz"]  ',
             ''
         ]);
     });
@@ -985,7 +985,7 @@ suite('power-assert-formatter', function () {
             '       |        |   |   |   "boo" 4                      ',
             '       |        |   |   null                             ',
             '       |        |   "fuga"                               ',
-            '       "object" {bar:"fuga"}                             ',
+            '       "object" Object:{bar:"fuga"}                      ',
             '',
             '--- [string] "number"',
             '+++ [string] typeof [[foo.bar,baz(moo)],+fourStr]',
@@ -1100,7 +1100,7 @@ suite('power-assert-formatter', function () {
             'assert(!{foo: bar.baz,name: nameOf({firstName: first,lastName: last})})',
             '       |      |   |         |                  |               |       ',
             '       |      |   "BAZ"     "Brendan Eich"     "Brendan"       "Eich"  ',
-            '       false  {baz:"BAZ"}                                              ',
+            '       false  Object:{baz:"BAZ"}                                       ',
             ''
         ]);
     });
@@ -1255,7 +1255,7 @@ suite('power-assert-formatter', function () {
             '                   |   |         |     |  |          ',
             '                   |   |         |     |  "3"        ',
             '                   |   "true"    3     true          ',
-            '                   {truthy:#FUNCTION#}               ',
+            '                   Object:{truthy:#function#}        ',
             ''
         ]);
     });
@@ -1271,7 +1271,7 @@ suite('power-assert-formatter', function () {
             'assert.notStrictEqual(typeof undefinedVar, types.undef)',
             '                      |                    |     |     ',
             '                      |                    |     "undefined"',
-            '                      "undefined"          {undef:"undefined"}',
+            '                      "undefined"          Object:{undef:"undefined"}',
             ''
         ]);
     });
@@ -1287,8 +1287,8 @@ suite('power-assert-formatter', function () {
             'assert.deepEqual(alice || bob, {name: kenName,age: four})',
             '                 |     |              |            |     ',
             '                 |     |              "ken"        4     ',
-            '                 |     {name:"alice",age:3}              ',
-            '                 {name:"alice",age:3}                    ',
+            '                 |     Object:{name:"alice",age:3}       ',
+            '                 Object:{name:"alice",age:3}             ',
             ''
         ]);
     });
@@ -1303,11 +1303,11 @@ suite('power-assert-formatter', function () {
             '',
             'assert.notDeepEqual([foo,bar,baz], new Array(foo, bar, baz))',
             '                     |   |   |     |         |    |    |    ',
-            '                     |   |   |     |         |    |    {name:"hoge"}',
+            '                     |   |   |     |         |    |    Object:{name:"hoge"}',
             '                     |   |   |     |         |    ["toto","tata"]',
             '                     |   |   |     |         "foo"          ',
-            '                     |   |   |     ["foo",#ARRAY#,#OBJECT#] ',
-            '                     |   |   {name:"hoge"}                  ',
+            '                     |   |   |     ["foo",#Array#,#Object#] ',
+            '                     |   |   Object:{name:"hoge"}           ',
             '                     |   ["toto","tata"]                    ',
             '                     "foo"                                  ',
             ''
