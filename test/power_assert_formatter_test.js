@@ -1695,6 +1695,33 @@ suite('power-assert-formatter', function () {
         ]);
     });
 
+
+    test('User-defined class with user-defined member: assert.deepEqual(session1, session2);', function () {
+        function PairProgramming(driver, navigator) {
+            this.driver = driver;
+            this.navigator = navigator;
+        }
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        var alice = new Person('alice', 3),
+            ken = new Person('ken', 4),
+            session1 = new PairProgramming(alice, ken),
+            session2 = new PairProgramming(ken, alice);
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert.deepEqual(session1, session2);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert.deepEqual(session1, session2)',
+            '                 |         |        ',
+            '                 |         PairProgramming:{driver:#Person#,navigator:#Person#}',
+            '                 PairProgramming:{driver:#Person#,navigator:#Person#}',
+            ''
+        ]);
+    });
+
 });
 
 }));
