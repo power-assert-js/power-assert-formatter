@@ -29,7 +29,8 @@
     formatter,
     assert
 ) {
-    var constructorNameOf = formatter.constructorNameOf;
+    var constructorNameOf = formatter.constructorNameOf,
+        typeNameOf = formatter.typeNameOf;
 
     suite('constructorNameOf', function () {
 
@@ -113,7 +114,87 @@
                 assert.equal(constructorNameOf(new Person('bob', 5)), 'Object');
             });
         });
+    });
 
+
+    suite('typeNameOf', function () {
+
+        suite('primitives', function () {
+            test('string', function () {
+                assert.equal(typeNameOf('hoge'), 'string');
+            });
+            test('number', function () {
+                assert.equal(typeNameOf(5), 'number');
+            });
+            test('boolean', function () {
+                assert.equal(typeNameOf(false), 'boolean');
+            });
+            test('regexp literal', function () {
+                assert.equal(typeNameOf(/^not/), 'RegExp');
+            });
+            test('array literal', function () {
+                assert.equal(typeNameOf([]), 'Array');
+            });
+            test('function', function () {
+                assert.equal(typeNameOf(function () {}), 'function');
+            });
+        });
+
+        suite('global objects', function () {
+            test('undefined', function () {
+                assert.equal(typeNameOf(undefined), 'undefined');
+            });
+            test('null', function () {
+                assert.equal(typeNameOf(null), 'null');
+            });
+            test('NaN', function () {
+                assert.equal(typeNameOf(NaN), 'number');
+            });
+            test('Infinity', function () {
+                assert.equal(typeNameOf(Infinity), 'number');
+            });
+        });
+
+        suite('wrapper objects', function () {
+            test('String', function () {
+                assert.equal(typeNameOf(new String('hoge')), 'String');
+            });
+            test('Number', function () {
+                assert.equal(typeNameOf(new Number('1')), 'Number');
+            });
+            test('Boolean', function () {
+                assert.equal(typeNameOf(new Boolean('1')), 'Boolean');
+            });
+            test('Date', function () {
+                assert.equal(typeNameOf(new Date()), 'Date');
+            });
+            test('RegExp', function () {
+                assert.equal(typeNameOf(new RegExp('^not', 'g')), 'RegExp');
+            });
+            test('Array', function () {
+                assert.equal(typeNameOf(new Array()), 'Array');
+            });
+            test('Function', function () {
+                assert.equal(typeNameOf(new Function('x', 'y', 'return x + y')), 'function'); // be careful!
+            });
+        });
+
+        suite('user-defined constructor', function () {
+            test('named', function () {
+                function Person(name, age) {
+                    this.name = name;
+                    this.age = age;
+                }
+                assert.equal(typeNameOf(new Person('bob', 5)), 'Person');
+            });
+            test('anonymous', function () {
+                var Person = function(name, age) {
+                    this.name = name;
+                    this.age = age;
+                };
+                assert.equal(typeNameOf(new Person('bob', 5)), 'Object');
+            });
+        });
     });
 
 }));
