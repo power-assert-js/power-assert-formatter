@@ -884,6 +884,11 @@ suite('power-assert-formatter', function () {
             '          |     |2    false      ',
             '          |     "baz"            ',
             '          ["foo",#Array#,"baz"]  ',
+            '',
+            '$$$ [Array] cyclic',
+            '### [string] cyclic[two]',
+            '$ ["foo",#Array#,"baz"]',
+            '# "baz"',
             ''
         ]);
     });
@@ -1542,6 +1547,11 @@ suite('power-assert-formatter', function () {
                 '       |    |  new String("abcdef")',
                 '       |    false   ',
                 '       new String("abcdef")',
+                '',
+                '$$$ [String] str2',
+                '### [String] str1',
+                '$ new String("abcdef")',
+                '# new String("abcdef")',
                 ''
             ]);
         });
@@ -1559,6 +1569,11 @@ suite('power-assert-formatter', function () {
                 '       |    |  new Number(8)        ',
                 '       |    false                   ',
                 '       new Number(8)                ',
+                '',
+                '$$$ [Number] new Number(eightStr)',
+                '### [Number] num1',
+                '$ new Number(8)',
+                '# new Number(8)',
                 ''
             ]);
         });
@@ -1576,6 +1591,11 @@ suite('power-assert-formatter', function () {
                 '       |     |  new Boolean(true)   ',
                 '       |     false                  ',
                 '       new Boolean(true)            ',
+                '',
+                '$$$ [Boolean] new Boolean(oneStr)',
+                '### [Boolean] bool1',
+                '$ new Boolean(true)',
+                '# new Boolean(true)',
                 ''
             ]);
         });
@@ -1593,6 +1613,11 @@ suite('power-assert-formatter', function () {
                 '       |       |  "1990-01-01"',
                 '       |       false      ',
                 '       new Date("1990-01-01T00:00:00.000Z")',
+                '',
+                '$$$ [string] dateStr',
+                '### [Date] dateObj',
+                '$ "1990-01-01"',
+                '# new Date("1990-01-01T00:00:00.000Z")',
                 ''
             ]);
         });
@@ -1610,6 +1635,11 @@ suite('power-assert-formatter', function () {
                 '       |       |   "1990-01-01"',
                 '       |       false       ',
                 '       new Date("1990-01-01T00:00:00.000Z")',
+                '',
+                '$$$ [string] dateStr',
+                '### [Date] dateObj',
+                '$ "1990-01-01"',
+                '# new Date("1990-01-01T00:00:00.000Z")',
                 ''
             ]);
         });
@@ -1627,11 +1657,42 @@ suite('power-assert-formatter', function () {
                 '       |  |  /^not/g    "^not"   "g"   ',
                 '       |  false                        ',
                 '       /^not/g                         ',
+                '',
+                '$$$ [RegExp] new RegExp(pattern, flag)',
+                '### [RegExp] re',
+                '$ /^not/g',
+                '# /^not/g',
                 ''
             ]);
         });
-
     });
+
+
+    test('User-defined class: assert(alice === bob);', function () {
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        var alice = new Person('alice', 3), bob = new Person('bob', 4);
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(alice === bob);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(alice === bob)',
+            '       |     |   |   ',
+            '       |     |   Person{name:"bob",age:4}',
+            '       |     false   ',
+            '       Person{name:"alice",age:3}',
+            '',
+            '$$$ [Person] bob',
+            '### [Person] alice',
+            '$ Person{name:"bob",age:4}',
+            '# Person{name:"alice",age:3}',
+            ''
+        ]);
+    });
+
 
     test('User-defined class: assert.deepEqual(alice, new Person(kenName, four));', function () {
         function Person(name, age) {
