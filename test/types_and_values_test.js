@@ -46,6 +46,9 @@
             test('regexp literal', function () {
                 assert.equal(constructorNameOf(/^not/), 'RegExp');
             });
+            test('array literal', function () {
+                assert.equal(constructorNameOf([]), 'Array');
+            });
             test('function', function () {
                 assert.equal(constructorNameOf(function () {}), 'Function');
             });
@@ -85,6 +88,12 @@
             });
             test('RegExp', function () {
                 assert.equal(constructorNameOf(new RegExp('^not', 'g')), 'RegExp');
+            });
+            test('Array', function () {
+                assert.equal(constructorNameOf(new Array()), 'Array');
+            });
+            test('Function', function () {
+                assert.equal(constructorNameOf(new Function('x', 'y', 'return x + y')), 'Function');
             });
         });
 
