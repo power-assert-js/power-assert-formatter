@@ -1668,121 +1668,121 @@ suite('power-assert-formatter', function () {
     });
 
 
-    test('User-defined class: assert(alice === bob);', function () {
-        function Person(name, age) {
-            this.name = name;
-            this.age = age;
-        }
-        var alice = new Person('alice', 3), bob = new Person('bob', 4);
-        assertPowerAssertContextFormatting(function () {
-            eval(weave('assert(alice === bob);'));
-        }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(alice === bob)',
-            '       |     |   |   ',
-            '       |     |   Person{name:"bob",age:4}',
-            '       |     false   ',
-            '       Person{name:"alice",age:3}',
-            '',
-            '$$$ [Person] bob',
-            '### [Person] alice',
-            '$ Person{name:"bob",age:4}',
-            '# Person{name:"alice",age:3}',
-            ''
-        ]);
-    });
+    suite('User-defined class', function () {
 
+        test('assert(alice === bob);', function () {
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            var alice = new Person('alice', 3), bob = new Person('bob', 4);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(alice === bob);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(alice === bob)',
+                '       |     |   |   ',
+                '       |     |   Person{name:"bob",age:4}',
+                '       |     false   ',
+                '       Person{name:"alice",age:3}',
+                '',
+                '$$$ [Person] bob',
+                '### [Person] alice',
+                '$ Person{name:"bob",age:4}',
+                '# Person{name:"alice",age:3}',
+                ''
+            ]);
+        });
 
-    test('User-defined class: assert.deepEqual(alice, new Person(kenName, four));', function () {
-        function Person(name, age) {
-            this.name = name;
-            this.age = age;
-        }
-        var alice = new Person('alice', 3), kenName = 'ken', four = 4;
-        assertPowerAssertContextFormatting(function () {
-            eval(weave('assert.deepEqual(alice, new Person(kenName, four));'));
-        }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.deepEqual(alice, new Person(kenName, four))',
-            '                 |      |          |        |     ',
-            '                 |      |          "ken"    4     ',
-            '                 |      Person{name:"ken",age:4}  ',
-            '                 Person{name:"alice",age:3}       ',
-            ''
-        ]);
-    });
+        test('assert.deepEqual(alice, new Person(kenName, four));', function () {
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            var alice = new Person('alice', 3), kenName = 'ken', four = 4;
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert.deepEqual(alice, new Person(kenName, four));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert.deepEqual(alice, new Person(kenName, four))',
+                '                 |      |          |        |     ',
+                '                 |      |          "ken"    4     ',
+                '                 |      Person{name:"ken",age:4}  ',
+                '                 Person{name:"alice",age:3}       ',
+                ''
+            ]);
+        });
 
+        test('anonymous class: assert.deepEqual(alice, new Person(kenName, four));', function () {
+            var Person = function(name, age) {
+                this.name = name;
+                this.age = age;
+            };
+            var alice = new Person('alice', 3), kenName = 'ken', four = 4;
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert.deepEqual(alice, new Person(kenName, four));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert.deepEqual(alice, new Person(kenName, four))',
+                '                 |      |          |        |     ',
+                '                 |      |          "ken"    4     ',
+                '                 |      Object{name:"ken",age:4}  ',
+                '                 Object{name:"alice",age:3}       ',
+                ''
+            ]);
+        });
 
-    test('User-defined anonymous class: assert.deepEqual(alice, new Person(kenName, four));', function () {
-        var Person = function(name, age) {
-            this.name = name;
-            this.age = age;
-        };
-        var alice = new Person('alice', 3), kenName = 'ken', four = 4;
-        assertPowerAssertContextFormatting(function () {
-            eval(weave('assert.deepEqual(alice, new Person(kenName, four));'));
-        }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.deepEqual(alice, new Person(kenName, four))',
-            '                 |      |          |        |     ',
-            '                 |      |          "ken"    4     ',
-            '                 |      Object{name:"ken",age:4}  ',
-            '                 Object{name:"alice",age:3}       ',
-            ''
-        ]);
-    });
+        test('User-defined class with Date member: assert.deepEqual(alice, bob);', function () {
+            function Person(name, birthday) {
+                this.name = name;
+                this.birthday = birthday;
+            }
+            var alice = new Person('alice', new Date('1990-01-01')),
+                bob = new Person('bob', new Date('1985-04-01'));
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert.deepEqual(alice, bob);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert.deepEqual(alice, bob)',
+                '                 |      |   ',
+                '                 |      Person{name:"bob",birthday:new Date("1985-04-01T00:00:00.000Z")}',
+                '                 Person{name:"alice",birthday:new Date("1990-01-01T00:00:00.000Z")}',
+                ''
+            ]);
+        });
 
+        test('User-defined class with user-defined member: assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice));', function () {
+            function PairProgramming(driver, navigator) {
+                this.driver = driver;
+                this.navigator = navigator;
+            }
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            var alice = new Person('alice', 3),
+                ken = new Person('ken', 4);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice))',
+                '                 |                   |      |     |                   |    |      ',
+                '                 |                   |      |     |                   |    Person{name:"alice",age:3}',
+                '                 |                   |      |     |                   Person{name:"ken",age:4}',
+                '                 |                   |      |     PairProgramming{driver:#Person#,navigator:#Person#}',
+                '                 |                   |      Person{name:"ken",age:4}              ',
+                '                 |                   Person{name:"alice",age:3}                   ',
+                '                 PairProgramming{driver:#Person#,navigator:#Person#}              ',
+                ''
+            ]);
+        });
 
-    test('User-defined class with Date member: assert.deepEqual(alice, bob);', function () {
-        function Person(name, birthday) {
-            this.name = name;
-            this.birthday = birthday;
-        }
-        var alice = new Person('alice', new Date('1990-01-01')),
-            bob = new Person('bob', new Date('1985-04-01'));
-        assertPowerAssertContextFormatting(function () {
-            eval(weave('assert.deepEqual(alice, bob);'));
-        }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.deepEqual(alice, bob)',
-            '                 |      |   ',
-            '                 |      Person{name:"bob",birthday:new Date("1985-04-01T00:00:00.000Z")}',
-            '                 Person{name:"alice",birthday:new Date("1990-01-01T00:00:00.000Z")}',
-            ''
-        ]);
-    });
-
-
-    test('User-defined class with user-defined member: assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice));', function () {
-        function PairProgramming(driver, navigator) {
-            this.driver = driver;
-            this.navigator = navigator;
-        }
-        function Person(name, age) {
-            this.name = name;
-            this.age = age;
-        }
-        var alice = new Person('alice', 3),
-            ken = new Person('ken', 4);
-        assertPowerAssertContextFormatting(function () {
-            eval(weave('assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice));'));
-        }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice))',
-            '                 |                   |      |     |                   |    |      ',
-            '                 |                   |      |     |                   |    Person{name:"alice",age:3}',
-            '                 |                   |      |     |                   Person{name:"ken",age:4}',
-            '                 |                   |      |     PairProgramming{driver:#Person#,navigator:#Person#}',
-            '                 |                   |      Person{name:"ken",age:4}              ',
-            '                 |                   Person{name:"alice",age:3}                   ',
-            '                 PairProgramming{driver:#Person#,navigator:#Person#}              ',
-            ''
-        ]);
     });
 
 });
