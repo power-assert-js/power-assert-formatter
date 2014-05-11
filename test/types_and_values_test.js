@@ -30,7 +30,8 @@
     assert
 ) {
     var constructorNameOf = formatter.constructorNameOf,
-        typeNameOf = formatter.typeNameOf;
+        typeNameOf = formatter.typeNameOf,
+        isComparedByValue = formatter.isComparedByValue;
 
     suite('constructorNameOf', function () {
 
@@ -196,5 +197,88 @@
             });
         });
     });
+
+
+
+    suite('isComparedByValue', function () {
+
+        suite('primitives', function () {
+            test('string', function () {
+                assert.equal(isComparedByValue('hoge'), true);
+            });
+            test('number', function () {
+                assert.equal(isComparedByValue(5), true);
+            });
+            test('boolean', function () {
+                assert.equal(isComparedByValue(false), true);
+            });
+            test('regexp literal', function () {
+                assert.equal(isComparedByValue(/^not/), false);
+            });
+            test('array literal', function () {
+                assert.equal(isComparedByValue([]), false);
+            });
+            test('function', function () {
+                assert.equal(isComparedByValue(function () {}), false);
+            });
+        });
+
+        suite('global objects', function () {
+            test('undefined', function () {
+                assert.equal(isComparedByValue(undefined), true);
+            });
+            test('null', function () {
+                assert.equal(isComparedByValue(null), true);
+            });
+            test('NaN', function () {
+                assert.equal(isComparedByValue(NaN), true);
+            });
+            test('Infinity', function () {
+                assert.equal(isComparedByValue(Infinity), true);
+            });
+        });
+
+        suite('wrapper objects', function () {
+            test('String', function () {
+                assert.equal(isComparedByValue(new String('hoge')), false);
+            });
+            test('Number', function () {
+                assert.equal(isComparedByValue(new Number('1')), false);
+            });
+            test('Boolean', function () {
+                assert.equal(isComparedByValue(new Boolean('1')), false);
+            });
+            test('Date', function () {
+                assert.equal(isComparedByValue(new Date()), false);
+            });
+            test('RegExp', function () {
+                assert.equal(isComparedByValue(new RegExp('^not', 'g')), false);
+            });
+            test('Array', function () {
+                assert.equal(isComparedByValue(new Array()), false);
+            });
+            test('Function', function () {
+                assert.equal(isComparedByValue(new Function('x', 'y', 'return x + y')), false); // be careful!
+            });
+        });
+
+        suite('user-defined constructor', function () {
+            test('named', function () {
+                function Person(name, age) {
+                    this.name = name;
+                    this.age = age;
+                }
+                assert.equal(isComparedByValue(new Person('bob', 5)), false);
+            });
+            test('anonymous', function () {
+                var Person = function(name, age) {
+                    this.name = name;
+                    this.age = age;
+                };
+                assert.equal(isComparedByValue(new Person('bob', 5)), false);
+            });
+        });
+    });
+
 
 }));
