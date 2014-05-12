@@ -1644,7 +1644,6 @@ suite('power-assert-formatter', function () {
             ]);
         });
 
-
         test('RegExp object loose equality', function () {
             var pattern = '^not', flag = 'g', re = /^not/g;
             assertPowerAssertContextFormatting(function () {
@@ -1665,6 +1664,27 @@ suite('power-assert-formatter', function () {
                 ''
             ]);
         });
+
+        test('RegExp literal and object loose equality', function () {
+            var pattern = '^not', flag = 'g', re = /^not/g;
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(/^not/g == new RegExp(pattern, flag));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(/^not/g == new RegExp(pattern, flag))',
+                '               |  |          |        |     ',
+                '               |  /^not/g    "^not"   "g"   ',
+                '               false                        ',
+                '',
+                '$$$ [RegExp] new RegExp(pattern, flag)',
+                '### [RegExp] /^not/g',
+                '$ /^not/g',
+                '# /^not/g',
+                ''
+            ]);
+        });
+
     });
 
 
@@ -1751,6 +1771,32 @@ suite('power-assert-formatter', function () {
                 '                 |      |   ',
                 '                 |      Person{name:"bob",birthday:new Date("1985-04-01T00:00:00.000Z")}',
                 '                 Person{name:"alice",birthday:new Date("1990-01-01T00:00:00.000Z")}',
+                ''
+            ]);
+        });
+
+        test('User-defined class with user-defined member: assert.deepEqual(session1, session2);', function () {
+            function PairProgramming(driver, navigator) {
+                this.driver = driver;
+                this.navigator = navigator;
+            }
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            var alice = new Person('alice', 3),
+                ken = new Person('ken', 4),
+                session1 = new PairProgramming(alice, ken),
+                session2 = new PairProgramming(ken, alice);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert.deepEqual(session1, session2);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert.deepEqual(session1, session2)',
+                '                 |         |        ',
+                '                 |         PairProgramming{driver:#Person#,navigator:#Person#}',
+                '                 PairProgramming{driver:#Person#,navigator:#Person#}',
                 ''
             ]);
         });
