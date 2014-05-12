@@ -1729,6 +1729,32 @@ suite('power-assert-formatter', function () {
             ]);
         });
 
+        test('assert(alice.age === bob.age);', function () {
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            var alice = new Person('alice', 3), bob = new Person('bob', 4);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(alice.age === bob.age);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(alice.age === bob.age)',
+                '       |     |   |   |   |   ',
+                '       |     |   |   |   4   ',
+                '       |     |   |   Person{name:"bob",age:4}',
+                '       |     3   false       ',
+                '       Person{name:"alice",age:3}',
+                '',
+                '$$$ [number] bob.age',
+                '### [number] alice.age',
+                '$=> 4',
+                '#=> 3',
+                ''
+            ]);
+        });
+
         test('assert.deepEqual(alice, new Person(kenName, four));', function () {
             function Person(name, age) {
                 this.name = name;
