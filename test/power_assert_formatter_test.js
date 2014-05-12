@@ -1685,6 +1685,20 @@ suite('power-assert-formatter', function () {
             ]);
         });
 
+        test('Function object equality', function () {
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(function(x,y){ return x + y; } == new Function("x", "y", "return x + y"));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(function (x, y) {return x + y;} == new Function("x", "y", "return x + y"))',
+                '                                       |  |                                      ',
+                '                                       |  #function#                             ',
+                '                                       false                                     ',
+                ''
+            ]);
+        });
+
     });
 
 
