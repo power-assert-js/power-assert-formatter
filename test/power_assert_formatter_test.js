@@ -156,8 +156,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [string] "xxx"',
             '### [undefined] {}.hoge',
-            '$ "xxx"',
-            '# undefined',
+            '$=> "xxx"',
+            '#=> undefined',
             ''
         ]);
     });
@@ -182,8 +182,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [boolean] false',
             '### [boolean] delete foo.bar',
-            '$ false',
-            '# true',
+            '$=> false',
+            '#=> true',
             ''
         ]);
     });
@@ -201,8 +201,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [boolean] false',
             '### [boolean] delete nonexistent',
-            '$ false',
-            '# true',
+            '$=> false',
+            '#=> true',
             ''
         ]);
     });
@@ -224,8 +224,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] piyo',
             '### [string] fuga',
-            '$ 8',
-            '# "foo"',
+            '$=> 8',
+            '#=> "foo"',
             ''
         ]);
     });
@@ -246,8 +246,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [boolean] falsy',
             '### [string] truthy',
-            '$ false',
-            '# "1"',
+            '$=> false',
+            '#=> "1"',
             ''
         ]);
     });
@@ -284,8 +284,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] -4',
             '### [number] 4',
-            '$ -4',
-            '# 4',
+            '$=> -4',
+            '#=> 4',
             ''
         ]);
     });
@@ -306,8 +306,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] nan2',
             '### [number] nan1',
-            '$ NaN',
-            '# NaN',
+            '$=> NaN',
+            '#=> NaN',
             ''
         ]);
     });
@@ -328,8 +328,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] negativeInfinity',
             '### [number] positiveInfinity',
-            '$ -Infinity',
-            '# Infinity',
+            '$=> -Infinity',
+            '#=> Infinity',
             ''
         ]);
     });
@@ -381,8 +381,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] ary2.length',
             '### [number] ary1.length',
-            '$ 3',
-            '# 2',
+            '$=> 3',
+            '#=> 2',
             ''
         ]);
     });
@@ -658,8 +658,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] seven',
             '### [number] sum(one, two, three)',
-            '$ 7',
-            '# 6',
+            '$=> 7',
+            '#=> 6',
             ''
         ]);
     });
@@ -686,8 +686,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] sum(sum(two, three), seven)',
             '### [number] sum(sum(one, two), three)',
-            '$ 12',
-            '# 6',
+            '$=> 12',
+            '#=> 6',
             ''
         ]);
     });
@@ -720,8 +720,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] seven',
             '### [number] math.calc.sum(one, two, three)',
-            '$ 7',
-            '# 6',
+            '$=> 7',
+            '#=> 6',
             ''
         ]);
     });
@@ -743,8 +743,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] three',
             '### [number] three * (seven * ten)',
-            '$ 3',
-            '# 210',
+            '$=> 3',
+            '#=> 210',
             ''
         ]);
     });
@@ -887,8 +887,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [Array] cyclic',
             '### [string] cyclic[two]',
-            '$ ["foo",#Array#,"baz"]',
-            '# "baz"',
+            '$=> ["foo",#Array#,"baz"]',
+            '#=> "baz"',
             ''
         ]);
     });
@@ -911,8 +911,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] -twoStr',
             '### [string] typeof +twoStr',
-            '$ -2',
-            '# "number"',
+            '$=> -2',
+            '#=> "number"',
             ''
         ]);
     });
@@ -947,8 +947,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] four',
             '### [number] dog.age += 1',
-            '$ 4',
-            '# 3',
+            '$=> 4',
+            '#=> 3',
             ''
         ]);
     });
@@ -970,8 +970,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] four',
             '### [number] [foo,bar].length',
-            '$ 4',
-            '# 2',
+            '$=> 4',
+            '#=> 2',
             ''
         ]);
     });
@@ -1550,8 +1550,8 @@ suite('power-assert-formatter', function () {
                 '',
                 '$$$ [String] str2',
                 '### [String] str1',
-                '$ new String("abcdef")',
-                '# new String("abcdef")',
+                '$=> new String("abcdef")',
+                '#=> new String("abcdef")',
                 ''
             ]);
         });
@@ -1572,8 +1572,8 @@ suite('power-assert-formatter', function () {
                 '',
                 '$$$ [Number] new Number(eightStr)',
                 '### [Number] num1',
-                '$ new Number(8)',
-                '# new Number(8)',
+                '$=> new Number(8)',
+                '#=> new Number(8)',
                 ''
             ]);
         });
@@ -1594,8 +1594,8 @@ suite('power-assert-formatter', function () {
                 '',
                 '$$$ [Boolean] new Boolean(oneStr)',
                 '### [Boolean] bool1',
-                '$ new Boolean(true)',
-                '# new Boolean(true)',
+                '$=> new Boolean(true)',
+                '#=> new Boolean(true)',
                 ''
             ]);
         });
@@ -1616,8 +1616,8 @@ suite('power-assert-formatter', function () {
                 '',
                 '$$$ [string] dateStr',
                 '### [Date] dateObj',
-                '$ "1990-01-01"',
-                '# new Date("1990-01-01T00:00:00.000Z")',
+                '$=> "1990-01-01"',
+                '#=> new Date("1990-01-01T00:00:00.000Z")',
                 ''
             ]);
         });
@@ -1638,8 +1638,8 @@ suite('power-assert-formatter', function () {
                 '',
                 '$$$ [string] dateStr',
                 '### [Date] dateObj',
-                '$ "1990-01-01"',
-                '# new Date("1990-01-01T00:00:00.000Z")',
+                '$=> "1990-01-01"',
+                '#=> new Date("1990-01-01T00:00:00.000Z")',
                 ''
             ]);
         });
@@ -1659,8 +1659,8 @@ suite('power-assert-formatter', function () {
                 '',
                 '$$$ [RegExp] new RegExp(pattern, flag)',
                 '### [RegExp] re',
-                '$ /^not/g',
-                '# /^not/g',
+                '$=> /^not/g',
+                '#=> /^not/g',
                 ''
             ]);
         });
@@ -1679,8 +1679,8 @@ suite('power-assert-formatter', function () {
                 '',
                 '$$$ [RegExp] new RegExp(pattern, flag)',
                 '### [RegExp] /^not/g',
-                '$ /^not/g',
-                '# /^not/g',
+                '$=> /^not/g',
+                '#=> /^not/g',
                 ''
             ]);
         });
@@ -1723,8 +1723,8 @@ suite('power-assert-formatter', function () {
                 '',
                 '$$$ [Person] bob',
                 '### [Person] alice',
-                '$ Person{name:"bob",age:4}',
-                '# Person{name:"alice",age:3}',
+                '$=> Person{name:"bob",age:4}',
+                '#=> Person{name:"alice",age:3}',
                 ''
             ]);
         });
