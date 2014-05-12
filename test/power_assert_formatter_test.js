@@ -156,8 +156,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [string] "xxx"',
             '### [undefined] {}.hoge',
-            '$ "xxx"',
-            '# undefined',
+            '$=> "xxx"',
+            '#=> undefined',
             ''
         ]);
     });
@@ -177,13 +177,13 @@ suite('power-assert-formatter', function () {
             'assert(delete foo.bar === false)',
             '       |      |   |   |         ',
             '       |      |   |   false     ',
-            '       |      |   {"baz":false} ',
-            '       true   {"bar":{"baz":false}}',
+            '       |      |   Object{baz:false}',
+            '       true   Object{bar:#Object#}',
             '',
             '$$$ [boolean] false',
             '### [boolean] delete foo.bar',
-            '$ false',
-            '# true',
+            '$=> false',
+            '#=> true',
             ''
         ]);
     });
@@ -201,8 +201,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [boolean] false',
             '### [boolean] delete nonexistent',
-            '$ false',
-            '# true',
+            '$=> false',
+            '#=> true',
             ''
         ]);
     });
@@ -224,14 +224,14 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] piyo',
             '### [string] fuga',
-            '$ 8',
-            '# "foo"',
+            '$=> 8',
+            '#=> "foo"',
             ''
         ]);
     });
 
 
-    test('assert(truthy == falsy);', function () {
+    test('Loose equality: assert(truthy == falsy);', function () {
         var truthy = '1',
             falsy = false;
         assertPowerAssertContextFormatting(function () {
@@ -246,8 +246,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [boolean] falsy',
             '### [string] truthy',
-            '$ false',
-            '# "1"',
+            '$=> false',
+            '#=> "1"',
             ''
         ]);
     });
@@ -266,6 +266,70 @@ suite('power-assert-formatter', function () {
             '       |    |   "foo"',
             '       |    false    ',
             '       "foo"         ',
+            ''
+        ]);
+    });
+
+
+    test('Literal and UnaryExpression: assert(4 === -4);', function () {
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(4 === -4);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(4 === -4)',
+            '         |   |  ',
+            '         |   -4 ',
+            '         false  ',
+            '',
+            '$$$ [number] -4',
+            '### [number] 4',
+            '$=> -4',
+            '#=> 4',
+            ''
+        ]);
+    });
+
+
+    test('assert(nan1 === nan2);', function () {
+        var nan1 = NaN,
+            nan2 = NaN;
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(nan1 === nan2);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(nan1 === nan2)',
+            '       |    |   |    ',
+            '       |    |   NaN  ',
+            '       NaN  false    ',
+            '',
+            '$$$ [number] nan2',
+            '### [number] nan1',
+            '$=> NaN',
+            '#=> NaN',
+            ''
+        ]);
+    });
+
+
+    test('assert(positiveInfinity === negativeInfinity);', function () {
+        var positiveInfinity = Infinity,
+            negativeInfinity = -Infinity;
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert(positiveInfinity === negativeInfinity);'));
+        }, [
+            '# /path/to/some_test.js:1',
+            '',
+            'assert(positiveInfinity === negativeInfinity)',
+            '       |                |   |                ',
+            '       |                |   -Infinity        ',
+            '       Infinity         false                ',
+            '',
+            '$$$ [number] negativeInfinity',
+            '### [number] positiveInfinity',
+            '$=> -Infinity',
+            '#=> Infinity',
             ''
         ]);
     });
@@ -317,8 +381,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] ary2.length',
             '### [number] ary1.length',
-            '$ 3',
-            '# 2',
+            '$=> 3',
+            '#=> 2',
             ''
         ]);
     });
@@ -388,8 +452,8 @@ suite('power-assert-formatter', function () {
             'assert(foo.bar.baz)',
             '       |   |   |   ',
             '       |   |   false',
-            '       |   {"baz":false}',
-            '       {"bar":{"baz":false}}',
+            '       |   Object{baz:false}',
+            '       Object{bar:#Object#}',
             ''
         ]);
     });
@@ -409,8 +473,8 @@ suite('power-assert-formatter', function () {
             'assert(foo["bar"].baz)',
             '       |  |       |   ',
             '       |  |       false',
-            '       |  {"baz":false}',
-            '       {"bar":{"baz":false}}',
+            '       |  Object{baz:false}',
+            '       Object{bar:#Object#}',
             ''
         ]);
     });
@@ -431,8 +495,8 @@ suite('power-assert-formatter', function () {
             'assert(foo[propName].baz)',
             '       |  ||         |   ',
             '       |  |"bar"     false',
-            '       |  {"baz":false}  ',
-            '       {"bar":{"baz":false}}',
+            '       |  Object{baz:false}',
+            '       Object{bar:#Object#}',
             ''
         ]);
     });
@@ -453,7 +517,8 @@ suite('power-assert-formatter', function () {
             'assert(foo[propName]())',
             '       |  ||           ',
             '       |  |"bar"       ',
-            '       {} false        ',
+            '       |  false        ',
+            '       Object{bar:#function#}',
             ''
         ]);
     });
@@ -481,10 +546,11 @@ suite('power-assert-formatter', function () {
             '       |  ||   ||   ||         ',
             '       |  ||   ||   |"piyoKey" ',
             '       |  ||   ||   "fugaKey"  ',
-            '       |  ||   |{"piyoKey":"fugaKey"}',
+            '       |  ||   |Object{piyoKey:"fugaKey"}',
             '       |  ||   "func"          ',
-            '       |  |{"fugaKey":"func"}  ',
-            '       {} false                ',
+            '       |  |Object{fugaKey:"func"}',
+            '       |  false                ',
+            '       Object{func:#function#} ',
             ''
         ]);
     });
@@ -510,9 +576,9 @@ suite('power-assert-formatter', function () {
             '       |  ||        |      ||     "toto"',
             '       |  ||        |      |["toto"]   ',
             '       |  ||        |      false       ',
-            '       |  |"bar"    {"toto":false}     ',
-            '       |  {"baz":{"toto":false}}       ',
-            '       {"bar":{"baz":{"toto":false}}}  ',
+            '       |  |"bar"    Object{toto:false} ',
+            '       |  Object{baz:#Object#}         ',
+            '       Object{bar:#Object#}            ',
             ''
         ]);
     });
@@ -546,7 +612,8 @@ suite('power-assert-formatter', function () {
             '',
             'assert(obj.age())',
             '       |   |     ',
-            '       {}  0     ',
+            '       |   0     ',
+            '       Object{age:#function#}',
             ''
         ]);
     });
@@ -591,8 +658,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] seven',
             '### [number] sum(one, two, three)',
-            '$ 7',
-            '# 6',
+            '$=> 7',
+            '#=> 6',
             ''
         ]);
     });
@@ -619,8 +686,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] sum(sum(two, three), seven)',
             '### [number] sum(sum(one, two), three)',
-            '$ 12',
-            '# 6',
+            '$=> 12',
+            '#=> 6',
             ''
         ]);
     });
@@ -647,13 +714,14 @@ suite('power-assert-formatter', function () {
             'assert(math.calc.sum(one, two, three) === seven)',
             '       |    |    |   |    |    |      |   |     ',
             '       |    |    |   |    |    |      |   7     ',
-            '       |    {}   6   1    2    3      false     ',
-            '       {"calc":{}}                              ',
+            '       |    |    6   1    2    3      false     ',
+            '       |    Object{sum:#function#}              ',
+            '       Object{calc:#Object#}                    ',
             '',
             '$$$ [number] seven',
             '### [number] math.calc.sum(one, two, three)',
-            '$ 7',
-            '# 6',
+            '$=> 7',
+            '#=> 6',
             ''
         ]);
     });
@@ -675,8 +743,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] three',
             '### [number] three * (seven * ten)',
-            '$ 3',
-            '# 210',
+            '$=> 3',
+            '#=> 210',
             ''
         ]);
     });
@@ -812,10 +880,15 @@ suite('power-assert-formatter', function () {
             '',
             'assert.ok(cyclic[two] === cyclic)',
             '          |     ||    |   |      ',
-            '          |     ||    |   ["foo","#Circular#","baz"]',
+            '          |     ||    |   ["foo",#Array#,"baz"]',
             '          |     |2    false      ',
             '          |     "baz"            ',
-            '          ["foo","#Circular#","baz"]',
+            '          ["foo",#Array#,"baz"]  ',
+            '',
+            '$$$ [Array] cyclic',
+            '### [string] cyclic[two]',
+            '$=> ["foo",#Array#,"baz"]',
+            '#=> "baz"',
             ''
         ]);
     });
@@ -838,8 +911,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] -twoStr',
             '### [string] typeof +twoStr',
-            '$ -2',
-            '# "number"',
+            '$=> -2',
+            '#=> "number"',
             ''
         ]);
     });
@@ -874,8 +947,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] four',
             '### [number] dog.age += 1',
-            '$ 4',
-            '# 3',
+            '$=> 4',
+            '#=> 3',
             ''
         ]);
     });
@@ -897,8 +970,8 @@ suite('power-assert-formatter', function () {
             '',
             '$$$ [number] four',
             '### [number] [foo,bar].length',
-            '$ 4',
-            '# 2',
+            '$=> 4',
+            '#=> 2',
             ''
         ]);
     });
@@ -917,7 +990,7 @@ suite('power-assert-formatter', function () {
             '       |        |   |   |   "boo" 4                      ',
             '       |        |   |   null                             ',
             '       |        |   "fuga"                               ',
-            '       "object" {"bar":"fuga"}                           ',
+            '       "object" Object{bar:"fuga"}                       ',
             '',
             '--- [string] "number"',
             '+++ [string] typeof [[foo.bar,baz(moo)],+fourStr]',
@@ -1032,7 +1105,7 @@ suite('power-assert-formatter', function () {
             'assert(!{foo: bar.baz,name: nameOf({firstName: first,lastName: last})})',
             '       |      |   |         |                  |               |       ',
             '       |      |   "BAZ"     "Brendan Eich"     "Brendan"       "Eich"  ',
-            '       false  {"baz":"BAZ"}                                            ',
+            '       false  Object{baz:"BAZ"}                                        ',
             ''
         ]);
     });
@@ -1186,7 +1259,8 @@ suite('power-assert-formatter', function () {
             'assert.strictEqual(obj.truthy(), three == threeInStr)',
             '                   |   |         |     |  |          ',
             '                   |   |         |     |  "3"        ',
-            '                   {}  "true"    3     true          ',
+            '                   |   "true"    3     true          ',
+            '                   Object{truthy:#function#}         ',
             ''
         ]);
     });
@@ -1202,7 +1276,7 @@ suite('power-assert-formatter', function () {
             'assert.notStrictEqual(typeof undefinedVar, types.undef)',
             '                      |                    |     |     ',
             '                      |                    |     "undefined"',
-            '                      "undefined"          {"undef":"undefined"}',
+            '                      "undefined"          Object{undef:"undefined"}',
             ''
         ]);
     });
@@ -1218,8 +1292,8 @@ suite('power-assert-formatter', function () {
             'assert.deepEqual(alice || bob, {name: kenName,age: four})',
             '                 |     |              |            |     ',
             '                 |     |              "ken"        4     ',
-            '                 |     {"name":"alice","age":3}          ',
-            '                 {"name":"alice","age":3}                ',
+            '                 |     Object{name:"alice",age:3}        ',
+            '                 Object{name:"alice",age:3}              ',
             ''
         ]);
     });
@@ -1234,11 +1308,11 @@ suite('power-assert-formatter', function () {
             '',
             'assert.notDeepEqual([foo,bar,baz], new Array(foo, bar, baz))',
             '                     |   |   |     |         |    |    |    ',
-            '                     |   |   |     |         |    |    {"name":"hoge"}',
+            '                     |   |   |     |         |    |    Object{name:"hoge"}',
             '                     |   |   |     |         |    ["toto","tata"]',
             '                     |   |   |     |         "foo"          ',
-            '                     |   |   |     ["foo",["toto","tata"],{"name":"hoge"}]',
-            '                     |   |   {"name":"hoge"}                ',
+            '                     |   |   |     ["foo",#Array#,#Object#] ',
+            '                     |   |   Object{name:"hoge"}            ',
             '                     |   ["toto","tata"]                    ',
             '                     "foo"                                  ',
             ''
@@ -1455,6 +1529,346 @@ suite('power-assert-formatter', function () {
             '',
             ''
         ]);
+    });
+
+
+
+    suite('Wrapper objects', function () {
+
+        test('String object loose equality', function () {
+            var orig = 'abcdef', str1 = new String(orig), str2 = new String(orig);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(str1 == str2);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(str1 == str2)',
+                '       |    |  |    ',
+                '       |    |  new String("abcdef")',
+                '       |    false   ',
+                '       new String("abcdef")',
+                '',
+                '$$$ [String] str2',
+                '### [String] str1',
+                '$=> new String("abcdef")',
+                '#=> new String("abcdef")',
+                ''
+            ]);
+        });
+
+        test('Number object loose equality', function () {
+            var eightStr = '8', num1 = new Number(eightStr);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(num1 == new Number(eightStr));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(num1 == new Number(eightStr))',
+                '       |    |  |          |         ',
+                '       |    |  |          "8"       ',
+                '       |    |  new Number(8)        ',
+                '       |    false                   ',
+                '       new Number(8)                ',
+                '',
+                '$$$ [Number] new Number(eightStr)',
+                '### [Number] num1',
+                '$=> new Number(8)',
+                '#=> new Number(8)',
+                ''
+            ]);
+        });
+
+        test('Boolean object loose equality', function () {
+            var oneStr = '1', bool1 = new Boolean(oneStr);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(bool1 == new Boolean(oneStr));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(bool1 == new Boolean(oneStr))',
+                '       |     |  |           |       ',
+                '       |     |  |           "1"     ',
+                '       |     |  new Boolean(true)   ',
+                '       |     false                  ',
+                '       new Boolean(true)            ',
+                '',
+                '$$$ [Boolean] new Boolean(oneStr)',
+                '### [Boolean] bool1',
+                '$=> new Boolean(true)',
+                '#=> new Boolean(true)',
+                ''
+            ]);
+        });
+
+        test('Date object loose equality', function () {
+            var dateStr = '1990-01-01',
+                dateObj = new Date(dateStr);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(dateObj == dateStr);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(dateObj == dateStr)',
+                '       |       |  |       ',
+                '       |       |  "1990-01-01"',
+                '       |       false      ',
+                '       new Date("1990-01-01T00:00:00.000Z")',
+                '',
+                '$$$ [string] dateStr',
+                '### [Date] dateObj',
+                '$=> "1990-01-01"',
+                '#=> new Date("1990-01-01T00:00:00.000Z")',
+                ''
+            ]);
+        });
+
+        test('Date object strict equality', function () {
+            var dateStr = '1990-01-01',
+                dateObj = new Date(dateStr);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(dateObj === dateStr);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(dateObj === dateStr)',
+                '       |       |   |       ',
+                '       |       |   "1990-01-01"',
+                '       |       false       ',
+                '       new Date("1990-01-01T00:00:00.000Z")',
+                '',
+                '$$$ [string] dateStr',
+                '### [Date] dateObj',
+                '$=> "1990-01-01"',
+                '#=> new Date("1990-01-01T00:00:00.000Z")',
+                ''
+            ]);
+        });
+
+        test('RegExp object loose equality', function () {
+            var pattern = '^not', flag = 'g', re = /^not/g;
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(re == new RegExp(pattern, flag));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(re == new RegExp(pattern, flag))',
+                '       |  |  |          |        |     ',
+                '       |  |  /^not/g    "^not"   "g"   ',
+                '       |  false                        ',
+                '       /^not/g                         ',
+                '',
+                '$$$ [RegExp] new RegExp(pattern, flag)',
+                '### [RegExp] re',
+                '$=> /^not/g',
+                '#=> /^not/g',
+                ''
+            ]);
+        });
+
+        test('RegExp literal and object loose equality', function () {
+            var pattern = '^not', flag = 'g', re = /^not/g;
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(/^not/g == new RegExp(pattern, flag));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(/^not/g == new RegExp(pattern, flag))',
+                '               |  |          |        |     ',
+                '               |  /^not/g    "^not"   "g"   ',
+                '               false                        ',
+                '',
+                '$$$ [RegExp] new RegExp(pattern, flag)',
+                '### [RegExp] /^not/g',
+                '$=> /^not/g',
+                '#=> /^not/g',
+                ''
+            ]);
+        });
+
+        test('Function object equality', function () {
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(function(x,y){ return x + y; } == new Function("x", "y", "return x + y"));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(function (x, y) {return x + y;} == new Function("x", "y", "return x + y"))',
+                '                                       |  |                                      ',
+                '                                       |  #function#                             ',
+                '                                       false                                     ',
+                ''
+            ]);
+        });
+
+    });
+
+
+    suite('User-defined class', function () {
+
+        test('assert(alice === bob);', function () {
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            var alice = new Person('alice', 3), bob = new Person('bob', 4);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(alice === bob);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(alice === bob)',
+                '       |     |   |   ',
+                '       |     |   Person{name:"bob",age:4}',
+                '       |     false   ',
+                '       Person{name:"alice",age:3}',
+                '',
+                '$$$ [Person] bob',
+                '### [Person] alice',
+                '$=> Person{name:"bob",age:4}',
+                '#=> Person{name:"alice",age:3}',
+                ''
+            ]);
+        });
+
+        test('assert(alice.age === bob.age);', function () {
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            var alice = new Person('alice', 3), bob = new Person('bob', 4);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(alice.age === bob.age);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert(alice.age === bob.age)',
+                '       |     |   |   |   |   ',
+                '       |     |   |   |   4   ',
+                '       |     |   |   Person{name:"bob",age:4}',
+                '       |     3   false       ',
+                '       Person{name:"alice",age:3}',
+                '',
+                '$$$ [number] bob.age',
+                '### [number] alice.age',
+                '$=> 4',
+                '#=> 3',
+                ''
+            ]);
+        });
+
+        test('assert.deepEqual(alice, new Person(kenName, four));', function () {
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            var alice = new Person('alice', 3), kenName = 'ken', four = 4;
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert.deepEqual(alice, new Person(kenName, four));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert.deepEqual(alice, new Person(kenName, four))',
+                '                 |      |          |        |     ',
+                '                 |      |          "ken"    4     ',
+                '                 |      Person{name:"ken",age:4}  ',
+                '                 Person{name:"alice",age:3}       ',
+                ''
+            ]);
+        });
+
+        test('anonymous class: assert.deepEqual(alice, new Person(kenName, four));', function () {
+            var Person = function(name, age) {
+                this.name = name;
+                this.age = age;
+            };
+            var alice = new Person('alice', 3), kenName = 'ken', four = 4;
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert.deepEqual(alice, new Person(kenName, four));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert.deepEqual(alice, new Person(kenName, four))',
+                '                 |      |          |        |     ',
+                '                 |      |          "ken"    4     ',
+                '                 |      Object{name:"ken",age:4}  ',
+                '                 Object{name:"alice",age:3}       ',
+                ''
+            ]);
+        });
+
+        test('User-defined class with Date member: assert.deepEqual(alice, bob);', function () {
+            function Person(name, birthday) {
+                this.name = name;
+                this.birthday = birthday;
+            }
+            var alice = new Person('alice', new Date('1990-01-01')),
+                bob = new Person('bob', new Date('1985-04-01'));
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert.deepEqual(alice, bob);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert.deepEqual(alice, bob)',
+                '                 |      |   ',
+                '                 |      Person{name:"bob",birthday:new Date("1985-04-01T00:00:00.000Z")}',
+                '                 Person{name:"alice",birthday:new Date("1990-01-01T00:00:00.000Z")}',
+                ''
+            ]);
+        });
+
+        test('User-defined class with user-defined member: assert.deepEqual(session1, session2);', function () {
+            function PairProgramming(driver, navigator) {
+                this.driver = driver;
+                this.navigator = navigator;
+            }
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            var alice = new Person('alice', 3),
+                ken = new Person('ken', 4),
+                session1 = new PairProgramming(alice, ken),
+                session2 = new PairProgramming(ken, alice);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert.deepEqual(session1, session2);'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert.deepEqual(session1, session2)',
+                '                 |         |        ',
+                '                 |         PairProgramming{driver:#Person#,navigator:#Person#}',
+                '                 PairProgramming{driver:#Person#,navigator:#Person#}',
+                ''
+            ]);
+        });
+
+        test('User-defined class with user-defined member: assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice));', function () {
+            function PairProgramming(driver, navigator) {
+                this.driver = driver;
+                this.navigator = navigator;
+            }
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            var alice = new Person('alice', 3),
+                ken = new Person('ken', 4);
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice));'));
+            }, [
+                '# /path/to/some_test.js:1',
+                '',
+                'assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice))',
+                '                 |                   |      |     |                   |    |      ',
+                '                 |                   |      |     |                   |    Person{name:"alice",age:3}',
+                '                 |                   |      |     |                   Person{name:"ken",age:4}',
+                '                 |                   |      |     PairProgramming{driver:#Person#,navigator:#Person#}',
+                '                 |                   |      Person{name:"ken",age:4}              ',
+                '                 |                   Person{name:"alice",age:3}                   ',
+                '                 PairProgramming{driver:#Person#,navigator:#Person#}              ',
+                ''
+            ]);
+        });
+
     });
 
 });

@@ -17,7 +17,8 @@
       mocha.setup('tdd');
       require([
         "./options_test",
-        "./power_assert_formatter_test"
+        "./power_assert_formatter_test",
+        "./types_and_values_test.js"
       ], function() {
         mocha.checkLeaks();
         mocha.run();
