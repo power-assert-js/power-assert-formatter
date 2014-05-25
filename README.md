@@ -24,4 +24,4 @@ AUTHOR
 
 LICENSE
 ---------------------------------------
-Licensed under the [MIT](https://raw.github.com/twada/power-assert-formatter/master/MIT-LICENSE.txt) license.
+Licensed under the [MIT](https://github.com/twada/power-assert-formatter/blob/master/MIT-LICENSE.txt) license.
