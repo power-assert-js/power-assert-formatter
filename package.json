@@ -20,7 +20,7 @@
     "test": "gulp test",
     "coveralls": "gulp coverage && cat ./coverage.lcov | coveralls"
   },
-  "main": "./lib/power-assert-formatter",
+  "main": "./index.js",
   "directories": {
     "lib": "./lib"
   },

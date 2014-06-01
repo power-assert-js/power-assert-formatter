@@ -3,7 +3,7 @@
     if (typeof define === 'function' && define.amd) {
         define(['power-assert-formatter', 'empower', 'espower-source', 'assert'], factory);
     } else if (typeof exports === 'object') {
-        factory(require('../lib/power-assert-formatter'), require('empower'), require('espower-source'), require('assert'));
+        factory(require('..'), require('empower'), require('espower-source'), require('assert'));
     } else {
         factory(root.powerAssertFormatter, root.empower, root.espowerSource, root.assert);
     }

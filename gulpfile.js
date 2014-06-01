@@ -16,7 +16,7 @@ var gulp = require('gulp'),
         },
         bundle: {
             standalone: 'powerAssertFormatter',
-            srcFile: './lib/power-assert-formatter.js',
+            srcFile: './index.js',
             destDir: './build',
             destName: 'power-assert-formatter.js'
         },

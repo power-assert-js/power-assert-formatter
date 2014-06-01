@@ -3,7 +3,7 @@
     if (typeof define === 'function' && define.amd) {
         define(['power-assert-formatter', 'assert'], factory);
     } else if (typeof exports === 'object') {
-        factory(require('../lib/power-assert-formatter'), require('assert'));
+        factory(require('..'), require('assert'));
     } else {
         factory(root.powerAssertFormatter, root.assert);
     }
