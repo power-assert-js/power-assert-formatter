@@ -18,7 +18,7 @@
   "scripts": {
     "bower": "bower install --config.interactive=false",
     "test": "gulp test",
-    "coveralls": "gulp coverage && cat ./coverage.lcov | ./node_modules/.bin/coveralls"
+    "coveralls": "gulp coverage && cat ./coverage.lcov | coveralls"
   },
   "main": "./lib/power-assert-formatter",
   "directories": {
@@ -36,7 +36,6 @@
   "devDependencies": {
     "blanket": "~1.1.6",
     "browserify": "~4.1.6",
-    "coveralls": "~2.10.0",
     "empower": "~0.7.2",
     "escodegen": "~1.3.2",
     "espower": "~0.7.0",
