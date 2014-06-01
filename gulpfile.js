@@ -135,6 +135,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function () {
+    gulp.watch('index.js', runMochaSimply);
     gulp.watch('{lib,test}/**/*.js', runMochaSimply);
     runMochaSimply();
 });
