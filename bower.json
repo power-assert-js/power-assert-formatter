@@ -1,7 +1,7 @@
 {
   "name": "power-assert-formatter",
   "version": "0.7.1",
-  "main": "lib/power-assert-formatter.js",
+  "main": "build/power-assert-formatter.js",
   "ignore": [
     "**/.*",
     "Gruntfile.js",
@@ -11,11 +11,6 @@
     "test",
     "test_helper.js"
   ],
-  "dependencies": {
-    "esprima": "~1.2.1",
-    "estraverse": "~1.5.0",
-    "google-diff-match-patch-js": "~1.0.0"
-  },
   "devDependencies": {
     "empower": "~0.7.2",
     "espower": "~0.7.0",
