@@ -1,7 +1,7 @@
 var require = {
     paths: {
         assert: "../bower_components/assert/assert",
-        empower: "../bower_components/empower/lib/empower",
+        empower: "../bower_components/empower/build/empower",
         "es5-shim": "../bower_components/es5-shim/es5-shim",
         escodegen: "../bower_components/escodegen/escodegen.browser",
         espower: "../bower_components/espower/lib/espower",
