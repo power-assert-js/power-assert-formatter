@@ -17,8 +17,9 @@
 var estraverse = require('estraverse'),
     esprima = require('esprima'),
     DiffMatchPatch = require('googlediff'),
-    syntax,
-    dmp;
+    defaultStringifier = require('./lib/stringify'),
+    defaultComparator = require('./lib/comparator'),
+    syntax = estraverse.Syntax;
 
 
 function defaultOptions () {
@@ -363,49 +364,6 @@ function multibyteStringWidthOf (str) {
 }
 
 
-function constructorNameOf (obj) {
-    var ctor = obj.constructor,
-        cname = '';
-    if (typeof(ctor) === 'function') {
-        cname = ctor.name ? ctor.name : Object.prototype.toString.call(obj).slice(8, -1);
-    }
-    return cname ? cname : 'Object';
-}
-
-
-function typeNameOf (val) {
-    var type = typeof(val);
-    if (val === null) {
-        return 'null';
-    }
-    if (typeof val === 'undefined') {
-        return 'undefined';
-    }
-    if (type === 'object') {
-        if (Array.isArray(val)) {
-            return 'Array';
-        }
-        return constructorNameOf(val);
-    }
-    return type;
-}
-
-
-function isComparedByValue (obj) {
-    if (obj === null) {
-        return true;
-    }
-    switch(typeof obj) {
-    case 'string':
-    case 'number':
-    case 'boolean':
-    case 'undefined':
-        return true;
-    }
-    return false;
-}
-
-
 // borrowed from qunit.js
 function extend (a, b) {
     var prop;
@@ -422,153 +380,6 @@ function extend (a, b) {
 }
 
 
-function defaultStringifier (config) {
-    var globalConstructors = [
-        Boolean,
-        Date,
-        Number,
-        RegExp,
-        String
-    ];
-
-    function stringify(obj, depth) {
-        if (typeof depth !== 'number') {
-            depth = config.stringifyDepth;
-        }
-        return stringifyAny(obj, depth);
-    }
-
-    function stringifyAny(obj, depth) {
-        switch(typeof obj) {
-        case 'string':
-        case 'boolean':
-            return JSON.stringify(obj);
-        case 'number':
-            return stringifyNumber(obj);
-        case 'function':
-            return '#function#';
-        case 'undefined':
-            return 'undefined';
-        case 'object':
-            if (obj === null) {
-                return 'null';
-            } else if (Array.isArray(obj)) {
-                return stringifyArray(obj, depth);
-            } else {
-                return stringifyObject(obj, depth);
-            }
-            break;
-        default:
-            break;
-        }
-    }
-
-    function stringifyNumber(num) {
-        if (isNaN(num)) {
-            return 'NaN';
-        }
-        if (!isFinite(num)) {
-            return num === Infinity ? 'Infinity' : '-Infinity';
-        }
-        return JSON.stringify(num);
-    }
-
-    function stringifyArray(ary, depth) {
-        depth -= 1;
-        if (depth === 0) {
-            return '#Array#';
-        }
-        return '[' + ary.map(function (elem, idx) {
-            return stringifyAny(elem, depth);
-        }).join(',') + ']';
-    }
-
-    function stringifyObject(obj, depth) {
-        var pairs, cname;
-        depth -= 1;
-        if (obj instanceof RegExp) {
-            return obj.toString();
-        }
-        cname = constructorNameOf(obj);
-        if (globalConstructors.some(function (ctor) { return obj instanceof ctor; })) {
-            return 'new ' + cname + '(' + JSON.stringify(obj) + ')';
-        }
-        if (depth === 0) {
-            return '#' + cname + '#';
-        }
-        pairs = [];
-        Object.keys(obj).forEach(function (key) {
-            var val = stringifyAny(obj[key], depth);
-            if (!/^[A-Za-z_]+$/.test(key)) {
-                key = JSON.stringify(key);
-            }
-            pairs.push(key + ':' + val);
-        });
-        return cname + '{' + pairs.join(',') + '}';
-    }
-
-    return stringify;
-}
-
-
-function defaultComparator(config) {
-    function compare(pair, lines) {
-        if (isStringDiffTarget(pair)) {
-            showStringDiff(pair, lines);
-        } else {
-            showExpectedAndActual(pair, lines);
-        }
-    }
-
-    function isStringDiffTarget(pair) {
-        return typeof pair.left.value === 'string' && typeof pair.right.value === 'string';
-    }
-
-    function showExpectedAndActual (pair, lines) {
-        lines.push('');
-        lines.push('[' + typeNameOf(pair.right.value) + '] ' + pair.right.code);
-        lines.push('=> ' + config.stringify(pair.right.value));
-        lines.push('[' + typeNameOf(pair.left.value)  + '] ' + pair.left.code);
-        lines.push('=> ' + config.stringify(pair.left.value));
-    }
-
-    function showStringDiff (pair, lines) {
-        var patch;
-        if (shouldUseLineLevelDiff(pair.right.value)) {
-            patch = udiffLines(pair.right.value, pair.left.value);
-        } else {
-            patch = udiffChars(pair.right.value, pair.left.value);
-        }
-        lines.push('');
-        lines.push('--- [string] ' + pair.right.code);
-        lines.push('+++ [string] ' + pair.left.code);
-        lines.push(decodeURIComponent(patch));
-    }
-
-    function shouldUseLineLevelDiff (text) {
-        return config.lineDiffThreshold < text.split(/\r\n|\r|\n/).length;
-    }
-
-    function udiffLines(text1, text2) {
-        /*jshint camelcase: false */
-        var a = dmp.diff_linesToChars_(text1, text2),
-            diffs = dmp.diff_main(a.chars1, a.chars2, false);
-        dmp.diff_charsToLines_(diffs, a.lineArray);
-        dmp.diff_cleanupSemantic(diffs);
-        return dmp.patch_toText(dmp.patch_make(text1, diffs));
-    }
-
-    function udiffChars (text1, text2) {
-        /*jshint camelcase: false */
-        var diffs = dmp.diff_main(text1, text2, false);
-        dmp.diff_cleanupSemantic(diffs);
-        return dmp.patch_toText(dmp.patch_make(text1, diffs));
-    }
-
-    return compare;
-}
-
-
 function create (options) {
     var config = extend(defaultOptions(), (options || {}));
     if (typeof config.widthOf !== 'function') {
@@ -581,19 +392,6 @@ function create (options) {
         config.compare = defaultComparator(config);
     }
     return function (context) {
-        if (!DiffMatchPatch) {
-            throw new Error('power-assert requires google\'s `diff_match_patch` library since 0.7.0. Please check your dependencies.');
-        }
-        if (!estraverse) {
-            throw new Error('power-assert requires `estraverse` library since 0.6.0. Please check your dependencies.');
-        } else {
-        }
-        if (!esprima) {
-            throw new Error('power-assert requires `esprima` library since 0.7.0. Please check your dependencies.');
-        }
-        dmp = new DiffMatchPatch();
-        syntax = estraverse.Syntax;
-
         var renderer = new PowerAssertContextRenderer(config);
         renderer.init(context);
         return renderer.renderLines().join(config.lineSeparator);
@@ -601,7 +399,7 @@ function create (options) {
 }
 
 create.PowerAssertContextRenderer = PowerAssertContextRenderer;
-create.constructorNameOf = constructorNameOf;
-create.typeNameOf = typeNameOf;
-create.isComparedByValue = isComparedByValue;
+create.constructorNameOf = require('./lib/constructor-name');
+create.typeNameOf = require('./lib/type-name');
+create.isComparedByValue = require('./lib/is-compared-by-value');
 module.exports = create;

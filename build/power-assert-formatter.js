@@ -18,8 +18,9 @@
 var estraverse = _dereq_('estraverse'),
     esprima = _dereq_('esprima'),
     DiffMatchPatch = _dereq_('googlediff'),
-    syntax,
-    dmp;
+    defaultStringifier = _dereq_('./lib/stringify'),
+    defaultComparator = _dereq_('./lib/comparator'),
+    syntax = estraverse.Syntax;
 
 
 function defaultOptions () {
@@ -364,49 +365,6 @@ function multibyteStringWidthOf (str) {
 }
 
 
-function constructorNameOf (obj) {
-    var ctor = obj.constructor,
-        cname = '';
-    if (typeof(ctor) === 'function') {
-        cname = ctor.name ? ctor.name : Object.prototype.toString.call(obj).slice(8, -1);
-    }
-    return cname ? cname : 'Object';
-}
-
-
-function typeNameOf (val) {
-    var type = typeof(val);
-    if (val === null) {
-        return 'null';
-    }
-    if (typeof val === 'undefined') {
-        return 'undefined';
-    }
-    if (type === 'object') {
-        if (Array.isArray(val)) {
-            return 'Array';
-        }
-        return constructorNameOf(val);
-    }
-    return type;
-}
-
-
-function isComparedByValue (obj) {
-    if (obj === null) {
-        return true;
-    }
-    switch(typeof obj) {
-    case 'string':
-    case 'number':
-    case 'boolean':
-    case 'undefined':
-        return true;
-    }
-    return false;
-}
-
-
 // borrowed from qunit.js
 function extend (a, b) {
     var prop;
@@ -422,6 +380,127 @@ function extend (a, b) {
     return a;
 }
 
+
+function create (options) {
+    var config = extend(defaultOptions(), (options || {}));
+    if (typeof config.widthOf !== 'function') {
+        config.widthOf = multibyteStringWidthOf;
+    }
+    if (typeof config.stringify !== 'function') {
+        config.stringify = defaultStringifier(config);
+    }
+    if (typeof config.compare !== 'function') {
+        config.compare = defaultComparator(config);
+    }
+    return function (context) {
+        var renderer = new PowerAssertContextRenderer(config);
+        renderer.init(context);
+        return renderer.renderLines().join(config.lineSeparator);
+    };
+}
+
+create.PowerAssertContextRenderer = PowerAssertContextRenderer;
+create.constructorNameOf = _dereq_('./lib/constructor-name');
+create.typeNameOf = _dereq_('./lib/type-name');
+create.isComparedByValue = _dereq_('./lib/is-compared-by-value');
+module.exports = create;
+
+},{"./lib/comparator":2,"./lib/constructor-name":3,"./lib/is-compared-by-value":4,"./lib/stringify":5,"./lib/type-name":6,"esprima":7,"estraverse":8,"googlediff":9}],2:[function(_dereq_,module,exports){
+var DiffMatchPatch = _dereq_('googlediff'),
+    typeNameOf = _dereq_('./type-name');
+
+function defaultComparator(config) {
+    var dmp = new DiffMatchPatch();
+
+    function compare(pair, lines) {
+        if (isStringDiffTarget(pair)) {
+            showStringDiff(pair, lines);
+        } else {
+            showExpectedAndActual(pair, lines);
+        }
+    }
+
+    function isStringDiffTarget(pair) {
+        return typeof pair.left.value === 'string' && typeof pair.right.value === 'string';
+    }
+
+    function showExpectedAndActual (pair, lines) {
+        lines.push('');
+        lines.push('[' + typeNameOf(pair.right.value) + '] ' + pair.right.code);
+        lines.push('=> ' + config.stringify(pair.right.value));
+        lines.push('[' + typeNameOf(pair.left.value)  + '] ' + pair.left.code);
+        lines.push('=> ' + config.stringify(pair.left.value));
+    }
+
+    function showStringDiff (pair, lines) {
+        var patch;
+        if (shouldUseLineLevelDiff(pair.right.value)) {
+            patch = udiffLines(pair.right.value, pair.left.value);
+        } else {
+            patch = udiffChars(pair.right.value, pair.left.value);
+        }
+        lines.push('');
+        lines.push('--- [string] ' + pair.right.code);
+        lines.push('+++ [string] ' + pair.left.code);
+        lines.push(decodeURIComponent(patch));
+    }
+
+    function shouldUseLineLevelDiff (text) {
+        return config.lineDiffThreshold < text.split(/\r\n|\r|\n/).length;
+    }
+
+    function udiffLines(text1, text2) {
+        /*jshint camelcase: false */
+        var a = dmp.diff_linesToChars_(text1, text2),
+            diffs = dmp.diff_main(a.chars1, a.chars2, false);
+        dmp.diff_charsToLines_(diffs, a.lineArray);
+        dmp.diff_cleanupSemantic(diffs);
+        return dmp.patch_toText(dmp.patch_make(text1, diffs));
+    }
+
+    function udiffChars (text1, text2) {
+        /*jshint camelcase: false */
+        var diffs = dmp.diff_main(text1, text2, false);
+        dmp.diff_cleanupSemantic(diffs);
+        return dmp.patch_toText(dmp.patch_make(text1, diffs));
+    }
+
+    return compare;
+}
+
+module.exports = defaultComparator;
+
+},{"./type-name":6,"googlediff":9}],3:[function(_dereq_,module,exports){
+function constructorNameOf (obj) {
+    var ctor = obj.constructor,
+        cname = '';
+    if (typeof(ctor) === 'function') {
+        cname = ctor.name ? ctor.name : Object.prototype.toString.call(obj).slice(8, -1);
+    }
+    return cname ? cname : 'Object';
+}
+
+module.exports = constructorNameOf;
+
+},{}],4:[function(_dereq_,module,exports){
+function isComparedByValue (obj) {
+    if (obj === null) {
+        return true;
+    }
+    switch(typeof obj) {
+    case 'string':
+    case 'number':
+    case 'boolean':
+    case 'undefined':
+        return true;
+    }
+    return false;
+}
+
+module.exports = isComparedByValue;
+
+},{}],5:[function(_dereq_,module,exports){
+var constructorNameOf = _dereq_('./constructor-name');
 
 function defaultStringifier (config) {
     var globalConstructors = [
@@ -511,103 +590,31 @@ function defaultStringifier (config) {
     return stringify;
 }
 
+module.exports = defaultStringifier;
 
-function defaultComparator(config) {
-    function compare(pair, lines) {
-        if (isStringDiffTarget(pair)) {
-            showStringDiff(pair, lines);
-        } else {
-            showExpectedAndActual(pair, lines);
+},{"./constructor-name":3}],6:[function(_dereq_,module,exports){
+var constructorNameOf = _dereq_('./constructor-name');
+
+function typeNameOf (val) {
+    var type = typeof(val);
+    if (val === null) {
+        return 'null';
+    }
+    if (typeof val === 'undefined') {
+        return 'undefined';
+    }
+    if (type === 'object') {
+        if (Array.isArray(val)) {
+            return 'Array';
         }
+        return constructorNameOf(val);
     }
-
-    function isStringDiffTarget(pair) {
-        return typeof pair.left.value === 'string' && typeof pair.right.value === 'string';
-    }
-
-    function showExpectedAndActual (pair, lines) {
-        lines.push('');
-        lines.push('[' + typeNameOf(pair.right.value) + '] ' + pair.right.code);
-        lines.push('=> ' + config.stringify(pair.right.value));
-        lines.push('[' + typeNameOf(pair.left.value)  + '] ' + pair.left.code);
-        lines.push('=> ' + config.stringify(pair.left.value));
-    }
-
-    function showStringDiff (pair, lines) {
-        var patch;
-        if (shouldUseLineLevelDiff(pair.right.value)) {
-            patch = udiffLines(pair.right.value, pair.left.value);
-        } else {
-            patch = udiffChars(pair.right.value, pair.left.value);
-        }
-        lines.push('');
-        lines.push('--- [string] ' + pair.right.code);
-        lines.push('+++ [string] ' + pair.left.code);
-        lines.push(decodeURIComponent(patch));
-    }
-
-    function shouldUseLineLevelDiff (text) {
-        return config.lineDiffThreshold < text.split(/\r\n|\r|\n/).length;
-    }
-
-    function udiffLines(text1, text2) {
-        /*jshint camelcase: false */
-        var a = dmp.diff_linesToChars_(text1, text2),
-            diffs = dmp.diff_main(a.chars1, a.chars2, false);
-        dmp.diff_charsToLines_(diffs, a.lineArray);
-        dmp.diff_cleanupSemantic(diffs);
-        return dmp.patch_toText(dmp.patch_make(text1, diffs));
-    }
-
-    function udiffChars (text1, text2) {
-        /*jshint camelcase: false */
-        var diffs = dmp.diff_main(text1, text2, false);
-        dmp.diff_cleanupSemantic(diffs);
-        return dmp.patch_toText(dmp.patch_make(text1, diffs));
-    }
-
-    return compare;
+    return type;
 }
 
+module.exports = typeNameOf;
 
-function create (options) {
-    var config = extend(defaultOptions(), (options || {}));
-    if (typeof config.widthOf !== 'function') {
-        config.widthOf = multibyteStringWidthOf;
-    }
-    if (typeof config.stringify !== 'function') {
-        config.stringify = defaultStringifier(config);
-    }
-    if (typeof config.compare !== 'function') {
-        config.compare = defaultComparator(config);
-    }
-    return function (context) {
-        if (!DiffMatchPatch) {
-            throw new Error('power-assert requires google\'s `diff_match_patch` library since 0.7.0. Please check your dependencies.');
-        }
-        if (!estraverse) {
-            throw new Error('power-assert requires `estraverse` library since 0.6.0. Please check your dependencies.');
-        } else {
-        }
-        if (!esprima) {
-            throw new Error('power-assert requires `esprima` library since 0.7.0. Please check your dependencies.');
-        }
-        dmp = new DiffMatchPatch();
-        syntax = estraverse.Syntax;
-
-        var renderer = new PowerAssertContextRenderer(config);
-        renderer.init(context);
-        return renderer.renderLines().join(config.lineSeparator);
-    };
-}
-
-create.PowerAssertContextRenderer = PowerAssertContextRenderer;
-create.constructorNameOf = constructorNameOf;
-create.typeNameOf = typeNameOf;
-create.isComparedByValue = isComparedByValue;
-module.exports = create;
-
-},{"esprima":2,"estraverse":3,"googlediff":4}],2:[function(_dereq_,module,exports){
+},{"./constructor-name":3}],7:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2013 Ariya Hidayat <ariya.hidayat@gmail.com>
   Copyright (C) 2013 Thaddee Tyl <thaddee.tyl@gmail.com>
@@ -4365,7 +4372,7 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],3:[function(_dereq_,module,exports){
+},{}],8:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2012-2013 Yusuke Suzuki <utatane.tea@gmail.com>
   Copyright (C) 2012 Ariya Hidayat <ariya.hidayat@gmail.com>
@@ -5055,10 +5062,10 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],4:[function(_dereq_,module,exports){
+},{}],9:[function(_dereq_,module,exports){
 module.exports = _dereq_('./javascript/diff_match_patch_uncompressed.js').diff_match_patch;
 
-},{"./javascript/diff_match_patch_uncompressed.js":5}],5:[function(_dereq_,module,exports){
+},{"./javascript/diff_match_patch_uncompressed.js":10}],10:[function(_dereq_,module,exports){
 /**
  * Diff Match and Patch
  *
