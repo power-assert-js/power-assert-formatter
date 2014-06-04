@@ -42,7 +42,5 @@ function create (options) {
 }
 
 create.PowerAssertContextRenderer = PowerAssertContextRenderer;
-create.constructorNameOf = require('./lib/constructor-name');
-create.typeNameOf = require('./lib/type-name');
 create.isComparedByValue = require('./lib/is-compared-by-value');
 module.exports = create;
