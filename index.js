@@ -11,7 +11,7 @@
 
 var defaultStringifier = require('./lib/stringify'),
     defaultComparator = require('./lib/comparator'),
-    multibyteStringWidthOf = require('./lib/string-width'),
+    stringWidth = require('./lib/string-width'),
     PowerAssertContextRenderer = require('./lib/renderer'),
     extend = require('node.extend');
 
@@ -26,7 +26,7 @@ function defaultOptions () {
 function create (options) {
     var config = extend(defaultOptions(), (options || {}));
     if (typeof config.widthOf !== 'function') {
-        config.widthOf = multibyteStringWidthOf;
+        config.widthOf = stringWidth;
     }
     if (typeof config.stringify !== 'function') {
         config.stringify = defaultStringifier(config);
@@ -42,5 +42,5 @@ function create (options) {
 }
 
 create.PowerAssertContextRenderer = PowerAssertContextRenderer;
-create.stringWidth = require('./lib/string-width');
+create.stringWidth = stringWidth;
 module.exports = create;

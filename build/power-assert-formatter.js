@@ -12,7 +12,7 @@
 
 var defaultStringifier = _dereq_('./lib/stringify'),
     defaultComparator = _dereq_('./lib/comparator'),
-    multibyteStringWidthOf = _dereq_('./lib/string-width'),
+    stringWidth = _dereq_('./lib/string-width'),
     PowerAssertContextRenderer = _dereq_('./lib/renderer'),
     extend = _dereq_('node.extend');
 
@@ -27,7 +27,7 @@ function defaultOptions () {
 function create (options) {
     var config = extend(defaultOptions(), (options || {}));
     if (typeof config.widthOf !== 'function') {
-        config.widthOf = multibyteStringWidthOf;
+        config.widthOf = stringWidth;
     }
     if (typeof config.stringify !== 'function') {
         config.stringify = defaultStringifier(config);
@@ -43,7 +43,7 @@ function create (options) {
 }
 
 create.PowerAssertContextRenderer = PowerAssertContextRenderer;
-create.stringWidth = _dereq_('./lib/string-width');
+create.stringWidth = stringWidth;
 module.exports = create;
 
 },{"./lib/comparator":2,"./lib/renderer":4,"./lib/string-width":5,"./lib/stringify":6,"node.extend":12}],2:[function(_dereq_,module,exports){
