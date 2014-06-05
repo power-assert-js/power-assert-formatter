@@ -43,6 +43,7 @@ function create (options) {
 }
 
 create.PowerAssertContextRenderer = PowerAssertContextRenderer;
+create.stringWidth = _dereq_('./lib/string-width');
 create.isComparedByValue = _dereq_('./lib/is-compared-by-value');
 module.exports = create;
 
