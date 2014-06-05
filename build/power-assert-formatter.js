@@ -44,10 +44,9 @@ function create (options) {
 
 create.PowerAssertContextRenderer = PowerAssertContextRenderer;
 create.stringWidth = _dereq_('./lib/string-width');
-create.isComparedByValue = _dereq_('./lib/is-compared-by-value');
 module.exports = create;
 
-},{"./lib/comparator":2,"./lib/is-compared-by-value":4,"./lib/renderer":5,"./lib/string-width":6,"./lib/stringify":7,"node.extend":13}],2:[function(_dereq_,module,exports){
+},{"./lib/comparator":2,"./lib/renderer":4,"./lib/string-width":5,"./lib/stringify":6,"node.extend":12}],2:[function(_dereq_,module,exports){
 var DiffMatchPatch = _dereq_('googlediff'),
     typeName = _dereq_('type-name');
 
@@ -112,7 +111,7 @@ function defaultComparator(config) {
 
 module.exports = defaultComparator;
 
-},{"googlediff":11,"type-name":16}],3:[function(_dereq_,module,exports){
+},{"googlediff":10,"type-name":15}],3:[function(_dereq_,module,exports){
 var syntax = _dereq_('estraverse').Syntax;
 
 function EsNode (path, currentNode, parentNode, espathToValue, jsCode, jsAST) {
@@ -247,24 +246,7 @@ function searchToken(tokens, fromLine, toLine, predicate) {
 
 module.exports = EsNode;
 
-},{"estraverse":10}],4:[function(_dereq_,module,exports){
-function isComparedByValue (obj) {
-    if (obj === null) {
-        return true;
-    }
-    switch(typeof obj) {
-    case 'string':
-    case 'number':
-    case 'boolean':
-    case 'undefined':
-        return true;
-    }
-    return false;
-}
-
-module.exports = isComparedByValue;
-
-},{}],5:[function(_dereq_,module,exports){
+},{"estraverse":9}],4:[function(_dereq_,module,exports){
 var estraverse = _dereq_('estraverse'),
     esprima = _dereq_('esprima'),
     EsNode = _dereq_('./esnode'),
@@ -459,7 +441,7 @@ function rightToLeft (a, b) {
 
 module.exports = PowerAssertContextRenderer;
 
-},{"./esnode":3,"esprima":9,"estraverse":10}],6:[function(_dereq_,module,exports){
+},{"./esnode":3,"esprima":8,"estraverse":9}],5:[function(_dereq_,module,exports){
 var eaw = _dereq_('eastasianwidth');
 
 module.exports = function (str) {
@@ -484,7 +466,7 @@ module.exports = function (str) {
     return width;
 };
 
-},{"eastasianwidth":8}],7:[function(_dereq_,module,exports){
+},{"eastasianwidth":7}],6:[function(_dereq_,module,exports){
 var typeName = _dereq_('type-name'),
     globalConstructors = [
         Boolean,
@@ -580,7 +562,7 @@ function defaultStringifier (config) {
 
 module.exports = defaultStringifier;
 
-},{"type-name":16}],8:[function(_dereq_,module,exports){
+},{"type-name":15}],7:[function(_dereq_,module,exports){
 var eaw = exports;
 
 eaw.eastAsianWidth = function(character) {
@@ -853,7 +835,7 @@ eaw.length = function(string) {
   return len;
 };
 
-},{}],9:[function(_dereq_,module,exports){
+},{}],8:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2013 Ariya Hidayat <ariya.hidayat@gmail.com>
   Copyright (C) 2013 Thaddee Tyl <thaddee.tyl@gmail.com>
@@ -4611,7 +4593,7 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],10:[function(_dereq_,module,exports){
+},{}],9:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2012-2013 Yusuke Suzuki <utatane.tea@gmail.com>
   Copyright (C) 2012 Ariya Hidayat <ariya.hidayat@gmail.com>
@@ -5301,10 +5283,10 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],11:[function(_dereq_,module,exports){
+},{}],10:[function(_dereq_,module,exports){
 module.exports = _dereq_('./javascript/diff_match_patch_uncompressed.js').diff_match_patch;
 
-},{"./javascript/diff_match_patch_uncompressed.js":12}],12:[function(_dereq_,module,exports){
+},{"./javascript/diff_match_patch_uncompressed.js":11}],11:[function(_dereq_,module,exports){
 /**
  * Diff Match and Patch
  *
@@ -7499,11 +7481,11 @@ this['DIFF_DELETE'] = DIFF_DELETE;
 this['DIFF_INSERT'] = DIFF_INSERT;
 this['DIFF_EQUAL'] = DIFF_EQUAL;
 
-},{}],13:[function(_dereq_,module,exports){
+},{}],12:[function(_dereq_,module,exports){
 module.exports = _dereq_('./lib/extend');
 
 
-},{"./lib/extend":14}],14:[function(_dereq_,module,exports){
+},{"./lib/extend":13}],13:[function(_dereq_,module,exports){
 /*!
  * node.extend
  * Copyright 2011, John Resig
@@ -7587,7 +7569,7 @@ extend.version = '1.0.8';
 module.exports = extend;
 
 
-},{"is":15}],15:[function(_dereq_,module,exports){
+},{"is":14}],14:[function(_dereq_,module,exports){
 
 /**!
  * is
@@ -8301,7 +8283,7 @@ is.string = function (value) {
 };
 
 
-},{}],16:[function(_dereq_,module,exports){
+},{}],15:[function(_dereq_,module,exports){
 /**
  * type-name - Just a reasonable type name
  * 
