@@ -36,20 +36,22 @@ function create (options) {
     if (typeof config.compare !== 'function') {
         config.compare = defaultComparator(config);
     }
+    if (!config.writer) {
+        config.writer = new StringWriter(config.lineSeparator);
+    }
     return function (context) {
         var that = this,
             events = [],
             pairs = [],
-            writer = new StringWriter(config.lineSeparator),
             renderer = new PowerAssertContextRenderer(config);
         renderer.init(context);
         traverseContext(context, events, pairs);
-        renderer.render(events, writer);
+        renderer.render(events, config.writer);
         pairs.forEach(function (pair) {
-            config.compare(pair, writer);
+            config.compare(pair, config.writer);
         });
-        writer.write('');
-        return writer.toString();
+        config.writer.write('');
+        return config.writer.flush();
     };
 }
 
