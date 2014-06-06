@@ -12,7 +12,9 @@
 var defaultStringifier = require('./lib/stringify'),
     defaultComparator = require('./lib/comparator'),
     stringWidth = require('./lib/string-width'),
+    StringWriter = require('./lib/string-writer'),
     PowerAssertContextRenderer = require('./lib/renderer'),
+    traverseContext = require('./lib/traverse'),
     extend = require('node.extend');
 
 function defaultOptions () {
@@ -35,9 +37,19 @@ function create (options) {
         config.compare = defaultComparator(config);
     }
     return function (context) {
-        var renderer = new PowerAssertContextRenderer(config);
+        var that = this,
+            events = [],
+            pairs = [],
+            writer = new StringWriter(config.lineSeparator),
+            renderer = new PowerAssertContextRenderer(config);
         renderer.init(context);
-        return renderer.renderLines().join(config.lineSeparator);
+        traverseContext(context, events, pairs);
+        renderer.render(events, writer);
+        pairs.forEach(function (pair) {
+            config.compare(pair, writer);
+        });
+        writer.write('');
+        return writer.toString();
     };
 }
 
