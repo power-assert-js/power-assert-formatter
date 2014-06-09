@@ -39,11 +39,14 @@ function create (options) {
     if (!config.writerClass) {
         config.writerClass = StringWriter;
     }
+    if (!config.rendererClass) {
+        config.rendererClass = PowerAssertContextRenderer;
+    }
     return function (context) {
         var events = [],
             pairs = [],
             writer = new config.writerClass(extend({}, config)),
-            renderer = new PowerAssertContextRenderer(extend({}, config));
+            renderer = new config.rendererClass(extend({}, config));
         renderer.init(context);
         traverseContext(context, events, pairs);
         renderer.render(events, writer);
