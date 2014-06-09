@@ -10,10 +10,10 @@
 'use strict';
 
 var defaultStringifier = require('./lib/stringify'),
-    defaultComparator = require('./lib/comparator'),
     stringWidth = require('./lib/string-width'),
     StringWriter = require('./lib/string-writer'),
     PowerAssertContextRenderer = require('./lib/renderer'),
+    BinaryExpressionComparator = require('./lib/comparator'),
     traverseContext = require('./lib/traverse'),
     extend = require('node.extend');
 
@@ -33,11 +33,11 @@ function create (options) {
     if (typeof config.stringify !== 'function') {
         config.stringify = defaultStringifier(config);
     }
-    if (typeof config.compare !== 'function') {
-        config.compare = defaultComparator(config);
-    }
     if (!config.writerClass) {
         config.writerClass = StringWriter;
+    }
+    if (!config.comparatorClass) {
+        config.comparatorClass = BinaryExpressionComparator;
     }
     if (!config.rendererClass) {
         config.rendererClass = PowerAssertContextRenderer;
@@ -45,18 +45,17 @@ function create (options) {
     return function (context) {
         var pairs = [],
             writer = new config.writerClass(extend({}, config)),
+            comparator = new config.comparatorClass(extend({}, config)),
             renderer = new config.rendererClass(extend({}, config));
         renderer.init(context);
-        traverseContext(context, renderer, pairs);
+        comparator.init(context);
+        traverseContext(context, renderer, comparator);
         renderer.render(writer);
-        pairs.forEach(function (pair) {
-            config.compare(pair, writer);
-        });
+        comparator.render(writer);
         writer.write('');
         return writer.flush();
     };
 }
 
-create.PowerAssertContextRenderer = PowerAssertContextRenderer;
 create.stringWidth = stringWidth;
 module.exports = create;

@@ -11,10 +11,10 @@
 'use strict';
 
 var defaultStringifier = _dereq_('./lib/stringify'),
-    defaultComparator = _dereq_('./lib/comparator'),
     stringWidth = _dereq_('./lib/string-width'),
     StringWriter = _dereq_('./lib/string-writer'),
     PowerAssertContextRenderer = _dereq_('./lib/renderer'),
+    BinaryExpressionComparator = _dereq_('./lib/comparator'),
     traverseContext = _dereq_('./lib/traverse'),
     extend = _dereq_('node.extend');
 
@@ -34,98 +34,151 @@ function create (options) {
     if (typeof config.stringify !== 'function') {
         config.stringify = defaultStringifier(config);
     }
-    if (typeof config.compare !== 'function') {
-        config.compare = defaultComparator(config);
+    if (!config.writerClass) {
+        config.writerClass = StringWriter;
     }
-    if (!config.writer) {
-        config.writer = new StringWriter(config.lineSeparator);
+    if (!config.comparatorClass) {
+        config.comparatorClass = BinaryExpressionComparator;
+    }
+    if (!config.rendererClass) {
+        config.rendererClass = PowerAssertContextRenderer;
     }
     return function (context) {
-        var that = this,
-            events = [],
-            pairs = [],
-            renderer = new PowerAssertContextRenderer(config);
+        var pairs = [],
+            writer = new config.writerClass(extend({}, config)),
+            comparator = new config.comparatorClass(extend({}, config)),
+            renderer = new config.rendererClass(extend({}, config));
         renderer.init(context);
-        traverseContext(context, events, pairs);
-        renderer.render(events, config.writer);
-        pairs.forEach(function (pair) {
-            config.compare(pair, config.writer);
-        });
-        config.writer.write('');
-        return config.writer.flush();
+        comparator.init(context);
+        traverseContext(context, renderer, comparator);
+        renderer.render(writer);
+        comparator.render(writer);
+        writer.write('');
+        return writer.flush();
     };
 }
 
-create.PowerAssertContextRenderer = PowerAssertContextRenderer;
 create.stringWidth = stringWidth;
 module.exports = create;
 
 },{"./lib/comparator":2,"./lib/renderer":4,"./lib/string-width":5,"./lib/string-writer":6,"./lib/stringify":7,"./lib/traverse":8,"node.extend":14}],2:[function(_dereq_,module,exports){
+'use strict';
+
 var DiffMatchPatch = _dereq_('googlediff'),
-    typeName = _dereq_('type-name');
+    dmp = new DiffMatchPatch(),
+    typeName = _dereq_('type-name'),
+    syntax = _dereq_('estraverse').Syntax;
 
-function defaultComparator(config) {
-    var dmp = new DiffMatchPatch();
 
-    function compare(pair, writer) {
-        if (isStringDiffTarget(pair)) {
-            showStringDiff(pair, writer);
-        } else {
-            showExpectedAndActual(pair, writer);
-        }
-    }
-
-    function isStringDiffTarget(pair) {
-        return typeof pair.left.value === 'string' && typeof pair.right.value === 'string';
-    }
-
-    function showExpectedAndActual (pair, writer) {
-        writer.write('');
-        writer.write('[' + typeName(pair.right.value) + '] ' + pair.right.code);
-        writer.write('=> ' + config.stringify(pair.right.value));
-        writer.write('[' + typeName(pair.left.value)  + '] ' + pair.left.code);
-        writer.write('=> ' + config.stringify(pair.left.value));
-    }
-
-    function showStringDiff (pair, writer) {
-        var patch;
-        if (shouldUseLineLevelDiff(pair.right.value)) {
-            patch = udiffLines(pair.right.value, pair.left.value);
-        } else {
-            patch = udiffChars(pair.right.value, pair.left.value);
-        }
-        writer.write('');
-        writer.write('--- [string] ' + pair.right.code);
-        writer.write('+++ [string] ' + pair.left.code);
-        writer.write(decodeURIComponent(patch));
-    }
-
-    function shouldUseLineLevelDiff (text) {
-        return config.lineDiffThreshold < text.split(/\r\n|\r|\n/).length;
-    }
-
-    function udiffLines(text1, text2) {
-        /*jshint camelcase: false */
-        var a = dmp.diff_linesToChars_(text1, text2),
-            diffs = dmp.diff_main(a.chars1, a.chars2, false);
-        dmp.diff_charsToLines_(diffs, a.lineArray);
-        dmp.diff_cleanupSemantic(diffs);
-        return dmp.patch_toText(dmp.patch_make(text1, diffs));
-    }
-
-    function udiffChars (text1, text2) {
-        /*jshint camelcase: false */
-        var diffs = dmp.diff_main(text1, text2, false);
-        dmp.diff_cleanupSemantic(diffs);
-        return dmp.patch_toText(dmp.patch_make(text1, diffs));
-    }
-
-    return compare;
+function BinaryExpressionComparator(config) {
+    this.config = config;
+    this.espathToPair = {};
 }
 
-module.exports = defaultComparator;
+BinaryExpressionComparator.prototype.init = function (context) {
+};
 
-},{"googlediff":12,"type-name":17}],3:[function(_dereq_,module,exports){
+BinaryExpressionComparator.prototype.onEachEsNode = function (esNode) {
+    var pair,
+        that = this;
+    if (!esNode.isCaptured()) {
+        if (isTargetBinaryExpression(esNode.getParentEsNode()) && esNode.currentNode.type === syntax.Literal) {
+            that.espathToPair[esNode.parentEspath][esNode.currentProp] = {code: esNode.code(), value: esNode.value()};
+        }
+        return;
+    }
+    if (isTargetBinaryExpression(esNode.getParentEsNode())) {
+        that.espathToPair[esNode.parentEspath][esNode.currentProp] = {code: esNode.code(), value: esNode.value()};
+    }
+    if (isTargetBinaryExpression(esNode)) {
+        pair = {
+            operator: esNode.currentNode.operator,
+            value: esNode.value()
+        };
+        that.espathToPair[esNode.espath] = pair;
+    }
+};
+
+BinaryExpressionComparator.prototype.render = function (writer) {
+    var pairs = [],
+        that = this;
+    Object.keys(that.espathToPair).forEach(function (espath) {
+        var pair = that.espathToPair[espath];
+        if (pair.left && pair.right) {
+            pairs.push(pair);
+        }
+    });
+
+    pairs.forEach(function (pair) {
+        that.compare(pair, writer);
+    });
+};
+
+BinaryExpressionComparator.prototype.compare = function (pair, writer) {
+    if (isStringDiffTarget(pair)) {
+        this.showStringDiff(pair, writer);
+    } else {
+        this.showExpectedAndActual(pair, writer);
+    }
+};
+
+BinaryExpressionComparator.prototype.showExpectedAndActual = function (pair, writer) {
+    writer.write('');
+    writer.write('[' + typeName(pair.right.value) + '] ' + pair.right.code);
+    writer.write('=> ' + this.config.stringify(pair.right.value));
+    writer.write('[' + typeName(pair.left.value)  + '] ' + pair.left.code);
+    writer.write('=> ' + this.config.stringify(pair.left.value));
+};
+
+BinaryExpressionComparator.prototype.showStringDiff = function (pair, writer) {
+    var patch;
+    if (this.shouldUseLineLevelDiff(pair.right.value)) {
+        patch = udiffLines(pair.right.value, pair.left.value);
+    } else {
+        patch = udiffChars(pair.right.value, pair.left.value);
+    }
+    writer.write('');
+    writer.write('--- [string] ' + pair.right.code);
+    writer.write('+++ [string] ' + pair.left.code);
+    writer.write(decodeURIComponent(patch));
+};
+
+BinaryExpressionComparator.prototype.shouldUseLineLevelDiff = function (text) {
+    return this.config.lineDiffThreshold < text.split(/\r\n|\r|\n/).length;
+};
+
+
+function isTargetBinaryExpression (esNode) {
+    return esNode &&
+        esNode.currentNode.type === syntax.BinaryExpression &&
+        (esNode.currentNode.operator === '===' || esNode.currentNode.operator === '==') &&
+        esNode.isCaptured() &&
+        !(esNode.value());
+}
+
+function isStringDiffTarget(pair) {
+    return typeof pair.left.value === 'string' && typeof pair.right.value === 'string';
+}
+
+function udiffLines(text1, text2) {
+    /*jshint camelcase: false */
+    var a = dmp.diff_linesToChars_(text1, text2),
+        diffs = dmp.diff_main(a.chars1, a.chars2, false);
+    dmp.diff_charsToLines_(diffs, a.lineArray);
+    dmp.diff_cleanupSemantic(diffs);
+    return dmp.patch_toText(dmp.patch_make(text1, diffs));
+}
+
+function udiffChars (text1, text2) {
+    /*jshint camelcase: false */
+    var diffs = dmp.diff_main(text1, text2, false);
+    dmp.diff_cleanupSemantic(diffs);
+    return dmp.patch_toText(dmp.patch_make(text1, diffs));
+}
+
+module.exports = BinaryExpressionComparator;
+
+},{"estraverse":11,"googlediff":12,"type-name":17}],3:[function(_dereq_,module,exports){
 var syntax = _dereq_('estraverse').Syntax;
 
 function EsNode (path, currentNode, parentNode, espathToValue, jsCode, jsAST) {
@@ -263,6 +316,7 @@ module.exports = EsNode;
 },{"estraverse":11}],4:[function(_dereq_,module,exports){
 function PowerAssertContextRenderer (config) {
     this.config = config;
+    this.events = [];
     this.stringify = config.stringify;
     this.widthOf = config.widthOf;
     this.initialVertivalBarLength = 1;
@@ -331,8 +385,15 @@ PowerAssertContextRenderer.prototype.startColumnFor = function (captured) {
     return this.widthOf(this.assertionLine.slice(0, captured.loc.start.column));
 };
 
-PowerAssertContextRenderer.prototype.render = function (events, writer) {
-    events.sort(rightToLeft);
+PowerAssertContextRenderer.prototype.onEachEsNode = function (esNode) {
+    if (!esNode.isCaptured()) {
+        return;
+    }
+    this.events.push({value: esNode.value(), espath: esNode.espath, loc: esNode.location()});
+};
+
+PowerAssertContextRenderer.prototype.render = function (writer) {
+    this.events.sort(rightToLeft);
 
     if (this.filepath) {
         writer.write('# ' + [this.filepath, this.lineNumber].join(':'));
@@ -342,7 +403,7 @@ PowerAssertContextRenderer.prototype.render = function (events, writer) {
     writer.write('');
     writer.write(this.assertionLine);
 
-    this.constructRows(events);
+    this.constructRows(this.events);
     this.rows.forEach(function (columns) {
         writer.write(columns.join(''));
     });
@@ -388,9 +449,9 @@ module.exports = function (str) {
 };
 
 },{"eastasianwidth":9}],6:[function(_dereq_,module,exports){
-function StringWriter (lineSeparator) {
+function StringWriter (config) {
     this.lines = [];
-    this.lineSeparator = lineSeparator;
+    this.lineSeparator = config.lineSeparator;
 }
 
 StringWriter.prototype.write = function (str) {
@@ -502,49 +563,19 @@ function defaultStringifier (config) {
 module.exports = defaultStringifier;
 
 },{"type-name":17}],8:[function(_dereq_,module,exports){
+'use strict';
+
 var estraverse = _dereq_('estraverse'),
     esprima = _dereq_('esprima'),
-    EsNode = _dereq_('./esnode'),
-    syntax = estraverse.Syntax;
+    EsNode = _dereq_('./esnode');
 
-function traverseContext (context, events, pairs) {
+function traverseContext (context, renderer, comparator) {
     context.args.forEach(function (arg) {
-        var espathToPair = {};
         onEachEsNode(arg, context.source.content, function (esNode) {
-            var pair;
-            if (!esNode.isCaptured()) {
-                if (isTargetBinaryExpression(esNode.getParentEsNode()) && esNode.currentNode.type === syntax.Literal) {
-                    espathToPair[esNode.parentEspath][esNode.currentProp] = {code: esNode.code(), value: esNode.value()};
-                }
-                return;
-            }
-            events.push({value: esNode.value(), espath: esNode.espath, loc: esNode.location()});
-            if (isTargetBinaryExpression(esNode.getParentEsNode())) {
-                espathToPair[esNode.parentEspath][esNode.currentProp] = {code: esNode.code(), value: esNode.value()};
-            }
-            if (isTargetBinaryExpression(esNode)) {
-                pair = {
-                    operator: esNode.currentNode.operator,
-                    value: esNode.value()
-                };
-                espathToPair[esNode.espath] = pair;
-            }
-        });
-        Object.keys(espathToPair).forEach(function (espath) {
-            var pair = espathToPair[espath];
-            if (pair.left && pair.right) {
-                pairs.push(pair);
-            }
+            renderer.onEachEsNode(esNode);
+            comparator.onEachEsNode(esNode);
         });
     });
-}
-
-function isTargetBinaryExpression (esNode) {
-    return esNode &&
-        esNode.currentNode.type === syntax.BinaryExpression &&
-        (esNode.currentNode.operator === '===' || esNode.currentNode.operator === '==') &&
-        esNode.isCaptured() &&
-        !(esNode.value());
 }
 
 function onEachEsNode(arg, jsCode, callback) {
