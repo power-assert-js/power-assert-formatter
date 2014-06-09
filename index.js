@@ -43,13 +43,12 @@ function create (options) {
         config.rendererClass = PowerAssertContextRenderer;
     }
     return function (context) {
-        var events = [],
-            pairs = [],
+        var pairs = [],
             writer = new config.writerClass(extend({}, config)),
             renderer = new config.rendererClass(extend({}, config));
         renderer.init(context);
-        traverseContext(context, events, pairs);
-        renderer.render(events, writer);
+        traverseContext(context, renderer, pairs);
+        renderer.render(writer);
         pairs.forEach(function (pair) {
             config.compare(pair, writer);
         });
