@@ -12,8 +12,6 @@
 var defaultStringifier = require('./lib/stringify'),
     stringWidth = require('./lib/string-width'),
     StringWriter = require('./lib/string-writer'),
-    PowerAssertContextRenderer = require('./lib/renderer'),
-    BinaryExpressionComparator = require('./lib/comparator'),
     traverseContext = require('./lib/traverse'),
     extend = require('node.extend');
 
@@ -21,7 +19,11 @@ function defaultOptions () {
     return {
         lineDiffThreshold: 5,
         stringifyDepth: 2,
-        lineSeparator: '\n'
+        lineSeparator: '\n',
+        renderers: [
+            './lib/renderer',
+            './lib/comparator'
+        ]
     };
 }
 
@@ -36,21 +38,18 @@ function create (options) {
     if (!config.writerClass) {
         config.writerClass = StringWriter;
     }
-    if (!config.comparatorClass) {
-        config.comparatorClass = BinaryExpressionComparator;
-    }
-    if (!config.rendererClass) {
-        config.rendererClass = PowerAssertContextRenderer;
-    }
     return function (context) {
         var writer = new config.writerClass(extend({}, config)),
-            comparator = new config.comparatorClass(extend({}, config)),
-            renderer = new config.rendererClass(extend({}, config));
-        renderer.init(context);
-        comparator.init(context);
-        traverseContext(context, [renderer, comparator]);
-        renderer.render(writer);
-        comparator.render(writer);
+            renderers = config.renderers.map(function (rendererName) {
+                var rendererClass = require(rendererName),
+                    renderer = new rendererClass(extend({}, config));
+                renderer.init(context);
+                return renderer;
+            });
+        traverseContext(context, renderers);
+        renderers.forEach(function (renderer) {
+            renderer.render(writer);
+        });
         writer.write('');
         return writer.flush();
     };
