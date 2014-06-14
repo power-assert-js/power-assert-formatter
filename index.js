@@ -52,11 +52,12 @@ function create (options) {
     return function (context) {
         var writer = new config.writerClass(extend({}, config)),
             renderers = config.renderers.map(function (rendererName) {
-                var RendererClass = require(rendererName),
-                    renderer = new RendererClass(extend({}, config));
-                renderer.init(context);
-                return renderer;
+                var RendererClass = require(rendererName);
+                return new RendererClass(extend({}, config));
             });
+        renderers.forEach(function (renderer) {
+            renderer.init(context);
+        });
         traverseContext(context, renderers);
         renderers.forEach(function (renderer) {
             renderer.render(writer);

@@ -53,11 +53,12 @@ function create (options) {
     return function (context) {
         var writer = new config.writerClass(extend({}, config)),
             renderers = config.renderers.map(function (rendererName) {
-                var RendererClass = _dereq_(rendererName),
-                    renderer = new RendererClass(extend({}, config));
-                renderer.init(context);
-                return renderer;
+                var RendererClass = _dereq_(rendererName);
+                return new RendererClass(extend({}, config));
             });
+        renderers.forEach(function (renderer) {
+            renderer.init(context);
+        });
         traverseContext(context, renderers);
         renderers.forEach(function (renderer) {
             renderer.render(writer);
@@ -356,6 +357,21 @@ DiagramRenderer.prototype.init = function (context) {
     this.initializeRows();
 };
 
+DiagramRenderer.prototype.onEachEsNode = function (esNode) {
+    if (!esNode.isCaptured()) {
+        return;
+    }
+    this.events.push({value: esNode.value(), loc: esNode.location()});
+};
+
+DiagramRenderer.prototype.render = function (writer) {
+    this.events.sort(rightToLeft);
+    this.constructRows(this.events);
+    this.rows.forEach(function (columns) {
+        writer.write(columns.join(''));
+    });
+};
+
 DiagramRenderer.prototype.initializeRows = function () {
     this.rows = [];
     for (var i = 0; i <= this.initialVertivalBarLength; i += 1) {
@@ -409,21 +425,6 @@ DiagramRenderer.prototype.constructRows = function (capturedEvents) {
 
 DiagramRenderer.prototype.startColumnFor = function (captured) {
     return this.widthOf(this.assertionLine.slice(0, captured.loc.start.column));
-};
-
-DiagramRenderer.prototype.onEachEsNode = function (esNode) {
-    if (!esNode.isCaptured()) {
-        return;
-    }
-    this.events.push({value: esNode.value(), loc: esNode.location()});
-};
-
-DiagramRenderer.prototype.render = function (writer) {
-    this.events.sort(rightToLeft);
-    this.constructRows(this.events);
-    this.rows.forEach(function (columns) {
-        writer.write(columns.join(''));
-    });
 };
 
 function createRow (numCols, initial) {
