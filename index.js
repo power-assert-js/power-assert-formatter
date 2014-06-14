@@ -18,7 +18,8 @@ var defaultStringifier = require('./lib/stringify'),
 // "Browserify can only analyze static requires. It is not in the scope of browserify to handle dynamic requires."
 // https://github.com/substack/node-browserify/issues/377
 var b = require('./lib/renderers/binary-expression'),
-    d = require('./lib/renderers/diagram');
+    d = require('./lib/renderers/diagram'),
+    f = require('./lib/renderers/file');
 
 function defaultOptions () {
     return {
@@ -26,6 +27,7 @@ function defaultOptions () {
         stringifyDepth: 2,
         lineSeparator: '\n',
         renderers: [
+            './lib/renderers/file',
             './lib/renderers/diagram',
             './lib/renderers/binary-expression'
         ]
