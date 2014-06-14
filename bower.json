@@ -1,6 +1,5 @@
 {
   "name": "power-assert-formatter",
-  "version": "0.7.1",
   "main": "build/power-assert-formatter.js",
   "ignore": [
     "**/.*",
