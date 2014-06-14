@@ -16,11 +16,14 @@ var defaultStringifier = _dereq_('./lib/stringify'),
     traverseContext = _dereq_('./lib/traverse'),
     extend = _dereq_('node.extend');
 
-// "Browserify can only analyze static requires. It is not in the scope of browserify to handle dynamic requires."
-// https://github.com/substack/node-browserify/issues/377
-var b = _dereq_('./lib/renderers/binary-expression'),
-    d = _dereq_('./lib/renderers/diagram'),
-    f = _dereq_('./lib/renderers/file');
+(function() {
+    // "Browserify can only analyze static requires. It is not in the scope of browserify to handle dynamic requires."
+    // https://github.com/substack/node-browserify/issues/377
+    _dereq_('./lib/renderers/assertion');
+    _dereq_('./lib/renderers/binary-expression');
+    _dereq_('./lib/renderers/diagram');
+    _dereq_('./lib/renderers/file');
+})();
 
 function defaultOptions () {
     return {
@@ -29,6 +32,7 @@ function defaultOptions () {
         lineSeparator: '\n',
         renderers: [
             './lib/renderers/file',
+            './lib/renderers/assertion',
             './lib/renderers/diagram',
             './lib/renderers/binary-expression'
         ]
@@ -49,8 +53,8 @@ function create (options) {
     return function (context) {
         var writer = new config.writerClass(extend({}, config)),
             renderers = config.renderers.map(function (rendererName) {
-                var rendererClass = _dereq_(rendererName),
-                    renderer = new rendererClass(extend({}, config));
+                var RendererClass = _dereq_(rendererName),
+                    renderer = new RendererClass(extend({}, config));
                 renderer.init(context);
                 return renderer;
             });
@@ -66,7 +70,7 @@ function create (options) {
 create.stringWidth = stringWidth;
 module.exports = create;
 
-},{"./lib/renderers/binary-expression":3,"./lib/renderers/diagram":4,"./lib/renderers/file":5,"./lib/string-width":6,"./lib/string-writer":7,"./lib/stringify":8,"./lib/traverse":9,"node.extend":15}],2:[function(_dereq_,module,exports){
+},{"./lib/renderers/assertion":3,"./lib/renderers/binary-expression":4,"./lib/renderers/diagram":5,"./lib/renderers/file":6,"./lib/string-width":7,"./lib/string-writer":8,"./lib/stringify":9,"./lib/traverse":10,"node.extend":16}],2:[function(_dereq_,module,exports){
 var syntax = _dereq_('estraverse').Syntax;
 
 function EsNode (path, currentNode, parentNode, espathToValue, jsCode, jsAST) {
@@ -201,7 +205,25 @@ function searchToken(tokens, fromLine, toLine, predicate) {
 
 module.exports = EsNode;
 
-},{"estraverse":12}],3:[function(_dereq_,module,exports){
+},{"estraverse":13}],3:[function(_dereq_,module,exports){
+function AssertionRenderer (config) {
+}
+
+AssertionRenderer.prototype.init = function (context) {
+    this.assertionLine = context.source.content;
+};
+
+AssertionRenderer.prototype.onEachEsNode = function (esNode) {
+};
+
+AssertionRenderer.prototype.render = function (writer) {
+    writer.write('');
+    writer.write(this.assertionLine);
+};
+
+module.exports = AssertionRenderer;
+
+},{}],4:[function(_dereq_,module,exports){
 'use strict';
 
 var DiffMatchPatch = _dereq_('googlediff'),
@@ -319,7 +341,7 @@ function udiffChars (text1, text2) {
 
 module.exports = BinaryExpressionRenderer;
 
-},{"estraverse":12,"googlediff":13,"type-name":18}],4:[function(_dereq_,module,exports){
+},{"estraverse":13,"googlediff":14,"type-name":19}],5:[function(_dereq_,module,exports){
 function DiagramRenderer (config) {
     this.config = config;
     this.events = [];
@@ -398,8 +420,6 @@ DiagramRenderer.prototype.onEachEsNode = function (esNode) {
 
 DiagramRenderer.prototype.render = function (writer) {
     this.events.sort(rightToLeft);
-    writer.write('');
-    writer.write(this.assertionLine);
     this.constructRows(this.events);
     this.rows.forEach(function (columns) {
         writer.write(columns.join(''));
@@ -420,7 +440,7 @@ function rightToLeft (a, b) {
 
 module.exports = DiagramRenderer;
 
-},{}],5:[function(_dereq_,module,exports){
+},{}],6:[function(_dereq_,module,exports){
 function FileRenderer (config) {
 }
 
@@ -442,7 +462,7 @@ FileRenderer.prototype.render = function (writer) {
 
 module.exports = FileRenderer;
 
-},{}],6:[function(_dereq_,module,exports){
+},{}],7:[function(_dereq_,module,exports){
 var eaw = _dereq_('eastasianwidth');
 
 module.exports = function (str) {
@@ -467,7 +487,7 @@ module.exports = function (str) {
     return width;
 };
 
-},{"eastasianwidth":10}],7:[function(_dereq_,module,exports){
+},{"eastasianwidth":11}],8:[function(_dereq_,module,exports){
 function StringWriter (config) {
     this.lines = [];
     this.lineSeparator = config.lineSeparator;
@@ -485,7 +505,7 @@ StringWriter.prototype.flush = function () {
 
 module.exports = StringWriter;
 
-},{}],8:[function(_dereq_,module,exports){
+},{}],9:[function(_dereq_,module,exports){
 var typeName = _dereq_('type-name'),
     globalConstructors = [
         Boolean,
@@ -581,7 +601,7 @@ function defaultStringifier (config) {
 
 module.exports = defaultStringifier;
 
-},{"type-name":18}],9:[function(_dereq_,module,exports){
+},{"type-name":19}],10:[function(_dereq_,module,exports){
 'use strict';
 
 var estraverse = _dereq_('estraverse'),
@@ -628,7 +648,7 @@ function extractExpressionFrom (tree) {
 
 module.exports = traverseContext;
 
-},{"./esnode":2,"esprima":11,"estraverse":12}],10:[function(_dereq_,module,exports){
+},{"./esnode":2,"esprima":12,"estraverse":13}],11:[function(_dereq_,module,exports){
 var eaw = exports;
 
 eaw.eastAsianWidth = function(character) {
@@ -901,7 +921,7 @@ eaw.length = function(string) {
   return len;
 };
 
-},{}],11:[function(_dereq_,module,exports){
+},{}],12:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2013 Ariya Hidayat <ariya.hidayat@gmail.com>
   Copyright (C) 2013 Thaddee Tyl <thaddee.tyl@gmail.com>
@@ -4659,7 +4679,7 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],12:[function(_dereq_,module,exports){
+},{}],13:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2012-2013 Yusuke Suzuki <utatane.tea@gmail.com>
   Copyright (C) 2012 Ariya Hidayat <ariya.hidayat@gmail.com>
@@ -5349,10 +5369,10 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],13:[function(_dereq_,module,exports){
+},{}],14:[function(_dereq_,module,exports){
 module.exports = _dereq_('./javascript/diff_match_patch_uncompressed.js').diff_match_patch;
 
-},{"./javascript/diff_match_patch_uncompressed.js":14}],14:[function(_dereq_,module,exports){
+},{"./javascript/diff_match_patch_uncompressed.js":15}],15:[function(_dereq_,module,exports){
 /**
  * Diff Match and Patch
  *
@@ -7547,11 +7567,11 @@ this['DIFF_DELETE'] = DIFF_DELETE;
 this['DIFF_INSERT'] = DIFF_INSERT;
 this['DIFF_EQUAL'] = DIFF_EQUAL;
 
-},{}],15:[function(_dereq_,module,exports){
+},{}],16:[function(_dereq_,module,exports){
 module.exports = _dereq_('./lib/extend');
 
 
-},{"./lib/extend":16}],16:[function(_dereq_,module,exports){
+},{"./lib/extend":17}],17:[function(_dereq_,module,exports){
 /*!
  * node.extend
  * Copyright 2011, John Resig
@@ -7635,7 +7655,7 @@ extend.version = '1.0.8';
 module.exports = extend;
 
 
-},{"is":17}],17:[function(_dereq_,module,exports){
+},{"is":18}],18:[function(_dereq_,module,exports){
 
 /**!
  * is
@@ -8349,7 +8369,7 @@ is.string = function (value) {
 };
 
 
-},{}],18:[function(_dereq_,module,exports){
+},{}],19:[function(_dereq_,module,exports){
 /**
  * type-name - Just a reasonable type name
  * 

@@ -15,11 +15,14 @@ var defaultStringifier = require('./lib/stringify'),
     traverseContext = require('./lib/traverse'),
     extend = require('node.extend');
 
-// "Browserify can only analyze static requires. It is not in the scope of browserify to handle dynamic requires."
-// https://github.com/substack/node-browserify/issues/377
-var b = require('./lib/renderers/binary-expression'),
-    d = require('./lib/renderers/diagram'),
-    f = require('./lib/renderers/file');
+(function() {
+    // "Browserify can only analyze static requires. It is not in the scope of browserify to handle dynamic requires."
+    // https://github.com/substack/node-browserify/issues/377
+    require('./lib/renderers/assertion');
+    require('./lib/renderers/binary-expression');
+    require('./lib/renderers/diagram');
+    require('./lib/renderers/file');
+})();
 
 function defaultOptions () {
     return {
@@ -28,6 +31,7 @@ function defaultOptions () {
         lineSeparator: '\n',
         renderers: [
             './lib/renderers/file',
+            './lib/renderers/assertion',
             './lib/renderers/diagram',
             './lib/renderers/binary-expression'
         ]
@@ -48,8 +52,8 @@ function create (options) {
     return function (context) {
         var writer = new config.writerClass(extend({}, config)),
             renderers = config.renderers.map(function (rendererName) {
-                var rendererClass = require(rendererName),
-                    renderer = new rendererClass(extend({}, config));
+                var RendererClass = require(rendererName),
+                    renderer = new RendererClass(extend({}, config));
                 renderer.init(context);
                 return renderer;
             });
