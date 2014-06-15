@@ -34,6 +34,7 @@
     "estraverse": "~1.5.0",
     "googlediff": "~0.1.0",
     "node.extend": "~1.0.10",
+    "object-keys": "~0.5.1",
     "type-name": "~0.1.0"
   },
   "devDependencies": {

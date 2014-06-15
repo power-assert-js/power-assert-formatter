@@ -239,6 +239,7 @@ module.exports = AssertionRenderer;
 var DiffMatchPatch = _dereq_('googlediff'),
     dmp = new DiffMatchPatch(),
     typeName = _dereq_('type-name'),
+    keys = Object.keys || _dereq_('object-keys'),
     syntax = _dereq_('estraverse').Syntax;
 
 
@@ -275,7 +276,7 @@ BinaryExpressionRenderer.prototype.onEachEsNode = function (esNode) {
 BinaryExpressionRenderer.prototype.render = function (writer) {
     var pairs = [],
         that = this;
-    Object.keys(that.espathToPair).forEach(function (espath) {
+    keys(that.espathToPair).forEach(function (espath) {
         var pair = that.espathToPair[espath];
         if (pair.left && pair.right) {
             pairs.push(pair);
@@ -351,7 +352,7 @@ function udiffChars (text1, text2) {
 
 module.exports = BinaryExpressionRenderer;
 
-},{"estraverse":15,"googlediff":16,"type-name":21}],7:[function(_dereq_,module,exports){
+},{"estraverse":15,"googlediff":16,"object-keys":21,"type-name":23}],7:[function(_dereq_,module,exports){
 function DiagramRenderer (config) {
     this.config = config;
     this.events = [];
@@ -517,6 +518,7 @@ module.exports = StringWriter;
 
 },{}],11:[function(_dereq_,module,exports){
 var typeName = _dereq_('type-name'),
+    keys = Object.keys || _dereq_('object-keys'),
     globalConstructors = [
         Boolean,
         Date,
@@ -596,7 +598,7 @@ function defaultStringifier (config) {
             return '#' + cname + '#';
         }
         pairs = [];
-        Object.keys(obj).forEach(function (key) {
+        keys(obj).forEach(function (key) {
             var val = stringifyAny(obj[key], depth);
             if (!/^[A-Za-z_]+$/.test(key)) {
                 key = JSON.stringify(key);
@@ -611,7 +613,7 @@ function defaultStringifier (config) {
 
 module.exports = defaultStringifier;
 
-},{"type-name":21}],12:[function(_dereq_,module,exports){
+},{"object-keys":21,"type-name":23}],12:[function(_dereq_,module,exports){
 'use strict';
 
 var estraverse = _dereq_('estraverse'),
@@ -8380,6 +8382,95 @@ is.string = function (value) {
 
 
 },{}],21:[function(_dereq_,module,exports){
+"use strict";
+
+// modified from https://github.com/es-shims/es5-shim
+var has = Object.prototype.hasOwnProperty,
+	toString = Object.prototype.toString,
+	isArgs = _dereq_('./isArguments'),
+	hasDontEnumBug = !({'toString': null}).propertyIsEnumerable('toString'),
+	hasProtoEnumBug = (function () {}).propertyIsEnumerable('prototype'),
+	dontEnums = [
+		"toString",
+		"toLocaleString",
+		"valueOf",
+		"hasOwnProperty",
+		"isPrototypeOf",
+		"propertyIsEnumerable",
+		"constructor"
+	];
+
+var keysShim = function keys(object) {
+	var isObject = object !== null && typeof object === 'object',
+		isFunction = toString.call(object) === '[object Function]',
+		isArguments = isArgs(object),
+		theKeys = [];
+
+	if (!isObject && !isFunction && !isArguments) {
+		throw new TypeError("Object.keys called on a non-object");
+	}
+
+	if (isArguments) {
+		for (var key in object) {
+			if (has.call(object, key)) {
+				theKeys.push(Number(key));
+			}
+		}
+	} else {
+		var name,
+			skipProto = hasProtoEnumBug && isFunction;
+
+		for (name in object) {
+			if (!(skipProto && name === 'prototype') && has.call(object, name)) {
+				theKeys.push(name);
+			}
+		}
+	}
+
+	if (hasDontEnumBug) {
+		var ctor = object.constructor;
+		var skipConstructor = ctor && ctor.prototype === object;
+
+		for (var j = 0; j < dontEnums.length; ++j) {
+			if (!(skipConstructor && dontEnums[j] === 'constructor') && has.call(object, dontEnums[j])) {
+				theKeys.push(dontEnum);
+			}
+		}
+	}
+	return theKeys;
+};
+
+keysShim.shim = function shimObjectKeys() {
+	if (!Object.keys) {
+		Object.keys = keysShim;
+	}
+	return Object.keys || keysShim;
+};
+
+module.exports = keysShim;
+
+
+},{"./isArguments":22}],22:[function(_dereq_,module,exports){
+"use strict";
+
+var toString = Object.prototype.toString;
+
+module.exports = function isArguments(value) {
+	var str = toString.call(value);
+	var isArguments = str === '[object Arguments]';
+	if (!isArguments) {
+		isArguments = str !== '[object Array]'
+			&& value !== null
+			&& typeof value === 'object'
+			&& typeof value.length === 'number'
+			&& value.length >= 0
+			&& toString.call(value.callee) === '[object Function]';
+	}
+	return isArguments;
+};
+
+
+},{}],23:[function(_dereq_,module,exports){
 /**
  * type-name - Just a reasonable type name
  * 
