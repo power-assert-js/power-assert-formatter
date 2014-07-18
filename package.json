@@ -35,6 +35,7 @@
     "googlediff": "~0.1.0",
     "node.extend": "~1.0.10",
     "object-keys": "~0.5.1",
+    "stringifier": "~0.1.0",
     "type-name": "~1.0.0"
   },
   "devDependencies": {

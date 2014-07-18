@@ -15,7 +15,7 @@ module.exports = _dereq_('./lib/create');
 },{"./lib/create":2}],2:[function(_dereq_,module,exports){
 'use strict';
 
-var defaultStringifier = _dereq_('./stringify'),
+var stringifier = _dereq_('stringifier'),
     stringWidth = _dereq_('./string-width'),
     StringWriter = _dereq_('./string-writer'),
     traverseContext = _dereq_('./traverse'),
@@ -37,7 +37,7 @@ function create (options) {
         config.widthOf = stringWidth;
     }
     if (typeof config.stringify !== 'function') {
-        config.stringify = defaultStringifier(config);
+        config.stringify = stringifier(config);
     }
     if (!config.writerClass) {
         config.writerClass = StringWriter;
@@ -64,7 +64,7 @@ create.defaultOptions = defaultOptions;
 create.stringWidth = stringWidth;
 module.exports = create;
 
-},{"./options":4,"./renderers/assertion":5,"./renderers/binary-expression":6,"./renderers/diagram":7,"./renderers/file":8,"./string-width":9,"./string-writer":10,"./stringify":11,"./traverse":12,"node.extend":18}],3:[function(_dereq_,module,exports){
+},{"./options":4,"./renderers/assertion":5,"./renderers/binary-expression":6,"./renderers/diagram":7,"./renderers/file":8,"./string-width":9,"./string-writer":10,"./traverse":11,"node.extend":17,"stringifier":22}],3:[function(_dereq_,module,exports){
 var syntax = _dereq_('estraverse').Syntax;
 
 function EsNode (path, currentNode, parentNode, espathToValue, jsCode, jsAST) {
@@ -199,12 +199,14 @@ function searchToken(tokens, fromLine, toLine, predicate) {
 
 module.exports = EsNode;
 
-},{"estraverse":15}],4:[function(_dereq_,module,exports){
+},{"estraverse":14}],4:[function(_dereq_,module,exports){
 module.exports = function defaultOptions () {
     'use strict';
     return {
         lineDiffThreshold: 5,
-        stringifyDepth: 2,
+        maxDepth: 1,
+        anonymous: 'Object',
+        circular: '#@Circular#',
         lineSeparator: '\n',
         renderers: [
             './renderers/file',
@@ -352,7 +354,7 @@ function udiffChars (text1, text2) {
 
 module.exports = BinaryExpressionRenderer;
 
-},{"estraverse":15,"googlediff":16,"object-keys":21,"type-name":23}],7:[function(_dereq_,module,exports){
+},{"estraverse":14,"googlediff":15,"object-keys":20,"type-name":26}],7:[function(_dereq_,module,exports){
 function DiagramRenderer (config) {
     this.config = config;
     this.events = [];
@@ -498,7 +500,7 @@ module.exports = function (str) {
     return width;
 };
 
-},{"eastasianwidth":13}],10:[function(_dereq_,module,exports){
+},{"eastasianwidth":12}],10:[function(_dereq_,module,exports){
 function StringWriter (config) {
     this.lines = [];
     this.lineSeparator = config.lineSeparator;
@@ -517,103 +519,6 @@ StringWriter.prototype.flush = function () {
 module.exports = StringWriter;
 
 },{}],11:[function(_dereq_,module,exports){
-var typeName = _dereq_('type-name'),
-    keys = Object.keys || _dereq_('object-keys'),
-    globalConstructors = [
-        Boolean,
-        Date,
-        Number,
-        RegExp,
-        String
-    ];
-
-function defaultStringifier (config) {
-
-    function stringify(obj, depth) {
-        if (typeof depth !== 'number') {
-            depth = config.stringifyDepth;
-        }
-        return stringifyAny(obj, depth);
-    }
-
-    function stringifyAny(obj, depth) {
-        switch(typeof obj) {
-        case 'string':
-        case 'boolean':
-            return JSON.stringify(obj);
-        case 'number':
-            return stringifyNumber(obj);
-        case 'function':
-            return '#function#';
-        case 'undefined':
-            return 'undefined';
-        case 'object':
-            if (obj === null) {
-                return 'null';
-            } else if (Array.isArray(obj)) {
-                return stringifyArray(obj, depth);
-            } else {
-                return stringifyObject(obj, depth);
-            }
-            break;
-        default:
-            break;
-        }
-    }
-
-    function stringifyNumber(num) {
-        if (isNaN(num)) {
-            return 'NaN';
-        }
-        if (!isFinite(num)) {
-            return num === Infinity ? 'Infinity' : '-Infinity';
-        }
-        return JSON.stringify(num);
-    }
-
-    function stringifyArray(ary, depth) {
-        depth -= 1;
-        if (depth === 0) {
-            return '#Array#';
-        }
-        return '[' + ary.map(function (elem, idx) {
-            return stringifyAny(elem, depth);
-        }).join(',') + ']';
-    }
-
-    function stringifyObject(obj, depth) {
-        var pairs, cname;
-        depth -= 1;
-        if (obj instanceof RegExp) {
-            return obj.toString();
-        }
-        cname = typeName(obj);
-        if (cname === '') {
-            cname = 'Object';
-        }
-        if (globalConstructors.some(function (ctor) { return obj instanceof ctor; })) {
-            return 'new ' + cname + '(' + JSON.stringify(obj) + ')';
-        }
-        if (depth === 0) {
-            return '#' + cname + '#';
-        }
-        pairs = [];
-        keys(obj).forEach(function (key) {
-            var val = stringifyAny(obj[key], depth);
-            if (!/^[A-Za-z_]+$/.test(key)) {
-                key = JSON.stringify(key);
-            }
-            pairs.push(key + ':' + val);
-        });
-        return cname + '{' + pairs.join(',') + '}';
-    }
-
-    return stringify;
-}
-
-module.exports = defaultStringifier;
-
-},{"object-keys":21,"type-name":23}],12:[function(_dereq_,module,exports){
 'use strict';
 
 var estraverse = _dereq_('estraverse'),
@@ -660,7 +565,7 @@ function extractExpressionFrom (tree) {
 
 module.exports = traverseContext;
 
-},{"./esnode":3,"esprima":14,"estraverse":15}],13:[function(_dereq_,module,exports){
+},{"./esnode":3,"esprima":13,"estraverse":14}],12:[function(_dereq_,module,exports){
 var eaw = exports;
 
 eaw.eastAsianWidth = function(character) {
@@ -933,7 +838,7 @@ eaw.length = function(string) {
   return len;
 };
 
-},{}],14:[function(_dereq_,module,exports){
+},{}],13:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2013 Ariya Hidayat <ariya.hidayat@gmail.com>
   Copyright (C) 2013 Thaddee Tyl <thaddee.tyl@gmail.com>
@@ -4691,7 +4596,7 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],15:[function(_dereq_,module,exports){
+},{}],14:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2012-2013 Yusuke Suzuki <utatane.tea@gmail.com>
   Copyright (C) 2012 Ariya Hidayat <ariya.hidayat@gmail.com>
@@ -5381,10 +5286,10 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],16:[function(_dereq_,module,exports){
+},{}],15:[function(_dereq_,module,exports){
 module.exports = _dereq_('./javascript/diff_match_patch_uncompressed.js').diff_match_patch;
 
-},{"./javascript/diff_match_patch_uncompressed.js":17}],17:[function(_dereq_,module,exports){
+},{"./javascript/diff_match_patch_uncompressed.js":16}],16:[function(_dereq_,module,exports){
 /**
  * Diff Match and Patch
  *
@@ -7579,11 +7484,11 @@ this['DIFF_DELETE'] = DIFF_DELETE;
 this['DIFF_INSERT'] = DIFF_INSERT;
 this['DIFF_EQUAL'] = DIFF_EQUAL;
 
-},{}],18:[function(_dereq_,module,exports){
+},{}],17:[function(_dereq_,module,exports){
 module.exports = _dereq_('./lib/extend');
 
 
-},{"./lib/extend":19}],19:[function(_dereq_,module,exports){
+},{"./lib/extend":18}],18:[function(_dereq_,module,exports){
 /*!
  * node.extend
  * Copyright 2011, John Resig
@@ -7667,7 +7572,7 @@ extend.version = '1.0.8';
 module.exports = extend;
 
 
-},{"is":20}],20:[function(_dereq_,module,exports){
+},{"is":19}],19:[function(_dereq_,module,exports){
 
 /**!
  * is
@@ -8381,7 +8286,7 @@ is.string = function (value) {
 };
 
 
-},{}],21:[function(_dereq_,module,exports){
+},{}],20:[function(_dereq_,module,exports){
 "use strict";
 
 // modified from https://github.com/es-shims/es5-shim
@@ -8450,7 +8355,7 @@ keysShim.shim = function shimObjectKeys() {
 module.exports = keysShim;
 
 
-},{"./isArguments":22}],22:[function(_dereq_,module,exports){
+},{"./isArguments":21}],21:[function(_dereq_,module,exports){
 "use strict";
 
 var toString = Object.prototype.toString;
@@ -8470,9 +8375,811 @@ module.exports = function isArguments(value) {
 };
 
 
-},{}],23:[function(_dereq_,module,exports){
+},{}],22:[function(_dereq_,module,exports){
 /**
- * type-name - Just a reasonable type name
+ * stringifier
+ * 
+ * https://github.com/twada/stringifier
+ *
+ * Copyright (c) 2014 Takuto Wada
+ * Licensed under the MIT license.
+ *   http://twada.mit-license.org/
+ */
+'use strict';
+
+var traverse = _dereq_('traverse'),
+    typeName = _dereq_('type-name'),
+    extend = _dereq_('xtend'),
+    s = _dereq_('./strategies');
+
+function defaultHandlers () {
+    return {
+        'null': s.always('null'),
+        'undefined': s.always('undefined'),
+        'function': s.prune(),
+        'string': s.json(),
+        'boolean': s.json(),
+        'number': s.number(),
+        'RegExp': s.toStr(),
+        'String': s.newLike(),
+        'Boolean': s.newLike(),
+        'Number': s.newLike(),
+        'Date': s.newLike(),
+        'Array': s.array(),
+        'Object': s.object(),
+        '@default': s.object()
+    };
+}
+
+function defaultOptions () {
+    return {
+        maxDepth: null,
+        indent: null,
+        anonymous: '@Anonymous',
+        circular: '#@Circular#',
+        snip: '..(snip)',
+        lineSeparator: '\n',
+        typeFun: typeName
+    };
+}
+
+function createStringifier (customOptions, customHandlers) {
+    var options = extend(defaultOptions(), customOptions),
+        handlers = extend(defaultHandlers(), customHandlers);
+    return function stringifyAny (push, x) {
+        var context = this,
+            handler = handlerFor(context.node, options, handlers),
+            currentPath = '/' + context.path.join('/'),
+            customization = handlers[currentPath],
+            acc = {
+                context: context,
+                options: options,
+                handlers: handlers,
+                push: push
+            };
+        if (typeName(customization) === 'function') {
+            handler = customization;
+        } else if (typeName(customization) === 'number') {
+            handler = s.flow.compose(s.filters.truncate(customization),handler);
+        }
+        handler(acc, x);
+        return push;
+    };
+}
+
+function handlerFor (val, options, handlers) {
+    var tname = options.typeFun(val);
+    if (typeName(handlers[tname]) === 'function') {
+        return handlers[tname];
+    }
+    return handlers['@default'];
+}
+
+function walk (val, reducer) {
+    var buffer = [],
+        push = function (str) {
+            buffer.push(str);
+        };
+    traverse(val).reduce(reducer, push);
+    return buffer.join('');
+}
+
+function stringify (val, options, handlers) {
+    return walk(val, createStringifier(options, handlers));
+}
+
+function stringifier (options, handlers) {
+    return function (val) {
+        return walk(val, createStringifier(options, handlers));
+    };
+}
+
+stringifier.stringify = stringify;
+stringifier.strategies = s;
+stringifier.defaultOptions = defaultOptions;
+stringifier.defaultHandlers = defaultHandlers;
+module.exports = stringifier;
+
+},{"./strategies":25,"traverse":23,"type-name":26,"xtend":24}],23:[function(_dereq_,module,exports){
+var traverse = module.exports = function (obj) {
+    return new Traverse(obj);
+};
+
+function Traverse (obj) {
+    this.value = obj;
+}
+
+Traverse.prototype.get = function (ps) {
+    var node = this.value;
+    for (var i = 0; i < ps.length; i ++) {
+        var key = ps[i];
+        if (!node || !hasOwnProperty.call(node, key)) {
+            node = undefined;
+            break;
+        }
+        node = node[key];
+    }
+    return node;
+};
+
+Traverse.prototype.has = function (ps) {
+    var node = this.value;
+    for (var i = 0; i < ps.length; i ++) {
+        var key = ps[i];
+        if (!node || !hasOwnProperty.call(node, key)) {
+            return false;
+        }
+        node = node[key];
+    }
+    return true;
+};
+
+Traverse.prototype.set = function (ps, value) {
+    var node = this.value;
+    for (var i = 0; i < ps.length - 1; i ++) {
+        var key = ps[i];
+        if (!hasOwnProperty.call(node, key)) node[key] = {};
+        node = node[key];
+    }
+    node[ps[i]] = value;
+    return value;
+};
+
+Traverse.prototype.map = function (cb) {
+    return walk(this.value, cb, true);
+};
+
+Traverse.prototype.forEach = function (cb) {
+    this.value = walk(this.value, cb, false);
+    return this.value;
+};
+
+Traverse.prototype.reduce = function (cb, init) {
+    var skip = arguments.length === 1;
+    var acc = skip ? this.value : init;
+    this.forEach(function (x) {
+        if (!this.isRoot || !skip) {
+            acc = cb.call(this, acc, x);
+        }
+    });
+    return acc;
+};
+
+Traverse.prototype.paths = function () {
+    var acc = [];
+    this.forEach(function (x) {
+        acc.push(this.path); 
+    });
+    return acc;
+};
+
+Traverse.prototype.nodes = function () {
+    var acc = [];
+    this.forEach(function (x) {
+        acc.push(this.node);
+    });
+    return acc;
+};
+
+Traverse.prototype.clone = function () {
+    var parents = [], nodes = [];
+    
+    return (function clone (src) {
+        for (var i = 0; i < parents.length; i++) {
+            if (parents[i] === src) {
+                return nodes[i];
+            }
+        }
+        
+        if (typeof src === 'object' && src !== null) {
+            var dst = copy(src);
+            
+            parents.push(src);
+            nodes.push(dst);
+            
+            forEach(objectKeys(src), function (key) {
+                dst[key] = clone(src[key]);
+            });
+            
+            parents.pop();
+            nodes.pop();
+            return dst;
+        }
+        else {
+            return src;
+        }
+    })(this.value);
+};
+
+function walk (root, cb, immutable) {
+    var path = [];
+    var parents = [];
+    var alive = true;
+    
+    return (function walker (node_) {
+        var node = immutable ? copy(node_) : node_;
+        var modifiers = {};
+        
+        var keepGoing = true;
+        
+        var state = {
+            node : node,
+            node_ : node_,
+            path : [].concat(path),
+            parent : parents[parents.length - 1],
+            parents : parents,
+            key : path.slice(-1)[0],
+            isRoot : path.length === 0,
+            level : path.length,
+            circular : null,
+            update : function (x, stopHere) {
+                if (!state.isRoot) {
+                    state.parent.node[state.key] = x;
+                }
+                state.node = x;
+                if (stopHere) keepGoing = false;
+            },
+            'delete' : function (stopHere) {
+                delete state.parent.node[state.key];
+                if (stopHere) keepGoing = false;
+            },
+            remove : function (stopHere) {
+                if (isArray(state.parent.node)) {
+                    state.parent.node.splice(state.key, 1);
+                }
+                else {
+                    delete state.parent.node[state.key];
+                }
+                if (stopHere) keepGoing = false;
+            },
+            keys : null,
+            before : function (f) { modifiers.before = f },
+            after : function (f) { modifiers.after = f },
+            pre : function (f) { modifiers.pre = f },
+            post : function (f) { modifiers.post = f },
+            stop : function () { alive = false },
+            block : function () { keepGoing = false }
+        };
+        
+        if (!alive) return state;
+        
+        function updateState() {
+            if (typeof state.node === 'object' && state.node !== null) {
+                if (!state.keys || state.node_ !== state.node) {
+                    state.keys = objectKeys(state.node)
+                }
+                
+                state.isLeaf = state.keys.length == 0;
+                
+                for (var i = 0; i < parents.length; i++) {
+                    if (parents[i].node_ === node_) {
+                        state.circular = parents[i];
+                        break;
+                    }
+                }
+            }
+            else {
+                state.isLeaf = true;
+                state.keys = null;
+            }
+            
+            state.notLeaf = !state.isLeaf;
+            state.notRoot = !state.isRoot;
+        }
+        
+        updateState();
+        
+        // use return values to update if defined
+        var ret = cb.call(state, state.node);
+        if (ret !== undefined && state.update) state.update(ret);
+        
+        if (modifiers.before) modifiers.before.call(state, state.node);
+        
+        if (!keepGoing) return state;
+        
+        if (typeof state.node == 'object'
+        && state.node !== null && !state.circular) {
+            parents.push(state);
+            
+            updateState();
+            
+            forEach(state.keys, function (key, i) {
+                path.push(key);
+                
+                if (modifiers.pre) modifiers.pre.call(state, state.node[key], key);
+                
+                var child = walker(state.node[key]);
+                if (immutable && hasOwnProperty.call(state.node, key)) {
+                    state.node[key] = child.node;
+                }
+                
+                child.isLast = i == state.keys.length - 1;
+                child.isFirst = i == 0;
+                
+                if (modifiers.post) modifiers.post.call(state, child);
+                
+                path.pop();
+            });
+            parents.pop();
+        }
+        
+        if (modifiers.after) modifiers.after.call(state, state.node);
+        
+        return state;
+    })(root).node;
+}
+
+function copy (src) {
+    if (typeof src === 'object' && src !== null) {
+        var dst;
+        
+        if (isArray(src)) {
+            dst = [];
+        }
+        else if (isDate(src)) {
+            dst = new Date(src.getTime ? src.getTime() : src);
+        }
+        else if (isRegExp(src)) {
+            dst = new RegExp(src);
+        }
+        else if (isError(src)) {
+            dst = { message: src.message };
+        }
+        else if (isBoolean(src)) {
+            dst = new Boolean(src);
+        }
+        else if (isNumber(src)) {
+            dst = new Number(src);
+        }
+        else if (isString(src)) {
+            dst = new String(src);
+        }
+        else if (Object.create && Object.getPrototypeOf) {
+            dst = Object.create(Object.getPrototypeOf(src));
+        }
+        else if (src.constructor === Object) {
+            dst = {};
+        }
+        else {
+            var proto =
+                (src.constructor && src.constructor.prototype)
+                || src.__proto__
+                || {}
+            ;
+            var T = function () {};
+            T.prototype = proto;
+            dst = new T;
+        }
+        
+        forEach(objectKeys(src), function (key) {
+            dst[key] = src[key];
+        });
+        return dst;
+    }
+    else return src;
+}
+
+var objectKeys = Object.keys || function keys (obj) {
+    var res = [];
+    for (var key in obj) res.push(key)
+    return res;
+};
+
+function toS (obj) { return Object.prototype.toString.call(obj) }
+function isDate (obj) { return toS(obj) === '[object Date]' }
+function isRegExp (obj) { return toS(obj) === '[object RegExp]' }
+function isError (obj) { return toS(obj) === '[object Error]' }
+function isBoolean (obj) { return toS(obj) === '[object Boolean]' }
+function isNumber (obj) { return toS(obj) === '[object Number]' }
+function isString (obj) { return toS(obj) === '[object String]' }
+
+var isArray = Array.isArray || function isArray (xs) {
+    return Object.prototype.toString.call(xs) === '[object Array]';
+};
+
+var forEach = function (xs, fn) {
+    if (xs.forEach) return xs.forEach(fn)
+    else for (var i = 0; i < xs.length; i++) {
+        fn(xs[i], i, xs);
+    }
+};
+
+forEach(objectKeys(Traverse.prototype), function (key) {
+    traverse[key] = function (obj) {
+        var args = [].slice.call(arguments, 1);
+        var t = new Traverse(obj);
+        return t[key].apply(t, args);
+    };
+});
+
+var hasOwnProperty = Object.hasOwnProperty || function (obj, key) {
+    return key in obj;
+};
+
+},{}],24:[function(_dereq_,module,exports){
+module.exports = extend
+
+function extend() {
+    var target = {}
+
+    for (var i = 0; i < arguments.length; i++) {
+        var source = arguments[i]
+
+        for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+                target[key] = source[key]
+            }
+        }
+    }
+
+    return target
+}
+
+},{}],25:[function(_dereq_,module,exports){
+'use strict';
+
+var typeName = _dereq_('type-name'),
+    slice = Array.prototype.slice,
+    END = {},
+    ITERATE = {};
+
+// arguments should end with end or iterate
+function compose () {
+    var filters = slice.apply(arguments);
+    return filters.reduceRight(function(right, left) {
+        return left(right);
+    });
+}
+
+// skip children
+function end () {
+    return function (acc, x) {
+        acc.context.keys = [];
+        return END;
+    };
+}
+
+// iterate children
+function iterate () {
+    return function (acc, x) {
+        return ITERATE;
+    };
+}
+
+function filter (predicate) {
+    return function (next) {
+        return function (acc, x) {
+            var toBeIterated,
+                isIteratingArray = (typeName(x) === 'Array');
+            if (typeName(predicate) === 'function') {
+                toBeIterated = [];
+                acc.context.keys.forEach(function (key) {
+                    var indexOrKey = isIteratingArray ? parseInt(key, 10) : key,
+                        kvp = {
+                            key: indexOrKey,
+                            value: x[key]
+                        },
+                        decision = predicate(kvp);
+                    if (decision) {
+                        toBeIterated.push(key);
+                    }
+                    if (typeName(decision) === 'number') {
+                        truncateByKey(decision, key, acc);
+                    }
+                    if (typeName(decision) === 'function') {
+                        customizeStrategyForKey(decision, key, acc);
+                    }
+                });
+                acc.context.keys = toBeIterated;
+            }
+            return next(acc, x);
+        };
+    };
+}
+
+function customizeStrategyForKey (strategy, key, acc) {
+    acc.handlers[currentPath(key, acc)] = strategy;
+}
+
+function truncateByKey (size, key, acc) {
+    acc.handlers[currentPath(key, acc)] = size;
+}
+
+function currentPath (key, acc) {
+    var pathToCurrentNode = [''].concat(acc.context.path);
+    if (typeName(key) !== 'undefined') {
+        pathToCurrentNode.push(key);
+    }
+    return pathToCurrentNode.join('/');
+}
+
+function allowedKeys (orderedWhiteList) {
+    return function (next) {
+        return function (acc, x) {
+            var isIteratingArray = (typeName(x) === 'Array');
+            if (!isIteratingArray && typeName(orderedWhiteList) === 'Array') {
+                acc.context.keys = orderedWhiteList.filter(function (propKey) {
+                    return acc.context.keys.indexOf(propKey) !== -1;
+                });
+            }
+            return next(acc, x);
+        };
+    };
+}
+
+function when (guard, then) {
+    return function (next) {
+        return function (acc, x) {
+            var kvp = {
+                key: acc.context.key,
+                value: x
+            };
+            if (guard(kvp, acc)) {
+                return then(acc, x);
+            }
+            return next(acc, x);
+        };
+    };
+}
+
+function truncate (size) {
+    return function (next) {
+        return function (acc, x) {
+            var orig = acc.push, ret;
+            acc.push = function (str) {
+                var truncated = str.substring(0, size);
+                orig.call(acc, truncated + acc.options.snip);
+            };
+            ret = next(acc, x);
+            acc.push = orig;
+            return ret;
+        };
+    };
+}
+
+function constructorName () {
+    return function (next) {
+        return function (acc, x) {
+            var name = acc.options.typeFun(x);
+            if (name === '') {
+                name = acc.options.anonymous;
+            }
+            acc.push(name);
+            return next(acc, x);
+        };
+    };
+}
+
+function always (str) {
+    return function (next) {
+        return function (acc, x) {
+            acc.push(str);
+            return next(acc, x);
+        };
+    };
+}
+
+function optionValue (key) {
+    return function (next) {
+        return function (acc, x) {
+            acc.push(acc.options[key]);
+            return next(acc, x);
+        };
+    };
+}
+
+function json (replacer) {
+    return function (next) {
+        return function (acc, x) {
+            acc.push(JSON.stringify(x, replacer));
+            return next(acc, x);
+        };
+    };
+}
+
+function toStr () {
+    return function (next) {
+        return function (acc, x) {
+            acc.push(x.toString());
+            return next(acc, x);
+        };
+    };
+}
+
+function decorateArray () {
+    return function (next) {
+        return function (acc, x) {
+            acc.context.before(function (node) {
+                acc.push('[');
+            });
+            acc.context.after(function (node) {
+                afterAllChildren(this, acc.push, acc.options);
+                acc.push(']');
+            });
+            acc.context.pre(function (val, key) {
+                beforeEachChild(this, acc.push, acc.options);
+            });
+            acc.context.post(function (childContext) {
+                afterEachChild(childContext, acc.push);
+            });
+            return next(acc, x);
+        };
+    };
+}
+
+function decorateObject () {
+    return function (next) {
+        return function (acc, x) {
+            acc.context.before(function (node) {
+                acc.push('{');
+            });
+            acc.context.after(function (node) {
+                afterAllChildren(this, acc.push, acc.options);
+                acc.push('}');
+            });
+            acc.context.pre(function (val, key) {
+                beforeEachChild(this, acc.push, acc.options);
+                acc.push(sanitizeKey(key) + (acc.options.indent ? ': ' : ':'));
+            });
+            acc.context.post(function (childContext) {
+                afterEachChild(childContext, acc.push);
+            });
+            return next(acc, x);
+        };
+    };
+}
+
+function sanitizeKey (key) {
+    return /^[A-Za-z_]+$/.test(key) ? key : JSON.stringify(key);
+}
+
+function afterAllChildren (context, push, options) {
+    if (options.indent && 0 < context.keys.length) {
+        push(options.lineSeparator);
+        for(var i = 0; i < context.level; i += 1) { // indent level - 1
+            push(options.indent);
+        }
+    }
+}
+
+function beforeEachChild (context, push, options) {
+    if (options.indent) {
+        push(options.lineSeparator);
+        for(var i = 0; i <= context.level; i += 1) {
+            push(options.indent);
+        }
+    }
+}
+
+function afterEachChild (childContext, push) {
+    if (!childContext.isLast) {
+        push(',');
+    }
+}
+
+function nan (kvp, acc) {
+    return kvp.value !== kvp.value;
+}
+
+function positiveInfinity (kvp, acc) {
+    return !isFinite(kvp.value) && kvp.value === Infinity;
+}
+
+function negativeInfinity (kvp, acc) {
+    return !isFinite(kvp.value) && kvp.value !== Infinity;
+}
+
+function circular (kvp, acc) {
+    return acc.context.circular;
+}
+
+function maxDepth (kvp, acc) {
+    return (acc.options.maxDepth && acc.options.maxDepth <= acc.context.level);
+}
+
+var prune = compose(
+    always('#'),
+    constructorName(),
+    always('#'),
+    end()
+);
+var omitNaN = when(nan, compose(
+    always('NaN'),
+    end()
+));
+var omitPositiveInfinity = when(positiveInfinity, compose(
+    always('Infinity'),
+    end()
+));
+var omitNegativeInfinity = when(negativeInfinity, compose(
+    always('-Infinity'),
+    end()
+));
+var omitCircular = when(circular, compose(
+    optionValue('circular'),
+    end()
+));
+var omitMaxDepth = when(maxDepth, prune);
+
+module.exports = {
+    filters: {
+        always: always,
+        constructorName: constructorName,
+        json: json,
+        toStr: toStr,
+        prune: prune,
+        truncate: truncate,
+        decorateArray: decorateArray,
+        decorateObject: decorateObject
+    },
+    flow: {
+        compose: compose,
+        when: when,
+        allowedKeys: allowedKeys,
+        filter: filter,
+        iterate: iterate,
+        end: end
+    },
+    symbols: {
+        END: END,
+        ITERATE: ITERATE
+    },
+    always: function (str) {
+        return compose(always(str), end());
+    },
+    json: function () {
+        return compose(json(), end());
+    },
+    toStr: function () {
+        return compose(toStr(), end());
+    },
+    prune: function () {
+        return prune;
+    },
+    number: function () {
+        return compose(
+            omitNaN,
+            omitPositiveInfinity,
+            omitNegativeInfinity,
+            json(),
+            end()
+        );
+    },
+    newLike: function () {
+        return compose(
+            always('new '),
+            constructorName(),
+            always('('),
+            json(),
+            always(')'),
+            end()
+        );
+    },
+    array: function (predicate) {
+        return compose(
+            omitCircular,
+            omitMaxDepth,
+            decorateArray(),
+            filter(predicate),
+            iterate()
+        );
+    },
+    object: function (predicate, orderedWhiteList) {
+        return compose(
+            omitCircular,
+            omitMaxDepth,
+            constructorName(),
+            decorateObject(),
+            allowedKeys(orderedWhiteList),
+            filter(predicate),
+            iterate()
+        );
+    }
+};
+
+},{"type-name":26}],26:[function(_dereq_,module,exports){
+/**
+ * type-name - Just a reasonable typeof
  * 
  * https://github.com/twada/type-name
  *
