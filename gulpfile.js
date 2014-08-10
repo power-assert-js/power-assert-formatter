@@ -4,10 +4,10 @@ var gulp = require('gulp'),
     mochaPhantomJS = require('gulp-mocha-phantomjs'),
     connect = require('gulp-connect'),
     del = require('del'),
-    runSequence = require('run-sequence'),
     source = require('vinyl-source-stream'),
     through = require('through2'),
     browserify = require('browserify'),
+    derequire = require('gulp-derequire'),
     config = {
         bundle: {
             standalone: 'powerAssertFormatter',
@@ -105,9 +105,10 @@ gulp.task('clean_coverage', function (done) {
 });
 
 gulp.task('bundle', ['clean_bundle'], function() {
-    var bundleStream = browserify(config.bundle.srcFile).bundle({standalone: config.bundle.standalone});
+    var bundleStream = browserify({entries: config.bundle.srcFile, standalone: config.bundle.standalone}).bundle();
     return bundleStream
         .pipe(source(config.bundle.destName))
+        .pipe(derequire())
         .pipe(gulp.dest(config.bundle.destDir));
 });
 

@@ -11,7 +11,7 @@
   "devDependencies": {
     "empower": "~0.7.3",
     "espower-source": "~0.7.3",
-    "mocha": "~1.20.1",
+    "mocha": "~1.21.4",
     "requirejs": "~2.1.14",
     "assert": "Jxck/assert"
   }
