@@ -1,3 +1,6 @@
 require('blanket')({
-    pattern: '/power-assert-formatter/lib/'
+    pattern: [
+        '/power-assert-formatter/index.js',
+        '/power-assert-formatter/lib/'
+    ]
 });
