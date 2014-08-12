@@ -21,6 +21,15 @@
     "coveralls": "gulp coverage && cat ./coverage.lcov | coveralls"
   },
   "main": "./index.js",
+  "files": [
+    "MIT-LICENSE.txt",
+    "README.md",
+    "gulpfile.js",
+    "index.js",
+    "lib",
+    "package.json",
+    "test"
+  ],
   "directories": {
     "lib": "./lib"
   },
