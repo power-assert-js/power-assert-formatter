@@ -64,7 +64,7 @@ create.defaultOptions = defaultOptions;
 create.stringWidth = stringWidth;
 module.exports = create;
 
-},{"./options":4,"./renderers/assertion":5,"./renderers/binary-expression":6,"./renderers/diagram":7,"./renderers/file":8,"./string-width":9,"./string-writer":10,"./traverse":11,"stringifier":19,"xtend":24}],3:[function(_dereq_,module,exports){
+},{"./options":4,"./renderers/assertion":5,"./renderers/binary-expression":6,"./renderers/diagram":7,"./renderers/file":8,"./string-width":9,"./string-writer":10,"./traverse":11,"stringifier":19,"xtend":23}],3:[function(_dereq_,module,exports){
 var syntax = _dereq_('estraverse').Syntax;
 
 function EsNode (path, currentNode, parentNode, espathToValue, jsCode, jsAST) {
@@ -354,7 +354,7 @@ function udiffChars (text1, text2) {
 
 module.exports = BinaryExpressionRenderer;
 
-},{"estraverse":14,"googlediff":15,"object-keys":17,"type-name":23}],7:[function(_dereq_,module,exports){
+},{"estraverse":14,"googlediff":15,"object-keys":17,"type-name":22}],7:[function(_dereq_,module,exports){
 function DiagramRenderer (config) {
     this.config = config;
     this.events = [];
@@ -7679,7 +7679,7 @@ stringifier.defaultOptions = defaultOptions;
 stringifier.defaultHandlers = defaultHandlers;
 module.exports = stringifier;
 
-},{"./strategies":22,"traverse":20,"type-name":23,"xtend":21}],20:[function(_dereq_,module,exports){
+},{"./strategies":21,"traverse":20,"type-name":22,"xtend":23}],20:[function(_dereq_,module,exports){
 var traverse = module.exports = function (obj) {
     return new Traverse(obj);
 };
@@ -7996,25 +7996,6 @@ var hasOwnProperty = Object.hasOwnProperty || function (obj, key) {
 };
 
 },{}],21:[function(_dereq_,module,exports){
-module.exports = extend
-
-function extend() {
-    var target = {}
-
-    for (var i = 0; i < arguments.length; i++) {
-        var source = arguments[i]
-
-        for (var key in source) {
-            if (source.hasOwnProperty(key)) {
-                target[key] = source[key]
-            }
-        }
-    }
-
-    return target
-}
-
-},{}],22:[function(_dereq_,module,exports){
 'use strict';
 
 var typeName = _dereq_('type-name'),
@@ -8376,7 +8357,7 @@ module.exports = {
     }
 };
 
-},{"type-name":23}],23:[function(_dereq_,module,exports){
+},{"type-name":22}],22:[function(_dereq_,module,exports){
 /**
  * type-name - Just a reasonable typeof
  * 
@@ -8416,7 +8397,24 @@ function typeName (val) {
 
 module.exports = typeName;
 
-},{}],24:[function(_dereq_,module,exports){
-module.exports=_dereq_(21)
+},{}],23:[function(_dereq_,module,exports){
+module.exports = extend
+
+function extend() {
+    var target = {}
+
+    for (var i = 0; i < arguments.length; i++) {
+        var source = arguments[i]
+
+        for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+                target[key] = source[key]
+            }
+        }
+    }
+
+    return target
+}
+
 },{}]},{},[1])(1)
 });
