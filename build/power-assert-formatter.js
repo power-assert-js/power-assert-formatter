@@ -45,7 +45,7 @@ function create (options) {
     return function (context) {
         var writer = new config.writerClass(extend(config)),
             renderers = config.renderers.map(function (rendererName) {
-                var RendererClass = _dereq_(rendererName);
+                var RendererClass = _dereq_('./renderers/' + rendererName);
                 return new RendererClass(extend(config));
             });
         renderers.forEach(function (renderer) {
@@ -209,10 +209,10 @@ module.exports = function defaultOptions () {
         circular: '#@Circular#',
         lineSeparator: '\n',
         renderers: [
-            './renderers/file',
-            './renderers/assertion',
-            './renderers/diagram',
-            './renderers/binary-expression'
+            'file',
+            'assertion',
+            'diagram',
+            'binary-expression'
         ]
     };
 };
