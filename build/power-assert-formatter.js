@@ -19,7 +19,7 @@ var stringifier = _dereq_('stringifier'),
     stringWidth = _dereq_('./string-width'),
     StringWriter = _dereq_('./string-writer'),
     traverseContext = _dereq_('./traverse'),
-    defaultOptions = _dereq_('./options'),
+    defaultOptions = _dereq_('./default-options'),
     extend = _dereq_('xtend');
 
 (function() {
@@ -64,7 +64,25 @@ create.defaultOptions = defaultOptions;
 create.stringWidth = stringWidth;
 module.exports = create;
 
-},{"./options":4,"./renderers/assertion":5,"./renderers/binary-expression":6,"./renderers/diagram":7,"./renderers/file":8,"./string-width":9,"./string-writer":10,"./traverse":11,"stringifier":19,"xtend":23}],3:[function(_dereq_,module,exports){
+},{"./default-options":3,"./renderers/assertion":5,"./renderers/binary-expression":6,"./renderers/diagram":7,"./renderers/file":8,"./string-width":9,"./string-writer":10,"./traverse":11,"stringifier":19,"xtend":23}],3:[function(_dereq_,module,exports){
+module.exports = function defaultOptions () {
+    'use strict';
+    return {
+        lineDiffThreshold: 5,
+        maxDepth: 1,
+        anonymous: 'Object',
+        circular: '#@Circular#',
+        lineSeparator: '\n',
+        renderers: [
+            'file',
+            'assertion',
+            'diagram',
+            'binary-expression'
+        ]
+    };
+};
+
+},{}],4:[function(_dereq_,module,exports){
 var syntax = _dereq_('estraverse').Syntax;
 
 function EsNode (path, currentNode, parentNode, espathToValue, jsCode, jsAST) {
@@ -199,25 +217,7 @@ function searchToken(tokens, fromLine, toLine, predicate) {
 
 module.exports = EsNode;
 
-},{"estraverse":14}],4:[function(_dereq_,module,exports){
-module.exports = function defaultOptions () {
-    'use strict';
-    return {
-        lineDiffThreshold: 5,
-        maxDepth: 1,
-        anonymous: 'Object',
-        circular: '#@Circular#',
-        lineSeparator: '\n',
-        renderers: [
-            'file',
-            'assertion',
-            'diagram',
-            'binary-expression'
-        ]
-    };
-};
-
-},{}],5:[function(_dereq_,module,exports){
+},{"estraverse":14}],5:[function(_dereq_,module,exports){
 function AssertionRenderer (config) {
 }
 
@@ -565,7 +565,7 @@ function extractExpressionFrom (tree) {
 
 module.exports = traverseContext;
 
-},{"./esnode":3,"esprima":13,"estraverse":14}],12:[function(_dereq_,module,exports){
+},{"./esnode":4,"esprima":13,"estraverse":14}],12:[function(_dereq_,module,exports){
 var eaw = exports;
 
 eaw.eastAsianWidth = function(character) {
