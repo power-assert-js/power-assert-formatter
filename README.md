@@ -5,6 +5,9 @@ power-assert-formatter
 [![NPM version](https://badge.fury.io/js/power-assert-formatter.svg)](http://badge.fury.io/js/power-assert-formatter)
 [![Dependency Status](https://gemnasium.com/twada/power-assert-formatter.svg)](https://gemnasium.com/twada/power-assert-formatter)
 [![Coverage Status](https://coveralls.io/repos/twada/power-assert-formatter/badge.png?branch=master)](https://coveralls.io/r/twada/power-assert-formatter?branch=master)
+[![Code Climate](https://codeclimate.com/github/twada/power-assert-formatter/badges/gpa.svg)](https://codeclimate.com/github/twada/power-assert-formatter)
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/twada/power-assert-formatter/blob/master/MIT-LICENSE.txt)
+[![Built with Gulp](http://img.shields.io/badge/built_with-gulp-brightgreen.svg)](http://gulpjs.com/)
 
 Power Assert output formatter.
 
