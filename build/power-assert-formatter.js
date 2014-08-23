@@ -20,6 +20,7 @@ var stringifier = _dereq_('stringifier'),
     StringWriter = _dereq_('./string-writer'),
     ContextTraversal = _dereq_('./traverse'),
     defaultOptions = _dereq_('./default-options'),
+    typeName = _dereq_('type-name'),
     extend = _dereq_('xtend');
 
 (function() {
@@ -45,9 +46,14 @@ function create (options) {
     return function (context) {
         var traversal = new ContextTraversal(context);
         var writer = new config.writerClass(extend(config));
-        var renderers = config.renderers.map(function (rendererName) {
-            var RendererClass = _dereq_('./renderers/' + rendererName);
-            return new RendererClass(traversal, extend(config));
+        config.renderers.forEach(function (rendererName) {
+            var RendererClass;
+            if (typeName(rendererName) === 'function') {
+                RendererClass = rendererName;
+            } else if (typeName(rendererName) === 'string') {
+                RendererClass = _dereq_(rendererName);
+            }
+            new RendererClass(traversal, extend(config));
         });
         traversal.emit('start', context);
         traversal.traverse();
@@ -61,7 +67,7 @@ create.defaultOptions = defaultOptions;
 create.stringWidth = stringWidth;
 module.exports = create;
 
-},{"./default-options":3,"./renderers/assertion":5,"./renderers/binary-expression":6,"./renderers/diagram":7,"./renderers/file":8,"./string-width":9,"./string-writer":10,"./traverse":11,"stringifier":24,"xtend":28}],3:[function(_dereq_,module,exports){
+},{"./default-options":3,"./renderers/assertion":5,"./renderers/binary-expression":6,"./renderers/diagram":7,"./renderers/file":8,"./string-width":9,"./string-writer":10,"./traverse":11,"stringifier":24,"type-name":27,"xtend":28}],3:[function(_dereq_,module,exports){
 module.exports = function defaultOptions () {
     'use strict';
     return {
@@ -71,10 +77,10 @@ module.exports = function defaultOptions () {
         circular: '#@Circular#',
         lineSeparator: '\n',
         renderers: [
-            'file',
-            'assertion',
-            'diagram',
-            'binary-expression'
+            './renderers/file',
+            './renderers/assertion',
+            './renderers/diagram',
+            './renderers/binary-expression'
         ]
     };
 };
