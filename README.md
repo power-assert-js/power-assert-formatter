@@ -117,16 +117,16 @@ Constructor Function for output writer class.
 
 #### options.renderers
 
-| type                | default value |
-|:--------------------|:--------------|
-| `Array` of `string` | shown below   |
+| type                                | default value |
+|:------------------------------------|:--------------|
+| `Array` of (`string` or `function` )| shown below   |
 
 ```javascript
 [
-    'file',
-    'assertion',
-    'diagram',
-    'binary-expression'
+    './renderers/file',
+    './renderers/assertion',
+    './renderers/diagram',
+    './renderers/binary-expression'
 ]
 ```
 
