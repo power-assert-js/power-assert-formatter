@@ -13,6 +13,8 @@
 module.exports = _dereq_('./lib/create');
 
 },{"./lib/create":6}],2:[function(_dereq_,module,exports){
+'use strict';
+
 function AssertionRenderer (traversal, config) {
     var assertionLine;
     traversal.on('start', function (context) {
@@ -137,7 +139,9 @@ function udiffChars (text1, text2) {
 
 module.exports = BinaryExpressionRenderer;
 
-},{"estraverse":19,"googlediff":20,"object-keys":22,"type-name":27}],4:[function(_dereq_,module,exports){
+},{"estraverse":20,"googlediff":21,"object-keys":23,"type-name":28}],4:[function(_dereq_,module,exports){
+'use strict';
+
 function DiagramRenderer (traversal, config) {
     this.config = config;
     this.events = [];
@@ -235,6 +239,8 @@ function rightToLeft (a, b) {
 module.exports = DiagramRenderer;
 
 },{}],5:[function(_dereq_,module,exports){
+'use strict';
+
 function FileRenderer (traversal, config) {
     var filepath, lineNumber;
     traversal.on('start', function (context) {
@@ -306,7 +312,7 @@ create.defaultOptions = defaultOptions;
 create.stringWidth = stringWidth;
 module.exports = create;
 
-},{"./built-in/assertion":2,"./built-in/binary-expression":3,"./built-in/diagram":4,"./built-in/file":5,"./default-options":7,"./string-width":9,"./string-writer":10,"./traverse":11,"stringifier":24,"type-name":27,"xtend":28}],7:[function(_dereq_,module,exports){
+},{"./built-in/assertion":2,"./built-in/binary-expression":3,"./built-in/diagram":4,"./built-in/file":5,"./default-options":7,"./string-width":10,"./string-writer":11,"./traverse":12,"stringifier":25,"type-name":28,"xtend":29}],7:[function(_dereq_,module,exports){
 module.exports = function defaultOptions () {
     'use strict';
     return {
@@ -325,7 +331,10 @@ module.exports = function defaultOptions () {
 };
 
 },{}],8:[function(_dereq_,module,exports){
-var syntax = _dereq_('estraverse').Syntax;
+'use strict';
+
+var syntax = _dereq_('estraverse').Syntax,
+    locationOf = _dereq_('./location');
 
 function EsNode (path, currentNode, parentNode, espathToValue, jsCode, jsAST) {
     if (path) {
@@ -344,28 +353,40 @@ function EsNode (path, currentNode, parentNode, espathToValue, jsCode, jsAST) {
     this.jsCode = jsCode;
     this.jsAST = jsAST;
 }
+
 EsNode.prototype.setParent = function (parentEsNode) {
     this.parentEsNode = parentEsNode;
 };
+
 EsNode.prototype.getParent = function () {
     return this.parentEsNode;
 };
+
 EsNode.prototype.code = function () {
     return this.jsCode.slice(this.currentNode.loc.start.column, this.currentNode.loc.end.column);
 };
+
 EsNode.prototype.value = function () {
     if (this.currentNode.type === syntax.Literal) {
         return this.currentNode.value;
     }
     return this.espathToValue[this.espath];
 };
+
 EsNode.prototype.isCaptured = function () {
     return this.espathToValue.hasOwnProperty(this.espath);
 };
+
 EsNode.prototype.location = function () {
     return locationOf(this.currentNode, this.jsAST.tokens);
 };
 
+module.exports = EsNode;
+
+},{"./location":9,"estraverse":20}],9:[function(_dereq_,module,exports){
+'use strict';
+
+var syntax = _dereq_('estraverse').Syntax;
 
 function locationOf(currentNode, tokens) {
     switch(currentNode.type) {
@@ -396,13 +417,11 @@ function propertyLocationOf(memberExpression, tokens) {
     return token ? token.loc : prop.loc;
 }
 
-
 // calculate location of infix operator for BinaryExpression, AssignmentExpression and LogicalExpression.
 function infixOperatorLocationOf (expression, tokens) {
     var token = findOperatorTokenOf(expression, tokens);
     return token ? token.loc : expression.left.loc;
 }
-
 
 function findLeftBracketTokenOf(expression, tokens) {
     var fromLine = expression.loc.start.line,
@@ -420,7 +439,6 @@ function findLeftBracketTokenOf(expression, tokens) {
     });
 }
 
-
 function findOperatorTokenOf(expression, tokens) {
     var fromLine = expression.left.loc.end.line,
         toLine = expression.right.loc.start.line,
@@ -436,7 +454,6 @@ function findOperatorTokenOf(expression, tokens) {
         return undefined;
     });
 }
-
 
 function searchToken(tokens, fromLine, toLine, predicate) {
     var i, token, found;
@@ -456,10 +473,11 @@ function searchToken(tokens, fromLine, toLine, predicate) {
     return undefined;
 }
 
+module.exports = locationOf;
 
-module.exports = EsNode;
+},{"estraverse":20}],10:[function(_dereq_,module,exports){
+'use strict';
 
-},{"estraverse":19}],9:[function(_dereq_,module,exports){
 var eaw = _dereq_('eastasianwidth');
 
 module.exports = function (str) {
@@ -484,7 +502,9 @@ module.exports = function (str) {
     return width;
 };
 
-},{"eastasianwidth":17}],10:[function(_dereq_,module,exports){
+},{"eastasianwidth":18}],11:[function(_dereq_,module,exports){
+'use strict';
+
 function StringWriter (config) {
     this.lines = [];
     this.lineSeparator = config.lineSeparator;
@@ -502,7 +522,7 @@ StringWriter.prototype.flush = function () {
 
 module.exports = StringWriter;
 
-},{}],11:[function(_dereq_,module,exports){
+},{}],12:[function(_dereq_,module,exports){
 'use strict';
 
 var estraverse = _dereq_('estraverse'),
@@ -556,7 +576,7 @@ function extractExpressionFrom (tree) {
 
 module.exports = ContextTraversal;
 
-},{"./esnode":8,"esprima":18,"estraverse":19,"events":12,"util":16}],12:[function(_dereq_,module,exports){
+},{"./esnode":8,"esprima":19,"estraverse":20,"events":13,"util":17}],13:[function(_dereq_,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -859,7 +879,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],13:[function(_dereq_,module,exports){
+},{}],14:[function(_dereq_,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -884,7 +904,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],14:[function(_dereq_,module,exports){
+},{}],15:[function(_dereq_,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -949,14 +969,14 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],15:[function(_dereq_,module,exports){
+},{}],16:[function(_dereq_,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],16:[function(_dereq_,module,exports){
+},{}],17:[function(_dereq_,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -1546,7 +1566,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,_dereq_('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":15,"_process":14,"inherits":13}],17:[function(_dereq_,module,exports){
+},{"./support/isBuffer":16,"_process":15,"inherits":14}],18:[function(_dereq_,module,exports){
 var eaw = exports;
 
 eaw.eastAsianWidth = function(character) {
@@ -1819,7 +1839,7 @@ eaw.length = function(string) {
   return len;
 };
 
-},{}],18:[function(_dereq_,module,exports){
+},{}],19:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2013 Ariya Hidayat <ariya.hidayat@gmail.com>
   Copyright (C) 2013 Thaddee Tyl <thaddee.tyl@gmail.com>
@@ -5577,7 +5597,7 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],19:[function(_dereq_,module,exports){
+},{}],20:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2012-2013 Yusuke Suzuki <utatane.tea@gmail.com>
   Copyright (C) 2012 Ariya Hidayat <ariya.hidayat@gmail.com>
@@ -6268,10 +6288,10 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],20:[function(_dereq_,module,exports){
+},{}],21:[function(_dereq_,module,exports){
 module.exports = _dereq_('./javascript/diff_match_patch_uncompressed.js').diff_match_patch;
 
-},{"./javascript/diff_match_patch_uncompressed.js":21}],21:[function(_dereq_,module,exports){
+},{"./javascript/diff_match_patch_uncompressed.js":22}],22:[function(_dereq_,module,exports){
 /**
  * Diff Match and Patch
  *
@@ -8466,7 +8486,7 @@ this['DIFF_DELETE'] = DIFF_DELETE;
 this['DIFF_INSERT'] = DIFF_INSERT;
 this['DIFF_EQUAL'] = DIFF_EQUAL;
 
-},{}],22:[function(_dereq_,module,exports){
+},{}],23:[function(_dereq_,module,exports){
 "use strict";
 
 // modified from https://github.com/es-shims/es5-shim
@@ -8535,7 +8555,7 @@ keysShim.shim = function shimObjectKeys() {
 module.exports = keysShim;
 
 
-},{"./isArguments":23}],23:[function(_dereq_,module,exports){
+},{"./isArguments":24}],24:[function(_dereq_,module,exports){
 "use strict";
 
 var toString = Object.prototype.toString;
@@ -8555,7 +8575,7 @@ module.exports = function isArguments(value) {
 };
 
 
-},{}],24:[function(_dereq_,module,exports){
+},{}],25:[function(_dereq_,module,exports){
 /**
  * stringifier
  * 
@@ -8660,7 +8680,7 @@ stringifier.defaultOptions = defaultOptions;
 stringifier.defaultHandlers = defaultHandlers;
 module.exports = stringifier;
 
-},{"./strategies":26,"traverse":25,"type-name":27,"xtend":28}],25:[function(_dereq_,module,exports){
+},{"./strategies":27,"traverse":26,"type-name":28,"xtend":29}],26:[function(_dereq_,module,exports){
 var traverse = module.exports = function (obj) {
     return new Traverse(obj);
 };
@@ -8976,7 +8996,7 @@ var hasOwnProperty = Object.hasOwnProperty || function (obj, key) {
     return key in obj;
 };
 
-},{}],26:[function(_dereq_,module,exports){
+},{}],27:[function(_dereq_,module,exports){
 'use strict';
 
 var typeName = _dereq_('type-name'),
@@ -9338,7 +9358,7 @@ module.exports = {
     }
 };
 
-},{"type-name":27}],27:[function(_dereq_,module,exports){
+},{"type-name":28}],28:[function(_dereq_,module,exports){
 /**
  * type-name - Just a reasonable typeof
  * 
@@ -9378,7 +9398,7 @@ function typeName (val) {
 
 module.exports = typeName;
 
-},{}],28:[function(_dereq_,module,exports){
+},{}],29:[function(_dereq_,module,exports){
 module.exports = extend
 
 function extend() {
