@@ -130,7 +130,17 @@ Constructor Function for output writer class.
 ]
 ```
 
-Output renderers to use. Output is rendered by renderers in order.
+Output renderers to use. Output is rendered by renderers in order. You can create custom renderer and add its constructor function to customize power-assert-output.
+
+```javascript
+[
+    './built-in/file',
+    './built-in/assertion',
+    YourCustomRenderer,
+    './built-in/binary-expression'
+]
+```
+
 
 ### var options = createFormatter.defaultOptions();
 
