@@ -132,6 +132,29 @@ Constructor Function for output writer class.
 
 Output renderers to use. Output is rendered by renderers in order.
 
+### var options = createFormatter.defaultOptions();
+
+Returns default options object for createFormatter function. In other words, returns
+
+```javascript
+module.exports = function defaultOptions () {
+    'use strict';
+    return {
+        lineDiffThreshold: 5,
+        maxDepth: 1,
+        anonymous: 'Object',
+        circular: '#@Circular#',
+        lineSeparator: '\n',
+        renderers: [
+            './renderers/file',
+            './renderers/assertion',
+            './renderers/diagram',
+            './renderers/binary-expression'
+        ]
+    };
+};
+```
+
 
 ### var formattedText = formatter(powerAssertContext);
 
