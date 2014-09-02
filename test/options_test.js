@@ -78,9 +78,9 @@ suite('renderers customization', function () {
 
     rendererCustomizationTest('without file renderer', {
         renderers: [
-            './renderers/assertion',
-            './renderers/diagram',
-            './renderers/binary-expression'
+            './built-in/assertion',
+            './built-in/diagram',
+            './built-in/binary-expression'
         ]
     }, [
         'comment ',
@@ -102,9 +102,9 @@ suite('renderers customization', function () {
 
     rendererCustomizationTest('without assertion renderer (though it is nonsense)', {
         renderers: [
-            './renderers/file',
-            './renderers/diagram',
-            './renderers/binary-expression'
+            './built-in/file',
+            './built-in/diagram',
+            './built-in/binary-expression'
         ]
     }, [
         'comment # /path/to/some_test.js:1',
@@ -124,9 +124,9 @@ suite('renderers customization', function () {
 
     rendererCustomizationTest('without diagram renderer', {
         renderers: [
-            './renderers/file',
-            './renderers/assertion',
-            './renderers/binary-expression'
+            './built-in/file',
+            './built-in/assertion',
+            './built-in/binary-expression'
         ]
     }, [
         'comment # /path/to/some_test.js:1',
@@ -144,9 +144,9 @@ suite('renderers customization', function () {
 
     rendererCustomizationTest('without binary-expression renderer', {
         renderers: [
-            './renderers/file',
-            './renderers/assertion',
-            './renderers/diagram'
+            './built-in/file',
+            './built-in/assertion',
+            './built-in/diagram'
         ]
     }, [
         'comment # /path/to/some_test.js:1',
@@ -173,9 +173,9 @@ suite('renderers customization', function () {
         }
         rendererCustomizationTest('without binary-expression renderer', {
             renderers: [
-                './renderers/file',
+                './built-in/file',
                 CustomRenderer,
-                './renderers/binary-expression'
+                './built-in/binary-expression'
             ]
         }, [
             'comment # /path/to/some_test.js:1',

@@ -123,10 +123,10 @@ Constructor Function for output writer class.
 
 ```javascript
 [
-    './renderers/file',
-    './renderers/assertion',
-    './renderers/diagram',
-    './renderers/binary-expression'
+    './built-in/file',
+    './built-in/assertion',
+    './built-in/diagram',
+    './built-in/binary-expression'
 ]
 ```
 
@@ -146,10 +146,10 @@ module.exports = function defaultOptions () {
         circular: '#@Circular#',
         lineSeparator: '\n',
         renderers: [
-            './renderers/file',
-            './renderers/assertion',
-            './renderers/diagram',
-            './renderers/binary-expression'
+            './built-in/file',
+            './built-in/assertion',
+            './built-in/diagram',
+            './built-in/binary-expression'
         ]
     };
 };
