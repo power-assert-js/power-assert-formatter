@@ -9,8 +9,8 @@
     "test"
   ],
   "devDependencies": {
-    "empower": "~0.8.0",
-    "espower-source": "~0.8.0",
+    "empower": "~0.9.0",
+    "espower-source": "~0.9.0",
     "mocha": "~1.21.4",
     "requirejs": "~2.1.14",
     "assert": "Jxck/assert"

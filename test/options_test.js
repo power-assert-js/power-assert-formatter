@@ -43,4 +43,155 @@ suite('lineSeparator option', function () {
     lineSeparatorTest('CRLF', {lineSeparator: '\r\n'}, '\r\n');
 });
 
+suite('renderers customization', function () {
+    function rendererCustomizationTest (name, option, expectedLines) {
+        var assert = empower(baseAssert, createFormatter(option));
+        test(name, function () {
+            var hoge = 'foo';
+            var fuga = 'bar';
+            try {
+                eval(weave('assert.ok(hoge === fuga, "comment");'));
+            } catch (e) {
+                baseAssert.equal(e.name, 'AssertionError');
+                baseAssert.equal(e.message, expectedLines.join('\n'));
+            }
+        });
+    }
+
+    rendererCustomizationTest('default', null, [
+        'comment # /path/to/some_test.js:1',
+        '',
+        'assert.ok(hoge === fuga, "comment")',
+        '          |    |   |               ',
+        '          |    |   "bar"           ',
+        '          |    false               ',
+        '          "foo"                    ',
+        '',
+        '--- [string] fuga',
+        '+++ [string] hoge',
+        '@@ -1,3 +1,3 @@',
+        '-bar',
+        '+foo',
+        '',
+        ''
+    ]);
+
+    rendererCustomizationTest('without file renderer', {
+        renderers: [
+            './built-in/assertion',
+            './built-in/diagram',
+            './built-in/binary-expression'
+        ]
+    }, [
+        'comment ',
+        'assert.ok(hoge === fuga, "comment")',
+        '          |    |   |               ',
+        '          |    |   "bar"           ',
+        '          |    false               ',
+        '          "foo"                    ',
+        '',
+        '--- [string] fuga',
+        '+++ [string] hoge',
+        '@@ -1,3 +1,3 @@',
+        '-bar',
+        '+foo',
+        '',
+        ''
+    ]);
+
+
+    rendererCustomizationTest('without assertion renderer (though it is nonsense)', {
+        renderers: [
+            './built-in/file',
+            './built-in/diagram',
+            './built-in/binary-expression'
+        ]
+    }, [
+        'comment # /path/to/some_test.js:1',
+        '          |    |   |               ',
+        '          |    |   "bar"           ',
+        '          |    false               ',
+        '          "foo"                    ',
+        '',
+        '--- [string] fuga',
+        '+++ [string] hoge',
+        '@@ -1,3 +1,3 @@',
+        '-bar',
+        '+foo',
+        '',
+        ''
+    ]);
+
+    rendererCustomizationTest('without diagram renderer', {
+        renderers: [
+            './built-in/file',
+            './built-in/assertion',
+            './built-in/binary-expression'
+        ]
+    }, [
+        'comment # /path/to/some_test.js:1',
+        '',
+        'assert.ok(hoge === fuga, "comment")',
+        '',
+        '--- [string] fuga',
+        '+++ [string] hoge',
+        '@@ -1,3 +1,3 @@',
+        '-bar',
+        '+foo',
+        '',
+        ''
+    ]);
+
+    rendererCustomizationTest('without binary-expression renderer', {
+        renderers: [
+            './built-in/file',
+            './built-in/assertion',
+            './built-in/diagram'
+        ]
+    }, [
+        'comment # /path/to/some_test.js:1',
+        '',
+        'assert.ok(hoge === fuga, "comment")',
+        '          |    |   |               ',
+        '          |    |   "bar"           ',
+        '          |    false               ',
+        '          "foo"                    ',
+        ''
+    ]);
+
+
+    (function () {
+        function CustomRenderer (traversal, config) {
+            var assertionLine;
+            traversal.on('start', function (context) {
+                assertionLine = context.source.content;
+            });
+            traversal.on('render', function (writer) {
+                writer.write('');
+                writer.write('## ' + assertionLine + ' ##');
+            });
+        }
+        rendererCustomizationTest('without binary-expression renderer', {
+            renderers: [
+                './built-in/file',
+                CustomRenderer,
+                './built-in/binary-expression'
+            ]
+        }, [
+            'comment # /path/to/some_test.js:1',
+            '',
+            '## assert.ok(hoge === fuga, "comment") ##',
+            '',
+            '--- [string] fuga',
+            '+++ [string] hoge',
+            '@@ -1,3 +1,3 @@',
+            '-bar',
+            '+foo',
+            '',
+            ''
+        ]);
+    })();
+
+});
+
 }));
