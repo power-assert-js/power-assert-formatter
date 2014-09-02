@@ -12,7 +12,246 @@
 
 module.exports = _dereq_('./lib/create');
 
-},{"./lib/create":2}],2:[function(_dereq_,module,exports){
+},{"./lib/create":6}],2:[function(_dereq_,module,exports){
+function AssertionRenderer (traversal, config) {
+    var assertionLine;
+    traversal.on('start', function (context) {
+        assertionLine = context.source.content;
+    });
+    traversal.on('render', function (writer) {
+        writer.write('');
+        writer.write(assertionLine);
+    });
+}
+module.exports = AssertionRenderer;
+
+},{}],3:[function(_dereq_,module,exports){
+'use strict';
+
+var DiffMatchPatch = _dereq_('googlediff'),
+    dmp = new DiffMatchPatch(),
+    typeName = _dereq_('type-name'),
+    keys = Object.keys || _dereq_('object-keys'),
+    syntax = _dereq_('estraverse').Syntax;
+
+
+function BinaryExpressionRenderer(traversal, config) {
+    this.config = config;
+    this.stringify = config.stringify;
+    this.espathToPair = {};
+    var _this = this;
+    traversal.on('esnode', function (esNode) {
+        var pair;
+        if (!esNode.isCaptured()) {
+            if (isTargetBinaryExpression(esNode.getParent()) && esNode.currentNode.type === syntax.Literal) {
+                _this.espathToPair[esNode.parentEspath][esNode.currentProp] = {code: esNode.code(), value: esNode.value()};
+            }
+            return;
+        }
+        if (isTargetBinaryExpression(esNode.getParent())) {
+            _this.espathToPair[esNode.parentEspath][esNode.currentProp] = {code: esNode.code(), value: esNode.value()};
+        }
+        if (isTargetBinaryExpression(esNode)) {
+            pair = {
+                operator: esNode.currentNode.operator,
+                value: esNode.value()
+            };
+            _this.espathToPair[esNode.espath] = pair;
+        }
+    });
+    traversal.on('render', function (writer) {
+        var pairs = [];
+        keys(_this.espathToPair).forEach(function (espath) {
+            var pair = _this.espathToPair[espath];
+            if (pair.left && pair.right) {
+                pairs.push(pair);
+            }
+        });
+        pairs.forEach(function (pair) {
+            _this.compare(pair, writer);
+        });
+    });
+}
+
+BinaryExpressionRenderer.prototype.compare = function (pair, writer) {
+    if (isStringDiffTarget(pair)) {
+        this.showStringDiff(pair, writer);
+    } else {
+        this.showExpectedAndActual(pair, writer);
+    }
+};
+
+BinaryExpressionRenderer.prototype.showExpectedAndActual = function (pair, writer) {
+    writer.write('');
+    writer.write('[' + typeName(pair.right.value) + '] ' + pair.right.code);
+    writer.write('=> ' + this.stringify(pair.right.value));
+    writer.write('[' + typeName(pair.left.value)  + '] ' + pair.left.code);
+    writer.write('=> ' + this.stringify(pair.left.value));
+};
+
+BinaryExpressionRenderer.prototype.showStringDiff = function (pair, writer) {
+    var patch;
+    if (this.shouldUseLineLevelDiff(pair.right.value)) {
+        patch = udiffLines(pair.right.value, pair.left.value);
+    } else {
+        patch = udiffChars(pair.right.value, pair.left.value);
+    }
+    writer.write('');
+    writer.write('--- [string] ' + pair.right.code);
+    writer.write('+++ [string] ' + pair.left.code);
+    writer.write(decodeURIComponent(patch));
+};
+
+BinaryExpressionRenderer.prototype.shouldUseLineLevelDiff = function (text) {
+    return this.config.lineDiffThreshold < text.split(/\r\n|\r|\n/).length;
+};
+
+
+function isTargetBinaryExpression (esNode) {
+    return esNode &&
+        esNode.currentNode.type === syntax.BinaryExpression &&
+        (esNode.currentNode.operator === '===' || esNode.currentNode.operator === '==') &&
+        esNode.isCaptured() &&
+        !(esNode.value());
+}
+
+function isStringDiffTarget(pair) {
+    return typeof pair.left.value === 'string' && typeof pair.right.value === 'string';
+}
+
+function udiffLines(text1, text2) {
+    /*jshint camelcase: false */
+    var a = dmp.diff_linesToChars_(text1, text2),
+        diffs = dmp.diff_main(a.chars1, a.chars2, false);
+    dmp.diff_charsToLines_(diffs, a.lineArray);
+    dmp.diff_cleanupSemantic(diffs);
+    return dmp.patch_toText(dmp.patch_make(text1, diffs));
+}
+
+function udiffChars (text1, text2) {
+    /*jshint camelcase: false */
+    var diffs = dmp.diff_main(text1, text2, false);
+    dmp.diff_cleanupSemantic(diffs);
+    return dmp.patch_toText(dmp.patch_make(text1, diffs));
+}
+
+module.exports = BinaryExpressionRenderer;
+
+},{"estraverse":19,"googlediff":20,"object-keys":22,"type-name":27}],4:[function(_dereq_,module,exports){
+function DiagramRenderer (traversal, config) {
+    this.config = config;
+    this.events = [];
+    this.stringify = config.stringify;
+    this.widthOf = config.widthOf;
+    this.initialVertivalBarLength = 1;
+    var _this = this;
+    traversal.on('start', function (context) {
+        _this.context = context;
+        _this.assertionLine = context.source.content;
+        _this.initializeRows();
+    });
+    traversal.on('esnode', function (esNode) {
+        if (!esNode.isCaptured()) {
+            return;
+        }
+        _this.events.push({value: esNode.value(), loc: esNode.location()});
+    });
+    traversal.on('render', function (writer) {
+        _this.events.sort(rightToLeft);
+        _this.constructRows(_this.events);
+        _this.rows.forEach(function (columns) {
+            writer.write(columns.join(''));
+        });
+    });
+}
+
+DiagramRenderer.prototype.initializeRows = function () {
+    this.rows = [];
+    for (var i = 0; i <= this.initialVertivalBarLength; i += 1) {
+        this.addOneMoreRow();
+    }
+};
+
+DiagramRenderer.prototype.newRowFor = function (assertionLine) {
+    return createRow(this.widthOf(assertionLine), ' ');
+};
+
+DiagramRenderer.prototype.addOneMoreRow = function () {
+    this.rows.push(this.newRowFor(this.assertionLine));
+};
+
+DiagramRenderer.prototype.lastRow = function () {
+    return this.rows[this.rows.length - 1];
+};
+
+DiagramRenderer.prototype.renderVerticalBarAt = function (columnIndex) {
+    var i, lastRowIndex = this.rows.length - 1;
+    for (i = 0; i < lastRowIndex; i += 1) {
+        this.rows[i].splice(columnIndex, 1, '|');
+    }
+};
+
+DiagramRenderer.prototype.renderValueAt = function (columnIndex, dumpedValue) {
+    var i, width = this.widthOf(dumpedValue);
+    for (i = 0; i < width; i += 1) {
+        this.lastRow().splice(columnIndex + i, 1, dumpedValue.charAt(i));
+    }
+};
+
+DiagramRenderer.prototype.isOverlapped = function (prevCapturing, nextCaputuring, dumpedValue) {
+    return (typeof prevCapturing !== 'undefined') && this.startColumnFor(prevCapturing) <= (this.startColumnFor(nextCaputuring) + this.widthOf(dumpedValue));
+};
+
+DiagramRenderer.prototype.constructRows = function (capturedEvents) {
+    var that = this,
+        prevCaptured;
+    capturedEvents.forEach(function (captured) {
+        var dumpedValue = that.stringify(captured.value);
+        if (that.isOverlapped(prevCaptured, captured, dumpedValue)) {
+            that.addOneMoreRow();
+        }
+        that.renderVerticalBarAt(that.startColumnFor(captured));
+        that.renderValueAt(that.startColumnFor(captured), dumpedValue);
+        prevCaptured = captured;
+    });
+};
+
+DiagramRenderer.prototype.startColumnFor = function (captured) {
+    return this.widthOf(this.assertionLine.slice(0, captured.loc.start.column));
+};
+
+function createRow (numCols, initial) {
+    var row = [], i;
+    for(i = 0; i < numCols; i += 1) {
+        row[i] = initial;
+    }
+    return row;
+}
+
+function rightToLeft (a, b) {
+    return b.loc.start.column - a.loc.start.column;
+}
+
+module.exports = DiagramRenderer;
+
+},{}],5:[function(_dereq_,module,exports){
+function FileRenderer (traversal, config) {
+    var filepath, lineNumber;
+    traversal.on('start', function (context) {
+        filepath = context.source.filepath;
+        lineNumber = context.source.line;
+    });
+    traversal.on('render', function (writer) {
+        if (filepath) {
+            writer.write('# ' + [filepath, lineNumber].join(':'));
+        } else {
+            writer.write('# at line: ' + lineNumber);
+        }
+    });
+}
+module.exports = FileRenderer;
+
+},{}],6:[function(_dereq_,module,exports){
 'use strict';
 
 var stringifier = _dereq_('stringifier'),
@@ -26,10 +265,10 @@ var stringifier = _dereq_('stringifier'),
 (function() {
     // "Browserify can only analyze static requires. It is not in the scope of browserify to handle dynamic requires."
     // https://github.com/substack/node-browserify/issues/377
-    _dereq_('./renderers/assertion');
-    _dereq_('./renderers/binary-expression');
-    _dereq_('./renderers/diagram');
-    _dereq_('./renderers/file');
+    _dereq_('./built-in/assertion');
+    _dereq_('./built-in/binary-expression');
+    _dereq_('./built-in/diagram');
+    _dereq_('./built-in/file');
 })();
 
 function create (options) {
@@ -67,7 +306,7 @@ create.defaultOptions = defaultOptions;
 create.stringWidth = stringWidth;
 module.exports = create;
 
-},{"./default-options":3,"./renderers/assertion":5,"./renderers/binary-expression":6,"./renderers/diagram":7,"./renderers/file":8,"./string-width":9,"./string-writer":10,"./traverse":11,"stringifier":24,"type-name":27,"xtend":28}],3:[function(_dereq_,module,exports){
+},{"./built-in/assertion":2,"./built-in/binary-expression":3,"./built-in/diagram":4,"./built-in/file":5,"./default-options":7,"./string-width":9,"./string-writer":10,"./traverse":11,"stringifier":24,"type-name":27,"xtend":28}],7:[function(_dereq_,module,exports){
 module.exports = function defaultOptions () {
     'use strict';
     return {
@@ -77,15 +316,15 @@ module.exports = function defaultOptions () {
         circular: '#@Circular#',
         lineSeparator: '\n',
         renderers: [
-            './renderers/file',
-            './renderers/assertion',
-            './renderers/diagram',
-            './renderers/binary-expression'
+            './built-in/file',
+            './built-in/assertion',
+            './built-in/diagram',
+            './built-in/binary-expression'
         ]
     };
 };
 
-},{}],4:[function(_dereq_,module,exports){
+},{}],8:[function(_dereq_,module,exports){
 var syntax = _dereq_('estraverse').Syntax;
 
 function EsNode (path, currentNode, parentNode, espathToValue, jsCode, jsAST) {
@@ -105,10 +344,10 @@ function EsNode (path, currentNode, parentNode, espathToValue, jsCode, jsAST) {
     this.jsCode = jsCode;
     this.jsAST = jsAST;
 }
-EsNode.prototype.setParentEsNode = function (parentEsNode) {
+EsNode.prototype.setParent = function (parentEsNode) {
     this.parentEsNode = parentEsNode;
 };
-EsNode.prototype.getParentEsNode = function () {
+EsNode.prototype.getParent = function () {
     return this.parentEsNode;
 };
 EsNode.prototype.code = function () {
@@ -220,246 +459,7 @@ function searchToken(tokens, fromLine, toLine, predicate) {
 
 module.exports = EsNode;
 
-},{"estraverse":19}],5:[function(_dereq_,module,exports){
-function AssertionRenderer (traversal, config) {
-    var assertionLine;
-    traversal.on('start', function (context) {
-        assertionLine = context.source.content;
-    });
-    traversal.on('render', function (writer) {
-        writer.write('');
-        writer.write(assertionLine);
-    });
-}
-module.exports = AssertionRenderer;
-
-},{}],6:[function(_dereq_,module,exports){
-'use strict';
-
-var DiffMatchPatch = _dereq_('googlediff'),
-    dmp = new DiffMatchPatch(),
-    typeName = _dereq_('type-name'),
-    keys = Object.keys || _dereq_('object-keys'),
-    syntax = _dereq_('estraverse').Syntax;
-
-
-function BinaryExpressionRenderer(traversal, config) {
-    this.config = config;
-    this.stringify = config.stringify;
-    this.espathToPair = {};
-    var _this = this;
-    traversal.on('esnode', function (esNode) {
-        var pair;
-        if (!esNode.isCaptured()) {
-            if (isTargetBinaryExpression(esNode.getParentEsNode()) && esNode.currentNode.type === syntax.Literal) {
-                _this.espathToPair[esNode.parentEspath][esNode.currentProp] = {code: esNode.code(), value: esNode.value()};
-            }
-            return;
-        }
-        if (isTargetBinaryExpression(esNode.getParentEsNode())) {
-            _this.espathToPair[esNode.parentEspath][esNode.currentProp] = {code: esNode.code(), value: esNode.value()};
-        }
-        if (isTargetBinaryExpression(esNode)) {
-            pair = {
-                operator: esNode.currentNode.operator,
-                value: esNode.value()
-            };
-            _this.espathToPair[esNode.espath] = pair;
-        }
-    });
-    traversal.on('render', function (writer) {
-        var pairs = [];
-        keys(_this.espathToPair).forEach(function (espath) {
-            var pair = _this.espathToPair[espath];
-            if (pair.left && pair.right) {
-                pairs.push(pair);
-            }
-        });
-        pairs.forEach(function (pair) {
-            _this.compare(pair, writer);
-        });
-    });
-}
-
-BinaryExpressionRenderer.prototype.compare = function (pair, writer) {
-    if (isStringDiffTarget(pair)) {
-        this.showStringDiff(pair, writer);
-    } else {
-        this.showExpectedAndActual(pair, writer);
-    }
-};
-
-BinaryExpressionRenderer.prototype.showExpectedAndActual = function (pair, writer) {
-    writer.write('');
-    writer.write('[' + typeName(pair.right.value) + '] ' + pair.right.code);
-    writer.write('=> ' + this.stringify(pair.right.value));
-    writer.write('[' + typeName(pair.left.value)  + '] ' + pair.left.code);
-    writer.write('=> ' + this.stringify(pair.left.value));
-};
-
-BinaryExpressionRenderer.prototype.showStringDiff = function (pair, writer) {
-    var patch;
-    if (this.shouldUseLineLevelDiff(pair.right.value)) {
-        patch = udiffLines(pair.right.value, pair.left.value);
-    } else {
-        patch = udiffChars(pair.right.value, pair.left.value);
-    }
-    writer.write('');
-    writer.write('--- [string] ' + pair.right.code);
-    writer.write('+++ [string] ' + pair.left.code);
-    writer.write(decodeURIComponent(patch));
-};
-
-BinaryExpressionRenderer.prototype.shouldUseLineLevelDiff = function (text) {
-    return this.config.lineDiffThreshold < text.split(/\r\n|\r|\n/).length;
-};
-
-
-function isTargetBinaryExpression (esNode) {
-    return esNode &&
-        esNode.currentNode.type === syntax.BinaryExpression &&
-        (esNode.currentNode.operator === '===' || esNode.currentNode.operator === '==') &&
-        esNode.isCaptured() &&
-        !(esNode.value());
-}
-
-function isStringDiffTarget(pair) {
-    return typeof pair.left.value === 'string' && typeof pair.right.value === 'string';
-}
-
-function udiffLines(text1, text2) {
-    /*jshint camelcase: false */
-    var a = dmp.diff_linesToChars_(text1, text2),
-        diffs = dmp.diff_main(a.chars1, a.chars2, false);
-    dmp.diff_charsToLines_(diffs, a.lineArray);
-    dmp.diff_cleanupSemantic(diffs);
-    return dmp.patch_toText(dmp.patch_make(text1, diffs));
-}
-
-function udiffChars (text1, text2) {
-    /*jshint camelcase: false */
-    var diffs = dmp.diff_main(text1, text2, false);
-    dmp.diff_cleanupSemantic(diffs);
-    return dmp.patch_toText(dmp.patch_make(text1, diffs));
-}
-
-module.exports = BinaryExpressionRenderer;
-
-},{"estraverse":19,"googlediff":20,"object-keys":22,"type-name":27}],7:[function(_dereq_,module,exports){
-function DiagramRenderer (traversal, config) {
-    this.config = config;
-    this.events = [];
-    this.stringify = config.stringify;
-    this.widthOf = config.widthOf;
-    this.initialVertivalBarLength = 1;
-    var _this = this;
-    traversal.on('start', function (context) {
-        _this.context = context;
-        _this.assertionLine = context.source.content;
-        _this.initializeRows();
-    });
-    traversal.on('esnode', function (esNode) {
-        if (!esNode.isCaptured()) {
-            return;
-        }
-        _this.events.push({value: esNode.value(), loc: esNode.location()});
-    });
-    traversal.on('render', function (writer) {
-        _this.events.sort(rightToLeft);
-        _this.constructRows(_this.events);
-        _this.rows.forEach(function (columns) {
-            writer.write(columns.join(''));
-        });
-    });
-}
-
-DiagramRenderer.prototype.initializeRows = function () {
-    this.rows = [];
-    for (var i = 0; i <= this.initialVertivalBarLength; i += 1) {
-        this.addOneMoreRow();
-    }
-};
-
-DiagramRenderer.prototype.newRowFor = function (assertionLine) {
-    return createRow(this.widthOf(assertionLine), ' ');
-};
-
-DiagramRenderer.prototype.addOneMoreRow = function () {
-    this.rows.push(this.newRowFor(this.assertionLine));
-};
-
-DiagramRenderer.prototype.lastRow = function () {
-    return this.rows[this.rows.length - 1];
-};
-
-DiagramRenderer.prototype.renderVerticalBarAt = function (columnIndex) {
-    var i, lastRowIndex = this.rows.length - 1;
-    for (i = 0; i < lastRowIndex; i += 1) {
-        this.rows[i].splice(columnIndex, 1, '|');
-    }
-};
-
-DiagramRenderer.prototype.renderValueAt = function (columnIndex, dumpedValue) {
-    var i, width = this.widthOf(dumpedValue);
-    for (i = 0; i < width; i += 1) {
-        this.lastRow().splice(columnIndex + i, 1, dumpedValue.charAt(i));
-    }
-};
-
-DiagramRenderer.prototype.isOverlapped = function (prevCapturing, nextCaputuring, dumpedValue) {
-    return (typeof prevCapturing !== 'undefined') && this.startColumnFor(prevCapturing) <= (this.startColumnFor(nextCaputuring) + this.widthOf(dumpedValue));
-};
-
-DiagramRenderer.prototype.constructRows = function (capturedEvents) {
-    var that = this,
-        prevCaptured;
-    capturedEvents.forEach(function (captured) {
-        var dumpedValue = that.stringify(captured.value);
-        if (that.isOverlapped(prevCaptured, captured, dumpedValue)) {
-            that.addOneMoreRow();
-        }
-        that.renderVerticalBarAt(that.startColumnFor(captured));
-        that.renderValueAt(that.startColumnFor(captured), dumpedValue);
-        prevCaptured = captured;
-    });
-};
-
-DiagramRenderer.prototype.startColumnFor = function (captured) {
-    return this.widthOf(this.assertionLine.slice(0, captured.loc.start.column));
-};
-
-function createRow (numCols, initial) {
-    var row = [], i;
-    for(i = 0; i < numCols; i += 1) {
-        row[i] = initial;
-    }
-    return row;
-}
-
-function rightToLeft (a, b) {
-    return b.loc.start.column - a.loc.start.column;
-}
-
-module.exports = DiagramRenderer;
-
-},{}],8:[function(_dereq_,module,exports){
-function FileRenderer (traversal, config) {
-    var filepath, lineNumber;
-    traversal.on('start', function (context) {
-        filepath = context.source.filepath;
-        lineNumber = context.source.line;
-    });
-    traversal.on('render', function (writer) {
-        if (filepath) {
-            writer.write('# ' + [filepath, lineNumber].join(':'));
-        } else {
-            writer.write('# at line: ' + lineNumber);
-        }
-    });
-}
-module.exports = FileRenderer;
-
-},{}],9:[function(_dereq_,module,exports){
+},{"estraverse":19}],9:[function(_dereq_,module,exports){
 var eaw = _dereq_('eastasianwidth');
 
 module.exports = function (str) {
@@ -537,7 +537,7 @@ function onEachEsNode(arg, jsCode, callback) {
         enter: function (currentNode, parentNode) {
             var esNode = new EsNode(this.path(), currentNode, parentNode, espathToValue, jsCode, jsAST);
             if (1 < nodeStack.length) {
-                esNode.setParentEsNode(nodeStack[nodeStack.length - 1]);
+                esNode.setParent(nodeStack[nodeStack.length - 1]);
             }
             nodeStack.push(esNode);
             callback(esNode);
@@ -556,7 +556,7 @@ function extractExpressionFrom (tree) {
 
 module.exports = ContextTraversal;
 
-},{"./esnode":4,"esprima":18,"estraverse":19,"events":12,"util":16}],12:[function(_dereq_,module,exports){
+},{"./esnode":8,"esprima":18,"estraverse":19,"events":12,"util":16}],12:[function(_dereq_,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
