@@ -30,9 +30,7 @@ module.exports = AssertionRenderer;
 },{}],3:[function(_dereq_,module,exports){
 'use strict';
 
-var DiffMatchPatch = _dereq_('googlediff'),
-    dmp = new DiffMatchPatch(),
-    typeName = _dereq_('type-name'),
+var typeName = _dereq_('type-name'),
     keys = Object.keys || _dereq_('object-keys'),
     syntax = _dereq_('estraverse').Syntax;
 
@@ -40,6 +38,7 @@ var DiffMatchPatch = _dereq_('googlediff'),
 function BinaryExpressionRenderer(traversal, config) {
     this.config = config;
     this.stringify = config.stringify;
+    this.diff = config.diff;
     this.espathToPair = {};
     var _this = this;
     traversal.on('esnode', function (esNode) {
@@ -92,22 +91,11 @@ BinaryExpressionRenderer.prototype.showExpectedAndActual = function (pair, write
 };
 
 BinaryExpressionRenderer.prototype.showStringDiff = function (pair, writer) {
-    var patch;
-    if (this.shouldUseLineLevelDiff(pair.right.value)) {
-        patch = udiffLines(pair.right.value, pair.left.value);
-    } else {
-        patch = udiffChars(pair.right.value, pair.left.value);
-    }
     writer.write('');
     writer.write('--- [string] ' + pair.right.code);
     writer.write('+++ [string] ' + pair.left.code);
-    writer.write(decodeURIComponent(patch));
+    writer.write(this.diff(pair.right.value, pair.left.value, this.config));
 };
-
-BinaryExpressionRenderer.prototype.shouldUseLineLevelDiff = function (text) {
-    return this.config.lineDiffThreshold < text.split(/\r\n|\r|\n/).length;
-};
-
 
 function isTargetBinaryExpression (esNode) {
     return esNode &&
@@ -121,25 +109,9 @@ function isStringDiffTarget(pair) {
     return typeof pair.left.value === 'string' && typeof pair.right.value === 'string';
 }
 
-function udiffLines(text1, text2) {
-    /*jshint camelcase: false */
-    var a = dmp.diff_linesToChars_(text1, text2),
-        diffs = dmp.diff_main(a.chars1, a.chars2, false);
-    dmp.diff_charsToLines_(diffs, a.lineArray);
-    dmp.diff_cleanupSemantic(diffs);
-    return dmp.patch_toText(dmp.patch_make(text1, diffs));
-}
-
-function udiffChars (text1, text2) {
-    /*jshint camelcase: false */
-    var diffs = dmp.diff_main(text1, text2, false);
-    dmp.diff_cleanupSemantic(diffs);
-    return dmp.patch_toText(dmp.patch_make(text1, diffs));
-}
-
 module.exports = BinaryExpressionRenderer;
 
-},{"estraverse":20,"googlediff":21,"object-keys":23,"type-name":28}],4:[function(_dereq_,module,exports){
+},{"estraverse":21,"object-keys":24,"type-name":29}],4:[function(_dereq_,module,exports){
 'use strict';
 
 function DiagramRenderer (traversal, config) {
@@ -264,6 +236,7 @@ var stringifier = _dereq_('stringifier'),
     stringWidth = _dereq_('./string-width'),
     StringWriter = _dereq_('./string-writer'),
     ContextTraversal = _dereq_('./traverse'),
+    udiff = _dereq_('./udiff'),
     defaultOptions = _dereq_('./default-options'),
     typeName = _dereq_('type-name'),
     extend = _dereq_('xtend');
@@ -283,7 +256,10 @@ function create (options) {
         config.widthOf = stringWidth;
     }
     if (typeof config.stringify !== 'function') {
-        config.stringify = stringifier(config);
+        config.stringify = stringifier(extend(config));
+    }
+    if (typeof config.diff !== 'function') {
+        config.diff = udiff(extend(config));
     }
     if (!config.writerClass) {
         config.writerClass = StringWriter;
@@ -312,7 +288,7 @@ create.defaultOptions = defaultOptions;
 create.stringWidth = stringWidth;
 module.exports = create;
 
-},{"./built-in/assertion":2,"./built-in/binary-expression":3,"./built-in/diagram":4,"./built-in/file":5,"./default-options":7,"./string-width":10,"./string-writer":11,"./traverse":12,"stringifier":25,"type-name":28,"xtend":29}],7:[function(_dereq_,module,exports){
+},{"./built-in/assertion":2,"./built-in/binary-expression":3,"./built-in/diagram":4,"./built-in/file":5,"./default-options":7,"./string-width":10,"./string-writer":11,"./traverse":12,"./udiff":13,"stringifier":26,"type-name":29,"xtend":30}],7:[function(_dereq_,module,exports){
 module.exports = function defaultOptions () {
     'use strict';
     return {
@@ -383,7 +359,7 @@ EsNode.prototype.location = function () {
 
 module.exports = EsNode;
 
-},{"./location":9,"estraverse":20}],9:[function(_dereq_,module,exports){
+},{"./location":9,"estraverse":21}],9:[function(_dereq_,module,exports){
 'use strict';
 
 var syntax = _dereq_('estraverse').Syntax;
@@ -475,7 +451,7 @@ function searchToken(tokens, fromLine, toLine, predicate) {
 
 module.exports = locationOf;
 
-},{"estraverse":20}],10:[function(_dereq_,module,exports){
+},{"estraverse":21}],10:[function(_dereq_,module,exports){
 'use strict';
 
 var eaw = _dereq_('eastasianwidth');
@@ -502,7 +478,7 @@ module.exports = function (str) {
     return width;
 };
 
-},{"eastasianwidth":18}],11:[function(_dereq_,module,exports){
+},{"eastasianwidth":19}],11:[function(_dereq_,module,exports){
 'use strict';
 
 function StringWriter (config) {
@@ -576,7 +552,47 @@ function extractExpressionFrom (tree) {
 
 module.exports = ContextTraversal;
 
-},{"./esnode":8,"esprima":19,"estraverse":20,"events":13,"util":17}],13:[function(_dereq_,module,exports){
+},{"./esnode":8,"esprima":20,"estraverse":21,"events":14,"util":18}],13:[function(_dereq_,module,exports){
+'use strict';
+
+var DiffMatchPatch = _dereq_('googlediff'),
+    dmp = new DiffMatchPatch();
+
+function udiff (config) {
+    return function diff (text1, text2) {
+        var patch;
+        if (config && shouldUseLineLevelDiff(text1, config)) {
+            patch = udiffLines(text1, text2);
+        } else {
+            patch = udiffChars(text1, text2);
+        }
+        return decodeURIComponent(patch);
+    };
+}
+
+function shouldUseLineLevelDiff (text, config) {
+    return config.lineDiffThreshold < text.split(/\r\n|\r|\n/).length;
+}
+
+function udiffLines(text1, text2) {
+    /*jshint camelcase: false */
+    var a = dmp.diff_linesToChars_(text1, text2),
+        diffs = dmp.diff_main(a.chars1, a.chars2, false);
+    dmp.diff_charsToLines_(diffs, a.lineArray);
+    dmp.diff_cleanupSemantic(diffs);
+    return dmp.patch_toText(dmp.patch_make(text1, diffs));
+}
+
+function udiffChars (text1, text2) {
+    /*jshint camelcase: false */
+    var diffs = dmp.diff_main(text1, text2, false);
+    dmp.diff_cleanupSemantic(diffs);
+    return dmp.patch_toText(dmp.patch_make(text1, diffs));
+}
+
+module.exports = udiff;
+
+},{"googlediff":22}],14:[function(_dereq_,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -879,7 +895,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],14:[function(_dereq_,module,exports){
+},{}],15:[function(_dereq_,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -904,7 +920,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],15:[function(_dereq_,module,exports){
+},{}],16:[function(_dereq_,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -969,14 +985,14 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],16:[function(_dereq_,module,exports){
+},{}],17:[function(_dereq_,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],17:[function(_dereq_,module,exports){
+},{}],18:[function(_dereq_,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -1566,7 +1582,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,_dereq_('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":16,"_process":15,"inherits":14}],18:[function(_dereq_,module,exports){
+},{"./support/isBuffer":17,"_process":16,"inherits":15}],19:[function(_dereq_,module,exports){
 var eaw = exports;
 
 eaw.eastAsianWidth = function(character) {
@@ -1839,7 +1855,7 @@ eaw.length = function(string) {
   return len;
 };
 
-},{}],19:[function(_dereq_,module,exports){
+},{}],20:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2013 Ariya Hidayat <ariya.hidayat@gmail.com>
   Copyright (C) 2013 Thaddee Tyl <thaddee.tyl@gmail.com>
@@ -5597,7 +5613,7 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],20:[function(_dereq_,module,exports){
+},{}],21:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2012-2013 Yusuke Suzuki <utatane.tea@gmail.com>
   Copyright (C) 2012 Ariya Hidayat <ariya.hidayat@gmail.com>
@@ -6288,10 +6304,10 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],21:[function(_dereq_,module,exports){
+},{}],22:[function(_dereq_,module,exports){
 module.exports = _dereq_('./javascript/diff_match_patch_uncompressed.js').diff_match_patch;
 
-},{"./javascript/diff_match_patch_uncompressed.js":22}],22:[function(_dereq_,module,exports){
+},{"./javascript/diff_match_patch_uncompressed.js":23}],23:[function(_dereq_,module,exports){
 /**
  * Diff Match and Patch
  *
@@ -8486,7 +8502,7 @@ this['DIFF_DELETE'] = DIFF_DELETE;
 this['DIFF_INSERT'] = DIFF_INSERT;
 this['DIFF_EQUAL'] = DIFF_EQUAL;
 
-},{}],23:[function(_dereq_,module,exports){
+},{}],24:[function(_dereq_,module,exports){
 "use strict";
 
 // modified from https://github.com/es-shims/es5-shim
@@ -8555,7 +8571,7 @@ keysShim.shim = function shimObjectKeys() {
 module.exports = keysShim;
 
 
-},{"./isArguments":24}],24:[function(_dereq_,module,exports){
+},{"./isArguments":25}],25:[function(_dereq_,module,exports){
 "use strict";
 
 var toString = Object.prototype.toString;
@@ -8575,7 +8591,7 @@ module.exports = function isArguments(value) {
 };
 
 
-},{}],25:[function(_dereq_,module,exports){
+},{}],26:[function(_dereq_,module,exports){
 /**
  * stringifier
  * 
@@ -8680,7 +8696,7 @@ stringifier.defaultOptions = defaultOptions;
 stringifier.defaultHandlers = defaultHandlers;
 module.exports = stringifier;
 
-},{"./strategies":27,"traverse":26,"type-name":28,"xtend":29}],26:[function(_dereq_,module,exports){
+},{"./strategies":28,"traverse":27,"type-name":29,"xtend":30}],27:[function(_dereq_,module,exports){
 var traverse = module.exports = function (obj) {
     return new Traverse(obj);
 };
@@ -8996,7 +9012,7 @@ var hasOwnProperty = Object.hasOwnProperty || function (obj, key) {
     return key in obj;
 };
 
-},{}],27:[function(_dereq_,module,exports){
+},{}],28:[function(_dereq_,module,exports){
 'use strict';
 
 var typeName = _dereq_('type-name'),
@@ -9358,7 +9374,7 @@ module.exports = {
     }
 };
 
-},{"type-name":28}],28:[function(_dereq_,module,exports){
+},{"type-name":29}],29:[function(_dereq_,module,exports){
 /**
  * type-name - Just a reasonable typeof
  * 
@@ -9398,7 +9414,7 @@ function typeName (val) {
 
 module.exports = typeName;
 
-},{}],29:[function(_dereq_,module,exports){
+},{}],30:[function(_dereq_,module,exports){
 module.exports = extend
 
 function extend() {
