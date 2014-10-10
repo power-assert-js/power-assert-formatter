@@ -107,6 +107,14 @@ Function to calculate width of string.
 
 Function to stringify any target value.
 
+#### options.diff
+
+| type       | default value |
+|:-----------|:--------------|
+| `function` | [udiff.js](https://github.com/twada/power-assert-formatter/blob/master/lib/udiff.js) |
+
+Function to create diff string between two strings.
+
 #### options.writerClass
 
 | type       | default value |
