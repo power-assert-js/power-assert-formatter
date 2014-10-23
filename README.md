@@ -67,6 +67,14 @@ Threshold to show diff at character level or line level. If number of lines in t
 
 Depth of object traversal. If object depth is greater than `maxDepth`, compound object (IOW, `Array` or `object`) will be pruned with `#` like `["foo",#Array#,#Object#]`.
 
+#### options.outputOffset
+
+| type     | default value |
+|:---------|:--------------|
+| `number` | `2`           |
+
+Number of spaces inserted at the left in power-assert output.
+
 #### options.anonymous
 
 | type     | default value |
