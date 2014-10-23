@@ -43,6 +43,59 @@ suite('lineSeparator option', function () {
     lineSeparatorTest('CRLF', {lineSeparator: '\r\n'}, '\r\n');
 });
 
+
+suite('outputOffset option', function () {
+    function outputOffsetCustomizationTest (option, expectedLines) {
+        var assert = empower(baseAssert, createFormatter(option));
+        test(JSON.stringify(option), function () {
+            var hoge = 'foo';
+            var fuga = 'bar';
+            try {
+                eval(weave('assert.ok(hoge === fuga, "comment");'));
+            } catch (e) {
+                baseAssert.equal(e.name, 'AssertionError');
+                var actual = e.message.split(createFormatter.defaultOptions().lineSeparator);
+                baseAssert.deepEqual(actual, expectedLines);
+            }
+        });
+    }
+    outputOffsetCustomizationTest({outputOffset: 1}, [
+        'comment  # /path/to/some_test.js:1',
+        ' ',
+        ' assert.ok(hoge === fuga, "comment")',
+        '           |    |   |               ',
+        '           |    |   "bar"           ',
+        '           |    false               ',
+        '           "foo"                    ',
+        ' ',
+        ' --- [string] fuga',
+        ' +++ [string] hoge',
+        ' @@ -1,3 +1,3 @@',
+        ' -bar',
+        ' +foo',
+        ' ',
+        ' '
+    ]);
+    outputOffsetCustomizationTest({outputOffset: 3}, [
+        'comment    # /path/to/some_test.js:1',
+        '   ',
+        '   assert.ok(hoge === fuga, "comment")',
+        '             |    |   |               ',
+        '             |    |   "bar"           ',
+        '             |    false               ',
+        '             "foo"                    ',
+        '   ',
+        '   --- [string] fuga',
+        '   +++ [string] hoge',
+        '   @@ -1,3 +1,3 @@',
+        '   -bar',
+        '   +foo',
+        '   ',
+        '   '
+    ]);
+});
+
+
 suite('renderers customization', function () {
     function rendererCustomizationTest (name, option, expectedLines) {
         var assert = empower(baseAssert, createFormatter(option));
