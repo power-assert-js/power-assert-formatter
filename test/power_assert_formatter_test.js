@@ -35,12 +35,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('var i = 0;\n\nassert(falsyStr);'));
         }, [
-            '# /path/to/some_test.js:3',
-            '',
-            'assert(falsyStr)',
-            '       |        ',
-            '       ""       ',
-            ''
+            '  # /path/to/some_test.js:3',
+            '  ',
+            '  assert(falsyStr)',
+            '         |        ',
+            '         ""       ',
+            '  '
         ]);
     });
 
@@ -50,12 +50,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(falsyStr);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(falsyStr)',
-            '       |        ',
-            '       ""       ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(falsyStr)',
+            '         |        ',
+            '         ""       ',
+            '  '
         ]);
     });
 
@@ -65,12 +65,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(falsyNum);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(falsyNum)',
-            '       |        ',
-            '       0        ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(falsyNum)',
+            '         |        ',
+            '         0        ',
+            '  '
         ]);
     });
 
@@ -80,13 +80,13 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(!truth);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(!truth)',
-            '       ||     ',
-            '       |true  ',
-            '       false  ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(!truth)',
+            '         ||     ',
+            '         |true  ',
+            '         false  ',
+            '  '
         ]);
     });
 
@@ -96,14 +96,14 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(!!some);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(!!some)',
-            '       |||    ',
-            '       ||""   ',
-            '       |true  ',
-            '       false  ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(!!some)',
+            '         |||    ',
+            '         ||""   ',
+            '         |true  ',
+            '         false  ',
+            '  '
         ]);
     });
 
@@ -112,13 +112,13 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(typeof foo !== "undefined");'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(typeof foo !== "undefined")',
-            '       |          |               ',
-            '       |          false           ',
-            '       "undefined"                ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(typeof foo !== "undefined")',
+            '         |          |               ',
+            '         |          false           ',
+            '         "undefined"                ',
+            '  '
         ]);
     });
 
@@ -127,18 +127,18 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert({}.hoge === "xxx");'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert({}.hoge === "xxx")',
-            '          |    |         ',
-            '          |    false     ',
-            '          undefined      ',
-            '',
-            '[string] "xxx"',
-            '=> "xxx"',
-            '[undefined] {}.hoge',
-            '=> undefined',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert({}.hoge === "xxx")',
+            '            |    |         ',
+            '            |    false     ',
+            '            undefined      ',
+            '  ',
+            '  [string] "xxx"',
+            '  => "xxx"',
+            '  [undefined] {}.hoge',
+            '  => undefined',
+            '  '
         ]);
     });
 
@@ -152,19 +152,19 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert((delete foo.bar) === false);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(delete foo.bar === false)',
-            '       |      |   |   |         ',
-            '       |      |   |   false     ',
-            '       |      |   Object{baz:false}',
-            '       true   Object{bar:#Object#}',
-            '',
-            '[boolean] false',
-            '=> false',
-            '[boolean] delete foo.bar',
-            '=> true',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(delete foo.bar === false)',
+            '         |      |   |   |         ',
+            '         |      |   |   false     ',
+            '         |      |   Object{baz:false}',
+            '         true   Object{bar:#Object#}',
+            '  ',
+            '  [boolean] false',
+            '  => false',
+            '  [boolean] delete foo.bar',
+            '  => true',
+            '  '
         ]);
     });
 
@@ -173,17 +173,17 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert((delete nonexistent) === false);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(delete nonexistent === false)',
-            '       |                  |         ',
-            '       true               false     ',
-            '',
-            '[boolean] false',
-            '=> false',
-            '[boolean] delete nonexistent',
-            '=> true',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(delete nonexistent === false)',
+            '         |                  |         ',
+            '         true               false     ',
+            '  ',
+            '  [boolean] false',
+            '  => false',
+            '  [boolean] delete nonexistent',
+            '  => true',
+            '  '
         ]);
     });
 
@@ -194,19 +194,19 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(fuga === piyo);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(fuga === piyo)',
-            '       |    |   |    ',
-            '       |    |   8    ',
-            '       |    false    ',
-            '       "foo"         ',
-            '',
-            '[number] piyo',
-            '=> 8',
-            '[string] fuga',
-            '=> "foo"',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(fuga === piyo)',
+            '         |    |   |    ',
+            '         |    |   8    ',
+            '         |    false    ',
+            '         "foo"         ',
+            '  ',
+            '  [number] piyo',
+            '  => 8',
+            '  [string] fuga',
+            '  => "foo"',
+            '  '
         ]);
     });
 
@@ -217,18 +217,18 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(truthy == falsy);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(truthy == falsy)',
-            '       |      |  |     ',
-            '       |      |  false ',
-            '       "1"    false    ',
-            '',
-            '[boolean] falsy',
-            '=> false',
-            '[string] truthy',
-            '=> "1"',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(truthy == falsy)',
+            '         |      |  |     ',
+            '         |      |  false ',
+            '         "1"    false    ',
+            '  ',
+            '  [boolean] falsy',
+            '  => false',
+            '  [string] truthy',
+            '  => "1"',
+            '  '
         ]);
     });
 
@@ -239,14 +239,14 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(fuga !== piyo);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(fuga !== piyo)',
-            '       |    |   |    ',
-            '       |    |   "foo"',
-            '       |    false    ',
-            '       "foo"         ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(fuga !== piyo)',
+            '         |    |   |    ',
+            '         |    |   "foo"',
+            '         |    false    ',
+            '         "foo"         ',
+            '  '
         ]);
     });
 
@@ -255,18 +255,18 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(4 === -4);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(4 === -4)',
-            '         |   |  ',
-            '         |   -4 ',
-            '         false  ',
-            '',
-            '[number] -4',
-            '=> -4',
-            '[number] 4',
-            '=> 4',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(4 === -4)',
+            '           |   |  ',
+            '           |   -4 ',
+            '           false  ',
+            '  ',
+            '  [number] -4',
+            '  => -4',
+            '  [number] 4',
+            '  => 4',
+            '  '
         ]);
     });
 
@@ -277,18 +277,18 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(nan1 === nan2);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(nan1 === nan2)',
-            '       |    |   |    ',
-            '       |    |   NaN  ',
-            '       NaN  false    ',
-            '',
-            '[number] nan2',
-            '=> NaN',
-            '[number] nan1',
-            '=> NaN',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(nan1 === nan2)',
+            '         |    |   |    ',
+            '         |    |   NaN  ',
+            '         NaN  false    ',
+            '  ',
+            '  [number] nan2',
+            '  => NaN',
+            '  [number] nan1',
+            '  => NaN',
+            '  '
         ]);
     });
 
@@ -299,18 +299,18 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(positiveInfinity === negativeInfinity);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(positiveInfinity === negativeInfinity)',
-            '       |                |   |                ',
-            '       |                |   -Infinity        ',
-            '       Infinity         false                ',
-            '',
-            '[number] negativeInfinity',
-            '=> -Infinity',
-            '[number] positiveInfinity',
-            '=> Infinity',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(positiveInfinity === negativeInfinity)',
+            '         |                |   |                ',
+            '         |                |   -Infinity        ',
+            '         Infinity         false                ',
+            '  ',
+            '  [number] negativeInfinity',
+            '  => -Infinity',
+            '  [number] positiveInfinity',
+            '  => Infinity',
+            '  '
         ]);
     });
 
@@ -320,12 +320,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(fuga !== 4);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(fuga !== 4)',
-            '       |    |     ',
-            '       4    false ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(fuga !== 4)',
+            '         |    |     ',
+            '         4    false ',
+            '  '
         ]);
     });
 
@@ -334,12 +334,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(4 !== 4);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(4 !== 4)',
-            '         |     ',
-            '         false ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(4 !== 4)',
+            '           |     ',
+            '           false ',
+            '  '
         ]);
     });
 
@@ -350,20 +350,20 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(ary1.length === ary2.length);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(ary1.length === ary2.length)',
-            '       |    |      |   |    |      ',
-            '       |    |      |   |    3      ',
-            '       |    |      |   ["aaa","bbb","ccc"]',
-            '       |    2      false           ',
-            '       ["foo","bar"]               ',
-            '',
-            '[number] ary2.length',
-            '=> 3',
-            '[number] ary1.length',
-            '=> 2',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(ary1.length === ary2.length)',
+            '         |    |      |   |    |      ',
+            '         |    |      |   |    3      ',
+            '         |    |      |   ["aaa","bbb","ccc"]',
+            '         |    2      false           ',
+            '         ["foo","bar"]               ',
+            '  ',
+            '  [number] ary2.length',
+            '  => 3',
+            '  [number] ary1.length',
+            '  => 2',
+            '  '
         ]);
     });
 
@@ -373,14 +373,14 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(5 < actual && actual < 13);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(5 < actual && actual < 13)',
-            '         | |      |  |      |    ',
-            '         | |      |  16     false',
-            '         | 16     false          ',
-            '         true                    ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(5 < actual && actual < 13)',
+            '           | |      |  |      |    ',
+            '           | |      |  16     false',
+            '           | 16     false          ',
+            '           true                    ',
+            '  '
         ]);
     });
 
@@ -390,14 +390,14 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.ok(actual < 5 || 13 < actual);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.ok(actual < 5 || 13 < actual)',
-            '          |      |   |     | |      ',
-            '          |      |   |     | 10     ',
-            '          |      |   false false    ',
-            '          10     false              ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert.ok(actual < 5 || 13 < actual)',
+            '            |      |   |     | |      ',
+            '            |      |   |     | 10     ',
+            '            |      |   false false    ',
+            '            10     false              ',
+            '  '
         ]);
     });
 
@@ -407,13 +407,13 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(2 > actual && actual < 13);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(2 > actual && actual < 13)',
-            '         | |      |              ',
-            '         | 5      false          ',
-            '         false                   ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(2 > actual && actual < 13)',
+            '           | |      |              ',
+            '           | 5      false          ',
+            '           false                   ',
+            '  '
         ]);
     });
 
@@ -427,14 +427,14 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(foo.bar.baz);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(foo.bar.baz)',
-            '       |   |   |   ',
-            '       |   |   false',
-            '       |   Object{baz:false}',
-            '       Object{bar:#Object#}',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(foo.bar.baz)',
+            '         |   |   |   ',
+            '         |   |   false',
+            '         |   Object{baz:false}',
+            '         Object{bar:#Object#}',
+            '  '
         ]);
     });
 
@@ -448,14 +448,14 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(foo["bar"].baz);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(foo["bar"].baz)',
-            '       |  |       |   ',
-            '       |  |       false',
-            '       |  Object{baz:false}',
-            '       Object{bar:#Object#}',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(foo["bar"].baz)',
+            '         |  |       |   ',
+            '         |  |       false',
+            '         |  Object{baz:false}',
+            '         Object{bar:#Object#}',
+            '  '
         ]);
     });
 
@@ -470,14 +470,14 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(foo[propName].baz);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(foo[propName].baz)',
-            '       |  ||         |   ',
-            '       |  |"bar"     false',
-            '       |  Object{baz:false}',
-            '       Object{bar:#Object#}',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(foo[propName].baz)',
+            '         |  ||         |   ',
+            '         |  |"bar"     false',
+            '         |  Object{baz:false}',
+            '         Object{bar:#Object#}',
+            '  '
         ]);
     });
 
@@ -492,14 +492,14 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(foo[propName]());'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(foo[propName]())',
-            '       |  ||           ',
-            '       |  |"bar"       ',
-            '       |  false        ',
-            '       Object{bar:#function#}',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(foo[propName]())',
+            '         |  ||           ',
+            '         |  |"bar"       ',
+            '         |  false        ',
+            '         Object{bar:#function#}',
+            '  '
         ]);
     });
 
@@ -520,18 +520,18 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(foo[hoge[fuga[piyo]]]());'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(foo[hoge[fuga[piyo]]]())',
-            '       |  ||   ||   ||         ',
-            '       |  ||   ||   |"piyoKey" ',
-            '       |  ||   ||   "fugaKey"  ',
-            '       |  ||   |Object{piyoKey:"fugaKey"}',
-            '       |  ||   "func"          ',
-            '       |  |Object{fugaKey:"func"}',
-            '       |  false                ',
-            '       Object{func:#function#} ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(foo[hoge[fuga[piyo]]]())',
+            '         |  ||   ||   ||         ',
+            '         |  ||   ||   |"piyoKey" ',
+            '         |  ||   ||   "fugaKey"  ',
+            '         |  ||   |Object{piyoKey:"fugaKey"}',
+            '         |  ||   "func"          ',
+            '         |  |Object{fugaKey:"func"}',
+            '         |  false                ',
+            '         Object{func:#function#} ',
+            '  '
         ]);
     });
 
@@ -549,17 +549,17 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(foo[propName]["baz"][keys()[0]]);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(foo[propName]["baz"][keys()[0]])',
-            '       |  ||        |      ||     |    ',
-            '       |  ||        |      ||     "toto"',
-            '       |  ||        |      |["toto"]   ',
-            '       |  ||        |      false       ',
-            '       |  |"bar"    Object{toto:false} ',
-            '       |  Object{baz:#Object#}         ',
-            '       Object{bar:#Object#}            ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(foo[propName]["baz"][keys()[0]])',
+            '         |  ||        |      ||     |    ',
+            '         |  ||        |      ||     "toto"',
+            '         |  ||        |      |["toto"]   ',
+            '         |  ||        |      false       ',
+            '         |  |"bar"    Object{toto:false} ',
+            '         |  Object{baz:#Object#}         ',
+            '         Object{bar:#Object#}            ',
+            '  '
         ]);
     });
 
@@ -569,12 +569,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(func());'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(func())',
-            '       |      ',
-            '       false  ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(func())',
+            '         |      ',
+            '         false  ',
+            '  '
         ]);
     });
 
@@ -588,13 +588,13 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(obj.age());'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(obj.age())',
-            '       |   |     ',
-            '       |   0     ',
-            '       Object{age:#function#}',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(obj.age())',
+            '         |   |     ',
+            '         |   0     ',
+            '         Object{age:#function#}',
+            '  '
         ]);
     });
 
@@ -607,12 +607,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(isFalsy(positiveInt));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(isFalsy(positiveInt))',
-            '       |       |            ',
-            '       false   50           ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(isFalsy(positiveInt))',
+            '         |       |            ',
+            '         false   50           ',
+            '  '
         ]);
     });
 
@@ -629,18 +629,18 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(sum(one, two, three) === seven);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(sum(one, two, three) === seven)',
-            '       |   |    |    |      |   |     ',
-            '       |   |    |    |      |   7     ',
-            '       6   1    2    3      false     ',
-            '',
-            '[number] seven',
-            '=> 7',
-            '[number] sum(one, two, three)',
-            '=> 6',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(sum(one, two, three) === seven)',
+            '         |   |    |    |      |   |     ',
+            '         |   |    |    |      |   7     ',
+            '         6   1    2    3      false     ',
+            '  ',
+            '  [number] seven',
+            '  => 7',
+            '  [number] sum(one, two, three)',
+            '  => 6',
+            '  '
         ]);
     });
 
@@ -657,18 +657,18 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(sum(sum(one, two), three) === sum(sum(two, three), seven));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(sum(sum(one, two), three) === sum(sum(two, three), seven))',
-            '       |   |   |    |     |      |   |   |   |    |       |      ',
-            '       |   |   |    |     |      |   12  5   2    3       7      ',
-            '       6   3   1    2     3      false                           ',
-            '',
-            '[number] sum(sum(two, three), seven)',
-            '=> 12',
-            '[number] sum(sum(one, two), three)',
-            '=> 6',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(sum(sum(one, two), three) === sum(sum(two, three), seven))',
+            '         |   |   |    |     |      |   |   |   |    |       |      ',
+            '         |   |   |    |     |      |   12  5   2    3       7      ',
+            '         6   3   1    2     3      false                           ',
+            '  ',
+            '  [number] sum(sum(two, three), seven)',
+            '  => 12',
+            '  [number] sum(sum(one, two), three)',
+            '  => 6',
+            '  '
         ]);
     });
 
@@ -689,20 +689,20 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(math.calc.sum(one, two, three) === seven);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(math.calc.sum(one, two, three) === seven)',
-            '       |    |    |   |    |    |      |   |     ',
-            '       |    |    |   |    |    |      |   7     ',
-            '       |    |    6   1    2    3      false     ',
-            '       |    Object{sum:#function#}              ',
-            '       Object{calc:#Object#}                    ',
-            '',
-            '[number] seven',
-            '=> 7',
-            '[number] math.calc.sum(one, two, three)',
-            '=> 6',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(math.calc.sum(one, two, three) === seven)',
+            '         |    |    |   |    |    |      |   |     ',
+            '         |    |    |   |    |    |      |   7     ',
+            '         |    |    6   1    2    3      false     ',
+            '         |    Object{sum:#function#}              ',
+            '         Object{calc:#Object#}                    ',
+            '  ',
+            '  [number] seven',
+            '  => 7',
+            '  [number] math.calc.sum(one, two, three)',
+            '  => 6',
+            '  '
         ]);
     });
 
@@ -712,20 +712,20 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert((three * (seven * ten)) === three);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(three * (seven * ten) === three)',
-            '       |     |  |     | |    |   |     ',
-            '       |     |  |     | |    |   3     ',
-            '       |     |  |     | 10   false     ',
-            '       |     |  7     70               ',
-            '       3     210                       ',
-            '',
-            '[number] three',
-            '=> 3',
-            '[number] three * (seven * ten)',
-            '=> 210',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(three * (seven * ten) === three)',
+            '         |     |  |     | |    |   |     ',
+            '         |     |  |     | |    |   3     ',
+            '         |     |  |     | 10   false     ',
+            '         |     |  7     70               ',
+            '         3     210                       ',
+            '  ',
+            '  [number] three',
+            '  => 3',
+            '  [number] three * (seven * ten)',
+            '  => 210',
+            '  '
         ]);
     });
 
@@ -736,21 +736,21 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.ok(hoge === fuga, "comment");'));
         }, [
-            'comment # /path/to/some_test.js:1',
-            '',
-            'assert.ok(hoge === fuga, "comment")',
-            '          |    |   |               ',
-            '          |    |   "bar"           ',
-            '          |    false               ',
-            '          "foo"                    ',
-            '',
-            '--- [string] fuga',
-            '+++ [string] hoge',
-            '@@ -1,3 +1,3 @@',
-            '-bar',
-            '+foo',
-            '',
-            ''
+            'comment   # /path/to/some_test.js:1',
+            '  ',
+            '  assert.ok(hoge === fuga, "comment")',
+            '            |    |   |               ',
+            '            |    |   "bar"           ',
+            '            |    false               ',
+            '            "foo"                    ',
+            '  ',
+            '  --- [string] fuga',
+            '  +++ [string] hoge',
+            '  @@ -1,3 +1,3 @@',
+            '  -bar',
+            '  +foo',
+            '  ',
+            '  '
         ]);
     });
 
@@ -761,24 +761,24 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(longString === anotherLongString);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(longString === anotherLongString)',
-            '       |          |   |                 ',
-            '       |          |   "yet another loooooooooooooooooooooooooooooooooooooooooooooooooooong message"',
-            '       |          false                 ',
-            '       "very very loooooooooooooooooooooooooooooooooooooooooooooooooooong message"',
-            '',
-            '--- [string] anotherLongString',
-            '+++ [string] longString',
-            '@@ -1,15 +1,13 @@',
-            '-yet anoth',
-            '+very v',
-            ' er',
-            '+y',
-            '  loo',
-            '',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(longString === anotherLongString)',
+            '         |          |   |                 ',
+            '         |          |   "yet another loooooooooooooooooooooooooooooooooooooooooooooooooooong message"',
+            '         |          false                 ',
+            '         "very very loooooooooooooooooooooooooooooooooooooooooooooooooooong message"',
+            '  ',
+            '  --- [string] anotherLongString',
+            '  +++ [string] longString',
+            '  @@ -1,15 +1,13 @@',
+            '  -yet anoth',
+            '  +very v',
+            '   er',
+            '  +y',
+            '    loo',
+            '  ',
+            '  '
         ]);
     });
 
@@ -792,15 +792,15 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(!concat(fuga, piyo));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(!concat(fuga, piyo))',
-            '       ||      |     |     ',
-            '       ||      |     "うえお"',
-            '       ||      "あい"      ',
-            '       |"あいうえお"       ',
-            '       false               ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(!concat(fuga, piyo))',
+            '         ||      |     |     ',
+            '         ||      |     "うえお"',
+            '         ||      "あい"      ',
+            '         |"あいうえお"       ',
+            '         false               ',
+            '  '
         ]);
 
     });
@@ -814,13 +814,13 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.equal(concat("ほげ", piyo), concat("あい", piyo));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.equal(concat("ほげ", piyo), concat("あい", piyo))',
-            '             |              |      |              |     ',
-            '             |              |      "あいうえお"   "うえお"',
-            '             "ほげうえお"   "うえお"                    ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert.equal(concat("ほげ", piyo), concat("あい", piyo))',
+            '               |              |      |              |     ',
+            '               |              |      "あいうえお"   "うえお"',
+            '               "ほげうえお"   "うえお"                    ',
+            '  '
         ]);
 
     });
@@ -835,14 +835,14 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(!concat(fuga, piyo));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(!concat(fuga, piyo))',
-            '       ||      |     |     ',
-            '       ||      "ｱｲ"  "ｳｴｵ" ',
-            '       |"ｱｲｳｴｵ"            ',
-            '       false               ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(!concat(fuga, piyo))',
+            '         ||      |     |     ',
+            '         ||      "ｱｲ"  "ｳｴｵ" ',
+            '         |"ｱｲｳｴｵ"            ',
+            '         false               ',
+            '  '
         ]);
 
     });
@@ -856,20 +856,20 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.ok(cyclic[two] === cyclic);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.ok(cyclic[two] === cyclic)',
-            '          |     ||    |   |      ',
-            '          |     ||    |   ["foo",#@Circular#,"baz"]',
-            '          |     |2    false      ',
-            '          |     "baz"            ',
-            '          ["foo",#@Circular#,"baz"]',
-            '',
-            '[Array] cyclic',
-            '=> ["foo",#@Circular#,"baz"]',
-            '[string] cyclic[two]',
-            '=> "baz"',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert.ok(cyclic[two] === cyclic)',
+            '            |     ||    |   |      ',
+            '            |     ||    |   ["foo",#@Circular#,"baz"]',
+            '            |     |2    false      ',
+            '            |     "baz"            ',
+            '            ["foo",#@Circular#,"baz"]',
+            '  ',
+            '  [Array] cyclic',
+            '  => ["foo",#@Circular#,"baz"]',
+            '  [string] cyclic[two]',
+            '  => "baz"',
+            '  '
         ]);
     });
 
@@ -879,21 +879,21 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(typeof + twoStr === -twoStr);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(typeof +twoStr === -twoStr)',
-            '       |      ||      |   ||      ',
-            '       |      ||      |   |"2"    ',
-            '       |      ||      |   -2      ',
-            '       |      |"2"    false       ',
-            '       |      2                   ',
-            '       "number"                   ',
-            '',
-            '[number] -twoStr',
-            '=> -2',
-            '[string] typeof +twoStr',
-            '=> "number"',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(typeof +twoStr === -twoStr)',
+            '         |      ||      |   ||      ',
+            '         |      ||      |   |"2"    ',
+            '         |      ||      |   -2      ',
+            '         |      |"2"    false       ',
+            '         |      2                   ',
+            '         "number"                   ',
+            '  ',
+            '  [number] -twoStr',
+            '  => -2',
+            '  [string] typeof +twoStr',
+            '  => "number"',
+            '  '
         ]);
     });
 
@@ -903,12 +903,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(minusOne += 1);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(minusOne += 1)',
-            '                |    ',
-            '                0    ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(minusOne += 1)',
+            '                  |    ',
+            '                  0    ',
+            '  '
         ]);
     });
 
@@ -918,18 +918,18 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert((dog.age += 1) === four);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert((dog.age += 1) === four)',
-            '                |     |   |    ',
-            '                |     |   4    ',
-            '                3     false    ',
-            '',
-            '[number] four',
-            '=> 4',
-            '[number] dog.age += 1',
-            '=> 3',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert((dog.age += 1) === four)',
+            '                  |     |   |    ',
+            '                  |     |   4    ',
+            '                  3     false    ',
+            '  ',
+            '  [number] four',
+            '  => 4',
+            '  [number] dog.age += 1',
+            '  => 3',
+            '  '
         ]);
     });
 
@@ -939,20 +939,20 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert([foo, bar].length === four);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert([foo,bar].length === four)',
-            '        |   |    |      |   |    ',
-            '        |   |    |      |   4    ',
-            '        |   |    2      false    ',
-            '        |   "fuga"               ',
-            '        "hoge"                   ',
-            '',
-            '[number] four',
-            '=> 4',
-            '[number] [foo,bar].length',
-            '=> 2',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert([foo,bar].length === four)',
+            '          |   |    |      |   |    ',
+            '          |   |    |      |   4    ',
+            '          |   |    2      false    ',
+            '          |   "fuga"               ',
+            '          "hoge"                   ',
+            '  ',
+            '  [number] four',
+            '  => 4',
+            '  [number] [foo,bar].length',
+            '  => 2',
+            '  '
         ]);
     });
 
@@ -962,23 +962,23 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(typeof [[foo.bar, baz(moo)], + fourStr] === "number");'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(typeof [[foo.bar,baz(moo)],+fourStr] === "number")',
-            '       |        |   |   |   |     ||        |            ',
-            '       |        |   |   |   |     |"4"      false        ',
-            '       |        |   |   |   "boo" 4                      ',
-            '       |        |   |   null                             ',
-            '       |        |   "fuga"                               ',
-            '       "object" Object{bar:"fuga"}                       ',
-            '',
-            '--- [string] "number"',
-            '+++ [string] typeof [[foo.bar,baz(moo)],+fourStr]',
-            '@@ -1,6 +1,6 @@',
-            '-number',
-            '+object',
-            '',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(typeof [[foo.bar,baz(moo)],+fourStr] === "number")',
+            '         |        |   |   |   |     ||        |            ',
+            '         |        |   |   |   |     |"4"      false        ',
+            '         |        |   |   |   "boo" 4                      ',
+            '         |        |   |   null                             ',
+            '         |        |   "fuga"                               ',
+            '         "object" Object{bar:"fuga"}                       ',
+            '  ',
+            '  --- [string] "number"',
+            '  +++ [string] typeof [[foo.bar,baz(moo)],+fourStr]',
+            '  @@ -1,6 +1,6 @@',
+            '  -number',
+            '  +object',
+            '  ',
+            '  '
         ]);
     });
 
@@ -988,12 +988,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(++minusOne);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(++minusOne)',
-            '       |          ',
-            '       0          ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(++minusOne)',
+            '         |          ',
+            '         0          ',
+            '  '
         ]);
     });
 
@@ -1003,12 +1003,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(zero--);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(zero--)',
-            '       |      ',
-            '       0      ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(zero--)',
+            '         |      ',
+            '         0      ',
+            '  '
         ]);
     });
 
@@ -1018,12 +1018,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(truthy ? falsy : anotherFalsy);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(truthy ? falsy : anotherFalsy)',
-            '       |        |                    ',
-            '       "truthy" 0                    ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(truthy ? falsy : anotherFalsy)',
+            '         |        |                    ',
+            '         "truthy" 0                    ',
+            '  '
         ]);
     });
 
@@ -1033,12 +1033,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(falsy ? truthy : truthy ? anotherFalsy : truthy);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(falsy ? truthy : truthy ? anotherFalsy : truthy)',
-            '       |                |        |                     ',
-            '       0                "truthy" null                  ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(falsy ? truthy : truthy ? anotherFalsy : truthy)',
+            '         |                |        |                     ',
+            '         0                "truthy" null                  ',
+            '  '
         ]);
     });
 
@@ -1048,12 +1048,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(/^not/.exec(str));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(/^not/.exec(str))',
-            '              |    |    ',
-            '              null "ok" ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(/^not/.exec(str))',
+            '                |    |    ',
+            '                null "ok" ',
+            '  '
         ]);
     });
 
@@ -1064,12 +1064,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(!({foo: bar, hoge: fuga}));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(!{foo: bar,hoge: fuga})',
-            '       |      |         |     ',
-            '       false  "toto"    100   ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(!{foo: bar,hoge: fuga})',
+            '         |      |         |     ',
+            '         false  "toto"    100   ',
+            '  '
         ]);
     });
 
@@ -1080,13 +1080,13 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(!({ foo: bar.baz, name: nameOf({firstName: first, lastName: last}) }));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(!{foo: bar.baz,name: nameOf({firstName: first,lastName: last})})',
-            '       |      |   |         |                  |               |       ',
-            '       |      |   "BAZ"     "Brendan Eich"     "Brendan"       "Eich"  ',
-            '       false  Object{baz:"BAZ"}                                        ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(!{foo: bar.baz,name: nameOf({firstName: first,lastName: last})})',
+            '         |      |   |         |                  |               |       ',
+            '         |      |   "BAZ"     "Brendan Eich"     "Brendan"       "Eich"  ',
+            '         false  Object{baz:"BAZ"}                                        ',
+            '  '
         ]);
     });
 
@@ -1096,16 +1096,16 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(!(new Array(foo, bar, baz)));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(!new Array(foo, bar, baz))',
-            '       ||         |    |    |    ',
-            '       ||         |    |    "baz"',
-            '       ||         |    "bar"     ',
-            '       ||         "foo"          ',
-            '       |["foo","bar","baz"]      ',
-            '       false                     ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(!new Array(foo, bar, baz))',
+            '         ||         |    |    |    ',
+            '         ||         |    |    "baz"',
+            '         ||         |    "bar"     ',
+            '         ||         "foo"          ',
+            '         |["foo","bar","baz"]      ',
+            '         false                     ',
+            '  '
         ]);
     });
 
@@ -1115,26 +1115,26 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(baz === new Array(foo, bar, baz)[1]);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(baz === new Array(foo, bar, baz)[1])',
-            '       |   |   |         |    |    |   |   ',
-            '       |   |   |         |    |    |   "bar"',
-            '       |   |   |         |    |    "baz"   ',
-            '       |   |   |         |    "bar"        ',
-            '       |   |   |         "foo"             ',
-            '       |   |   ["foo","bar","baz"]         ',
-            '       |   false                           ',
-            '       "baz"                               ',
-            '',
-            '--- [string] new Array(foo, bar, baz)[1]',
-            '+++ [string] baz',
-            '@@ -1,3 +1,3 @@',
-            ' ba',
-            '-r',
-            '+z',
-            '',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(baz === new Array(foo, bar, baz)[1])',
+            '         |   |   |         |    |    |   |   ',
+            '         |   |   |         |    |    |   "bar"',
+            '         |   |   |         |    |    "baz"   ',
+            '         |   |   |         |    "bar"        ',
+            '         |   |   |         "foo"             ',
+            '         |   |   ["foo","bar","baz"]         ',
+            '         |   false                           ',
+            '         "baz"                               ',
+            '  ',
+            '  --- [string] new Array(foo, bar, baz)[1]',
+            '  +++ [string] baz',
+            '  @@ -1,3 +1,3 @@',
+            '   ba',
+            '  -r',
+            '  +z',
+            '  ',
+            '  '
         ]);
     });
 
@@ -1144,24 +1144,24 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(baz === (function (a, b) { return a + b; })(foo, bar));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(baz === function (a, b) {return a + b;}(foo, bar))',
-            '       |   |   |                               |    |    ',
-            '       |   |   |                               |    "bar"',
-            '       |   |   "foobar"                        "foo"     ',
-            '       |   false                                         ',
-            '       "baz"                                             ',
-            '',
-            '--- [string] function (a, b) {return a + b;}(foo, bar)',
-            '+++ [string] baz',
-            '@@ -1,6 +1,3 @@',
-            '-foo',
-            ' ba',
-            '-r',
-            '+z',
-            '',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(baz === function (a, b) {return a + b;}(foo, bar))',
+            '         |   |   |                               |    |    ',
+            '         |   |   |                               |    "bar"',
+            '         |   |   "foobar"                        "foo"     ',
+            '         |   false                                         ',
+            '         "baz"                                             ',
+            '  ',
+            '  --- [string] function (a, b) {return a + b;}(foo, bar)',
+            '  +++ [string] baz',
+            '  @@ -1,6 +1,3 @@',
+            '  -foo',
+            '   ba',
+            '  -r',
+            '  +z',
+            '  ',
+            '  '
         ]);
     });
 
@@ -1172,13 +1172,13 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(ary.every(function (element, index, array) { return element.length === 3; }));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(ary.every(function (element, index, array) {return element.length === 3;}))',
-            '       |   |                                                                      ',
-            '       |   false                                                                  ',
-            '       ["foo","bar","baz","hoge"]                                                 ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(ary.every(function (element, index, array) {return element.length === 3;}))',
+            '         |   |                                                                      ',
+            '         |   false                                                                  ',
+            '         ["foo","bar","baz","hoge"]                                                 ',
+            '  '
         ]);
     });
 
@@ -1189,12 +1189,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.equal(1, minusOne)'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.equal(1, minusOne)',
-            '                |        ',
-            '                -1       ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert.equal(1, minusOne)',
+            '                  |        ',
+            '                  -1       ',
+            '  '
         ]);
     });
 
@@ -1204,12 +1204,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.equal(++minusOne, 1)'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.equal(++minusOne, 1)',
-            '             |             ',
-            '             0             ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert.equal(++minusOne, 1)',
+            '               |             ',
+            '               0             ',
+            '  '
         ]);
     });
 
@@ -1219,12 +1219,12 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.notEqual(truthy ? fiveInStr : tenInStr, four += 1)'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.notEqual(truthy ? fiveInStr : tenInStr, four += 1)',
-            '                |        |                          |    ',
-            '                3        "5"                        5    ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert.notEqual(truthy ? fiveInStr : tenInStr, four += 1)',
+            '                  |        |                          |    ',
+            '                  3        "5"                        5    ',
+            '  '
         ]);
     });
 
@@ -1234,14 +1234,14 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.strictEqual(obj.truthy(), three == threeInStr);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.strictEqual(obj.truthy(), three == threeInStr)',
-            '                   |   |         |     |  |          ',
-            '                   |   |         |     |  "3"        ',
-            '                   |   "true"    3     true          ',
-            '                   Object{truthy:#function#}         ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert.strictEqual(obj.truthy(), three == threeInStr)',
+            '                     |   |         |     |  |          ',
+            '                     |   |         |     |  "3"        ',
+            '                     |   "true"    3     true          ',
+            '                     Object{truthy:#function#}         ',
+            '  '
         ]);
     });
 
@@ -1251,13 +1251,13 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.notStrictEqual(typeof undefinedVar, types.undef)'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.notStrictEqual(typeof undefinedVar, types.undef)',
-            '                      |                    |     |     ',
-            '                      |                    |     "undefined"',
-            '                      "undefined"          Object{undef:"undefined"}',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert.notStrictEqual(typeof undefinedVar, types.undef)',
+            '                        |                    |     |     ',
+            '                        |                    |     "undefined"',
+            '                        "undefined"          Object{undef:"undefined"}',
+            '  '
         ]);
     });
 
@@ -1267,14 +1267,14 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.deepEqual(alice || bob, {name: kenName, age: four});'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.deepEqual(alice || bob, {name: kenName,age: four})',
-            '                 |     |              |            |     ',
-            '                 |     |              "ken"        4     ',
-            '                 |     Object{name:"alice",age:3}        ',
-            '                 Object{name:"alice",age:3}              ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert.deepEqual(alice || bob, {name: kenName,age: four})',
+            '                   |     |              |            |     ',
+            '                   |     |              "ken"        4     ',
+            '                   |     Object{name:"alice",age:3}        ',
+            '                   Object{name:"alice",age:3}              ',
+            '  '
         ]);
     });
 
@@ -1284,18 +1284,18 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.notDeepEqual([foo, bar, baz], new Array(foo, bar, baz));'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert.notDeepEqual([foo,bar,baz], new Array(foo, bar, baz))',
-            '                     |   |   |     |         |    |    |    ',
-            '                     |   |   |     |         |    |    Object{name:"hoge"}',
-            '                     |   |   |     |         |    ["toto","tata"]',
-            '                     |   |   |     |         "foo"          ',
-            '                     |   |   |     ["foo",#Array#,#Object#] ',
-            '                     |   |   Object{name:"hoge"}            ',
-            '                     |   ["toto","tata"]                    ',
-            '                     "foo"                                  ',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert.notDeepEqual([foo,bar,baz], new Array(foo, bar, baz))',
+            '                       |   |   |     |         |    |    |    ',
+            '                       |   |   |     |         |    |    Object{name:"hoge"}',
+            '                       |   |   |     |         |    ["toto","tata"]',
+            '                       |   |   |     |         "foo"          ',
+            '                       |   |   |     ["foo",#Array#,#Object#] ',
+            '                       |   |   Object{name:"hoge"}            ',
+            '                       |   ["toto","tata"]                    ',
+            '                       "foo"                                  ',
+            '  '
         ]);
     });
 
@@ -1305,23 +1305,23 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(str1 === str2);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(str1 === str2)',
-            '       |    |   |    ',
-            '       |    |   "abcdff"',
-            '       |    false    ',
-            '       "abcdef"      ',
-            '',
-            '--- [string] str2',
-            '+++ [string] str1',
-            '@@ -1,6 +1,6 @@',
-            ' abcd',
-            '-f',
-            '+e',
-            ' f',
-            '',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(str1 === str2)',
+            '         |    |   |    ',
+            '         |    |   "abcdff"',
+            '         |    false    ',
+            '         "abcdef"      ',
+            '  ',
+            '  --- [string] str2',
+            '  +++ [string] str1',
+            '  @@ -1,6 +1,6 @@',
+            '   abcd',
+            '  -f',
+            '  +e',
+            '   f',
+            '  ',
+            '  '
         ]);
     });
 
@@ -1331,26 +1331,26 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(str1 === str2);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(str1 === str2)',
-            '       |    |   |    ',
-            '       |    |   "あれうえおかきくげこ"',
-            '       |    false    ',
-            '       "あいうえおかきくけこ"',
-            '',
-            '--- [string] str2',
-            '+++ [string] str1',
-            '@@ -1,10 +1,10 @@',
-            ' あ',
-            '-れ',
-            '+い',
-            ' うえおかきく',
-            '-げ',
-            '+け',
-            ' こ',
-            '',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(str1 === str2)',
+            '         |    |   |    ',
+            '         |    |   "あれうえおかきくげこ"',
+            '         |    false    ',
+            '         "あいうえおかきくけこ"',
+            '  ',
+            '  --- [string] str2',
+            '  +++ [string] str1',
+            '  @@ -1,10 +1,10 @@',
+            '   あ',
+            '  -れ',
+            '  +い',
+            '   うえおかきく',
+            '  -げ',
+            '  +け',
+            '   こ',
+            '  ',
+            '  '
         ]);
     });
 
@@ -1360,22 +1360,22 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(str1 === "abcdff");'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(str1 === "abcdff")',
-            '       |    |            ',
-            '       |    false        ',
-            '       "abcdef"          ',
-            '',
-            '--- [string] "abcdff"',
-            '+++ [string] str1',
-            '@@ -1,6 +1,6 @@',
-            ' abcd',
-            '-f',
-            '+e',
-            ' f',
-            '',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(str1 === "abcdff")',
+            '         |    |            ',
+            '         |    false        ',
+            '         "abcdef"          ',
+            '  ',
+            '  --- [string] "abcdff"',
+            '  +++ [string] str1',
+            '  @@ -1,6 +1,6 @@',
+            '   abcd',
+            '  -f',
+            '  +e',
+            '   f',
+            '  ',
+            '  '
         ]);
     });
 
@@ -1386,36 +1386,36 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(longString === anotherLongString);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(longString === anotherLongString)',
-            '       |          |   |                 ',
-            '       |          |   "yet another looooooooooo oooooooo0000ooooooooooooooooooooooooooooooong massage"',
-            '       |          false                 ',
-            '       "very very looooooooooo  ooooooooooooooooooooooooooooooooooooooooong message"',
-            '',
-            '--- [string] anotherLongString',
-            '+++ [string] longString',
-            '@@ -1,15 +1,13 @@',
-            '-yet anoth',
-            '+very v',
-            ' er',
-            '+y',
-            '  loo',
-            '@@ -20,20 +20,19 @@',
-            ' ooo ',
-            '+ ',
-            ' oooooooo',
-            '-0000',
-            '+oo',
-            ' oooo',
-            '@@ -62,14 +62,14 @@',
-            ' oooong m',
-            '-a',
-            '+e',
-            ' ssage',
-            '',
-            ''
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(longString === anotherLongString)',
+            '         |          |   |                 ',
+            '         |          |   "yet another looooooooooo oooooooo0000ooooooooooooooooooooooooooooooong massage"',
+            '         |          false                 ',
+            '         "very very looooooooooo  ooooooooooooooooooooooooooooooooooooooooong message"',
+            '  ',
+            '  --- [string] anotherLongString',
+            '  +++ [string] longString',
+            '  @@ -1,15 +1,13 @@',
+            '  -yet anoth',
+            '  +very v',
+            '   er',
+            '  +y',
+            '    loo',
+            '  @@ -20,20 +20,19 @@',
+            '   ooo ',
+            '  + ',
+            '   oooooooo',
+            '  -0000',
+            '  +oo',
+            '   oooo',
+            '  @@ -62,14 +62,14 @@',
+            '   oooong m',
+            '  -a',
+            '  +e',
+            '   ssage',
+            '  ',
+            '  '
         ]);
     });
 
@@ -1479,35 +1479,35 @@ suite('power-assert-formatter', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(html1 === html2);'));
         }, [
-            '# /path/to/some_test.js:1',
-            '',
-            'assert(html1 === html2)',
-            '       |     |   |     ',
-            '       |     |   "<!doctype html>\\n<html>\\n<head>\\n    <title>Example Site</title>\\n\\n    <meta charset=\\"utf-8\\" />\\n    <meta http-equiv=\\"Content-type\\" content=\\"text/html; charset=utf-8\\" />\\n    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\" />\\n    <style type=\\"text/css\\">\\n    body {\\n        background-color: #f0f0f2;\\n        margin: 0;\\n        padding: 0;\\n        font-family: \\"Open Sans\\", \\"Helvetica Neue\\", Helvetica, Arial, sans-serif;\\n        \\n    }\\n    div {\\n        width: 600px;\\n        margin: 5em auto;\\n        padding: 50px;\\n        background-color: #fff;\\n        border-radius: 1em;\\n    }\\n    a:link, a:visited {\\n        color: #38488f;\\n        text-decoration: none;\\n    }\\n    @media (max-width: 700px) {\\n        body {\\n            background-color: #fff;\\n        }\\n        div {\\n            width: auto;\\n            margin: 0 auto;\\n            border-radius: 0;\\n            padding: 1em;\\n        }\\n    }\\n    </style>\\n</head>\\n\\n<body>\\n<div>\\n    <h1>Example Site</h1>\\n    <p>This domain is established to be used for illustrative examples in documents. You may use this\\n    domain in examples without prior coordination or asking for permission.</p>\\n    <p><a href=\\"http://www.iana.org/domains/example\\">More information...</a></p>\\n</div>\\n</body>\\n</html>"',
-            '       |     false     ',
-            '       "<!doctype html>\\n<html>\\n<head>\\n    <title>Example Domain</title>\\n\\n    <meta charset=\\"utf-8\\" />\\n    <meta http-equiv=\\"Content-type\\" content=\\"text/html; charset=utf-8\\" />\\n    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\" />\\n    <style type=\\"text/css\\">\\n    body {\\n        background-color: #f0f0f2;\\n        margin: 0;\\n        padding: 0;\\n        font-family: \\"Open Sans\\", \\"Helvetica Neue\\", Helvetica, Arial, sans-serif;\\n        \\n    }\\n    div {\\n        width: 600px;\\n        margin: 5em auto;\\n        padding: 50px;\\n        background-color: #fff;\\n        border-radius: 1em;\\n    }\\n    a:link, a:visited {\\n        color: #38488f;\\n        text-decoration: none;\\n    }\\n    @media (max-width: 700px) {\\n        body {\\n            background-color: #fff;\\n        }\\n        div {\\n            width: auto;\\n            margin: 0 auto;\\n            border-radius: 0;\\n            padding: 1em;\\n        }\\n    }\\n    </style>\\n</head>\\n\\n<body>\\n<div>\\n    <h1>Example Domain</h1>\\n    <p>This domain is established to be used for illustrative examples in documents. You may use this\\n    domain in examples without prior coordination or asking for permission.</p>\\n    <p><a href=\\"http://www.iana.org/domains/example\\">More information...</a></p>\\n</div>\\n</body>\\n</html>"',
-            '',
-            '--- [string] html2',
-            '+++ [string] html1',
-            '@@ -27,40 +27,42 @@',
-            ' ad>',
-            '',
-            '-    <title>Example Site</title>',
-            '',
-            '+    <title>Example Domain</title>',
-            '',
-            ' ',
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert(html1 === html2)',
+            '         |     |   |     ',
+            '         |     |   "<!doctype html>\\n<html>\\n<head>\\n    <title>Example Site</title>\\n\\n    <meta charset=\\"utf-8\\" />\\n    <meta http-equiv=\\"Content-type\\" content=\\"text/html; charset=utf-8\\" />\\n    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\" />\\n    <style type=\\"text/css\\">\\n    body {\\n        background-color: #f0f0f2;\\n        margin: 0;\\n        padding: 0;\\n        font-family: \\"Open Sans\\", \\"Helvetica Neue\\", Helvetica, Arial, sans-serif;\\n        \\n    }\\n    div {\\n        width: 600px;\\n        margin: 5em auto;\\n        padding: 50px;\\n        background-color: #fff;\\n        border-radius: 1em;\\n    }\\n    a:link, a:visited {\\n        color: #38488f;\\n        text-decoration: none;\\n    }\\n    @media (max-width: 700px) {\\n        body {\\n            background-color: #fff;\\n        }\\n        div {\\n            width: auto;\\n            margin: 0 auto;\\n            border-radius: 0;\\n            padding: 1em;\\n        }\\n    }\\n    </style>\\n</head>\\n\\n<body>\\n<div>\\n    <h1>Example Site</h1>\\n    <p>This domain is established to be used for illustrative examples in documents. You may use this\\n    domain in examples without prior coordination or asking for permission.</p>\\n    <p><a href=\\"http://www.iana.org/domains/example\\">More information...</a></p>\\n</div>\\n</body>\\n</html>"',
+            '         |     false     ',
+            '         "<!doctype html>\\n<html>\\n<head>\\n    <title>Example Domain</title>\\n\\n    <meta charset=\\"utf-8\\" />\\n    <meta http-equiv=\\"Content-type\\" content=\\"text/html; charset=utf-8\\" />\\n    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\" />\\n    <style type=\\"text/css\\">\\n    body {\\n        background-color: #f0f0f2;\\n        margin: 0;\\n        padding: 0;\\n        font-family: \\"Open Sans\\", \\"Helvetica Neue\\", Helvetica, Arial, sans-serif;\\n        \\n    }\\n    div {\\n        width: 600px;\\n        margin: 5em auto;\\n        padding: 50px;\\n        background-color: #fff;\\n        border-radius: 1em;\\n    }\\n    a:link, a:visited {\\n        color: #38488f;\\n        text-decoration: none;\\n    }\\n    @media (max-width: 700px) {\\n        body {\\n            background-color: #fff;\\n        }\\n        div {\\n            width: auto;\\n            margin: 0 auto;\\n            border-radius: 0;\\n            padding: 1em;\\n        }\\n    }\\n    </style>\\n</head>\\n\\n<body>\\n<div>\\n    <h1>Example Domain</h1>\\n    <p>This domain is established to be used for illustrative examples in documents. You may use this\\n    domain in examples without prior coordination or asking for permission.</p>\\n    <p><a href=\\"http://www.iana.org/domains/example\\">More information...</a></p>\\n</div>\\n</body>\\n</html>"',
+            '  ',
+            '  --- [string] html2',
+            '  +++ [string] html1',
+            '  @@ -27,40 +27,42 @@',
+            '   ad>',
+            '  ',
+            '  -    <title>Example Site</title>',
+            '  ',
+            '  +    <title>Example Domain</title>',
+            '  ',
             '   ',
-            '@@ -949,34 +949,36 @@',
-            ' iv>',
-            '',
-            '-    <h1>Example Site</h1>',
-            '',
-            '+    <h1>Example Domain</h1>',
-            '',
             '     ',
-            '',
-            ''
+            '  @@ -949,34 +949,36 @@',
+            '   iv>',
+            '  ',
+            '  -    <h1>Example Site</h1>',
+            '  ',
+            '  +    <h1>Example Domain</h1>',
+            '  ',
+            '       ',
+            '  ',
+            '  '
         ]);
     });
 
@@ -1520,19 +1520,19 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(str1 == str2);'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert(str1 == str2)',
-                '       |    |  |    ',
-                '       |    |  new String("abcdef")',
-                '       |    false   ',
-                '       new String("abcdef")',
-                '',
-                '[String] str2',
-                '=> new String("abcdef")',
-                '[String] str1',
-                '=> new String("abcdef")',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert(str1 == str2)',
+                '         |    |  |    ',
+                '         |    |  new String("abcdef")',
+                '         |    false   ',
+                '         new String("abcdef")',
+                '  ',
+                '  [String] str2',
+                '  => new String("abcdef")',
+                '  [String] str1',
+                '  => new String("abcdef")',
+                '  '
             ]);
         });
 
@@ -1541,20 +1541,20 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(num1 == new Number(eightStr));'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert(num1 == new Number(eightStr))',
-                '       |    |  |          |         ',
-                '       |    |  |          "8"       ',
-                '       |    |  new Number(8)        ',
-                '       |    false                   ',
-                '       new Number(8)                ',
-                '',
-                '[Number] new Number(eightStr)',
-                '=> new Number(8)',
-                '[Number] num1',
-                '=> new Number(8)',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert(num1 == new Number(eightStr))',
+                '         |    |  |          |         ',
+                '         |    |  |          "8"       ',
+                '         |    |  new Number(8)        ',
+                '         |    false                   ',
+                '         new Number(8)                ',
+                '  ',
+                '  [Number] new Number(eightStr)',
+                '  => new Number(8)',
+                '  [Number] num1',
+                '  => new Number(8)',
+                '  '
             ]);
         });
 
@@ -1563,20 +1563,20 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(bool1 == new Boolean(oneStr));'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert(bool1 == new Boolean(oneStr))',
-                '       |     |  |           |       ',
-                '       |     |  |           "1"     ',
-                '       |     |  new Boolean(true)   ',
-                '       |     false                  ',
-                '       new Boolean(true)            ',
-                '',
-                '[Boolean] new Boolean(oneStr)',
-                '=> new Boolean(true)',
-                '[Boolean] bool1',
-                '=> new Boolean(true)',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert(bool1 == new Boolean(oneStr))',
+                '         |     |  |           |       ',
+                '         |     |  |           "1"     ',
+                '         |     |  new Boolean(true)   ',
+                '         |     false                  ',
+                '         new Boolean(true)            ',
+                '  ',
+                '  [Boolean] new Boolean(oneStr)',
+                '  => new Boolean(true)',
+                '  [Boolean] bool1',
+                '  => new Boolean(true)',
+                '  '
             ]);
         });
 
@@ -1586,19 +1586,19 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(dateObj == dateStr);'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert(dateObj == dateStr)',
-                '       |       |  |       ',
-                '       |       |  "1990-01-01"',
-                '       |       false      ',
-                '       new Date("1990-01-01T00:00:00.000Z")',
-                '',
-                '[string] dateStr',
-                '=> "1990-01-01"',
-                '[Date] dateObj',
-                '=> new Date("1990-01-01T00:00:00.000Z")',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert(dateObj == dateStr)',
+                '         |       |  |       ',
+                '         |       |  "1990-01-01"',
+                '         |       false      ',
+                '         new Date("1990-01-01T00:00:00.000Z")',
+                '  ',
+                '  [string] dateStr',
+                '  => "1990-01-01"',
+                '  [Date] dateObj',
+                '  => new Date("1990-01-01T00:00:00.000Z")',
+                '  '
             ]);
         });
 
@@ -1608,19 +1608,19 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(dateObj === dateStr);'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert(dateObj === dateStr)',
-                '       |       |   |       ',
-                '       |       |   "1990-01-01"',
-                '       |       false       ',
-                '       new Date("1990-01-01T00:00:00.000Z")',
-                '',
-                '[string] dateStr',
-                '=> "1990-01-01"',
-                '[Date] dateObj',
-                '=> new Date("1990-01-01T00:00:00.000Z")',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert(dateObj === dateStr)',
+                '         |       |   |       ',
+                '         |       |   "1990-01-01"',
+                '         |       false       ',
+                '         new Date("1990-01-01T00:00:00.000Z")',
+                '  ',
+                '  [string] dateStr',
+                '  => "1990-01-01"',
+                '  [Date] dateObj',
+                '  => new Date("1990-01-01T00:00:00.000Z")',
+                '  '
             ]);
         });
 
@@ -1629,19 +1629,19 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(re == new RegExp(pattern, flag));'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert(re == new RegExp(pattern, flag))',
-                '       |  |  |          |        |     ',
-                '       |  |  /^not/g    "^not"   "g"   ',
-                '       |  false                        ',
-                '       /^not/g                         ',
-                '',
-                '[RegExp] new RegExp(pattern, flag)',
-                '=> /^not/g',
-                '[RegExp] re',
-                '=> /^not/g',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert(re == new RegExp(pattern, flag))',
+                '         |  |  |          |        |     ',
+                '         |  |  /^not/g    "^not"   "g"   ',
+                '         |  false                        ',
+                '         /^not/g                         ',
+                '  ',
+                '  [RegExp] new RegExp(pattern, flag)',
+                '  => /^not/g',
+                '  [RegExp] re',
+                '  => /^not/g',
+                '  '
             ]);
         });
 
@@ -1650,18 +1650,18 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(/^not/g == new RegExp(pattern, flag));'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert(/^not/g == new RegExp(pattern, flag))',
-                '               |  |          |        |     ',
-                '               |  /^not/g    "^not"   "g"   ',
-                '               false                        ',
-                '',
-                '[RegExp] new RegExp(pattern, flag)',
-                '=> /^not/g',
-                '[RegExp] /^not/g',
-                '=> /^not/g',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert(/^not/g == new RegExp(pattern, flag))',
+                '                 |  |          |        |     ',
+                '                 |  /^not/g    "^not"   "g"   ',
+                '                 false                        ',
+                '  ',
+                '  [RegExp] new RegExp(pattern, flag)',
+                '  => /^not/g',
+                '  [RegExp] /^not/g',
+                '  => /^not/g',
+                '  '
             ]);
         });
 
@@ -1669,13 +1669,13 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(function(x,y){ return x + y; } == new Function("x", "y", "return x + y"));'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert(function (x, y) {return x + y;} == new Function("x", "y", "return x + y"))',
-                '                                       |  |                                      ',
-                '                                       |  #function#                             ',
-                '                                       false                                     ',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert(function (x, y) {return x + y;} == new Function("x", "y", "return x + y"))',
+                '                                         |  |                                      ',
+                '                                         |  #function#                             ',
+                '                                         false                                     ',
+                '  '
             ]);
         });
 
@@ -1693,19 +1693,19 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(alice === bob);'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert(alice === bob)',
-                '       |     |   |   ',
-                '       |     |   Person{name:"bob",age:4}',
-                '       |     false   ',
-                '       Person{name:"alice",age:3}',
-                '',
-                '[Person] bob',
-                '=> Person{name:"bob",age:4}',
-                '[Person] alice',
-                '=> Person{name:"alice",age:3}',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert(alice === bob)',
+                '         |     |   |   ',
+                '         |     |   Person{name:"bob",age:4}',
+                '         |     false   ',
+                '         Person{name:"alice",age:3}',
+                '  ',
+                '  [Person] bob',
+                '  => Person{name:"bob",age:4}',
+                '  [Person] alice',
+                '  => Person{name:"alice",age:3}',
+                '  '
             ]);
         });
 
@@ -1718,20 +1718,20 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(alice.age === bob.age);'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert(alice.age === bob.age)',
-                '       |     |   |   |   |   ',
-                '       |     |   |   |   4   ',
-                '       |     |   |   Person{name:"bob",age:4}',
-                '       |     3   false       ',
-                '       Person{name:"alice",age:3}',
-                '',
-                '[number] bob.age',
-                '=> 4',
-                '[number] alice.age',
-                '=> 3',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert(alice.age === bob.age)',
+                '         |     |   |   |   |   ',
+                '         |     |   |   |   4   ',
+                '         |     |   |   Person{name:"bob",age:4}',
+                '         |     3   false       ',
+                '         Person{name:"alice",age:3}',
+                '  ',
+                '  [number] bob.age',
+                '  => 4',
+                '  [number] alice.age',
+                '  => 3',
+                '  '
             ]);
         });
 
@@ -1744,14 +1744,14 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert.deepEqual(alice, new Person(kenName, four));'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert.deepEqual(alice, new Person(kenName, four))',
-                '                 |      |          |        |     ',
-                '                 |      |          "ken"    4     ',
-                '                 |      Person{name:"ken",age:4}  ',
-                '                 Person{name:"alice",age:3}       ',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert.deepEqual(alice, new Person(kenName, four))',
+                '                   |      |          |        |     ',
+                '                   |      |          "ken"    4     ',
+                '                   |      Person{name:"ken",age:4}  ',
+                '                   Person{name:"alice",age:3}       ',
+                '  '
             ]);
         });
 
@@ -1764,14 +1764,14 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert.deepEqual(alice, new Person(kenName, four));'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert.deepEqual(alice, new Person(kenName, four))',
-                '                 |      |          |        |     ',
-                '                 |      |          "ken"    4     ',
-                '                 |      Object{name:"ken",age:4}  ',
-                '                 Object{name:"alice",age:3}       ',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert.deepEqual(alice, new Person(kenName, four))',
+                '                   |      |          |        |     ',
+                '                   |      |          "ken"    4     ',
+                '                   |      Object{name:"ken",age:4}  ',
+                '                   Object{name:"alice",age:3}       ',
+                '  '
             ]);
         });
 
@@ -1785,13 +1785,13 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert.deepEqual(alice, bob);'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert.deepEqual(alice, bob)',
-                '                 |      |   ',
-                '                 |      Person{name:"bob",birthday:new Date("1985-04-01T00:00:00.000Z")}',
-                '                 Person{name:"alice",birthday:new Date("1990-01-01T00:00:00.000Z")}',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert.deepEqual(alice, bob)',
+                '                   |      |   ',
+                '                   |      Person{name:"bob",birthday:new Date("1985-04-01T00:00:00.000Z")}',
+                '                   Person{name:"alice",birthday:new Date("1990-01-01T00:00:00.000Z")}',
+                '  '
             ]);
         });
 
@@ -1811,13 +1811,13 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert.deepEqual(session1, session2);'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert.deepEqual(session1, session2)',
-                '                 |         |        ',
-                '                 |         PairProgramming{driver:#Person#,navigator:#Person#}',
-                '                 PairProgramming{driver:#Person#,navigator:#Person#}',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert.deepEqual(session1, session2)',
+                '                   |         |        ',
+                '                   |         PairProgramming{driver:#Person#,navigator:#Person#}',
+                '                   PairProgramming{driver:#Person#,navigator:#Person#}',
+                '  '
             ]);
         });
 
@@ -1835,17 +1835,17 @@ suite('power-assert-formatter', function () {
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice));'));
             }, [
-                '# /path/to/some_test.js:1',
-                '',
-                'assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice))',
-                '                 |                   |      |     |                   |    |      ',
-                '                 |                   |      |     |                   |    Person{name:"alice",age:3}',
-                '                 |                   |      |     |                   Person{name:"ken",age:4}',
-                '                 |                   |      |     PairProgramming{driver:#Person#,navigator:#Person#}',
-                '                 |                   |      Person{name:"ken",age:4}              ',
-                '                 |                   Person{name:"alice",age:3}                   ',
-                '                 PairProgramming{driver:#Person#,navigator:#Person#}              ',
-                ''
+                '  # /path/to/some_test.js:1',
+                '  ',
+                '  assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice))',
+                '                   |                   |      |     |                   |    |      ',
+                '                   |                   |      |     |                   |    Person{name:"alice",age:3}',
+                '                   |                   |      |     |                   Person{name:"ken",age:4}',
+                '                   |                   |      |     PairProgramming{driver:#Person#,navigator:#Person#}',
+                '                   |                   |      Person{name:"ken",age:4}              ',
+                '                   |                   Person{name:"alice",age:3}                   ',
+                '                   PairProgramming{driver:#Person#,navigator:#Person#}              ',
+                '  '
             ]);
         });
 

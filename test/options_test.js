@@ -27,12 +27,12 @@ suite('lineSeparator option', function () {
             } catch (e) {
                 baseAssert.equal(e.name, 'AssertionError');
                 baseAssert.equal(e.message, [
-                    '# /path/to/some_test.js:1',
-                    '',
-                    'assert(falsyNum)',
-                    '       |        ',
-                    '       0        ',
-                    ''
+                    '  # /path/to/some_test.js:1',
+                    '  ',
+                    '  assert(falsyNum)',
+                    '         |        ',
+                    '         0        ',
+                    '  '
                 ].join(expectedSeparator));
             }
         });
@@ -112,21 +112,21 @@ suite('renderers customization', function () {
     }
 
     rendererCustomizationTest('default', null, [
-        'comment # /path/to/some_test.js:1',
-        '',
-        'assert.ok(hoge === fuga, "comment")',
-        '          |    |   |               ',
-        '          |    |   "bar"           ',
-        '          |    false               ',
-        '          "foo"                    ',
-        '',
-        '--- [string] fuga',
-        '+++ [string] hoge',
-        '@@ -1,3 +1,3 @@',
-        '-bar',
-        '+foo',
-        '',
-        ''
+        'comment   # /path/to/some_test.js:1',
+        '  ',
+        '  assert.ok(hoge === fuga, "comment")',
+        '            |    |   |               ',
+        '            |    |   "bar"           ',
+        '            |    false               ',
+        '            "foo"                    ',
+        '  ',
+        '  --- [string] fuga',
+        '  +++ [string] hoge',
+        '  @@ -1,3 +1,3 @@',
+        '  -bar',
+        '  +foo',
+        '  ',
+        '  '
     ]);
 
     rendererCustomizationTest('without file renderer', {
@@ -136,20 +136,20 @@ suite('renderers customization', function () {
             './built-in/binary-expression'
         ]
     }, [
-        'comment ',
-        'assert.ok(hoge === fuga, "comment")',
-        '          |    |   |               ',
-        '          |    |   "bar"           ',
-        '          |    false               ',
-        '          "foo"                    ',
-        '',
-        '--- [string] fuga',
-        '+++ [string] hoge',
-        '@@ -1,3 +1,3 @@',
-        '-bar',
-        '+foo',
-        '',
-        ''
+        'comment   ',
+        '  assert.ok(hoge === fuga, "comment")',
+        '            |    |   |               ',
+        '            |    |   "bar"           ',
+        '            |    false               ',
+        '            "foo"                    ',
+        '  ',
+        '  --- [string] fuga',
+        '  +++ [string] hoge',
+        '  @@ -1,3 +1,3 @@',
+        '  -bar',
+        '  +foo',
+        '  ',
+        '  '
     ]);
 
 
@@ -160,19 +160,19 @@ suite('renderers customization', function () {
             './built-in/binary-expression'
         ]
     }, [
-        'comment # /path/to/some_test.js:1',
-        '          |    |   |               ',
-        '          |    |   "bar"           ',
-        '          |    false               ',
-        '          "foo"                    ',
-        '',
-        '--- [string] fuga',
-        '+++ [string] hoge',
-        '@@ -1,3 +1,3 @@',
-        '-bar',
-        '+foo',
-        '',
-        ''
+        'comment   # /path/to/some_test.js:1',
+        '            |    |   |               ',
+        '            |    |   "bar"           ',
+        '            |    false               ',
+        '            "foo"                    ',
+        '  ',
+        '  --- [string] fuga',
+        '  +++ [string] hoge',
+        '  @@ -1,3 +1,3 @@',
+        '  -bar',
+        '  +foo',
+        '  ',
+        '  '
     ]);
 
     rendererCustomizationTest('without diagram renderer', {
@@ -182,17 +182,17 @@ suite('renderers customization', function () {
             './built-in/binary-expression'
         ]
     }, [
-        'comment # /path/to/some_test.js:1',
-        '',
-        'assert.ok(hoge === fuga, "comment")',
-        '',
-        '--- [string] fuga',
-        '+++ [string] hoge',
-        '@@ -1,3 +1,3 @@',
-        '-bar',
-        '+foo',
-        '',
-        ''
+        'comment   # /path/to/some_test.js:1',
+        '  ',
+        '  assert.ok(hoge === fuga, "comment")',
+        '  ',
+        '  --- [string] fuga',
+        '  +++ [string] hoge',
+        '  @@ -1,3 +1,3 @@',
+        '  -bar',
+        '  +foo',
+        '  ',
+        '  '
     ]);
 
     rendererCustomizationTest('without binary-expression renderer', {
@@ -202,14 +202,14 @@ suite('renderers customization', function () {
             './built-in/diagram'
         ]
     }, [
-        'comment # /path/to/some_test.js:1',
-        '',
-        'assert.ok(hoge === fuga, "comment")',
-        '          |    |   |               ',
-        '          |    |   "bar"           ',
-        '          |    false               ',
-        '          "foo"                    ',
-        ''
+        'comment   # /path/to/some_test.js:1',
+        '  ',
+        '  assert.ok(hoge === fuga, "comment")',
+        '            |    |   |               ',
+        '            |    |   "bar"           ',
+        '            |    false               ',
+        '            "foo"                    ',
+        '  '
     ]);
 
 
@@ -231,17 +231,17 @@ suite('renderers customization', function () {
                 './built-in/binary-expression'
             ]
         }, [
-            'comment # /path/to/some_test.js:1',
-            '',
-            '## assert.ok(hoge === fuga, "comment") ##',
-            '',
-            '--- [string] fuga',
-            '+++ [string] hoge',
-            '@@ -1,3 +1,3 @@',
-            '-bar',
-            '+foo',
-            '',
-            ''
+            'comment   # /path/to/some_test.js:1',
+            '  ',
+            '  ## assert.ok(hoge === fuga, "comment") ##',
+            '  ',
+            '  --- [string] fuga',
+            '  +++ [string] hoge',
+            '  @@ -1,3 +1,3 @@',
+            '  -bar',
+            '  +foo',
+            '  ',
+            '  '
         ]);
     })();
 
