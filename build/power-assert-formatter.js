@@ -294,6 +294,7 @@ module.exports = function defaultOptions () {
     return {
         lineDiffThreshold: 5,
         maxDepth: 1,
+        outputOffset: 2,
         anonymous: 'Object',
         circular: '#@Circular#',
         lineSeparator: '\n',
@@ -481,13 +482,23 @@ module.exports = function (str) {
 },{"eastasianwidth":19}],11:[function(_dereq_,module,exports){
 'use strict';
 
+function spacerStr (len) {
+    var str = '';
+    for(var i = 0; i < len; i += 1) {
+        str += ' ';
+    }
+    return str;
+}
+
 function StringWriter (config) {
     this.lines = [];
     this.lineSeparator = config.lineSeparator;
+    this.regex = new RegExp(this.lineSeparator, 'g');
+    this.spacer = spacerStr(config.outputOffset);
 }
 
 StringWriter.prototype.write = function (str) {
-    this.lines.push(str);
+    this.lines.push(this.spacer + str.replace(this.regex, this.lineSeparator + this.spacer));
 };
 
 StringWriter.prototype.flush = function () {
