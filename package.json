@@ -17,7 +17,7 @@
     "googlediff": "~0.1.0",
     "inherits": "~2.0.1",
     "object-keys": "~1.0.1",
-    "stringifier": "~0.1.1",
+    "stringifier": "~0.1.2",
     "type-name": "~1.0.0",
     "xtend": "~4.0.0"
   },
