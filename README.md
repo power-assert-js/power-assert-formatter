@@ -177,6 +177,7 @@ Returns default options object for createFormatter function. In other words, ret
     anonymous: 'Object',
     circular: '#@Circular#',
     lineSeparator: '\n',
+    ambiguousEastAsianCharWidth: 2,
     renderers: [
         './built-in/file',
         './built-in/assertion',
