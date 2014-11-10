@@ -253,7 +253,7 @@ var stringifier = _dereq_('stringifier'),
 function create (options) {
     var config = extend(defaultOptions(), options);
     if (typeof config.widthOf !== 'function') {
-        config.widthOf = stringWidth;
+        config.widthOf = stringWidth(extend(config));;
     }
     if (typeof config.stringify !== 'function') {
         config.stringify = stringifier(extend(config));
@@ -298,6 +298,7 @@ module.exports = function defaultOptions () {
         anonymous: 'Object',
         circular: '#@Circular#',
         lineSeparator: '\n',
+        ambiguousEastAsianCharWidth: 2,
         renderers: [
             './built-in/file',
             './built-in/assertion',
@@ -457,27 +458,32 @@ module.exports = locationOf;
 
 var eaw = _dereq_('eastasianwidth');
 
-module.exports = function (str) {
-    var i, code, width = 0;
-    for(i = 0; i < str.length; i+=1) {
-        code = eaw.eastAsianWidth(str.charAt(i));
-        switch(code) {
-        case 'F':
-        case 'W':
-            width += 2;
-            break;
-        case 'H':
-        case 'Na':
-        case 'N':
-            width += 1;
-            break;
-        case 'A':
-            width += 1;
-            break;
+function stringWidth (config) {
+    var ambiguousCharWidth = (config && config.ambiguousEastAsianCharWidth) || 1;
+    return function width (str) {
+        var i, code, width = 0;
+        for(i = 0; i < str.length; i+=1) {
+            code = eaw.eastAsianWidth(str.charAt(i));
+            switch(code) {
+            case 'F':
+            case 'W':
+                width += 2;
+                break;
+            case 'H':
+            case 'Na':
+            case 'N':
+                width += 1;
+                break;
+            case 'A':
+                width += ambiguousCharWidth;
+                break;
+            }
         }
-    }
-    return width;
-};
+        return width;
+    };
+}
+
+module.exports = stringWidth;
 
 },{"eastasianwidth":15}],11:[function(_dereq_,module,exports){
 'use strict';
@@ -4984,60 +4990,11 @@ parseStatement: true, parseSourceElement: true */
         isArray,
         VisitorOption,
         VisitorKeys,
+        objectCreate,
+        objectKeys,
         BREAK,
-        SKIP;
-
-    Syntax = {
-        AssignmentExpression: 'AssignmentExpression',
-        ArrayExpression: 'ArrayExpression',
-        ArrayPattern: 'ArrayPattern',
-        ArrowFunctionExpression: 'ArrowFunctionExpression',
-        BlockStatement: 'BlockStatement',
-        BinaryExpression: 'BinaryExpression',
-        BreakStatement: 'BreakStatement',
-        CallExpression: 'CallExpression',
-        CatchClause: 'CatchClause',
-        ClassBody: 'ClassBody',
-        ClassDeclaration: 'ClassDeclaration',
-        ClassExpression: 'ClassExpression',
-        ConditionalExpression: 'ConditionalExpression',
-        ContinueStatement: 'ContinueStatement',
-        DebuggerStatement: 'DebuggerStatement',
-        DirectiveStatement: 'DirectiveStatement',
-        DoWhileStatement: 'DoWhileStatement',
-        EmptyStatement: 'EmptyStatement',
-        ExpressionStatement: 'ExpressionStatement',
-        ForStatement: 'ForStatement',
-        ForInStatement: 'ForInStatement',
-        FunctionDeclaration: 'FunctionDeclaration',
-        FunctionExpression: 'FunctionExpression',
-        Identifier: 'Identifier',
-        IfStatement: 'IfStatement',
-        Literal: 'Literal',
-        LabeledStatement: 'LabeledStatement',
-        LogicalExpression: 'LogicalExpression',
-        MemberExpression: 'MemberExpression',
-        MethodDefinition: 'MethodDefinition',
-        NewExpression: 'NewExpression',
-        ObjectExpression: 'ObjectExpression',
-        ObjectPattern: 'ObjectPattern',
-        Program: 'Program',
-        Property: 'Property',
-        ReturnStatement: 'ReturnStatement',
-        SequenceExpression: 'SequenceExpression',
-        SwitchStatement: 'SwitchStatement',
-        SwitchCase: 'SwitchCase',
-        ThisExpression: 'ThisExpression',
-        ThrowStatement: 'ThrowStatement',
-        TryStatement: 'TryStatement',
-        UnaryExpression: 'UnaryExpression',
-        UpdateExpression: 'UpdateExpression',
-        VariableDeclaration: 'VariableDeclaration',
-        VariableDeclarator: 'VariableDeclarator',
-        WhileStatement: 'WhileStatement',
-        WithStatement: 'WithStatement',
-        YieldExpression: 'YieldExpression'
-    };
+        SKIP,
+        REMOVE;
 
     function ignoreJSHintError() { }
 
@@ -5116,6 +5073,98 @@ parseStatement: true, parseSourceElement: true */
     }
     ignoreJSHintError(lowerBound);
 
+    objectCreate = Object.create || (function () {
+        function F() { }
+
+        return function (o) {
+            F.prototype = o;
+            return new F();
+        };
+    })();
+
+    objectKeys = Object.keys || function (o) {
+        var keys = [], key;
+        for (key in o) {
+            keys.push(key);
+        }
+        return keys;
+    };
+
+    function extend(to, from) {
+        objectKeys(from).forEach(function (key) {
+            to[key] = from[key];
+        });
+        return to;
+    }
+
+    Syntax = {
+        AssignmentExpression: 'AssignmentExpression',
+        ArrayExpression: 'ArrayExpression',
+        ArrayPattern: 'ArrayPattern',
+        ArrowFunctionExpression: 'ArrowFunctionExpression',
+        BlockStatement: 'BlockStatement',
+        BinaryExpression: 'BinaryExpression',
+        BreakStatement: 'BreakStatement',
+        CallExpression: 'CallExpression',
+        CatchClause: 'CatchClause',
+        ClassBody: 'ClassBody',
+        ClassDeclaration: 'ClassDeclaration',
+        ClassExpression: 'ClassExpression',
+        ComprehensionBlock: 'ComprehensionBlock',  // CAUTION: It's deferred to ES7.
+        ComprehensionExpression: 'ComprehensionExpression',  // CAUTION: It's deferred to ES7.
+        ConditionalExpression: 'ConditionalExpression',
+        ContinueStatement: 'ContinueStatement',
+        DebuggerStatement: 'DebuggerStatement',
+        DirectiveStatement: 'DirectiveStatement',
+        DoWhileStatement: 'DoWhileStatement',
+        EmptyStatement: 'EmptyStatement',
+        ExportBatchSpecifier: 'ExportBatchSpecifier',
+        ExportDeclaration: 'ExportDeclaration',
+        ExportSpecifier: 'ExportSpecifier',
+        ExpressionStatement: 'ExpressionStatement',
+        ForStatement: 'ForStatement',
+        ForInStatement: 'ForInStatement',
+        ForOfStatement: 'ForOfStatement',
+        FunctionDeclaration: 'FunctionDeclaration',
+        FunctionExpression: 'FunctionExpression',
+        GeneratorExpression: 'GeneratorExpression',  // CAUTION: It's deferred to ES7.
+        Identifier: 'Identifier',
+        IfStatement: 'IfStatement',
+        ImportDeclaration: 'ImportDeclaration',
+        ImportDefaultSpecifier: 'ImportDefaultSpecifier',
+        ImportNamespaceSpecifier: 'ImportNamespaceSpecifier',
+        ImportSpecifier: 'ImportSpecifier',
+        Literal: 'Literal',
+        LabeledStatement: 'LabeledStatement',
+        LogicalExpression: 'LogicalExpression',
+        MemberExpression: 'MemberExpression',
+        MethodDefinition: 'MethodDefinition',
+        ModuleSpecifier: 'ModuleSpecifier',
+        NewExpression: 'NewExpression',
+        ObjectExpression: 'ObjectExpression',
+        ObjectPattern: 'ObjectPattern',
+        Program: 'Program',
+        Property: 'Property',
+        ReturnStatement: 'ReturnStatement',
+        SequenceExpression: 'SequenceExpression',
+        SpreadElement: 'SpreadElement',
+        SwitchStatement: 'SwitchStatement',
+        SwitchCase: 'SwitchCase',
+        TaggedTemplateExpression: 'TaggedTemplateExpression',
+        TemplateElement: 'TemplateElement',
+        TemplateLiteral: 'TemplateLiteral',
+        ThisExpression: 'ThisExpression',
+        ThrowStatement: 'ThrowStatement',
+        TryStatement: 'TryStatement',
+        UnaryExpression: 'UnaryExpression',
+        UpdateExpression: 'UpdateExpression',
+        VariableDeclaration: 'VariableDeclaration',
+        VariableDeclarator: 'VariableDeclarator',
+        WhileStatement: 'WhileStatement',
+        WithStatement: 'WithStatement',
+        YieldExpression: 'YieldExpression'
+    };
+
     VisitorKeys = {
         AssignmentExpression: ['left', 'right'],
         ArrayExpression: ['elements'],
@@ -5129,25 +5178,36 @@ parseStatement: true, parseSourceElement: true */
         ClassBody: ['body'],
         ClassDeclaration: ['id', 'body', 'superClass'],
         ClassExpression: ['id', 'body', 'superClass'],
+        ComprehensionBlock: ['left', 'right'],  // CAUTION: It's deferred to ES7.
+        ComprehensionExpression: ['blocks', 'filter', 'body'],  // CAUTION: It's deferred to ES7.
         ConditionalExpression: ['test', 'consequent', 'alternate'],
         ContinueStatement: ['label'],
         DebuggerStatement: [],
         DirectiveStatement: [],
         DoWhileStatement: ['body', 'test'],
         EmptyStatement: [],
+        ExportBatchSpecifier: [],
+        ExportDeclaration: ['declaration', 'specifiers', 'source'],
+        ExportSpecifier: ['id', 'name'],
         ExpressionStatement: ['expression'],
         ForStatement: ['init', 'test', 'update', 'body'],
         ForInStatement: ['left', 'right', 'body'],
         ForOfStatement: ['left', 'right', 'body'],
         FunctionDeclaration: ['id', 'params', 'defaults', 'rest', 'body'],
         FunctionExpression: ['id', 'params', 'defaults', 'rest', 'body'],
+        GeneratorExpression: ['blocks', 'filter', 'body'],  // CAUTION: It's deferred to ES7.
         Identifier: [],
         IfStatement: ['test', 'consequent', 'alternate'],
+        ImportDeclaration: ['specifiers', 'source'],
+        ImportDefaultSpecifier: ['id'],
+        ImportNamespaceSpecifier: ['id'],
+        ImportSpecifier: ['id', 'name'],
         Literal: [],
         LabeledStatement: ['label', 'body'],
         LogicalExpression: ['left', 'right'],
         MemberExpression: ['object', 'property'],
         MethodDefinition: ['key', 'value'],
+        ModuleSpecifier: [],
         NewExpression: ['callee', 'arguments'],
         ObjectExpression: ['properties'],
         ObjectPattern: ['properties'],
@@ -5155,8 +5215,12 @@ parseStatement: true, parseSourceElement: true */
         Property: ['key', 'value'],
         ReturnStatement: ['argument'],
         SequenceExpression: ['expressions'],
+        SpreadElement: ['argument'],
         SwitchStatement: ['discriminant', 'cases'],
         SwitchCase: ['test', 'consequent'],
+        TaggedTemplateExpression: ['tag', 'quasi'],
+        TemplateElement: [],
+        TemplateLiteral: ['quasis', 'expressions'],
         ThisExpression: [],
         ThrowStatement: ['argument'],
         TryStatement: ['block', 'handlers', 'handler', 'guardedHandlers', 'finalizer'],
@@ -5172,10 +5236,12 @@ parseStatement: true, parseSourceElement: true */
     // unique id
     BREAK = {};
     SKIP = {};
+    REMOVE = {};
 
     VisitorOption = {
         Break: BREAK,
-        Skip: SKIP
+        Skip: SKIP,
+        Remove: REMOVE
     };
 
     function Reference(parent, key) {
@@ -5185,6 +5251,16 @@ parseStatement: true, parseSourceElement: true */
 
     Reference.prototype.replace = function replace(node) {
         this.parent[this.key] = node;
+    };
+
+    Reference.prototype.remove = function remove() {
+        if (isArray(this.parent)) {
+            this.parent.splice(this.key, 1);
+            return true;
+        } else {
+            this.replace(null);
+            return false;
+        }
     };
 
     function Element(node, path, wrap, ref) {
@@ -5280,6 +5356,12 @@ parseStatement: true, parseSourceElement: true */
         this.notify(BREAK);
     };
 
+    // API:
+    // remove node
+    Controller.prototype.remove = function () {
+        this.notify(REMOVE);
+    };
+
     Controller.prototype.__initialize = function(root, visitor) {
         this.visitor = visitor;
         this.root = root;
@@ -5287,7 +5369,23 @@ parseStatement: true, parseSourceElement: true */
         this.__leavelist = [];
         this.__current = null;
         this.__state = null;
+        this.__fallback = visitor.fallback === 'iteration';
+        this.__keys = VisitorKeys;
+        if (visitor.keys) {
+            this.__keys = extend(objectCreate(this.__keys), visitor.keys);
+        }
     };
+
+    function isNode(node) {
+        if (node == null) {
+            return false;
+        }
+        return typeof node === 'object' && typeof node.type === 'string';
+    }
+
+    function isProperty(nodeType, key) {
+        return (nodeType === Syntax.ObjectExpression || nodeType === Syntax.ObjectPattern) && 'properties' === key;
+    }
 
     Controller.prototype.traverse = function traverse(root, visitor) {
         var worklist,
@@ -5346,7 +5444,14 @@ parseStatement: true, parseSourceElement: true */
 
                 node = element.node;
                 nodeType = element.wrap || node.type;
-                candidates = VisitorKeys[nodeType];
+                candidates = this.__keys[nodeType];
+                if (!candidates) {
+                    if (this.__fallback) {
+                        candidates = objectKeys(node);
+                    } else {
+                        throw new Error('Unknown node type ' + nodeType + '.');
+                    }
+                }
 
                 current = candidates.length;
                 while ((current -= 1) >= 0) {
@@ -5356,22 +5461,23 @@ parseStatement: true, parseSourceElement: true */
                         continue;
                     }
 
-                    if (!isArray(candidate)) {
+                    if (isArray(candidate)) {
+                        current2 = candidate.length;
+                        while ((current2 -= 1) >= 0) {
+                            if (!candidate[current2]) {
+                                continue;
+                            }
+                            if (isProperty(nodeType, candidates[current])) {
+                                element = new Element(candidate[current2], [key, current2], 'Property', null);
+                            } else if (isNode(candidate[current2])) {
+                                element = new Element(candidate[current2], [key, current2], null, null);
+                            } else {
+                                continue;
+                            }
+                            worklist.push(element);
+                        }
+                    } else if (isNode(candidate)) {
                         worklist.push(new Element(candidate, key, null, null));
-                        continue;
-                    }
-
-                    current2 = candidate.length;
-                    while ((current2 -= 1) >= 0) {
-                        if (!candidate[current2]) {
-                            continue;
-                        }
-                        if ((nodeType === Syntax.ObjectExpression || nodeType === Syntax.ObjectPattern) && 'properties' === candidates[current]) {
-                            element = new Element(candidate[current2], [key, current2], 'Property', null);
-                        } else {
-                            element = new Element(candidate[current2], [key, current2], null, null);
-                        }
-                        worklist.push(element);
                     }
                 }
             }
@@ -5379,6 +5485,31 @@ parseStatement: true, parseSourceElement: true */
     };
 
     Controller.prototype.replace = function replace(root, visitor) {
+        function removeElem(element) {
+            var i,
+                key,
+                nextElem,
+                parent;
+
+            if (element.ref.remove()) {
+                // When the reference is an element of an array.
+                key = element.ref.key;
+                parent = element.ref.parent;
+
+                // If removed from array, then decrease following items' keys.
+                i = worklist.length;
+                while (i--) {
+                    nextElem = worklist[i];
+                    if (nextElem.ref && nextElem.ref.parent === parent) {
+                        if  (nextElem.ref.key < key) {
+                            break;
+                        }
+                        --nextElem.ref.key;
+                    }
+                }
+            }
+        }
+
         var worklist,
             leavelist,
             node,
@@ -5419,9 +5550,13 @@ parseStatement: true, parseSourceElement: true */
 
                 // node may be replaced with null,
                 // so distinguish between undefined and null in this place
-                if (target !== undefined && target !== BREAK && target !== SKIP) {
+                if (target !== undefined && target !== BREAK && target !== SKIP && target !== REMOVE) {
                     // replace
                     element.ref.replace(target);
+                }
+
+                if (this.__state === REMOVE || target === REMOVE) {
+                    removeElem(element);
                 }
 
                 if (this.__state === BREAK || target === BREAK) {
@@ -5434,10 +5569,15 @@ parseStatement: true, parseSourceElement: true */
 
             // node may be replaced with null,
             // so distinguish between undefined and null in this place
-            if (target !== undefined && target !== BREAK && target !== SKIP) {
+            if (target !== undefined && target !== BREAK && target !== SKIP && target !== REMOVE) {
                 // replace
                 element.ref.replace(target);
                 element.node = target;
+            }
+
+            if (this.__state === REMOVE || target === REMOVE) {
+                removeElem(element);
+                element.node = null;
             }
 
             if (this.__state === BREAK || target === BREAK) {
@@ -5458,7 +5598,14 @@ parseStatement: true, parseSourceElement: true */
             }
 
             nodeType = element.wrap || node.type;
-            candidates = VisitorKeys[nodeType];
+            candidates = this.__keys[nodeType];
+            if (!candidates) {
+                if (this.__fallback) {
+                    candidates = objectKeys(node);
+                } else {
+                    throw new Error('Unknown node type ' + nodeType + '.');
+                }
+            }
 
             current = candidates.length;
             while ((current -= 1) >= 0) {
@@ -5468,22 +5615,23 @@ parseStatement: true, parseSourceElement: true */
                     continue;
                 }
 
-                if (!isArray(candidate)) {
+                if (isArray(candidate)) {
+                    current2 = candidate.length;
+                    while ((current2 -= 1) >= 0) {
+                        if (!candidate[current2]) {
+                            continue;
+                        }
+                        if (isProperty(nodeType, candidates[current])) {
+                            element = new Element(candidate[current2], [key, current2], 'Property', new Reference(candidate, current2));
+                        } else if (isNode(candidate[current2])) {
+                            element = new Element(candidate[current2], [key, current2], null, new Reference(candidate, current2));
+                        } else {
+                            continue;
+                        }
+                        worklist.push(element);
+                    }
+                } else if (isNode(candidate)) {
                     worklist.push(new Element(candidate, key, null, new Reference(node, key)));
-                    continue;
-                }
-
-                current2 = candidate.length;
-                while ((current2 -= 1) >= 0) {
-                    if (!candidate[current2]) {
-                        continue;
-                    }
-                    if (nodeType === Syntax.ObjectExpression && 'properties' === candidates[current]) {
-                        element = new Element(candidate[current2], [key, current2], 'Property', new Reference(candidate, current2));
-                    } else {
-                        element = new Element(candidate[current2], [key, current2], null, new Reference(candidate, current2));
-                    }
-                    worklist.push(element);
                 }
             }
         }
@@ -5617,7 +5765,7 @@ parseStatement: true, parseSourceElement: true */
         return tree;
     }
 
-    exports.version = '1.5.1-dev';
+    exports.version = '1.7.1';
     exports.Syntax = Syntax;
     exports.traverse = traverse;
     exports.replace = replace;
@@ -7991,9 +8139,9 @@ function defaultOptions () {
     };
 }
 
-function createStringifier (customOptions, customHandlers) {
+function createStringifier (customOptions) {
     var options = extend(defaultOptions(), customOptions),
-        handlers = extend(defaultHandlers(), customHandlers);
+        handlers = extend(defaultHandlers(), options.handlers);
     return function stringifyAny (push, x) {
         var context = this,
             handler = handlerFor(context.node, options, handlers),
@@ -8032,13 +8180,13 @@ function walk (val, reducer) {
     return buffer.join('');
 }
 
-function stringify (val, options, handlers) {
-    return walk(val, createStringifier(options, handlers));
+function stringify (val, options) {
+    return walk(val, createStringifier(options));
 }
 
-function stringifier (options, handlers) {
+function stringifier (options) {
     return function (val) {
-        return walk(val, createStringifier(options, handlers));
+        return walk(val, createStringifier(options));
     };
 }
 
@@ -8476,8 +8624,14 @@ function truncate (size) {
         return function (acc, x) {
             var orig = acc.push, ret;
             acc.push = function (str) {
-                var truncated = str.substring(0, size);
-                orig.call(acc, truncated + acc.options.snip);
+                var savings = str.length - size,
+                    truncated;
+                if (savings <= size) {
+                    orig.call(acc, str);
+                } else {
+                    truncated = str.substring(0, size);
+                    orig.call(acc, truncated + acc.options.snip);
+                }
             };
             ret = next(acc, x);
             acc.push = orig;

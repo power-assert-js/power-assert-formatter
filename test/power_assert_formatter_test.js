@@ -844,7 +844,36 @@ suite('power-assert-formatter', function () {
             '         false               ',
             '  '
         ]);
+    });
 
+
+    test('Ambiguous EastAsianWidth', function () {
+        var suffix1 = '…',
+            suffix2 = '☆';
+        assertPowerAssertContextFormatting(function () {
+            eval(weave('assert("※ただしイケメンに限る" + suffix1 === "○ただしイケメンに限る" + suffix2);'));
+        }, [
+            '  # /path/to/some_test.js:1',
+            '  ',
+            '  assert("※ただしイケメンに限る" + suffix1 === "○ただしイケメンに限る" + suffix2)',
+            '                                  | |       |                            | |       ',
+            '                                  | |       |                            | "☆"    ',
+            '                                  | "…"    false                        "○ただしイケメンに限る☆"',
+            '                                  "※ただしイケメンに限る…"                       ',
+            '  ',
+            '  --- [string] "○ただしイケメンに限る" + suffix2',
+            '  +++ [string] "※ただしイケメンに限る" + suffix1',
+            '  @@ -1,5 +1,5 @@',
+            '  -○',
+            '  +※',
+            '   ただしイ',
+            '  @@ -8,5 +8,5 @@',
+            '   ンに限る',
+            '  -☆',
+            '  +…',
+            '  ',
+            '  '
+        ]);
     });
 
 
