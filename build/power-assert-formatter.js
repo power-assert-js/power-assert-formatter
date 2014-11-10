@@ -253,7 +253,7 @@ var stringifier = _dereq_('stringifier'),
 function create (options) {
     var config = extend(defaultOptions(), options);
     if (typeof config.widthOf !== 'function') {
-        config.widthOf = stringWidth(extend(config));;
+        config.widthOf = stringWidth(extend(config));
     }
     if (typeof config.stringify !== 'function') {
         config.stringify = stringifier(extend(config));
@@ -267,19 +267,20 @@ function create (options) {
     return function (context) {
         var traversal = new ContextTraversal(context);
         var writer = new config.writerClass(extend(config));
-        config.renderers.forEach(function (rendererName) {
+        var renderers = config.renderers.map(function (rendererName) {
             var RendererClass;
             if (typeName(rendererName) === 'function') {
                 RendererClass = rendererName;
             } else if (typeName(rendererName) === 'string') {
                 RendererClass = _dereq_(rendererName);
             }
-            new RendererClass(traversal, extend(config));
+            return new RendererClass(traversal, extend(config));
         });
         traversal.emit('start', context);
         traversal.traverse();
         traversal.emit('render', writer);
         writer.write('');
+        renderers.length = 0;
         return writer.flush();
     };
 }
@@ -460,7 +461,7 @@ var eaw = _dereq_('eastasianwidth');
 
 function stringWidth (config) {
     var ambiguousCharWidth = (config && config.ambiguousEastAsianCharWidth) || 1;
-    return function width (str) {
+    return function widthOf (str) {
         var i, code, width = 0;
         for(i = 0; i < str.length; i+=1) {
             code = eaw.eastAsianWidth(str.charAt(i));
