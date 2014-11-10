@@ -11,7 +11,7 @@
     formatter,
     assert
 ) {
-    var stringWidth = formatter.stringWidth;
+    var stringWidth = formatter.stringWidth();
 
     suite('string width', function () {
         [
