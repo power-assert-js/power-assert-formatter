@@ -44,4 +44,22 @@
             assert.equal(stringWidth(strWithSurrogatePair), 10);
         });
     });
+
+    suite('ambiguous EastAsianWidth', function () {
+        setup(function () {
+            this.strWithAmbiguousEastAsian = '※ただしイケメンに限る';
+        });
+        test('when set to 1', function () {
+            var widthOf = formatter.stringWidth({
+                ambiguousEastAsianCharWidth: 1
+            });
+            assert.equal(widthOf(this.strWithAmbiguousEastAsian), 21);
+        });
+        test('when set to 2', function () {
+            var widthOf = formatter.stringWidth({
+                ambiguousEastAsianCharWidth: 2
+            });
+            assert.equal(widthOf(this.strWithAmbiguousEastAsian), 22);
+        });
+    });
 }));
