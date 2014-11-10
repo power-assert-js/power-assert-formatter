@@ -14,7 +14,7 @@ Power Assert output formatter.
 
 DESCRIPTION
 ---------------------------------------
-`power-assert-formatter` is a formatter for Power Assert output.
+`power-assert-formatter` is a formatter module for Power Assert output.
 
 Please note that `power-assert-formatter` is a beta version product. Pull-requests, issue reports and patches are always welcomed. See [power-assert](http://github.com/twada/power-assert) project for more documentation.
 
@@ -33,7 +33,7 @@ API
 |:------------|
 | `function`  |
 
-Returns formatter creator function for power-assert.
+Returns creator function for power-assert.
 
 ### var formatter = createFormatter([options]);
 
@@ -81,7 +81,7 @@ Number of spaces inserted at the left in power-assert output.
 |:---------|:--------------|
 | `string` | `"Object"`    |
 
-Type name to show if target object is created by anonymous constructor.
+Type name to show when target object is created by anonymous constructor.
 
 #### options.circular
 
@@ -89,7 +89,7 @@ Type name to show if target object is created by anonymous constructor.
 |:---------|:----------------|
 | `string` | `"#@Circular#"` |
 
-Name to show if target object is detected as circular structure.
+Name to show when target object is detected as circular structure.
 
 #### options.lineSeparator
 
@@ -97,7 +97,7 @@ Name to show if target object is detected as circular structure.
 |:---------|:--------------|
 | `string` | `"\n"`        |
 
-Line separator to use in power assert output.
+Line separator in power assert output.
 
 #### options.ambiguousEastAsianCharWidth
 
@@ -154,7 +154,7 @@ Constructor Function for output writer class.
 ]
 ```
 
-Output renderers to use. Output is rendered by renderers in order. You can create custom renderer and add its constructor function to customize power-assert-output.
+Output renderers. Power assert output is rendered by renderers in order. You can create custom renderer and add its constructor function to customize power-assert-output.
 
 ```javascript
 [
