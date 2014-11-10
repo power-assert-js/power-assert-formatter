@@ -99,6 +99,14 @@ Name to show if target object is detected as circular structure.
 
 Line separator to use in power assert output.
 
+#### options.ambiguousEastAsianCharWidth
+
+| type     | default value |
+|:---------|:--------------|
+| `number` | `2`           |
+
+Width of 'Ambiguous' characters defined in [Unicode Standard Annex \#11 EAST ASIAN WIDTH](http://www.unicode.org/reports/tr11/#Ambiguous). Configure `options.ambiguousEastAsianCharWidth` to treat ambiguous east asian character as fullwidth (= `2`) or narrow (= `1`). Default is `2`.
+
 #### options.widthOf
 
 | type       | default value |
