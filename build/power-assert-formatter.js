@@ -111,7 +111,7 @@ function isStringDiffTarget(pair) {
 
 module.exports = BinaryExpressionRenderer;
 
-},{"estraverse":20,"object-keys":24,"type-name":29}],4:[function(_dereq_,module,exports){
+},{"estraverse":21,"object-keys":24,"type-name":29}],4:[function(_dereq_,module,exports){
 'use strict';
 
 function DiagramRenderer (traversal, config) {
@@ -362,7 +362,7 @@ EsNode.prototype.location = function () {
 
 module.exports = EsNode;
 
-},{"./location":9,"estraverse":20}],9:[function(_dereq_,module,exports){
+},{"./location":9,"estraverse":21}],9:[function(_dereq_,module,exports){
 'use strict';
 
 var syntax = _dereq_('estraverse').Syntax;
@@ -454,7 +454,7 @@ function searchToken(tokens, fromLine, toLine, predicate) {
 
 module.exports = locationOf;
 
-},{"estraverse":20}],10:[function(_dereq_,module,exports){
+},{"estraverse":21}],10:[function(_dereq_,module,exports){
 'use strict';
 
 var eaw = _dereq_('eastasianwidth');
@@ -486,7 +486,7 @@ function stringWidth (config) {
 
 module.exports = stringWidth;
 
-},{"eastasianwidth":18}],11:[function(_dereq_,module,exports){
+},{"eastasianwidth":19}],11:[function(_dereq_,module,exports){
 'use strict';
 
 function spacerStr (len) {
@@ -570,7 +570,7 @@ function extractExpressionFrom (tree) {
 
 module.exports = ContextTraversal;
 
-},{"./esnode":8,"esprima":19,"estraverse":20,"events":14,"util":17}],13:[function(_dereq_,module,exports){
+},{"./esnode":8,"esprima":20,"estraverse":21,"events":14,"util":18}],13:[function(_dereq_,module,exports){
 'use strict';
 
 var DiffMatchPatch = _dereq_('googlediff'),
@@ -610,7 +610,7 @@ function udiffChars (text1, text2) {
 
 module.exports = udiff;
 
-},{"googlediff":21}],14:[function(_dereq_,module,exports){
+},{"googlediff":22}],14:[function(_dereq_,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -914,6 +914,31 @@ function isUndefined(arg) {
 }
 
 },{}],15:[function(_dereq_,module,exports){
+if (typeof Object.create === 'function') {
+  // implementation from standard node.js 'util' module
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    ctor.prototype = Object.create(superCtor.prototype, {
+      constructor: {
+        value: ctor,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+  };
+} else {
+  // old school shim for old browsers
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    var TempCtor = function () {}
+    TempCtor.prototype = superCtor.prototype
+    ctor.prototype = new TempCtor()
+    ctor.prototype.constructor = ctor
+  }
+}
+
+},{}],16:[function(_dereq_,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -1001,14 +1026,14 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],16:[function(_dereq_,module,exports){
+},{}],17:[function(_dereq_,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],17:[function(_dereq_,module,exports){
+},{}],18:[function(_dereq_,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -1598,7 +1623,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,_dereq_('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":16,"_process":15,"inherits":23}],18:[function(_dereq_,module,exports){
+},{"./support/isBuffer":17,"_process":16,"inherits":15}],19:[function(_dereq_,module,exports){
 var eaw = exports;
 
 eaw.eastAsianWidth = function(character) {
@@ -1871,7 +1896,7 @@ eaw.length = function(string) {
   return len;
 };
 
-},{}],19:[function(_dereq_,module,exports){
+},{}],20:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2013 Ariya Hidayat <ariya.hidayat@gmail.com>
   Copyright (C) 2013 Thaddee Tyl <thaddee.tyl@gmail.com>
@@ -5629,7 +5654,7 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],20:[function(_dereq_,module,exports){
+},{}],21:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2012-2013 Yusuke Suzuki <utatane.tea@gmail.com>
   Copyright (C) 2012 Ariya Hidayat <ariya.hidayat@gmail.com>
@@ -6462,10 +6487,10 @@ parseStatement: true, parseSourceElement: true */
 }));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{}],21:[function(_dereq_,module,exports){
+},{}],22:[function(_dereq_,module,exports){
 module.exports = _dereq_('./javascript/diff_match_patch_uncompressed.js').diff_match_patch;
 
-},{"./javascript/diff_match_patch_uncompressed.js":22}],22:[function(_dereq_,module,exports){
+},{"./javascript/diff_match_patch_uncompressed.js":23}],23:[function(_dereq_,module,exports){
 /**
  * Diff Match and Patch
  *
@@ -8659,31 +8684,6 @@ this['diff_match_patch'] = diff_match_patch;
 this['DIFF_DELETE'] = DIFF_DELETE;
 this['DIFF_INSERT'] = DIFF_INSERT;
 this['DIFF_EQUAL'] = DIFF_EQUAL;
-
-},{}],23:[function(_dereq_,module,exports){
-if (typeof Object.create === 'function') {
-  // implementation from standard node.js 'util' module
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    ctor.prototype = Object.create(superCtor.prototype, {
-      constructor: {
-        value: ctor,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-  };
-} else {
-  // old school shim for old browsers
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    var TempCtor = function () {}
-    TempCtor.prototype = superCtor.prototype
-    ctor.prototype = new TempCtor()
-    ctor.prototype.constructor = ctor
-  }
-}
 
 },{}],24:[function(_dereq_,module,exports){
 "use strict";
