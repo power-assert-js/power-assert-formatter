@@ -15,7 +15,6 @@
     "esprima": "~1.2.2",
     "estraverse": "~1.7.0",
     "googlediff": "~0.1.0",
-    "inherits": "~2.0.1",
     "object-keys": "~1.0.1",
     "stringifier": "~1.0.0",
     "type-name": "~1.0.0",
