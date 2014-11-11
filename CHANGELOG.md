@@ -1,3 +1,10 @@
+### [0.10.1](https://github.com/twada/power-assert-formatter/releases/tag/v0.10.1) (2014-11-12)
+
+
+* **power-assert-formatter:**
+  * stop using inherits module directly since web shim is handled by browserify ([984becd6](https://github.com/twada/power-assert-formatter/commit/984becd6f08454babac80f99521a98841c23797a))
+
+
 ## [0.10.0](https://github.com/twada/power-assert-formatter/releases/tag/v0.10.0) (2014-11-11)
 
 
