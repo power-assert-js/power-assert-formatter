@@ -1,3 +1,19 @@
+## [0.10.0](https://github.com/twada/power-assert-formatter/releases/tag/v0.10.0) (2014-11-11)
+
+
+#### Features
+
+* **power-assert-formatter:**
+  * make string diff function pluggable ([6571eaa3](https://github.com/twada/power-assert-formatter/commit/6571eaa34ce310d796fa8e2040143516db094527))
+  * outputOffset option to configure number of spaces inserted at the left ([d646aa86](https://github.com/twada/power-assert-formatter/commit/d646aa86d9ed8952433a2ca6f903362754aa5a31))
+  * set outputOffset default to 2 ([f05b411d](https://github.com/twada/power-assert-formatter/commit/f05b411ddb5123d15f5613714fec1b777403e853))
+  * make ambiguous east asian character width configurable ([7e8c9328](https://github.com/twada/power-assert-formatter/commit/7e8c9328b1b62879c0ee0a86a495fa25f5c22865))
+  * treat ambiguous east asian character as fullwidth (= 2) ([20ee139a](https://github.com/twada/power-assert-formatter/commit/20ee139a13677a043ce8c5982b8dae9d6ef6cb59))
+  * use inherits module to reduce browserify build size ([26b62daf](https://github.com/twada/power-assert-formatter/commit/26b62daf7f46f2b47029013568407e6ca56631bb))
+  * update object-keys ([9285c343](https://github.com/twada/power-assert-formatter/commit/9285c3430261513dad6283a4dd100acb4dd91925))
+  * update estraverse and stringifier ([06f3748b](https://github.com/twada/power-assert-formatter/commit/06f3748b9995de035110a2e562f81fd1dc09c972))
+
+
 ## 0.9.0 (2014-09-02)
 
 
