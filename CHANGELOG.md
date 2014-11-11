@@ -3,6 +3,11 @@
 
 #### Features
 
+* **new options**
+  * [options.outputOffset](https://github.com/twada/power-assert-formatter#optionsoutputoffset)
+  * [options.ambiguousEastAsianCharWidth](https://github.com/twada/power-assert-formatter#optionsambiguouseastasiancharwidth)
+  * [options.diff](https://github.com/twada/power-assert-formatter#optionsdiff)
+
 * **power-assert-formatter:**
   * make string diff function pluggable ([6571eaa3](https://github.com/twada/power-assert-formatter/commit/6571eaa34ce310d796fa8e2040143516db094527))
   * outputOffset option to configure number of spaces inserted at the left ([d646aa86](https://github.com/twada/power-assert-formatter/commit/d646aa86d9ed8952433a2ca6f903362754aa5a31))
