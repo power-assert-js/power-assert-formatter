@@ -4,7 +4,7 @@
  *
  * https://github.com/twada/power-assert-formatter
  *
- * Copyright (c) 2013-2014 Takuto Wada
+ * Copyright (c) 2013-2015 Takuto Wada
  * Licensed under the MIT license.
  *   https://github.com/twada/power-assert-formatter/blob/master/MIT-LICENSE.txt
  */
@@ -3159,7 +3159,7 @@ parseStatement: true, parseSourceElement: true */
             }
             return collectRegex();
         }
-        if (prevToken.type === 'Keyword') {
+        if (prevToken.type === 'Keyword' && prevToken.value !== 'this') {
             return collectRegex();
         }
         return scanPunctuator();
@@ -3844,7 +3844,8 @@ parseStatement: true, parseSourceElement: true */
     }
 
     function consumeSemicolon() {
-        var line;
+        var line, oldIndex = index, oldLineNumber = lineNumber,
+            oldLineStart = lineStart, oldLookahead = lookahead;
 
         // Catch the very common case first: immediately a semicolon (U+003B).
         if (source.charCodeAt(index) === 0x3B || match(';')) {
@@ -3855,6 +3856,10 @@ parseStatement: true, parseSourceElement: true */
         line = lineNumber;
         skipComment();
         if (lineNumber !== line) {
+            index = oldIndex;
+            lineNumber = oldLineNumber;
+            lineStart = oldLineStart;
+            lookahead = oldLookahead;
             return;
         }
 
@@ -4165,14 +4170,11 @@ parseStatement: true, parseSourceElement: true */
     }
 
     function parseLeftHandSideExpressionAllowCall() {
-        var previousAllowIn, expr, args, property, startToken;
+        var expr, args, property, startToken, previousAllowIn = state.allowIn;
 
         startToken = lookahead;
-
-        previousAllowIn = state.allowIn;
         state.allowIn = true;
         expr = matchKeyword('new') ? parseNewExpression() : parsePrimaryExpression();
-        state.allowIn = previousAllowIn;
 
         for (;;) {
             if (match('.')) {
@@ -4189,18 +4191,18 @@ parseStatement: true, parseSourceElement: true */
             }
             delegate.markEnd(expr, startToken);
         }
+        state.allowIn = previousAllowIn;
 
         return expr;
     }
 
     function parseLeftHandSideExpression() {
-        var previousAllowIn, expr, property, startToken;
+        var expr, property, startToken;
+        assert(state.allowIn, 'callee of new expression always allow in keyword.');
 
         startToken = lookahead;
 
-        previousAllowIn = state.allowIn;
         expr = matchKeyword('new') ? parseNewExpression() : parsePrimaryExpression();
-        state.allowIn = previousAllowIn;
 
         while (match('.') || match('[')) {
             if (match('[')) {
@@ -4212,7 +4214,6 @@ parseStatement: true, parseSourceElement: true */
             }
             delegate.markEnd(expr, startToken);
         }
-
         return expr;
     }
 
@@ -4715,7 +4716,7 @@ parseStatement: true, parseSourceElement: true */
     }
 
     function parseForStatement() {
-        var init, test, update, left, right, body, oldInIteration;
+        var init, test, update, left, right, body, oldInIteration, previousAllowIn = state.allowIn;
 
         init = test = update = null;
 
@@ -4729,7 +4730,7 @@ parseStatement: true, parseSourceElement: true */
             if (matchKeyword('var') || matchKeyword('let')) {
                 state.allowIn = false;
                 init = parseForVariableDeclaration();
-                state.allowIn = true;
+                state.allowIn = previousAllowIn;
 
                 if (init.declarations.length === 1 && matchKeyword('in')) {
                     lex();
@@ -4740,7 +4741,7 @@ parseStatement: true, parseSourceElement: true */
             } else {
                 state.allowIn = false;
                 init = parseExpression();
-                state.allowIn = true;
+                state.allowIn = previousAllowIn;
 
                 if (matchKeyword('in')) {
                     // LeftHandSideExpression
@@ -5623,7 +5624,7 @@ parseStatement: true, parseSourceElement: true */
     }
 
     // Sync with *.json manifests.
-    exports.version = '1.2.2';
+    exports.version = '1.2.4';
 
     exports.tokenize = tokenize;
 
@@ -8686,33 +8687,33 @@ this['DIFF_INSERT'] = DIFF_INSERT;
 this['DIFF_EQUAL'] = DIFF_EQUAL;
 
 },{}],24:[function(_dereq_,module,exports){
-"use strict";
+'use strict';
 
 // modified from https://github.com/es-shims/es5-shim
 var has = Object.prototype.hasOwnProperty;
-var toString = Object.prototype.toString;
+var toStr = Object.prototype.toString;
 var isArgs = _dereq_('./isArguments');
-var hasDontEnumBug = !({'toString': null}).propertyIsEnumerable('toString');
-var hasProtoEnumBug = (function () {}).propertyIsEnumerable('prototype');
+var hasDontEnumBug = !({ 'toString': null }).propertyIsEnumerable('toString');
+var hasProtoEnumBug = function () {}.propertyIsEnumerable('prototype');
 var dontEnums = [
-	"toString",
-	"toLocaleString",
-	"valueOf",
-	"hasOwnProperty",
-	"isPrototypeOf",
-	"propertyIsEnumerable",
-	"constructor"
+	'toString',
+	'toLocaleString',
+	'valueOf',
+	'hasOwnProperty',
+	'isPrototypeOf',
+	'propertyIsEnumerable',
+	'constructor'
 ];
 
 var keysShim = function keys(object) {
 	var isObject = object !== null && typeof object === 'object';
-	var isFunction = toString.call(object) === '[object Function]';
+	var isFunction = toStr.call(object) === '[object Function]';
 	var isArguments = isArgs(object);
-	var isString = isObject && toString.call(object) === '[object String]';
+	var isString = isObject && toStr.call(object) === '[object String]';
 	var theKeys = [];
 
 	if (!isObject && !isFunction && !isArguments) {
-		throw new TypeError("Object.keys called on a non-object");
+		throw new TypeError('Object.keys called on a non-object');
 	}
 
 	var skipProto = hasProtoEnumBug && isFunction;
@@ -8738,9 +8739,9 @@ var keysShim = function keys(object) {
 		var ctor = object.constructor;
 		var skipConstructor = ctor && ctor.prototype === object;
 
-		for (var j = 0; j < dontEnums.length; ++j) {
-			if (!(skipConstructor && dontEnums[j] === 'constructor') && has.call(object, dontEnums[j])) {
-				theKeys.push(dontEnums[j]);
+		for (var k = 0; k < dontEnums.length; ++k) {
+			if (!(skipConstructor && dontEnums[k] === 'constructor') && has.call(object, dontEnums[k])) {
+				theKeys.push(dontEnums[k]);
 			}
 		}
 	}
@@ -8756,26 +8757,24 @@ keysShim.shim = function shimObjectKeys() {
 
 module.exports = keysShim;
 
-
 },{"./isArguments":25}],25:[function(_dereq_,module,exports){
-"use strict";
+'use strict';
 
-var toString = Object.prototype.toString;
+var toStr = Object.prototype.toString;
 
 module.exports = function isArguments(value) {
-	var str = toString.call(value);
-	var isArguments = str === '[object Arguments]';
-	if (!isArguments) {
-		isArguments = str !== '[object Array]'
+	var str = toStr.call(value);
+	var isArgs = str === '[object Arguments]';
+	if (!isArgs) {
+		isArgs = str !== '[object Array]'
 			&& value !== null
 			&& typeof value === 'object'
 			&& typeof value.length === 'number'
 			&& value.length >= 0
-			&& toString.call(value.callee) === '[object Function]';
+			&& toStr.call(value.callee) === '[object Function]';
 	}
-	return isArguments;
+	return isArgs;
 };
-
 
 },{}],26:[function(_dereq_,module,exports){
 /**
@@ -8783,9 +8782,9 @@ module.exports = function isArguments(value) {
  * 
  * https://github.com/twada/stringifier
  *
- * Copyright (c) 2014 Takuto Wada
+ * Copyright (c) 2014-2015 Takuto Wada
  * Licensed under the MIT license.
- *   http://twada.mit-license.org/
+ *   http://twada.mit-license.org/2014-2015
  */
 'use strict';
 
@@ -9290,6 +9289,28 @@ function allowedKeys (orderedWhiteList) {
     };
 }
 
+function safeKeys () {
+    return function (next) {
+        return function (acc, x) {
+            if (typeName(x) !== 'Array') {
+                acc.context.keys = acc.context.keys.filter(function (propKey) {
+                    // Error handling for unsafe property access.
+                    // For example, on PhantomJS,
+                    // accessing HTMLInputElement.selectionEnd causes TypeError
+                    try {
+                        var val = x[propKey];
+                        return true;
+                    } catch (e) {
+                        // skip unsafe key
+                        return false;
+                    }
+                });
+            }
+            return next(acc, x);
+        };
+    };
+}
+
 function when (guard, then) {
     return function (next) {
         return function (acc, x) {
@@ -9505,6 +9526,7 @@ module.exports = {
         compose: compose,
         when: when,
         allowedKeys: allowedKeys,
+        safeKeys: safeKeys,
         filter: filter,
         iterate: iterate,
         end: end
@@ -9560,6 +9582,7 @@ module.exports = {
             constructorName(),
             decorateObject(),
             allowedKeys(orderedWhiteList),
+            safeKeys(),
             filter(predicate),
             iterate()
         );
@@ -9586,7 +9609,7 @@ function funcName (f) {
 
 function ctorName (obj) {
     var strName = toStr.call(obj).slice(8, -1);
-    if (strName === 'Object') {
+    if (strName === 'Object' && obj.constructor) {
         return funcName(obj.constructor);
     }
     return strName;
