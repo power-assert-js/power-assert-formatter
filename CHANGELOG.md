@@ -1,3 +1,10 @@
+### [0.10.2](https://github.com/twada/power-assert-formatter/releases/tag/v0.10.2) (2015-02-16)
+
+
+* **power-assert-formatter:**
+  * update stringifier and type-name to 1.0.1 ([a44c428d](https://github.com/twada/power-assert-formatter/commit/a44c428d7aa541c819ae31b61a8979c8ae74e046))
+
+
 ### [0.10.1](https://github.com/twada/power-assert-formatter/releases/tag/v0.10.1) (2014-11-12)
 
 
