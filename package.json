@@ -16,8 +16,8 @@
     "estraverse": "~1.7.0",
     "googlediff": "~0.1.0",
     "object-keys": "~1.0.1",
-    "stringifier": "~1.0.0",
-    "type-name": "~1.0.0",
+    "stringifier": "~1.0.1",
+    "type-name": "~1.0.1",
     "xtend": "~4.0.0"
   },
   "devDependencies": {
