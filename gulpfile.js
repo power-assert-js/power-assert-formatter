@@ -10,6 +10,7 @@ var gulp = require('gulp'),
     through = require('through2'),
     browserify = require('browserify'),
     derequire = require('gulp-derequire'),
+    dereserve = require('gulp-dereserve'),
     config = {
         jshint: {
             src: './lib/**/*.js'
@@ -113,6 +114,7 @@ gulp.task('bundle', ['clean_bundle'], function() {
     var bundleStream = browserify({entries: config.bundle.srcFile, standalone: config.bundle.standalone}).bundle();
     return bundleStream
         .pipe(source(config.bundle.destName))
+        .pipe(dereserve())
         .pipe(derequire())
         .pipe(gulp.dest(config.bundle.destDir));
 });
