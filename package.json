@@ -11,14 +11,14 @@
     "url": "http://github.com/twada/power-assert-formatter/issues"
   },
   "dependencies": {
-    "eastasianwidth": "~0.1.0",
-    "esprima": "~1.2.2",
-    "estraverse": "~1.7.0",
-    "googlediff": "~0.1.0",
-    "object-keys": "~1.0.3",
-    "stringifier": "~1.0.1",
-    "type-name": "~1.0.1",
-    "xtend": "~4.0.0"
+    "eastasianwidth": "^0.1.0",
+    "esprima": "^2.1.0",
+    "estraverse": "^3.1.0",
+    "googlediff": "^0.1.0",
+    "object-keys": "^1.0.3",
+    "stringifier": "^1.0.1",
+    "type-name": "^1.0.1",
+    "xtend": "^4.0.0"
   },
   "devDependencies": {
     "blanket": "^1.1.6",
