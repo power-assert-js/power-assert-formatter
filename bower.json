@@ -1,6 +1,8 @@
 {
   "name": "power-assert-formatter",
+  "description": "Power Assert output formatter",
   "main": "build/power-assert-formatter.js",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "gulpfile.js",
@@ -8,6 +10,25 @@
     "coverage",
     "test"
   ],
+  "keywords": [
+    "power-assert",
+    "test",
+    "testing",
+    "assert",
+    "assertion"
+  ],
+  "authors": [
+    {
+      "name": "Takuto Wada",
+      "email": "takuto.wada@gmail.com",
+      "homepage": "https://github.com/twada"
+    }
+  ],
+  "homepage": "https://github.com/twada/power-assert-formatter",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twada/power-assert-formatter.git"
+  },
   "devDependencies": {
     "empower": "~0.10.0",
     "espower-source": "~0.10.0",
