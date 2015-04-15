@@ -1,20 +1,32 @@
 (function (root, factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
-        define(['power-assert-formatter', 'empower', 'espower-source', 'assert'], factory);
+        define(['power-assert-formatter', 'empower', 'espower', 'acorn', 'escodegen', 'assert'], factory);
     } else if (typeof exports === 'object') {
-        factory(require('..'), require('empower'), require('espower-source'), require('assert'));
+        factory(require('..'), require('empower'), require('espower'), require('acorn'), require('escodegen'), require('assert'));
     } else {
-        factory(root.powerAssertFormatter, root.empower, root.espowerSource, root.assert);
+        factory(root.powerAssertFormatter, root.empower, root.espower, root.acorn, root.escodegen, root.assert);
     }
 }(this, function (
     createFormatter,
     empower,
-    espowerSource,
+    espower,
+    acorn,
+    escodegen,
     baseAssert
 ) {
+
+// see: https://github.com/Constellation/escodegen/issues/115
+if (typeof define === 'function' && define.amd) {
+    escodegen = window.escodegen;
+}
+
     function weave (line) {
-        return espowerSource(line, '/path/to/some_test.js');
+        var filepath = '/path/to/some_test.js';
+        var options = {ecmaVersion: 6, locations: true, sourceType: 'module', sourceFile: filepath};
+        var jsAST = acorn.parse(line, options);
+        var espoweredAST = espower(jsAST, {source: line, path: filepath});
+        return escodegen.generate(espoweredAST, {format: {compact: true}});
     }
 
     var assert = empower(baseAssert, createFormatter()),
@@ -130,9 +142,10 @@ suite('power-assert-formatter', function () {
             '  # /path/to/some_test.js:1',
             '  ',
             '  assert({}.hoge === "xxx")',
-            '            |    |         ',
-            '            |    false     ',
-            '            undefined      ',
+            '         |  |    |         ',
+            '         |  |    false     ',
+            '         |  undefined      ',
+            '         Object{}          ',
             '  ',
             '  [string] "xxx"',
             '  => "xxx"',
@@ -163,25 +176,6 @@ suite('power-assert-formatter', function () {
             '  [boolean] false',
             '  => false',
             '  [boolean] delete foo.bar',
-            '  => true',
-            '  '
-        ]);
-    });
-
-
-    test('assert((delete nonexistent) === false);', function () {
-        assertPowerAssertContextFormatting(function () {
-            eval(weave('assert((delete nonexistent) === false);'));
-        }, [
-            '  # /path/to/some_test.js:1',
-            '  ',
-            '  assert(delete nonexistent === false)',
-            '         |                  |         ',
-            '         true               false     ',
-            '  ',
-            '  [boolean] false',
-            '  => false',
-            '  [boolean] delete nonexistent',
             '  => true',
             '  '
         ]);
@@ -971,11 +965,12 @@ suite('power-assert-formatter', function () {
             '  # /path/to/some_test.js:1',
             '  ',
             '  assert([foo,bar].length === four)',
-            '          |   |    |      |   |    ',
-            '          |   |    |      |   4    ',
-            '          |   |    2      false    ',
-            '          |   "fuga"               ',
-            '          "hoge"                   ',
+            '         ||   |    |      |   |    ',
+            '         ||   |    |      |   4    ',
+            '         ||   |    2      false    ',
+            '         ||   "fuga"               ',
+            '         |"hoge"                   ',
+            '         ["hoge","fuga"]           ',
             '  ',
             '  [number] four',
             '  => 4',
@@ -994,12 +989,15 @@ suite('power-assert-formatter', function () {
             '  # /path/to/some_test.js:1',
             '  ',
             '  assert(typeof [[foo.bar,baz(moo)],+fourStr] === "number")',
-            '         |        |   |   |   |     ||        |            ',
-            '         |        |   |   |   |     |"4"      false        ',
-            '         |        |   |   |   "boo" 4                      ',
-            '         |        |   |   null                             ',
-            '         |        |   "fuga"                               ',
-            '         "object" Object{bar:"fuga"}                       ',
+            '         |      |||   |   |   |     ||        |            ',
+            '         |      |||   |   |   |     |"4"      false        ',
+            '         |      |||   |   |   "boo" 4                      ',
+            '         |      |||   |   null                             ',
+            '         |      |||   "fuga"                               ',
+            '         |      ||Object{bar:"fuga"}                       ',
+            '         |      |["fuga",null]                             ',
+            '         |      [#Array#,4]                                ',
+            '         "object"                                          ',
             '  ',
             '  --- [string] "number"',
             '  +++ [string] typeof [[foo.bar,baz(moo)],+fourStr]',
@@ -1096,8 +1094,10 @@ suite('power-assert-formatter', function () {
             '  # /path/to/some_test.js:1',
             '  ',
             '  assert(!{foo: bar,hoge: fuga})',
-            '         |      |         |     ',
-            '         false  "toto"    100   ',
+            '         ||     |         |     ',
+            '         ||     "toto"    100   ',
+            '         |Object{foo:"toto",hoge:100}',
+            '         false                  ',
             '  '
         ]);
     });
@@ -1112,9 +1112,13 @@ suite('power-assert-formatter', function () {
             '  # /path/to/some_test.js:1',
             '  ',
             '  assert(!{foo: bar.baz,name: nameOf({firstName: first,lastName: last})})',
-            '         |      |   |         |                  |               |       ',
-            '         |      |   "BAZ"     "Brendan Eich"     "Brendan"       "Eich"  ',
-            '         false  Object{baz:"BAZ"}                                        ',
+            '         ||     |   |         |      |           |               |       ',
+            '         ||     |   |         |      |           "Brendan"       "Eich"  ',
+            '         ||     |   |         |      Object{firstName:"Brendan",lastName:"Eich"}',
+            '         ||     |   "BAZ"     "Brendan Eich"                             ',
+            '         ||     Object{baz:"BAZ"}                                        ',
+            '         |Object{foo:"BAZ",name:"Brendan Eich"}                          ',
+            '         false                                                           ',
             '  '
         ]);
     });
@@ -1299,8 +1303,9 @@ suite('power-assert-formatter', function () {
             '  # /path/to/some_test.js:1',
             '  ',
             '  assert.deepEqual(alice || bob, {name: kenName,age: four})',
-            '                   |     |              |            |     ',
-            '                   |     |              "ken"        4     ',
+            '                   |     |       |      |            |     ',
+            '                   |     |       |      "ken"        4     ',
+            '                   |     |       Object{name:"ken",age:4}  ',
             '                   |     Object{name:"alice",age:3}        ',
             '                   Object{name:"alice",age:3}              ',
             '  '
@@ -1316,14 +1321,15 @@ suite('power-assert-formatter', function () {
             '  # /path/to/some_test.js:1',
             '  ',
             '  assert.notDeepEqual([foo,bar,baz], new Array(foo, bar, baz))',
-            '                       |   |   |     |         |    |    |    ',
-            '                       |   |   |     |         |    |    Object{name:"hoge"}',
-            '                       |   |   |     |         |    ["toto","tata"]',
-            '                       |   |   |     |         "foo"          ',
-            '                       |   |   |     ["foo",#Array#,#Object#] ',
-            '                       |   |   Object{name:"hoge"}            ',
-            '                       |   ["toto","tata"]                    ',
-            '                       "foo"                                  ',
+            '                      ||   |   |     |         |    |    |    ',
+            '                      ||   |   |     |         |    |    Object{name:"hoge"}',
+            '                      ||   |   |     |         |    ["toto","tata"]',
+            '                      ||   |   |     |         "foo"          ',
+            '                      ||   |   |     ["foo",#Array#,#Object#] ',
+            '                      ||   |   Object{name:"hoge"}            ',
+            '                      ||   ["toto","tata"]                    ',
+            '                      |"foo"                                  ',
+            '                      ["foo",#Array#,#Object#]                ',
             '  '
         ]);
     });

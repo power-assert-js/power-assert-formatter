@@ -1,20 +1,26 @@
 (function (root, factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
-        define(['power-assert-formatter', 'empower', 'espower-source', 'assert'], factory);
+        define(['power-assert-formatter', 'empower', 'espower', 'acorn', 'escodegen', 'assert'], factory);
     } else if (typeof exports === 'object') {
-        factory(require('..'), require('empower'), require('espower-source'), require('assert'));
+        factory(require('..'), require('empower'), require('espower'), require('acorn'), require('escodegen'), require('assert'));
     } else {
-        factory(root.powerAssertFormatter, root.empower, root.espowerSource, root.assert);
+        factory(root.powerAssertFormatter, root.empower, root.espower, root.acorn, root.escodegen, root.assert);
     }
 }(this, function (
     createFormatter,
     empower,
-    espowerSource,
+    espower,
+    acorn,
+    escodegen,
     baseAssert
 ) {
     function weave (line) {
-        return espowerSource(line, '/path/to/some_test.js');
+        var filepath = '/path/to/some_test.js';
+        var options = {ecmaVersion: 6, locations: true, sourceType: 'module', sourceFile: filepath};
+        var jsAST = acorn.parse(line, options);
+        var espoweredAST = espower(jsAST, {source: line, path: filepath});
+        return escodegen.generate(espoweredAST, {format: {compact: true}});
     }
 
 suite('lineSeparator option', function () {
