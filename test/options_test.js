@@ -15,6 +15,12 @@
     escodegen,
     baseAssert
 ) {
+
+// see: https://github.com/Constellation/escodegen/issues/115
+if (typeof define === 'function' && define.amd) {
+    escodegen = window.escodegen;
+}
+
     function weave (line) {
         var filepath = '/path/to/some_test.js';
         var options = {ecmaVersion: 6, locations: true, sourceType: 'module', sourceFile: filepath};
@@ -31,7 +37,6 @@ suite('lineSeparator option', function () {
             try {
                 eval(weave('assert(falsyNum);'));
             } catch (e) {
-                baseAssert.equal(e.name, 'AssertionError');
                 baseAssert.equal(e.message, [
                     '  # /path/to/some_test.js:1',
                     '  ',
@@ -40,6 +45,7 @@ suite('lineSeparator option', function () {
                     '         0        ',
                     '  '
                 ].join(expectedSeparator));
+                baseAssert.equal(e.name, 'AssertionError');
             }
         });
     }
@@ -59,9 +65,9 @@ suite('outputOffset option', function () {
             try {
                 eval(weave('assert.ok(hoge === fuga, "comment");'));
             } catch (e) {
-                baseAssert.equal(e.name, 'AssertionError');
                 var actual = e.message.split(createFormatter.defaultOptions().lineSeparator);
                 baseAssert.deepEqual(actual, expectedLines);
+                baseAssert.equal(e.name, 'AssertionError');
             }
         });
     }
@@ -111,8 +117,8 @@ suite('renderers customization', function () {
             try {
                 eval(weave('assert.ok(hoge === fuga, "comment");'));
             } catch (e) {
-                baseAssert.equal(e.name, 'AssertionError');
                 baseAssert.equal(e.message, expectedLines.join('\n'));
+                baseAssert.equal(e.name, 'AssertionError');
             }
         });
     }
