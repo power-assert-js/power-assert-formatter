@@ -239,6 +239,13 @@ Install
     $ npm install --save-dev power-assert-formatter
 
 
+#### use power-assert-formatter npm module on browser
+
+`powerAssertFormatter` function is exported
+
+    <script type="text/javascript" src="./path/to/node_modules/power-assert-formatter/build/power-assert-formatter.js"></script>
+
+
 ### via bower
 
 Install
