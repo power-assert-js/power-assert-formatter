@@ -1,3 +1,12 @@
+## [0.11.0](https://github.com/twada/power-assert-formatter/releases/tag/v0.11.0) (2015-04-18)
+
+
+#### Features
+
+* [ES6 support](https://github.com/twada/power-assert-formatter/pull/14)
+* ship npm module with built bundle for browsers ([5c4afefb](https://github.com/twada/power-assert-formatter/commit/5c4afefb252dac5d52a2892ea54cedb59da66af0))
+
+
 ### [0.10.2](https://github.com/twada/power-assert-formatter/releases/tag/v0.10.2) (2015-02-16)
 
 
