@@ -30,7 +30,6 @@
     "url": "git://github.com/twada/power-assert-formatter.git"
   },
   "devDependencies": {
-    "empower": "~0.10.0",
     "escodegen": "1.4.1",
     "mocha": "~2.2.4",
     "requirejs": "~2.1.17",
