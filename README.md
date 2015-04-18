@@ -1,13 +1,14 @@
 power-assert-formatter
 ================================
 
-[![Build Status](https://travis-ci.org/twada/power-assert-formatter.svg?branch=master)](https://travis-ci.org/twada/power-assert-formatter)
-[![NPM version](https://badge.fury.io/js/power-assert-formatter.svg)](http://badge.fury.io/js/power-assert-formatter)
-[![Dependency Status](https://gemnasium.com/twada/power-assert-formatter.svg)](https://gemnasium.com/twada/power-assert-formatter)
-[![Coverage Status](https://coveralls.io/repos/twada/power-assert-formatter/badge.png?branch=master)](https://coveralls.io/r/twada/power-assert-formatter?branch=master)
-[![Code Climate](https://codeclimate.com/github/twada/power-assert-formatter/badges/gpa.svg)](https://codeclimate.com/github/twada/power-assert-formatter)
-[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/twada/power-assert-formatter/blob/master/MIT-LICENSE.txt)
-[![Built with Gulp](http://img.shields.io/badge/built_with-gulp-brightgreen.svg)](http://gulpjs.com/)
+[![Build Status][travis-image]][travis-url]
+[![NPM package][npm-image]][npm-url]
+[![Bower package][bower-image]][bower-url]
+[![Dependency Status][depstat-image]][depstat-url]
+[![Coverage Status][coverage-image]][coverage-url]
+[![Code Climate][codeclimate-image]][codeclimate-url]
+[![License][license-image]][license-url]
+[![Built with Gulp][gulp-image]][gulp-url]
 
 Power Assert output formatter.
 
@@ -265,3 +266,28 @@ AUTHOR
 LICENSE
 ---------------------------------------
 Licensed under the [MIT](https://github.com/twada/power-assert-formatter/blob/master/MIT-LICENSE.txt) license.
+
+
+[npm-url]: https://npmjs.org/package/power-assert-formatter
+[npm-image]: https://badge.fury.io/js/power-assert-formatter.svg
+
+[bower-url]: http://badge.fury.io/bo/power-assert-formatter
+[bower-image]: https://badge.fury.io/bo/power-assert-formatter.svg
+
+[travis-url]: http://travis-ci.org/twada/power-assert-formatter
+[travis-image]: https://secure.travis-ci.org/twada/power-assert-formatter.svg?branch=master
+
+[depstat-url]: https://gemnasium.com/twada/power-assert-formatter
+[depstat-image]: https://gemnasium.com/twada/power-assert-formatter.svg
+
+[license-url]: https://github.com/twada/power-assert-formatter/blob/master/MIT-LICENSE.txt
+[license-image]: http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat
+
+[codeclimate-url]: https://codeclimate.com/github/twada/power-assert-formatter
+[codeclimate-image]: https://codeclimate.com/github/twada/power-assert-formatter/badges/gpa.svg
+
+[coverage-url]: https://coveralls.io/r/twada/power-assert-formatter?branch=master
+[coverage-image]: https://coveralls.io/repos/twada/power-assert-formatter/badge.svg?branch=master
+
+[gulp-url]: http://gulpjs.com/
+[gulp-image]: http://img.shields.io/badge/built_with-gulp-brightgreen.svg
