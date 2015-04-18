@@ -51,6 +51,7 @@
     "gulpfile.js",
     "index.js",
     "lib",
+    "build/power-assert-formatter.js",
     "package.json",
     "test"
   ],
