@@ -17,12 +17,12 @@ DESCRIPTION
 ---------------------------------------
 `power-assert-formatter` is a formatter module for Power Assert output.
 
-Please note that `power-assert-formatter` is a beta version product. Pull-requests, issue reports and patches are always welcomed. See [power-assert](http://github.com/twada/power-assert) project for more documentation.
+Please note that `power-assert-formatter` is a beta version product. Pull-requests, issue reports and patches are always welcomed. See [power-assert](http://github.com/power-assert-js/power-assert) project for more documentation.
 
 
 CHANGELOG
 ---------------------------------------
-See [CHANGELOG](https://github.com/twada/power-assert-formatter/blob/master/CHANGELOG.md)
+See [CHANGELOG](https://github.com/power-assert-js/power-assert-formatter/blob/master/CHANGELOG.md)
 
 
 API
@@ -112,7 +112,7 @@ Width of 'Ambiguous' characters defined in [Unicode Standard Annex \#11 EAST ASI
 
 | type       | default value |
 |:-----------|:--------------|
-| `function` | [string-width.js](https://github.com/twada/power-assert-formatter/blob/master/lib/string-width.js) |
+| `function` | [string-width.js](https://github.com/power-assert-js/power-assert-formatter/blob/master/lib/string-width.js) |
 
 Function to calculate width of string.
 
@@ -128,7 +128,7 @@ Function to stringify any target value.
 
 | type       | default value |
 |:-----------|:--------------|
-| `function` | [udiff.js](https://github.com/twada/power-assert-formatter/blob/master/lib/udiff.js) |
+| `function` | [udiff.js](https://github.com/power-assert-js/power-assert-formatter/blob/master/lib/udiff.js) |
 
 Function to create diff string between two strings.
 
@@ -136,7 +136,7 @@ Function to create diff string between two strings.
 
 | type       | default value |
 |:-----------|:--------------|
-| `function` | [string-writer.js](https://github.com/twada/power-assert-formatter/blob/master/lib/string-writer.js) |
+| `function` | [string-writer.js](https://github.com/power-assert-js/power-assert-formatter/blob/master/lib/string-writer.js) |
 
 Constructor Function for output writer class.
 
@@ -265,7 +265,7 @@ AUTHOR
 
 LICENSE
 ---------------------------------------
-Licensed under the [MIT](https://github.com/twada/power-assert-formatter/blob/master/MIT-LICENSE.txt) license.
+Licensed under the [MIT](https://github.com/power-assert-js/power-assert-formatter/blob/master/MIT-LICENSE.txt) license.
 
 
 [npm-url]: https://npmjs.org/package/power-assert-formatter
@@ -274,20 +274,20 @@ Licensed under the [MIT](https://github.com/twada/power-assert-formatter/blob/ma
 [bower-url]: http://badge.fury.io/bo/power-assert-formatter
 [bower-image]: https://badge.fury.io/bo/power-assert-formatter.svg
 
-[travis-url]: http://travis-ci.org/twada/power-assert-formatter
-[travis-image]: https://secure.travis-ci.org/twada/power-assert-formatter.svg?branch=master
+[travis-url]: http://travis-ci.org/power-assert-js/power-assert-formatter
+[travis-image]: https://secure.travis-ci.org/power-assert-js/power-assert-formatter.svg?branch=master
 
-[depstat-url]: https://gemnasium.com/twada/power-assert-formatter
-[depstat-image]: https://gemnasium.com/twada/power-assert-formatter.svg
+[depstat-url]: https://gemnasium.com/power-assert-js/power-assert-formatter
+[depstat-image]: https://gemnasium.com/power-assert-js/power-assert-formatter.svg
 
-[license-url]: https://github.com/twada/power-assert-formatter/blob/master/MIT-LICENSE.txt
+[license-url]: https://github.com/power-assert-js/power-assert-formatter/blob/master/MIT-LICENSE.txt
 [license-image]: http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat
 
-[codeclimate-url]: https://codeclimate.com/github/twada/power-assert-formatter
-[codeclimate-image]: https://codeclimate.com/github/twada/power-assert-formatter/badges/gpa.svg
+[codeclimate-url]: https://codeclimate.com/github/power-assert-js/power-assert-formatter
+[codeclimate-image]: https://codeclimate.com/github/power-assert-js/power-assert-formatter/badges/gpa.svg
 
-[coverage-url]: https://coveralls.io/r/twada/power-assert-formatter?branch=master
-[coverage-image]: https://coveralls.io/repos/twada/power-assert-formatter/badge.svg?branch=master
+[coverage-url]: https://coveralls.io/r/power-assert-js/power-assert-formatter?branch=master
+[coverage-image]: https://coveralls.io/repos/power-assert-js/power-assert-formatter/badge.svg?branch=master
 
 [gulp-url]: http://gulpjs.com/
 [gulp-image]: http://img.shields.io/badge/built_with-gulp-brightgreen.svg

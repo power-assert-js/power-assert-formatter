@@ -24,10 +24,10 @@
       "homepage": "https://github.com/twada"
     }
   ],
-  "homepage": "https://github.com/twada/power-assert-formatter",
+  "homepage": "https://github.com/power-assert-js/power-assert-formatter",
   "repository": {
     "type": "git",
-    "url": "git://github.com/twada/power-assert-formatter.git"
+    "url": "git://github.com/power-assert-js/power-assert-formatter.git"
   },
   "devDependencies": {
     "escodegen": "1.4.1",
