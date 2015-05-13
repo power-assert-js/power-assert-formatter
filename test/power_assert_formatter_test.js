@@ -183,8 +183,8 @@ suite('power-assert-formatter', function () {
 
 
     test('assert(fuga === piyo);', function () {
-        var fuga = 'foo',
-            piyo = 8;
+        var fuga = 'foo';
+        var piyo = 8;
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(fuga === piyo);'));
         }, [
@@ -206,8 +206,8 @@ suite('power-assert-formatter', function () {
 
 
     test('Loose equality: assert(truthy == falsy);', function () {
-        var truthy = '1',
-            falsy = false;
+        var truthy = '1';
+        var falsy = false;
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(truthy == falsy);'));
         }, [
@@ -228,8 +228,8 @@ suite('power-assert-formatter', function () {
 
 
     test('assert(fuga !== piyo);', function () {
-        var fuga = 'foo',
-            piyo = 'foo';
+        var fuga = 'foo';
+        var piyo = 'foo';
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(fuga !== piyo);'));
         }, [
@@ -266,8 +266,8 @@ suite('power-assert-formatter', function () {
 
 
     test('assert(nan1 === nan2);', function () {
-        var nan1 = NaN,
-            nan2 = NaN;
+        var nan1 = NaN;
+        var nan2 = NaN;
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(nan1 === nan2);'));
         }, [
@@ -288,8 +288,8 @@ suite('power-assert-formatter', function () {
 
 
     test('assert(positiveInfinity === negativeInfinity);', function () {
-        var positiveInfinity = Infinity,
-            negativeInfinity = -Infinity;
+        var positiveInfinity = Infinity;
+        var negativeInfinity = -Infinity;
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(positiveInfinity === negativeInfinity);'));
         }, [
@@ -455,12 +455,12 @@ suite('power-assert-formatter', function () {
 
 
     test('computed MemberExpression with Identifier key: assert(foo[propName].baz);', function () {
-        var propName = 'bar',
-            foo = {
-                bar: {
-                    baz: false
-                }
-            };
+        var propName = 'bar';
+        var foo = {
+            bar: {
+                baz: false
+            }
+        };
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(foo[propName].baz);'));
         }, [
@@ -477,12 +477,12 @@ suite('power-assert-formatter', function () {
 
 
     test('CallExpression with computed MemberExpression with Identifier key: assert(foo[propName]());', function () {
-        var propName = 'bar',
-            foo = {
-                bar: function () {
-                    return false;
-                }
-            };
+        var propName = 'bar';
+        var foo = {
+            bar: function () {
+                return false;
+            }
+        };
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(foo[propName]());'));
         }, [
@@ -499,18 +499,18 @@ suite('power-assert-formatter', function () {
 
 
     test('CallExpression with deep computed MemberExpression: assert(foo[hoge[fuga[piyo]]]());', function () {
-        var piyo = 'piyoKey',
-            fuga = {
-                piyoKey: 'fugaKey'
-            },
-            hoge = {
-                fugaKey: 'func'
-            },
-            foo = {
-                func: function () {
-                    return false;
-                }
-            };
+        var piyo = 'piyoKey';
+        var fuga = {
+            piyoKey: 'fugaKey'
+        };
+        var hoge = {
+            fugaKey: 'func'
+        };
+        var foo = {
+            func: function () {
+                return false;
+            }
+        };
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(foo[hoge[fuga[piyo]]]());'));
         }, [
@@ -531,15 +531,15 @@ suite('power-assert-formatter', function () {
 
 
     test('computed MemberExpression chain with various key: assert(foo[propName]["baz"][keys()[0]]);', function () {
-        var keys = function () { return ["toto"]; },
-            propName = "bar",
-            foo = {
-                bar: {
-                    baz: {
-                        toto: false
-                    }
+        var keys = function () { return ["toto"]; };
+        var propName = "bar";
+        var foo = {
+            bar: {
+                baz: {
+                    toto: false
                 }
-            };
+            }
+        };
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(foo[propName]["baz"][keys()[0]]);'));
         }, [
@@ -778,8 +778,8 @@ suite('power-assert-formatter', function () {
 
 
     test('double byte character width', function () {
-        var fuga = 'あい',
-            piyo = 'うえお';
+        var fuga = 'あい';
+        var piyo = 'うえお';
         var concat = function (a, b) {
             return a + b;
         };
@@ -821,8 +821,8 @@ suite('power-assert-formatter', function () {
 
 
     test('Japanese hankaku width', function () {
-        var fuga = 'ｱｲ',
-            piyo = 'ｳｴｵ';
+        var fuga = 'ｱｲ';
+        var piyo = 'ｳｴｵ';
         var concat = function (a, b) {
             return a + b;
         };
@@ -842,8 +842,8 @@ suite('power-assert-formatter', function () {
 
 
     test('Ambiguous EastAsianWidth', function () {
-        var suffix1 = '…',
-            suffix2 = '☆';
+        var suffix1 = '…';
+        var suffix2 = '☆';
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert("※ただしイケメンに限る" + suffix1 === "○ただしイケメンに限る" + suffix2);'));
         }, [
@@ -1104,8 +1104,8 @@ suite('power-assert-formatter', function () {
 
 
     test('complex ObjectExpression: assert(!({ foo: bar.baz, name: nameOf({firstName: first, lastName: last}) }));', function () {
-        var bar = { baz: 'BAZ' },  first = 'Brendan', last = 'Eich',
-            nameOf = function (person) { return person.firstName + ' ' + person.lastName; };
+        var bar = { baz: 'BAZ' },  first = 'Brendan', last = 'Eich';
+        var nameOf = function (person) { return person.firstName + ' ' + person.lastName; };
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(!({ foo: bar.baz, name: nameOf({firstName: first, lastName: last}) }));'));
         }, [
@@ -1616,8 +1616,8 @@ suite('power-assert-formatter', function () {
         });
 
         test('Date object loose equality', function () {
-            var dateStr = '1990-01-01',
-                dateObj = new Date(dateStr);
+            var dateStr = '1990-01-01';
+            var dateObj = new Date(dateStr);
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(dateObj == dateStr);'));
             }, [
@@ -1638,8 +1638,8 @@ suite('power-assert-formatter', function () {
         });
 
         test('Date object strict equality', function () {
-            var dateStr = '1990-01-01',
-                dateObj = new Date(dateStr);
+            var dateStr = '1990-01-01';
+            var dateObj = new Date(dateStr);
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert(dateObj === dateStr);'));
             }, [
@@ -1815,8 +1815,8 @@ suite('power-assert-formatter', function () {
                 this.name = name;
                 this.birthday = birthday;
             }
-            var alice = new Person('alice', new Date('1990-01-01')),
-                bob = new Person('bob', new Date('1985-04-01'));
+            var alice = new Person('alice', new Date('1990-01-01'));
+            var bob = new Person('bob', new Date('1985-04-01'));
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert.deepEqual(alice, bob);'));
             }, [
@@ -1839,10 +1839,10 @@ suite('power-assert-formatter', function () {
                 this.name = name;
                 this.age = age;
             }
-            var alice = new Person('alice', 3),
-                ken = new Person('ken', 4),
-                session1 = new PairProgramming(alice, ken),
-                session2 = new PairProgramming(ken, alice);
+            var alice = new Person('alice', 3);
+            var ken = new Person('ken', 4);
+            var session1 = new PairProgramming(alice, ken);
+            var session2 = new PairProgramming(ken, alice);
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert.deepEqual(session1, session2);'));
             }, [
@@ -1865,8 +1865,8 @@ suite('power-assert-formatter', function () {
                 this.name = name;
                 this.age = age;
             }
-            var alice = new Person('alice', 3),
-                ken = new Person('ken', 4);
+            var alice = new Person('alice', 3);
+            var ken = new Person('ken', 4);
             assertPowerAssertContextFormatting(function () {
                 eval(weave('assert.deepEqual(new PairProgramming(alice, ken), new PairProgramming(ken, alice));'));
             }, [
