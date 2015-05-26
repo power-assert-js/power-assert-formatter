@@ -13,6 +13,7 @@
   "dependencies": {
     "acorn": "^2.0.1",
     "array-foreach": "^1.0.1",
+    "array-map": "0.0.0",
     "eastasianwidth": "^0.1.0",
     "estraverse": "^4.1.0",
     "googlediff": "^0.1.0",
