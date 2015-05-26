@@ -3,11 +3,16 @@ var empower = require('empower');
 var baseAssert = require('assert');
 var assert = empower(baseAssert, createFormatter());
 var babel = require('babel-core');
+var createEspowerPlugin = require('babel-plugin-espower/create');
 
 function weave (line) {
     return babel.transform(line, {
-        filename: '/path/to/some_test.js',
-        plugins: ['babel-plugin-espower']
+        filename: '/absolute/path/to/project/test/some_test.js',
+        plugins: [
+            createEspowerPlugin(babel, {
+                sourceRoot: '/absolute/path/to/project'
+            })
+        ]
     }).code;
 }
 
@@ -28,7 +33,7 @@ suite('ES6 features', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(`${alice.name} and ${bob.name}` === `bob and alice`);'));
         }, [
-            '  # /path/to/some_test.js:1',
+            '  # test/some_test.js:1',
             '  ',
             '  assert(`${ alice.name } and ${ bob.name }` === `bob and alice`)',
             '         |   |     |             |   |       |   |               ',
@@ -53,7 +58,7 @@ suite('ES6 features', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert(seven === ((v, i) => v + i)(...[...ary]));'));
         }, [
-            '  # /path/to/some_test.js:1',
+            '  # test/some_test.js:1',
             '  ',
             '  assert(seven === ((v, i) => v + i)(...[...ary]))',
             '         |     |   |                    |   |     ',
@@ -74,7 +79,7 @@ suite('ES6 features', function () {
         assertPowerAssertContextFormatting(function () {
             eval(weave('assert.deepEqual({ name, [ `${name} greet` ]: `Hello, I am ${name}` }, null);'));
         }, [
-            '  # /path/to/some_test.js:1',
+            '  # test/some_test.js:1',
             '  ',
             '  assert.deepEqual({name,[`${ name } greet`]: `Hello, I am ${ name }`}, null)',
             '                   |      |   |               |               |              ',
