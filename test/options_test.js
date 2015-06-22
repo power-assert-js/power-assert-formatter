@@ -22,10 +22,11 @@ if (typeof define === 'function' && define.amd) {
 }
 
     function weave (line) {
-        var filepath = '/path/to/some_test.js';
+        var filepath = '/absolute/path/to/project/test/some_test.js';
+        var sourceRoot = '/absolute/path/to/project';
         var options = {ecmaVersion: 6, locations: true, sourceType: 'module', sourceFile: filepath};
         var jsAST = acorn.parse(line, options);
-        var espoweredAST = espower(jsAST, {source: line, path: filepath});
+        var espoweredAST = espower(jsAST, {source: line, path: filepath, sourceRoot: sourceRoot});
         return escodegen.generate(espoweredAST, {format: {compact: true}});
     }
 
@@ -38,7 +39,7 @@ suite('lineSeparator option', function () {
                 eval(weave('assert(falsyNum);'));
             } catch (e) {
                 baseAssert.equal(e.message, [
-                    '  # /path/to/some_test.js:1',
+                    '  # test/some_test.js:1',
                     '  ',
                     '  assert(falsyNum)',
                     '         |        ',
@@ -72,7 +73,7 @@ suite('outputOffset option', function () {
         });
     }
     outputOffsetCustomizationTest({outputOffset: 1}, [
-        'comment  # /path/to/some_test.js:1',
+        'comment  # test/some_test.js:1',
         ' ',
         ' assert.ok(hoge === fuga, "comment")',
         '           |    |   |               ',
@@ -89,7 +90,7 @@ suite('outputOffset option', function () {
         ' '
     ]);
     outputOffsetCustomizationTest({outputOffset: 3}, [
-        'comment    # /path/to/some_test.js:1',
+        'comment    # test/some_test.js:1',
         '   ',
         '   assert.ok(hoge === fuga, "comment")',
         '             |    |   |               ',
@@ -124,7 +125,7 @@ suite('renderers customization', function () {
     }
 
     rendererCustomizationTest('default', null, [
-        'comment   # /path/to/some_test.js:1',
+        'comment   # test/some_test.js:1',
         '  ',
         '  assert.ok(hoge === fuga, "comment")',
         '            |    |   |               ',
@@ -172,7 +173,7 @@ suite('renderers customization', function () {
             './built-in/binary-expression'
         ]
     }, [
-        'comment   # /path/to/some_test.js:1',
+        'comment   # test/some_test.js:1',
         '            |    |   |               ',
         '            |    |   "bar"           ',
         '            |    false               ',
@@ -194,7 +195,7 @@ suite('renderers customization', function () {
             './built-in/binary-expression'
         ]
     }, [
-        'comment   # /path/to/some_test.js:1',
+        'comment   # test/some_test.js:1',
         '  ',
         '  assert.ok(hoge === fuga, "comment")',
         '  ',
@@ -214,7 +215,7 @@ suite('renderers customization', function () {
             './built-in/diagram'
         ]
     }, [
-        'comment   # /path/to/some_test.js:1',
+        'comment   # test/some_test.js:1',
         '  ',
         '  assert.ok(hoge === fuga, "comment")',
         '            |    |   |               ',
@@ -243,7 +244,7 @@ suite('renderers customization', function () {
                 './built-in/binary-expression'
             ]
         }, [
-            'comment   # /path/to/some_test.js:1',
+            'comment   # test/some_test.js:1',
             '  ',
             '  ## assert.ok(hoge === fuga, "comment") ##',
             '  ',
