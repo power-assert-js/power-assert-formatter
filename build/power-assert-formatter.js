@@ -112,7 +112,7 @@ function isStringDiffTarget(pair) {
 
 module.exports = BinaryExpressionRenderer;
 
-},{"array-foreach":15,"estraverse":24,"object-keys":28,"type-name":37}],4:[function(_dereq_,module,exports){
+},{"array-foreach":15,"estraverse":24,"object-keys":28,"type-name":36}],4:[function(_dereq_,module,exports){
 'use strict';
 
 var forEach = _dereq_('array-foreach');
@@ -309,7 +309,7 @@ create.defaultOptions = defaultOptions;
 create.stringWidth = stringWidth;
 module.exports = create;
 
-},{"./built-in/assertion":2,"./built-in/binary-expression":3,"./built-in/diagram":4,"./built-in/file":5,"./default-options":7,"./string-width":10,"./string-writer":11,"./traverse":12,"./udiff":13,"array-map":16,"stringifier":30,"type-name":37,"xtend":38}],7:[function(_dereq_,module,exports){
+},{"./built-in/assertion":2,"./built-in/binary-expression":3,"./built-in/diagram":4,"./built-in/file":5,"./default-options":7,"./string-width":10,"./string-writer":11,"./traverse":12,"./udiff":13,"array-map":16,"stringifier":30,"type-name":36,"xtend":37}],7:[function(_dereq_,module,exports){
 module.exports = function defaultOptions () {
     'use strict';
     return {
@@ -729,7 +729,7 @@ var _whitespace = _dereq_("./whitespace");
 exports.isNewLine = _whitespace.isNewLine;
 exports.lineBreak = _whitespace.lineBreak;
 exports.lineBreakG = _whitespace.lineBreakG;
-var version = "2.0.1";exports.version = version;
+var version = "2.0.4";exports.version = version;
 
 function parse(input, options) {
   var p = parser(options, input);
@@ -790,7 +790,7 @@ var pp = Parser.prototype;
 // strict mode, init properties are also not allowed to be repeated.
 
 pp.checkPropClash = function (prop, propHash) {
-  if (this.options.ecmaVersion >= 6) return;
+  if (this.options.ecmaVersion >= 6 && (prop.computed || prop.method || prop.shorthand)) return;
   var key = prop.key,
       name = undefined;
   switch (key.type) {
@@ -801,8 +801,15 @@ pp.checkPropClash = function (prop, propHash) {
     default:
       return;
   }
-  var kind = prop.kind || "init",
-      other = undefined;
+  var kind = prop.kind;
+  if (this.options.ecmaVersion >= 6) {
+    if (name === "__proto__" && kind === "init") {
+      if (propHash.proto) this.raise(key.start, "Redefinition of __proto__ property");
+      propHash.proto = true;
+    }
+    return;
+  }
+  var other = undefined;
   if (has(propHash, name)) {
     other = propHash[name];
     var isGetSet = kind !== "init";
@@ -1011,8 +1018,9 @@ pp.parseExprAtom = function (refShorthandDefaultPos) {
   var node = undefined,
       canBeArrow = this.potentialArrowAt == this.start;
   switch (this.type) {
-    case tt._this:
     case tt._super:
+      if (!this.inFunction) this.raise(this.start, "'super' outside of function or class");
+    case tt._this:
       var type = this.type === tt._this ? "ThisExpression" : "Super";
       node = this.startNode();
       this.next();
@@ -1193,7 +1201,7 @@ pp.parseNew = function () {
 pp.parseTemplateElement = function () {
   var elem = this.startNode();
   elem.value = {
-    raw: this.input.slice(this.start, this.end),
+    raw: this.input.slice(this.start, this.end).replace(/\r\n?/g, "\n"),
     cooked: this.value
   };
   this.next();
@@ -1266,6 +1274,11 @@ pp.parsePropertyValue = function (prop, isPattern, isGenerator, startPos, startL
     prop.kind = prop.key.name;
     this.parsePropertyName(prop);
     prop.value = this.parseMethod(false);
+    var paramCount = prop.kind === "get" ? 0 : 1;
+    if (prop.value.params.length !== paramCount) {
+      var start = prop.value.start;
+      if (prop.kind === "get") this.raise(start, "getter should have no params");else this.raise(start, "setter should have exactly one param");
+    }
   } else if (this.options.ecmaVersion >= 6 && !prop.computed && prop.key.type === "Identifier") {
     prop.kind = "init";
     if (isPattern) {
@@ -1315,11 +1328,8 @@ pp.parseMethod = function (isGenerator) {
   var allowExpressionBody = undefined;
   if (this.options.ecmaVersion >= 6) {
     node.generator = isGenerator;
-    allowExpressionBody = true;
-  } else {
-    allowExpressionBody = false;
   }
-  this.parseFunctionBody(node, allowExpressionBody);
+  this.parseFunctionBody(node, false);
   return this.finishNode(node, "FunctionExpression");
 };
 
@@ -1728,6 +1738,7 @@ pp.toAssignable = function (node, isBinding) {
       case "AssignmentExpression":
         if (node.operator === "=") {
           node.type = "AssignmentPattern";
+          delete node.operator;
         } else {
           this.raise(node.left.end, "Only '=' operator can be used for specifying default value.");
         }
@@ -2573,7 +2584,14 @@ pp.parseLabeledStatement = function (node, maybeName, expr) {
   for (var i = 0; i < this.labels.length; ++i) {
     if (this.labels[i].name === maybeName) this.raise(expr.start, "Label '" + maybeName + "' is already declared");
   }var kind = this.type.isLoop ? "loop" : this.type === tt._switch ? "switch" : null;
-  this.labels.push({ name: maybeName, kind: kind });
+  for (var i = this.labels.length - 1; i >= 0; i--) {
+    var label = this.labels[i];
+    if (label.statementStart == node.start) {
+      label.statementStart = this.start;
+      label.kind = kind;
+    } else break;
+  }
+  this.labels.push({ name: maybeName, kind: kind, statementStart: this.start });
   node.body = this.parseStatement(true);
   this.labels.pop();
   node.label = expr;
@@ -2708,10 +2726,10 @@ pp.parseClass = function (node, isStatement) {
       this.parsePropertyName(method);
     }
     method.kind = "method";
+    var isGetSet = false;
     if (!method.computed) {
       var key = method.key;
 
-      var isGetSet = false;
       if (!isGenerator && key.type === "Identifier" && this.type !== tt.parenL && (key.name === "get" || key.name === "set")) {
         isGetSet = true;
         method.kind = key.name;
@@ -2726,6 +2744,13 @@ pp.parseClass = function (node, isStatement) {
       }
     }
     this.parseClassMethod(classBody, method, isGenerator);
+    if (isGetSet) {
+      var paramCount = method.kind === "get" ? 0 : 1;
+      if (method.value.params.length !== paramCount) {
+        var start = method.value.start;
+        if (method.kind === "get") this.raise(start, "getter should have no params");else this.raise(start, "setter should have exactly one param");
+      }
+    }
   }
   node.body = this.finishNode(classBody, "ClassBody");
   return this.finishNode(node, isStatement ? "ClassDeclaration" : "ClassExpression");
@@ -3024,7 +3049,7 @@ var Token = exports.Token = function Token(p) {
 var pp = Parser.prototype;
 
 // Are we running under Rhino?
-var isRhino = typeof Packages !== "undefined";
+var isRhino = typeof Packages == "object" && Object.prototype.toString.call(Packages) == "[object JavaPackage]";
 
 // Move to the next token
 
@@ -3409,6 +3434,8 @@ try {
 // since a '/' inside a '[]' set does not end the expression.
 
 pp.readRegexp = function () {
+  var _this = this;
+
   var escaped = undefined,
       inClass = undefined,
       start = this.pos;
@@ -3441,7 +3468,12 @@ pp.readRegexp = function () {
       // negatives in unlikely scenarios. For example, `[\u{61}-b]` is a
       // perfectly valid pattern that is equivalent to `[a-b]`, but it would
       // be replaced by `[x-b]` which throws an error.
-      tmp = tmp.replace(/\\u([a-fA-F0-9]{4})|\\u\{([0-9a-fA-F]+)\}|[\uD800-\uDBFF][\uDC00-\uDFFF]/g, "x");
+      tmp = tmp.replace(/\\u\{([0-9a-fA-F]+)\}/g, function (match, code, offset) {
+        code = Number("0x" + code);
+        if (code > 1114111) _this.raise(start + offset + 3, "Code point out of bounds");
+        return "x";
+      });
+      tmp = tmp.replace(/\\u([a-fA-F0-9]{4})|[\uD800-\uDBFF][\uDC00-\uDFFF]/g, "x");
     }
   }
   // Detect invalid regular expressions.
@@ -3531,10 +3563,10 @@ pp.readCodePoint = function () {
 
   if (ch === 123) {
     if (this.options.ecmaVersion < 6) this.unexpected();
-    ++this.pos;
+    var codePos = ++this.pos;
     code = this.readHexChar(this.input.indexOf("}", this.pos) - this.pos);
     ++this.pos;
-    if (code > 1114111) this.unexpected();
+    if (code > 1114111) this.raise(codePos, "Code point out of bounds");
   } else {
     code = this.readHexChar(4);
   }
@@ -3558,7 +3590,7 @@ pp.readString = function (quote) {
     if (ch === 92) {
       // '\'
       out += this.input.slice(chunkStart, this.pos);
-      out += this.readEscapedChar();
+      out += this.readEscapedChar(false);
       chunkStart = this.pos;
     } else {
       if (isNewLine(ch)) this.raise(this.start, "Unterminated string constant");
@@ -3594,16 +3626,20 @@ pp.readTmplToken = function () {
     if (ch === 92) {
       // '\'
       out += this.input.slice(chunkStart, this.pos);
-      out += this.readEscapedChar();
+      out += this.readEscapedChar(true);
       chunkStart = this.pos;
     } else if (isNewLine(ch)) {
       out += this.input.slice(chunkStart, this.pos);
       ++this.pos;
-      if (ch === 13 && this.input.charCodeAt(this.pos) === 10) {
-        ++this.pos;
-        out += "\n";
-      } else {
-        out += String.fromCharCode(ch);
+      switch (ch) {
+        case 13:
+          if (this.input.charCodeAt(this.pos) === 10) ++this.pos;
+        case 10:
+          out += "\n";
+          break;
+        default:
+          out += String.fromCharCode(ch);
+          break;
       }
       if (this.options.locations) {
         ++this.curLine;
@@ -3618,56 +3654,58 @@ pp.readTmplToken = function () {
 
 // Used to read escaped characters
 
-pp.readEscapedChar = function () {
+pp.readEscapedChar = function (inTemplate) {
   var ch = this.input.charCodeAt(++this.pos);
-  var octal = /^[0-7]+/.exec(this.input.slice(this.pos, this.pos + 3));
-  if (octal) octal = octal[0];
-  while (octal && parseInt(octal, 8) > 255) octal = octal.slice(0, -1);
-  if (octal === "0") octal = null;
   ++this.pos;
-  if (octal) {
-    if (this.strict) this.raise(this.pos - 2, "Octal literal in strict mode");
-    this.pos += octal.length - 1;
-    return String.fromCharCode(parseInt(octal, 8));
-  } else {
-    switch (ch) {
-      case 110:
-        return "\n"; // 'n' -> '\n'
-      case 114:
-        return "\r"; // 'r' -> '\r'
-      case 120:
-        return String.fromCharCode(this.readHexChar(2)); // 'x'
-      case 117:
-        return codePointToString(this.readCodePoint()); // 'u'
-      case 116:
-        return "\t"; // 't' -> '\t'
-      case 98:
-        return "\b"; // 'b' -> '\b'
-      case 118:
-        return "\u000b"; // 'v' -> '\u000b'
-      case 102:
-        return "\f"; // 'f' -> '\f'
-      case 48:
-        return "\u0000"; // 0 -> '\0'
-      case 13:
-        if (this.input.charCodeAt(this.pos) === 10) ++this.pos; // '\r\n'
-      case 10:
-        // ' \n'
-        if (this.options.locations) {
-          this.lineStart = this.pos;++this.curLine;
+  switch (ch) {
+    case 110:
+      return "\n"; // 'n' -> '\n'
+    case 114:
+      return "\r"; // 'r' -> '\r'
+    case 120:
+      return String.fromCharCode(this.readHexChar(2)); // 'x'
+    case 117:
+      return codePointToString(this.readCodePoint()); // 'u'
+    case 116:
+      return "\t"; // 't' -> '\t'
+    case 98:
+      return "\b"; // 'b' -> '\b'
+    case 118:
+      return "\u000b"; // 'v' -> '\u000b'
+    case 102:
+      return "\f"; // 'f' -> '\f'
+    case 13:
+      if (this.input.charCodeAt(this.pos) === 10) ++this.pos; // '\r\n'
+    case 10:
+      // ' \n'
+      if (this.options.locations) {
+        this.lineStart = this.pos;++this.curLine;
+      }
+      return "";
+    default:
+      if (ch >= 48 && ch <= 55) {
+        var octalStr = this.input.substr(this.pos - 1, 3).match(/^[0-7]+/)[0];
+        var octal = parseInt(octalStr, 8);
+        if (octal > 255) {
+          octalStr = octalStr.slice(0, -1);
+          octal = parseInt(octalStr, 8);
         }
-        return "";
-      default:
-        return String.fromCharCode(ch);
-    }
+        if (octal > 0 && (this.strict || inTemplate)) {
+          this.raise(this.pos - 2, "Octal literal in strict mode");
+        }
+        this.pos += octalStr.length - 1;
+        return String.fromCharCode(octal);
+      }
+      return String.fromCharCode(ch);
   }
 };
 
 // Used to read character escape sequences ('\x', '\u', '\U').
 
 pp.readHexChar = function (len) {
+  var codePos = this.pos;
   var n = this.readInt(16, len);
-  if (n === null) this.raise(this.start, "Bad character escape sequence");
+  if (n === null) this.raise(codePos, "Bad character escape sequence");
   return n;
 };
 
@@ -8591,7 +8629,7 @@ stringifier.defaultOptions = defaultOptions;
 stringifier.defaultHandlers = defaultHandlers;
 module.exports = stringifier;
 
-},{"./strategies":36,"traverse":35,"type-name":37,"xtend":38}],31:[function(_dereq_,module,exports){
+},{"./strategies":35,"traverse":34,"type-name":36,"xtend":37}],31:[function(_dereq_,module,exports){
 
 /**
  * Array#filter.
@@ -8619,8 +8657,6 @@ module.exports = function (arr, fn, self) {
 var hasOwn = Object.prototype.hasOwnProperty;
 
 },{}],32:[function(_dereq_,module,exports){
-arguments[4][15][0].apply(exports,arguments)
-},{"dup":15}],33:[function(_dereq_,module,exports){
 /**
  * array-reduce-right
  *   Array#reduceRight ponyfill for older browsers
@@ -8663,7 +8699,7 @@ module.exports = function reduceRight (ary, callback /*, initialValue*/) {
     return value;
 };
 
-},{}],34:[function(_dereq_,module,exports){
+},{}],33:[function(_dereq_,module,exports){
 
 var indexOf = [].indexOf;
 
@@ -8674,7 +8710,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],35:[function(_dereq_,module,exports){
+},{}],34:[function(_dereq_,module,exports){
 var traverse = module.exports = function (obj) {
     return new Traverse(obj);
 };
@@ -8990,7 +9026,7 @@ var hasOwnProperty = Object.hasOwnProperty || function (obj, key) {
     return key in obj;
 };
 
-},{}],36:[function(_dereq_,module,exports){
+},{}],35:[function(_dereq_,module,exports){
 'use strict';
 
 var typeName = _dereq_('type-name'),
@@ -9386,7 +9422,7 @@ module.exports = {
     }
 };
 
-},{"array-filter":31,"array-foreach":32,"array-reduce-right":33,"indexof":34,"type-name":37}],37:[function(_dereq_,module,exports){
+},{"array-filter":31,"array-foreach":15,"array-reduce-right":32,"indexof":33,"type-name":36}],36:[function(_dereq_,module,exports){
 /**
  * type-name - Just a reasonable typeof
  * 
@@ -9426,7 +9462,7 @@ function typeName (val) {
 
 module.exports = typeName;
 
-},{}],38:[function(_dereq_,module,exports){
+},{}],37:[function(_dereq_,module,exports){
 module.exports = extend
 
 function extend() {
