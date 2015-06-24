@@ -1,3 +1,13 @@
+## [1.0.0](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.0.0) (2015-06-24)
+
+
+#### Features
+
+* The first stable release
+* transfer to power-assert-js organization ([4f03887b](https://github.com/power-assert-js/power-assert-formatter/commit/4f03887b18b0b59fe594931b0621788a595a532f))
+* [use ponyfills for older browsers](https://github.com/power-assert-js/power-assert-formatter/pull/15)
+
+
 ## [0.11.0](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v0.11.0) (2015-04-18)
 
 
