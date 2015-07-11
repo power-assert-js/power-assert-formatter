@@ -1,3 +1,10 @@
+### [1.0.1](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.0.1) (2015-07-11)
+
+
+  * update stringifier to 1.2.0 for native Symbol support ([3fdc077](https://github.com/power-assert-js/power-assert-formatter/commit/3fdc07764bc4967036df54555100d941cfdda9cd))
+  * apply licensify on build ([79be7f4](https://github.com/power-assert-js/power-assert-formatter/commit/79be7f42387b19baaff368422b09f8d4365f798d))
+
+
 ## [1.0.0](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.0.0) (2015-06-24)
 
 
