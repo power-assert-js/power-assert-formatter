@@ -11,11 +11,11 @@
     "url": "http://github.com/power-assert-js/power-assert-formatter/issues"
   },
   "dependencies": {
-    "acorn": "^2.0.1",
     "array-foreach": "^1.0.1",
     "array-map": "0.0.0",
     "array-reduce": "0.0.0",
     "eastasianwidth": "^0.1.0",
+    "esprima": "^2.5.0",
     "estraverse": "^4.1.0",
     "googlediff": "^0.1.0",
     "object-keys": "^1.0.4",
