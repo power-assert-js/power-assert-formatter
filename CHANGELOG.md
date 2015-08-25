@@ -1,3 +1,9 @@
+### [1.0.2](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.0.2) (2015-08-25)
+
+
+  * [Switch back to esprima again](https://github.com/power-assert-js/power-assert-formatter/pull/16)
+
+
 ### [1.0.1](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.0.1) (2015-07-11)
 
 
