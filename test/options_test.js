@@ -1,17 +1,17 @@
 (function (root, factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
-        define(['power-assert-formatter', 'empower', 'espower', 'acorn', 'escodegen', 'assert'], factory);
+        define(['power-assert-formatter', 'empower', 'espower', 'esprima', 'escodegen', 'assert'], factory);
     } else if (typeof exports === 'object') {
-        factory(require('..'), require('empower'), require('espower'), require('acorn'), require('escodegen'), require('assert'));
+        factory(require('..'), require('empower'), require('espower'), require('esprima'), require('escodegen'), require('assert'));
     } else {
-        factory(root.powerAssertFormatter, root.empower, root.espower, root.acorn, root.escodegen, root.assert);
+        factory(root.powerAssertFormatter, root.empower, root.espower, root.esprima, root.escodegen, root.assert);
     }
 }(this, function (
     createFormatter,
     empower,
     espower,
-    acorn,
+    esprima,
     escodegen,
     baseAssert
 ) {
@@ -24,8 +24,8 @@ if (typeof define === 'function' && define.amd) {
     function weave (line) {
         var filepath = '/absolute/path/to/project/test/some_test.js';
         var sourceRoot = '/absolute/path/to/project';
-        var options = {ecmaVersion: 6, locations: true, sourceType: 'module', sourceFile: filepath};
-        var jsAST = acorn.parse(line, options);
+        var options = {sourceType: 'module', tolerant: true, loc: true, tokens: true, raw: true};
+        var jsAST = esprima.parse(line, options);
         var espoweredAST = espower(jsAST, {source: line, path: filepath, sourceRoot: sourceRoot});
         return escodegen.generate(espoweredAST, {format: {compact: true}});
     }
