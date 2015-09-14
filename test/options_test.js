@@ -237,7 +237,7 @@ suite('renderers customization', function () {
                 writer.write('## ' + assertionLine + ' ##');
             });
         }
-        rendererCustomizationTest('without binary-expression renderer', {
+        rendererCustomizationTest('with old-style custom renderer', {
             renderers: [
                 './built-in/file',
                 CustomRenderer,
@@ -258,6 +258,66 @@ suite('renderers customization', function () {
         ]);
     })();
 
+
+    (function () {
+        function NewCustomRenderer (config) {
+        }
+        NewCustomRenderer.prototype.init = function (traversal) {
+            var assertionLine;
+            traversal.on('start', function (context) {
+                assertionLine = context.source.content;
+            });
+            traversal.on('render', function (writer) {
+                writer.write('');
+                writer.write('$$ ' + assertionLine + ' $$');
+            });
+        };
+        rendererCustomizationTest('with new-style custom renderer', {
+            renderers: [
+                './built-in/file',
+                NewCustomRenderer,
+                './built-in/binary-expression'
+            ]
+        }, [
+            'comment   # test/some_test.js:1',
+            '  ',
+            '  $$ assert.ok(hoge === fuga, "comment") $$',
+            '  ',
+            '  --- [string] fuga',
+            '  +++ [string] hoge',
+            '  @@ -1,3 +1,3 @@',
+            '  -bar',
+            '  +foo',
+            '  ',
+            '  '
+        ]);
+    })();
+
+
+    rendererCustomizationTest('with exposed Renderer classes', {
+        renderers: [
+            createFormatter.renderers.FileRenderer,
+            createFormatter.renderers.AssertionRenderer,
+            createFormatter.renderers.DiagramRenderer,
+            createFormatter.renderers.BinaryExpressionRenderer
+        ]
+    }, [
+        'comment   # test/some_test.js:1',
+        '  ',
+        '  assert.ok(hoge === fuga, "comment")',
+        '            |    |   |               ',
+        '            |    |   "bar"           ',
+        '            |    false               ',
+        '            "foo"                    ',
+        '  ',
+        '  --- [string] fuga',
+        '  +++ [string] hoge',
+        '  @@ -1,3 +1,3 @@',
+        '  -bar',
+        '  +foo',
+        '  ',
+        '  '
+    ]);
 });
 
 }));
