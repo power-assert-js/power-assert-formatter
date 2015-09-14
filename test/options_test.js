@@ -292,6 +292,32 @@ suite('renderers customization', function () {
             '  '
         ]);
     })();
+
+
+    rendererCustomizationTest('with exposed Renderer classes', {
+        renderers: [
+            createFormatter.renderers.FileRenderer,
+            createFormatter.renderers.AssertionRenderer,
+            createFormatter.renderers.DiagramRenderer,
+            createFormatter.renderers.BinaryExpressionRenderer
+        ]
+    }, [
+        'comment   # test/some_test.js:1',
+        '  ',
+        '  assert.ok(hoge === fuga, "comment")',
+        '            |    |   |               ',
+        '            |    |   "bar"           ',
+        '            |    false               ',
+        '            "foo"                    ',
+        '  ',
+        '  --- [string] fuga',
+        '  +++ [string] hoge',
+        '  @@ -1,3 +1,3 @@',
+        '  -bar',
+        '  +foo',
+        '  ',
+        '  '
+    ]);
 });
 
 }));
