@@ -339,6 +339,26 @@ suite('power-assert-formatter', function () {
     });
 
 
+    (function () {
+        test.only('assert(foo instanceof Foo);', function () {
+            var Foo = function () {
+            };
+            var foo = 'hoge';
+            assertPowerAssertContextFormatting(function () {
+                eval(weave('assert(foo instanceof Foo);'));
+            }, [
+                '  # test/some_test.js:1',
+                '  ',
+                '  assert(foo instanceof Foo)',
+                '         |   |          |   ',
+                '         |   false      #function#',
+                '         "hoge"             ',
+                '  '
+            ]);
+        });
+    })();
+
+
     test('MemberExpression: assert(ary1.length === ary2.length);', function () {
         var ary1 = ['foo', 'bar'];
         var ary2 = ['aaa', 'bbb', 'ccc'];
