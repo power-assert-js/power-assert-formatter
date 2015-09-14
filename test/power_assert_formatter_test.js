@@ -340,7 +340,7 @@ suite('power-assert-formatter', function () {
 
 
     (function () {
-        test.only('assert(foo instanceof Foo);', function () {
+        test('assert(foo instanceof Foo);', function () {
             var Foo = function () {
             };
             var foo = 'hoge';
