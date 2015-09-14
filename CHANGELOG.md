@@ -1,3 +1,17 @@
+## [1.1.0](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.1.0) (2015-09-14)
+
+
+#### Bug Fixes
+
+* fix location detection of infix operator ([f6e0d691](https://github.com/power-assert-js/power-assert-formatter/commit/f6e0d6919ee32045c18983c00d60011d0dc4a0d1))
+
+
+#### Features
+
+* expose built-in Renderer classes ([c19ee541](https://github.com/power-assert-js/power-assert-formatter/commit/c19ee5411fbe5bd8eed5be418252d8576aa75e0f))
+* introduce new Renderer initialization style ([ee643548](https://github.com/power-assert-js/power-assert-formatter/commit/ee6435484143ae5fadae913608ff97df66ca8f23))
+
+
 ### [1.0.2](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.0.2) (2015-08-25)
 
 
