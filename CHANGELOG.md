@@ -1,3 +1,11 @@
+## [1.2.0](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.2.0) (2015-11-03)
+
+
+#### Features
+
+* [Support yield expressions](https://github.com/power-assert-js/power-assert-formatter/pull/19) (by [@jamestalmage](https://github.com/jamestalmage))
+
+
 ## [1.1.0](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.1.0) (2015-09-14)
 
 
