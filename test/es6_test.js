@@ -16,12 +16,28 @@ function weave (line) {
     }).code;
 }
 
-function assertPowerAssertContextFormatting (body, expectedLines) {
-    try {
-        body();
-        baseAssert.fail('AssertionError should be thrown');
-    } catch (e) {
-        baseAssert.equal(e.message, expectedLines.join('\n'));
+function assertPowerAssertContextFormatting (body, expectedLines, done) {
+    if (done) {
+        baseAssert.equal(body.length, 1, 'body should accept a "done" callback');
+        body(function (e) {
+            try {
+                if (!e) {
+                    baseAssert.fail('AssertionError should be thrown');
+                }
+                baseAssert.equal(e.message, expectedLines.join('\n'));
+            } catch (err) {
+                return done(err);
+            }
+            done();
+        });
+    } else {
+        baseAssert.equal(body.length, 0, 'assertPowerAssertContextFormatting must be passed a "done" callback if "body" needs to run async');
+        try {
+            body();
+            baseAssert.fail('AssertionError should be thrown');
+        } catch (e) {
+            baseAssert.equal(e.message, expectedLines.join('\n'));
+        }
     }
 }
 
@@ -91,4 +107,38 @@ suite('ES6 features', function () {
         ]);
     });
 
+    test('Yield Statements', function (done) {
+        assertPowerAssertContextFormatting(function (done) {
+            var Promise = require('bluebird');
+            var regeneratorRuntime = require('regenerator/runtime-module');
+            var big = 'big';
+            eval(weave([
+                'function bigOrSmall(size) {',
+                '  return Promise.resolve(size > 100 ? "big" : "small");',
+                '}',
+                '',
+                'function *myGenerator (input) {',
+                '  assert((yield bigOrSmall(input)) === big);',
+                '}',
+                '',
+                'var gen = myGenerator(3);',
+                'gen.next().value.then((val) => gen.next(val)).catch(done);'
+            ].join('\n')));
+        }, [
+            '  # test/some_test.js:6',
+            '  ',
+            '  assert((yield bigOrSmall(input)) === big)',
+            '          |                |       |   |   ',
+            '          |                |       |   "big"',
+            '          "small"          3       false   ',
+            '  ',
+            '  --- [string] big',
+            '  +++ [string] yield bigOrSmall(input)',
+            '  @@ -1,3 +1,5 @@',
+            '  -big',
+            '  +small',
+            '  ',
+            '  '
+        ], done);
+    });
 });
