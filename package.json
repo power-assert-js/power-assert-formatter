@@ -10,6 +10,12 @@
   "bugs": {
     "url": "http://github.com/power-assert-js/power-assert-formatter/issues"
   },
+  "contributors": [
+    {
+      "name": "James Talmage",
+      "url": "https://github.com/jamestalmage"
+    }
+  ],
   "dependencies": {
     "array-foreach": "^1.0.1",
     "array-map": "0.0.0",

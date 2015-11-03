@@ -263,6 +263,11 @@ AUTHOR
 * [Takuto Wada](http://github.com/twada)
 
 
+CONTRIBUTORS
+---------------------------------------
+* [James Talmage (jamestalmage)](https://github.com/jamestalmage)
+
+
 LICENSE
 ---------------------------------------
 Licensed under the [MIT](https://github.com/power-assert-js/power-assert-formatter/blob/master/MIT-LICENSE.txt) license.
