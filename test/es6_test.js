@@ -3,6 +3,7 @@ var empower = require('empower');
 var baseAssert = require('assert');
 var assert = empower(baseAssert, createFormatter());
 var babel = require('babel-core');
+require('babel-core/polyfill');
 var createEspowerPlugin = require('babel-plugin-espower/create');
 
 function weave (line) {
@@ -109,8 +110,6 @@ suite('ES6 features', function () {
 
     test('Yield Statements', function (done) {
         assertPowerAssertContextFormatting(function (done) {
-            var Promise = require('bluebird');
-            var regeneratorRuntime = require('regenerator/runtime-module');
             var big = 'big';
             eval(weave([
                 'function bigOrSmall(size) {',
@@ -140,5 +139,76 @@ suite('ES6 features', function () {
             '  ',
             '  '
         ], done);
+    });
+
+    test('Async/Await Statements', function (done) {
+        assertPowerAssertContextFormatting(function (done) {
+            var big = 'big';
+
+            eval(weave([
+                'function bigOrSmall(size) {',
+                '  return Promise.resolve(size > 100 ? "big" : "small");',
+                '}',
+                '',
+                'async function isBig (input) {',
+                '  assert((await (bigOrSmall(input))) === big);',
+                '}',
+                '',
+                'isBig(4).catch(done);'
+            ].join('\n')));
+        }, [
+            '  # test/some_test.js:6',
+            '  ',
+            '  assert((await bigOrSmall(input)) === big)',
+            '          |                |       |   |   ',
+            '          |                |       |   "big"',
+            '          "small"          4       false   ',
+            '  ',
+            '  --- [string] big',
+            '  +++ [string] await bigOrSmall(input)',
+            '  @@ -1,3 +1,5 @@',
+            '  -big',
+            '  +small',
+            '  ',
+            '  '
+        ], done);
+    });
+
+    test('await() - function call disambiguation', function () {
+        assertPowerAssertContextFormatting(function () {
+            var big = 'big';
+
+            function await(val) {
+                return '...' + val;
+            }
+
+            eval(weave([
+                'function bigOrSmall(size) {',
+                '  return size > 100 ? "big" : "small";',
+                '}',
+                '',
+                'function isBig (input) {',
+                '  assert((await (bigOrSmall(input))) === big);',
+                '}',
+                '',
+                'isBig(4);'
+            ].join('\n')));
+        }, [
+            '  # test/some_test.js:6',
+            '  ',
+            '  assert(await(bigOrSmall(input)) === big)',
+            '         |     |          |       |   |   ',
+            '         |     |          |       |   "big"',
+            '         |     "small"    4       false   ',
+            '         "...small"                       ',
+            '  ',
+            '  --- [string] big',
+            '  +++ [string] await(bigOrSmall(input))',
+            '  @@ -1,3 +1,8 @@',
+            '  -big',
+            '  +...small',
+            '  ',
+            '  '
+        ]);
     });
 });
