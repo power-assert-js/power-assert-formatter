@@ -1,3 +1,11 @@
+## [1.3.0](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.3.0) (2015-11-07)
+
+
+#### Features
+
+* [support async/await](https://github.com/power-assert-js/power-assert-formatter/pull/20) (by [@jamestalmage](https://github.com/jamestalmage))
+
+
 ## [1.2.0](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.2.0) (2015-11-03)
 
 
