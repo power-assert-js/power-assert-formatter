@@ -113,6 +113,7 @@ gulp.task('clean_coverage', function (done) {
 
 gulp.task('bundle', ['clean_bundle'], function() {
     var b = browserify({entries: config.bundle.srcFile, standalone: config.bundle.standalone});
+    b.transform('bulkify');
     b.plugin(licensify);
     var bundleStream = b.bundle();
     return bundleStream
