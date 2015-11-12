@@ -1,3 +1,11 @@
+### [1.3.1](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.3.1) (2015-11-12)
+
+
+#### Bug Fixes
+
+* pin acorn version to `<2.6.0` for now since `await` without enclosing `async` raises error ([3eacfad6](https://github.com/power-assert-js/power-assert-formatter/commit/3eacfad621897106a1eb18f93d753e5b5a09e26d))
+
+
 ## [1.3.0](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.3.0) (2015-11-07)
 
 
