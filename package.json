@@ -84,6 +84,8 @@
     "url": "http://github.com/power-assert-js/power-assert-formatter.git"
   },
   "scripts": {
+    "preversion": "npm test",
+    "version": "npm run dist && git add -A build",
     "bower": "bower install --config.interactive=false",
     "build": "npm run clean && npm prune && npm dedupe && gulp bundle",
     "clean": "gulp clean",
