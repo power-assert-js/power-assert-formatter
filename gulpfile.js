@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var jshint = require('gulp-jshint');
@@ -6,6 +8,7 @@ var mocha = require('gulp-mocha');
 var mochaPhantomJS = require('gulp-mocha-phantomjs');
 var webserver = require('gulp-webserver');
 var del = require('del');
+var path = require('path');
 var source = require('vinyl-source-stream');
 var through = require('through2');
 var browserify = require('browserify');
@@ -19,8 +22,20 @@ var config = {
     bundle: {
         standalone: 'powerAssertFormatter',
         srcFile: './index.js',
-        destDir: './build',
+        destDir: './local_build',
         destName: 'power-assert-formatter.js'
+    },
+    assert_bundle: {
+        standalone: 'assert',
+        require: 'assert',
+        destDir: './local_build',
+        destName: 'assert.js'
+    },
+    escodegen_bundle: {
+        standalone: 'escodegen',
+        srcFile: './node_modules/escodegen/escodegen.js',
+        destDir: './local_build',
+        destName: 'escodegen.js'
     },
     coverage: {
         filename: 'coverage.lcov'
@@ -32,6 +47,7 @@ var config = {
         browser: 'test/test-browser.html'
     }
 };
+var LOCAL_BUILDS = ['assert', 'escodegen'];
 
 function captureStdout (filespec) {
     var orig, log = '';
@@ -103,8 +119,8 @@ gulp.task('watch', function () {
     runMochaSimply();
 });
 
-gulp.task('clean_bundle', function (done) {
-    del([config.bundle.destDir], done);
+gulp.task('clean_bundle', function () {
+    del.sync([path.join(config.bundle.destDir, config.bundle.destName)]);
 });
 
 gulp.task('clean_coverage', function (done) {
@@ -130,13 +146,13 @@ gulp.task('coverage', ['clean_coverage'], function () {
     return runMochaWithBlanket();
 });
 
-gulp.task('test_amd', function () {
+gulp.task('test_amd', ['bundle', 'build_deps'], function () {
     return gulp
         .src(config.test.amd)
         .pipe(mochaPhantomJS({reporter: 'dot'}));
 });
 
-gulp.task('test_browser', function () {
+gulp.task('test_browser', ['bundle', 'build_deps'], function () {
     return gulp
         .src(config.test.browser)
         .pipe(mochaPhantomJS({reporter: 'dot'}));
@@ -148,6 +164,27 @@ gulp.task('lint', function() {
         .pipe(jshint.reporter(stylish));
 });
 
-gulp.task('clean', ['clean_coverage', 'clean_bundle']);
+LOCAL_BUILDS.forEach(function (name) {
+    gulp.task('clean_' + name + '_bundle', function () {
+        del.sync([path.join(config[name + '_bundle'].destDir, config[name + '_bundle'].destName)]);
+    });
+    gulp.task(name + '_bundle', ['clean_' + name + '_bundle'], function() {
+        var b = browserify({standalone: config[name + '_bundle'].standalone});
+        if (config[name + '_bundle'].srcFile) {
+            b.add(config[name + '_bundle'].srcFile);
+        }
+        if (config[name + '_bundle'].require) {
+            b.require(config[name + '_bundle'].require);
+        }
+        return b.bundle()
+            .pipe(source(config[name + '_bundle'].destName))
+            .pipe(derequire())
+            .pipe(gulp.dest(config[name + '_bundle'].destDir));
+    });
+});
+gulp.task('clean_deps', LOCAL_BUILDS.map(function (name) { return 'clean_' + name + '_bundle'; }));
+gulp.task('build_deps', LOCAL_BUILDS.map(function (name) { return name + '_bundle'; }));
+
+gulp.task('clean', ['clean_coverage', 'clean_bundle', 'clean_deps']);
 
 gulp.task('test', ['unit','test_browser','test_amd']);
