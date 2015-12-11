@@ -1,3 +1,11 @@
+### [1.3.2](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.3.2) (2015-12-12)
+
+
+#### Bug Fixes
+
+* update acorn-es7-plugin to 1.0.10 and stop pinning of acorn version ([c9d2275](https://github.com/power-assert-js/power-assert-formatter/commit/c9d22757ea41b8e5ed6e39d910691094bbf0c1e4))
+
+
 ### [1.3.1](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.3.1) (2015-11-12)
 
 
