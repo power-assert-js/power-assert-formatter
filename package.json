@@ -85,10 +85,11 @@
   },
   "scripts": {
     "bower": "bower install --config.interactive=false",
-    "build": "npm prune && npm dedupe && gulp bundle",
+    "build": "npm run clean && npm prune && npm dedupe && gulp bundle",
     "clean": "gulp clean",
     "lint": "gulp lint",
-    "test": "npm run clean && npm run lint && npm run build && gulp test",
+    "dist": "npm run build && gulp dist",
+    "test": "npm run lint && gulp test",
     "unit": "gulp unit",
     "watch": "gulp watch",
     "coveralls": "gulp coverage && cat ./coverage.lcov | coveralls"

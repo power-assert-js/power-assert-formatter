@@ -16,6 +16,10 @@ var licensify = require('licensify');
 var derequire = require('gulp-derequire');
 var dereserve = require('gulp-dereserve');
 var config = {
+    dist: {
+        destDir: './build',
+        destName: 'power-assert-formatter.js'
+    },
     jshint: {
         src: './lib/**/*.js'
     },
@@ -185,6 +189,16 @@ LOCAL_BUILDS.forEach(function (name) {
 gulp.task('clean_deps', LOCAL_BUILDS.map(function (name) { return 'clean_' + name + '_bundle'; }));
 gulp.task('build_deps', LOCAL_BUILDS.map(function (name) { return name + '_bundle'; }));
 
-gulp.task('clean', ['clean_coverage', 'clean_bundle', 'clean_deps']);
+gulp.task('clean_dist', function () {
+    del.sync([config.dist.destDir]);
+});
+
+gulp.task('dist', ['clean_dist', 'bundle'], function () {
+    return gulp
+        .src(path.join(config.bundle.destDir, config.bundle.destName))
+        .pipe(gulp.dest(config.dist.destDir));
+});
+
+gulp.task('clean', ['clean_dist', 'clean_coverage', 'clean_bundle', 'clean_deps']);
 
 gulp.task('test', ['unit','test_browser','test_amd']);
