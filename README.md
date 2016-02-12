@@ -17,7 +17,7 @@ DESCRIPTION
 ---------------------------------------
 `power-assert-formatter` is a formatter module for Power Assert output.
 
-Pull-requests, issue reports and patches are always welcomed. See [power-assert](http://github.com/power-assert-js/power-assert) project for more documentation.
+Pull-requests, issue reports and patches are always welcomed. See [power-assert](https://github.com/power-assert-js/power-assert) project for more documentation.
 
 
 CHANGELOG
@@ -260,7 +260,7 @@ Then load (`powerAssertFormatter` function is exported)
 
 AUTHOR
 ---------------------------------------
-* [Takuto Wada](http://github.com/twada)
+* [Takuto Wada](https://github.com/twada)
 
 
 CONTRIBUTORS
@@ -276,17 +276,17 @@ Licensed under the [MIT](https://github.com/power-assert-js/power-assert-formatt
 [npm-url]: https://npmjs.org/package/power-assert-formatter
 [npm-image]: https://badge.fury.io/js/power-assert-formatter.svg
 
-[bower-url]: http://badge.fury.io/bo/power-assert-formatter
+[bower-url]: https://badge.fury.io/bo/power-assert-formatter
 [bower-image]: https://badge.fury.io/bo/power-assert-formatter.svg
 
-[travis-url]: http://travis-ci.org/power-assert-js/power-assert-formatter
+[travis-url]: https://travis-ci.org/power-assert-js/power-assert-formatter
 [travis-image]: https://secure.travis-ci.org/power-assert-js/power-assert-formatter.svg?branch=master
 
 [depstat-url]: https://gemnasium.com/power-assert-js/power-assert-formatter
 [depstat-image]: https://gemnasium.com/power-assert-js/power-assert-formatter.svg
 
 [license-url]: https://github.com/power-assert-js/power-assert-formatter/blob/master/MIT-LICENSE.txt
-[license-image]: http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat
+[license-image]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat
 
 [codeclimate-url]: https://codeclimate.com/github/power-assert-js/power-assert-formatter
 [codeclimate-image]: https://codeclimate.com/github/power-assert-js/power-assert-formatter/badges/gpa.svg
@@ -295,4 +295,4 @@ Licensed under the [MIT](https://github.com/power-assert-js/power-assert-formatt
 [coverage-image]: https://coveralls.io/repos/power-assert-js/power-assert-formatter/badge.svg?branch=master
 
 [gulp-url]: http://gulpjs.com/
-[gulp-image]: http://img.shields.io/badge/built_with-gulp-brightgreen.svg
+[gulp-image]: https://img.shields.io/badge/built_with-gulp-brightgreen.svg

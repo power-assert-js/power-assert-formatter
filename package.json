@@ -5,10 +5,10 @@
   "author": {
     "name": "Takuto Wada",
     "email": "takuto.wada@gmail.com",
-    "url": "http://github.com/twada"
+    "url": "https://github.com/twada"
   },
   "bugs": {
-    "url": "http://github.com/power-assert-js/power-assert-formatter/issues"
+    "url": "https://github.com/power-assert-js/power-assert-formatter/issues"
   },
   "contributors": [
     {
@@ -69,7 +69,7 @@
     "package.json",
     "test"
   ],
-  "homepage": "http://github.com/power-assert-js/power-assert-formatter",
+  "homepage": "https://github.com/power-assert-js/power-assert-formatter",
   "keywords": [
     "power-assert",
     "test",
@@ -81,7 +81,7 @@
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/power-assert-js/power-assert-formatter.git"
+    "url": "https://github.com/power-assert-js/power-assert-formatter.git"
   },
   "scripts": {
     "preversion": "npm test",
