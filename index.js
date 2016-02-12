@@ -3,7 +3,7 @@
  *
  * https://github.com/power-assert-js/power-assert-formatter
  *
- * Copyright (c) 2013-2015 Takuto Wada
+ * Copyright (c) 2013-2016 Takuto Wada
  * Licensed under the MIT license.
  *   https://github.com/power-assert-js/power-assert-formatter/blob/master/MIT-LICENSE.txt
  */
