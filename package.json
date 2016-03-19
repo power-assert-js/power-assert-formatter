@@ -17,8 +17,8 @@
     }
   ],
   "dependencies": {
-    "acorn": "^2.5.2",
-    "acorn-es7-plugin": "^1.0.10",
+    "acorn": "^3.0.4",
+    "acorn-es7-plugin": "^1.0.12",
     "array-foreach": "^1.0.1",
     "array-map": "0.0.0",
     "array-reduce": "0.0.0",
