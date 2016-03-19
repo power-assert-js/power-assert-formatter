@@ -27,7 +27,7 @@
     "googlediff": "^0.1.0",
     "object-keys": "^1.0.4",
     "stringifier": "^1.2.0",
-    "type-name": "^1.0.1",
+    "type-name": "^2.0.0",
     "xtend": "^4.0.0"
   },
   "devDependencies": {
