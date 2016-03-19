@@ -127,8 +127,8 @@ gulp.task('clean_bundle', function () {
     del.sync([path.join(config.bundle.destDir, config.bundle.destName)]);
 });
 
-gulp.task('clean_coverage', function (done) {
-    del([config.coverage.filename], done);
+gulp.task('clean_coverage', function () {
+    del.sync([config.coverage.filename]);
 });
 
 gulp.task('bundle', ['clean_bundle'], function() {
