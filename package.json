@@ -33,7 +33,7 @@
   "devDependencies": {
     "babel-core": "^5.8.22",
     "babel-plugin-espower": "^1.1.0",
-    "blanket": "^1.1.7",
+    "blanket": "^1.2.3",
     "browserify": "^13.0.0",
     "del": "^2.2.0",
     "empower": "^1.1.0",
@@ -43,7 +43,7 @@
     "gulp": "^3.9.0",
     "gulp-derequire": "^2.1.0",
     "gulp-dereserve": "^0.2.1",
-    "gulp-jshint": "^1.11.2",
+    "gulp-jshint": "^2.0.0",
     "gulp-mocha": "^2.1.3",
     "gulp-mocha-phantomjs": "^0.11.0",
     "gulp-util": "^3.0.6",
