@@ -91,7 +91,7 @@ function runMochaWithBlanket() {
         .src(config.test.base + config.test.pattern, {read: false})
         .pipe(capt.start)
         .pipe(mocha({
-            timeout: 10000,
+            timeout: 60000,
             ui: 'tdd',
             reporter: 'mocha-lcov-reporter'
         }))
@@ -104,7 +104,7 @@ function runMochaSimply() {
     return gulp
         .src(config.test.base + config.test.pattern, {read: false})
         .pipe(mocha({
-            timeout: 10000,
+            timeout: 60000,
             ui: 'tdd',
             reporter: 'dot'
         }))
