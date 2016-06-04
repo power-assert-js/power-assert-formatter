@@ -222,42 +222,9 @@ suite('renderers customization', function () {
 
 
     (function () {
-        function CustomRenderer (traversal, config) {
-            var assertionLine;
-            traversal.on('start', function (context) {
-                assertionLine = context.source.content;
-            });
-            traversal.on('render', function (writer) {
-                writer.write('');
-                writer.write('## ' + assertionLine + ' ##');
-            });
+        function CustomRenderer (config) {
         }
-        rendererCustomizationTest('with old-style custom renderer', {
-            renderers: [
-                './built-in/file',
-                CustomRenderer,
-                './built-in/binary-expression'
-            ]
-        }, [
-            'comment   # test/some_test.js:1',
-            '  ',
-            '  ## assert.ok(hoge === fuga, "comment") ##',
-            '  ',
-            '  --- [string] fuga',
-            '  +++ [string] hoge',
-            '  @@ -1,3 +1,3 @@',
-            '  -bar',
-            '  +foo',
-            '  ',
-            '  '
-        ]);
-    })();
-
-
-    (function () {
-        function NewCustomRenderer (config) {
-        }
-        NewCustomRenderer.prototype.init = function (traversal) {
+        CustomRenderer.prototype.init = function (traversal) {
             var assertionLine;
             traversal.on('start', function (context) {
                 assertionLine = context.source.content;
@@ -267,10 +234,10 @@ suite('renderers customization', function () {
                 writer.write('$$ ' + assertionLine + ' $$');
             });
         };
-        rendererCustomizationTest('with new-style custom renderer', {
+        rendererCustomizationTest('with custom renderer', {
             renderers: [
                 './built-in/file',
-                NewCustomRenderer,
+                CustomRenderer,
                 './built-in/binary-expression'
             ]
         }, [

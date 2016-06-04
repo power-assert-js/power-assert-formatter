@@ -21,8 +21,7 @@
       mocha.setup('tdd');
       require([
         "./options_test",
-        "./power_assert_formatter_test",
-        "./string_width_test.js"
+        "./power_assert_formatter_test"
       ], function() {
         mocha.checkLeaks();
         if (window.mochaPhantomJS) {
