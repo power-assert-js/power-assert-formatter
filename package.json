@@ -24,7 +24,6 @@
     "power-assert-renderer-diagram": "^1.0.0",
     "power-assert-renderer-comparison": "^1.0.0",
     "array-map": "0.0.0",
-    "type-name": "^2.0.1",
     "xtend": "^4.0.0"
   },
   "devDependencies": {
