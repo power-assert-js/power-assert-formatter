@@ -112,7 +112,7 @@ Width of 'Ambiguous' characters defined in [Unicode Standard Annex \#11 EAST ASI
 
 | type       | default value |
 |:-----------|:--------------|
-| `function` | [string-width.js](https://github.com/power-assert-js/power-assert-formatter/blob/master/lib/string-width.js) |
+| `function` | [string-width.js](https://github.com/twada/power-assert-runtime/blob/master/packages/power-assert-renderer-diagram/lib/string-width.js) |
 
 Function to calculate width of string.
 
@@ -128,7 +128,7 @@ Function to stringify any target value.
 
 | type       | default value |
 |:-----------|:--------------|
-| `function` | [udiff.js](https://github.com/power-assert-js/power-assert-formatter/blob/master/lib/udiff.js) |
+| `function` | [udiff.js](https://github.com/twada/power-assert-runtime/blob/master/packages/power-assert-renderer-comparison/lib/udiff.js) |
 
 Function to create diff string between two strings.
 
@@ -136,7 +136,7 @@ Function to create diff string between two strings.
 
 | type       | default value |
 |:-----------|:--------------|
-| `function` | [string-writer.js](https://github.com/power-assert-js/power-assert-formatter/blob/master/lib/string-writer.js) |
+| `function` | [string-writer.js](https://github.com/twada/power-assert-runtime/blob/master/packages/power-assert-context-formatter/lib/string-writer.js) |
 
 Constructor Function for output writer class.
 
