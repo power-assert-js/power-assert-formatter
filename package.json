@@ -18,11 +18,11 @@
   ],
   "dependencies": {
     "power-assert-context-formatter": "^1.0.4",
-    "power-assert-context-reducer-ast": "^1.0.0",
-    "power-assert-renderer-file": "^1.0.0",
-    "power-assert-renderer-assertion": "^1.0.0",
-    "power-assert-renderer-diagram": "^1.0.0",
-    "power-assert-renderer-comparison": "^1.0.0",
+    "power-assert-context-reducer-ast": "^1.0.2",
+    "power-assert-renderer-file": "^1.0.1",
+    "power-assert-renderer-assertion": "^1.0.1",
+    "power-assert-renderer-diagram": "^1.0.1",
+    "power-assert-renderer-comparison": "^1.0.1",
     "core-js": "^2.0.0"
   },
   "devDependencies": {
