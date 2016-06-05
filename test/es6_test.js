@@ -3,14 +3,19 @@ var empower = require('empower');
 var baseAssert = require('assert');
 var assert = empower(baseAssert, createFormatter());
 var babel = require('babel-core');
-require('babel-core/polyfill');
+require('babel-polyfill');
 var createEspowerPlugin = require('babel-plugin-espower/create');
 
 function weave (line) {
     return babel.transform(line, {
         filename: '/absolute/path/to/project/test/some_test.js',
+        presets: [
+            require("babel-preset-es2015"),
+            require("babel-preset-stage-3")
+        ],
         plugins: [
             createEspowerPlugin(babel, {
+                embedAst: true,
                 sourceRoot: '/absolute/path/to/project'
             })
         ]
@@ -98,12 +103,12 @@ suite('ES6 features', function () {
         }, [
             '  # test/some_test.js:1',
             '  ',
-            '  assert.deepEqual({name,[`${ name } greet`]: `Hello, I am ${ name }`}, null)',
-            '                   |      |   |               |               |              ',
-            '                   |      |   |               |               "bobby"        ',
-            '                   |      |   "bobby"         "Hello, I am bobby"            ',
-            '                   |      "bobby greet"                                      ',
-            '                   Object{name:"bobby","bobby greet":"Hello, I am bobby"}    ',
+            '  assert.deepEqual({ name, [`${ name } greet`]: `Hello, I am ${ name }` }, null)',
+            '                   |        |   |               |               |               ',
+            '                   |        |   |               |               "bobby"         ',
+            '                   |        |   "bobby"         "Hello, I am bobby"             ',
+            '                   |        "bobby greet"                                       ',
+            '                   Object{name:"bobby","bobby greet":"Hello, I am bobby"}       ',
             '  '
         ]);
     });
@@ -174,7 +179,8 @@ suite('ES6 features', function () {
         ], done);
     });
 
-    test('await() - function call disambiguation', function () {
+    // skip since babel6 does not allow await call disambiguation at syntax level
+    test.skip('await() - function call disambiguation', function () {
         assertPowerAssertContextFormatting(function () {
             var big = 'big';
 
