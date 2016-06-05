@@ -61,12 +61,10 @@
     "CHANGELOG.md",
     "MIT-LICENSE.txt",
     "README.md",
-    "gulpfile.js",
     "index.js",
     "lib",
     "build/power-assert-formatter.js",
-    "package.json",
-    "test"
+    "package.json"
   ],
   "homepage": "https://github.com/power-assert-js/power-assert-formatter",
   "keywords": [
