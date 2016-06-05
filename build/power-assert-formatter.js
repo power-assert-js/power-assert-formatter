@@ -1,152 +1,167 @@
 /**
  * Modules in this bundle
  * @license
- * 
+ *
  * power-assert-formatter:
- *   license: MIT
+ *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   contributors: James Talmage
- *   homepage: http://github.com/power-assert-js/power-assert-formatter
- *   version: 1.3.2
- * 
+ *   homepage: https://github.com/power-assert-js/power-assert-formatter
+ *   version: 1.4.0
+ *
  * acorn:
- *   license: MIT
+ *   license: MIT (http://opensource.org/licenses/MIT)
  *   maintainers: marijn <marijnh@gmail.com>, rreverser <me@rreverser.com>
- *   contributors: keeyipchan, List of Acorn contributors. Updated before every release., Alistair Braidwood, Andres Suarez, Aparajita Fishman, Arian Stolwijk, Artem Govorov, Brandon Mills, Charles Hughes, Conrad Irwin, David Bonnet, ForbesLindesay, Forbes Lindesay, Gilad Peleg, impinball, Ingvar Stepanyan, Jesse McCarthy, Jiaxing Wang, Joel Kemp, Johannes Herr, Jürg Lehni, Adrian Rakovsky, Kevin Kwok, krator, Marijn Haverbeke, Martin Carlberg, Mathias Bynens, Mathieu 'p01' Henri, Max Schaefer, Max Zerzouri, Mihai Bazon, Mike Rennie, Nick Fitzgerald, Oskar Schöldström, Paul Harper, Peter Rust, PlNG, r-e-d, Rich Harris, Sebastian McKenzie, Timothy Gu, zsjforcn
+ *   contributors: List of Acorn contributors. Updated before every release., Adrian Rakovsky, Alistair Braidwood, Andres Suarez, Angelo, Aparajita Fishman, Arian Stolwijk, Artem Govorov, Brandon Mills, Charles Hughes, Conrad Irwin, David Bonnet, Domenico Matteo, ForbesLindesay, Forbes Lindesay, Gilad Peleg, impinball, Ingvar Stepanyan, Jackson Ray Hamilton, Jesse McCarthy, Jiaxing Wang, Joel Kemp, Johannes Herr, Jordan Klassen, Jürg Lehni, keeyipchan, Keheliya Gallaba, Kevin Kwok, krator, Marijn Haverbeke, Martin Carlberg, Mathias Bynens, Mathieu 'p01' Henri, Matthew Bastien, Max Schaefer, Max Zerzouri, Mihai Bazon, Mike Rennie, Nicholas C. Zakas, Nick Fitzgerald, Oskar Schöldström, Paul Harper, Peter Rust, PlNG, Prayag Verma, ReadmeCritic, r-e-d, Richard Gibson, Rich Harris, Sebastian McKenzie, Timothy Gu, Toru Nagashima, zsjforcn
  *   homepage: https://github.com/ternjs/acorn
- *   version: 2.6.4
- * 
+ *   version: 3.1.0
+ *
  * acorn-es7-plugin:
- *   license: MIT
+ *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: matatbread
  *   maintainers: matatbread <npm@mailed.me.uk>
  *   homepage: https://github.com/MatAtBread/acorn-es7-plugin#readme
- *   version: 1.0.10
- * 
- * array-filter:
- *   license: MIT
- *   author: Julian Gruber <mail@juliangruber.com>
- *   maintainers: juliangruber <julian@juliangruber.com>
- *   homepage: https://github.com/juliangruber/array-filter
- *   version: 1.0.0
- * 
- * array-foreach:
- *   license: MIT
- *   author: Takuto Wada <takuto.wada@gmail.com>
- *   maintainers: twada <takuto.wada@gmail.com>
- *   homepage: https://github.com/twada/array-foreach
- *   version: 1.0.1
- * 
- * array-map:
- *   license: MIT
- *   author: James Halliday <mail@substack.net>
- *   maintainers: substack <mail@substack.net>
- *   homepage: https://github.com/substack/array-map
- *   version: 0.0.0
- * 
- * array-reduce:
- *   license: MIT
- *   author: James Halliday <mail@substack.net>
- *   maintainers: substack <mail@substack.net>
- *   homepage: https://github.com/substack/array-reduce
- *   version: 0.0.0
- * 
- * array-reduce-right:
- *   license: MIT
- *   author: Takuto Wada <takuto.wada@gmail.com>
- *   maintainers: twada <takuto.wada@gmail.com>
- *   homepage: https://github.com/twada/array-reduce-right
- *   version: 1.0.0
- * 
+ *   version: 1.0.14
+ *
+ * core-js:
+ *   license: MIT (http://opensource.org/licenses/MIT)
+ *   maintainers: zloirock <zloirock@zloirock.ru>
+ *   homepage: https://github.com/zloirock/core-js#readme
+ *   version: 2.4.0
+ *
  * eastasianwidth:
- *   license: MIT
+ *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Masaki Komagata
  *   maintainers: komagata <komagata@gmail.com>
  *   homepage: https://github.com/komagata/eastasianwidth#readme
  *   version: 0.1.1
- * 
+ *
+ * espurify:
+ *   license: MIT (http://opensource.org/licenses/MIT)
+ *   author: Takuto Wada <takuto.wada@gmail.com>
+ *   maintainers: twada <takuto.wada@gmail.com>
+ *   homepage: https://github.com/estools/espurify
+ *   version: 1.6.0
+ *
  * estraverse:
- *   license: BSD-2-Clause
+ *   license: BSD-2-Clause (http://opensource.org/licenses/BSD-2-Clause)
  *   maintainers: constellation <utatane.tea@gmail.com>, michaelficarra <npm@michael.ficarra.me>, nzakas <nicholas@nczconsulting.com>
  *   homepage: https://github.com/estools/estraverse
- *   version: 4.1.1
- * 
+ *   version: 4.2.0
+ *
  * events:
+ *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Irakli Gozalishvili <rfobic@gmail.com>
- *   maintainers: gozala <rfobic@gmail.com>, shtylman <shtylman@gmail.com>
- *   homepage: https://github.com/Gozala/events
- *   version: 1.0.2
- * 
+ *   maintainers: gozala <rfobic@gmail.com>, defunctzombie <shtylman@gmail.com>
+ *   homepage: https://github.com/Gozala/events#readme
+ *   version: 1.1.0
+ *
  * googlediff:
- *   licenses: Apache
+ *   licenses: Apache (http://opensource.org/licenses/Apache-2.0)
  *   author: Neil Fraser <root@neil.fraser.name>
  *   maintainers: shimondoodkin <helpmepro1@gmail.com>
  *   contributors: Shimon Doodkin <helpmepro1@gmail.com>, Ryan Graham <r.m.graham@gmail.com>
  *   homepage: http://code.google.com/p/google-diff-match-patch/
  *   version: 0.1.0
- * 
- * indexof:
- *   maintainers: tjholowaychuk <tj@vision-media.ca>
- *   version: 0.0.1
- * 
+ *
  * inherits:
- *   license: ISC
+ *   license: ISC (http://opensource.org/licenses/ISC)
  *   maintainers: isaacs <i@izs.me>
  *   homepage: https://github.com/isaacs/inherits#readme
  *   version: 2.0.1
- * 
- * object-keys:
- *   license: MIT
- *   author: Jordan Harband <ljharb@gmail.com>
- *   maintainers: ljharb <ljharb@gmail.com>
- *   contributors: Jordan Harband <ljharb@gmail.com>, Raynos <raynos2@gmail.com>, Nathan Rajlich <nathan@tootallnate.net>, Ivan Starkov <istarkov@gmail.com>, Gary Katsevman <git@gkatsev.com>
- *   homepage: https://github.com/ljharb/object-keys#readme
- *   version: 1.0.9
- * 
+ *
+ * power-assert-context-formatter:
+ *   license: MIT (http://opensource.org/licenses/MIT)
+ *   author: Takuto Wada <takuto.wada@gmail.com>
+ *   maintainers: twada <takuto.wada@gmail.com>
+ *   homepage: https://github.com/twada/power-assert-runtime
+ *   version: 1.0.4
+ *
+ * power-assert-context-reducer-ast:
+ *   license: MIT (http://opensource.org/licenses/MIT)
+ *   author: Takuto Wada <takuto.wada@gmail.com>
+ *   maintainers: twada <takuto.wada@gmail.com>
+ *   homepage: https://github.com/twada/power-assert-runtime
+ *   version: 1.0.2
+ *
+ * power-assert-context-traversal:
+ *   license: MIT (http://opensource.org/licenses/MIT)
+ *   author: Takuto Wada <takuto.wada@gmail.com>
+ *   maintainers: twada <takuto.wada@gmail.com>
+ *   homepage: https://github.com/twada/power-assert-runtime
+ *   version: 1.0.0
+ *
+ * power-assert-renderer-assertion:
+ *   license: MIT (http://opensource.org/licenses/MIT)
+ *   author: Takuto Wada <takuto.wada@gmail.com>
+ *   maintainers: twada <takuto.wada@gmail.com>
+ *   homepage: https://github.com/twada/power-assert-runtime
+ *   version: 1.0.1
+ *
+ * power-assert-renderer-base:
+ *   license: MIT (http://opensource.org/licenses/MIT)
+ *   author: Takuto Wada <takuto.wada@gmail.com>
+ *   maintainers: twada <takuto.wada@gmail.com>
+ *   homepage: https://github.com/twada/power-assert-runtime
+ *   version: 1.0.2
+ *
+ * power-assert-renderer-comparison:
+ *   license: MIT (http://opensource.org/licenses/MIT)
+ *   author: Takuto Wada <takuto.wada@gmail.com>
+ *   maintainers: twada <takuto.wada@gmail.com>
+ *   homepage: https://github.com/twada/power-assert-runtime
+ *   version: 1.0.1
+ *
+ * power-assert-renderer-diagram:
+ *   license: MIT (http://opensource.org/licenses/MIT)
+ *   author: Takuto Wada <takuto.wada@gmail.com>
+ *   maintainers: twada <takuto.wada@gmail.com>
+ *   homepage: https://github.com/twada/power-assert-runtime
+ *   version: 1.0.1
+ *
+ * power-assert-renderer-file:
+ *   license: MIT (http://opensource.org/licenses/MIT)
+ *   author: Takuto Wada <takuto.wada@gmail.com>
+ *   maintainers: twada <takuto.wada@gmail.com>
+ *   homepage: https://github.com/twada/power-assert-runtime
+ *   version: 1.0.1
+ *
  * process:
- *   license: MIT
+ *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Roman Shtylman <shtylman@gmail.com>
- *   maintainers: coolaj86 <coolaj86@gmail.com>, defunctzombie <shtylman@gmail.com>
+ *   maintainers: coolaj86 <coolaj86@gmail.com>, cwmma <calvin.metcalf@gmail.com>, defunctzombie <shtylman@gmail.com>
  *   homepage: https://github.com/shtylman/node-process#readme
- *   version: 0.11.2
- * 
+ *   version: 0.11.3
+ *
  * stringifier:
- *   license: MIT
+ *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   maintainers: twada <takuto.wada@gmail.com>
  *   homepage: https://github.com/twada/stringifier
- *   version: 1.2.1
- * 
+ *   version: 1.3.0
+ *
  * traverse:
- *   license: MIT
+ *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: James Halliday <mail@substack.net>
  *   maintainers: substack <mail@substack.net>
  *   homepage: https://github.com/substack/js-traverse
  *   version: 0.6.6
- * 
+ *
  * type-name:
- *   license: MIT
+ *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   maintainers: twada <takuto.wada@gmail.com>
  *   contributors: azu, Yosuke Furukawa
  *   homepage: https://github.com/twada/type-name
- *   version: 1.1.0
- * 
+ *   version: 2.0.1
+ *
  * util:
- *   license: MIT
+ *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Joyent
  *   maintainers: shtylman <shtylman@gmail.com>
  *   homepage: https://github.com/defunctzombie/node-util
  *   version: 0.10.3
- * 
- * xtend:
- *   license: MIT
- *   author: Raynos <raynos2@gmail.com>
- *   maintainers: raynos <raynos2@gmail.com>
- *   contributors: Jake Verbaten, Matt Esch
- *   homepage: https://github.com/Raynos/xtend
- *   version: 4.0.1
- * 
+ *
  * This header is generated by licensify (https://github.com/twada/licensify)
  */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.powerAssertFormatter = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw (f.code="MODULE_NOT_FOUND", f)}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
@@ -155,7 +170,7 @@
  *
  * https://github.com/power-assert-js/power-assert-formatter
  *
- * Copyright (c) 2013-2015 Takuto Wada
+ * Copyright (c) 2013-2016 Takuto Wada
  * Licensed under the MIT license.
  *   https://github.com/power-assert-js/power-assert-formatter/blob/master/MIT-LICENSE.txt
  */
@@ -163,257 +178,18 @@
 
 module.exports = _dereq_('./lib/create');
 
-},{"./lib/create":6}],2:[function(_dereq_,module,exports){
+},{"./lib/create":2}],2:[function(_dereq_,module,exports){
 'use strict';
 
-function AssertionRenderer (config) {
-}
-
-AssertionRenderer.prototype.init = function (traversal) {
-    var assertionLine;
-    traversal.on('start', function (context) {
-        assertionLine = context.source.content;
-    });
-    traversal.on('render', function (writer) {
-        writer.write('');
-        writer.write(assertionLine);
-    });
-};
-
-module.exports = AssertionRenderer;
-
-},{}],3:[function(_dereq_,module,exports){
-'use strict';
-
-var typeName = _dereq_('type-name');
-var keys = Object.keys || _dereq_('object-keys');
-var syntax = _dereq_('estraverse').Syntax;
-var forEach = _dereq_('array-foreach');
-
-
-function BinaryExpressionRenderer(config) {
-    this.config = config;
-    this.stringify = config.stringify;
-    this.diff = config.diff;
-    this.espathToPair = {};
-}
-
-BinaryExpressionRenderer.prototype.init = function (traversal) {
-    var _this = this;
-    traversal.on('esnode', function (esNode) {
-        var pair;
-        if (!esNode.isCaptured()) {
-            if (isTargetBinaryExpression(esNode.getParent()) && esNode.currentNode.type === syntax.Literal) {
-                _this.espathToPair[esNode.parentEspath][esNode.currentProp] = {code: esNode.code(), value: esNode.value()};
-            }
-            return;
-        }
-        if (isTargetBinaryExpression(esNode.getParent())) {
-            _this.espathToPair[esNode.parentEspath][esNode.currentProp] = {code: esNode.code(), value: esNode.value()};
-        }
-        if (isTargetBinaryExpression(esNode)) {
-            pair = {
-                operator: esNode.currentNode.operator,
-                value: esNode.value()
-            };
-            _this.espathToPair[esNode.espath] = pair;
-        }
-    });
-    traversal.on('render', function (writer) {
-        var pairs = [];
-        forEach(keys(_this.espathToPair), function (espath) {
-            var pair = _this.espathToPair[espath];
-            if (pair.left && pair.right) {
-                pairs.push(pair);
-            }
-        });
-        forEach(pairs, function (pair) {
-            _this.compare(pair, writer);
-        });
-    });
-};
-
-BinaryExpressionRenderer.prototype.compare = function (pair, writer) {
-    if (isStringDiffTarget(pair)) {
-        this.showStringDiff(pair, writer);
-    } else {
-        this.showExpectedAndActual(pair, writer);
-    }
-};
-
-BinaryExpressionRenderer.prototype.showExpectedAndActual = function (pair, writer) {
-    writer.write('');
-    writer.write('[' + typeName(pair.right.value) + '] ' + pair.right.code);
-    writer.write('=> ' + this.stringify(pair.right.value));
-    writer.write('[' + typeName(pair.left.value)  + '] ' + pair.left.code);
-    writer.write('=> ' + this.stringify(pair.left.value));
-};
-
-BinaryExpressionRenderer.prototype.showStringDiff = function (pair, writer) {
-    writer.write('');
-    writer.write('--- [string] ' + pair.right.code);
-    writer.write('+++ [string] ' + pair.left.code);
-    writer.write(this.diff(pair.right.value, pair.left.value, this.config));
-};
-
-function isTargetBinaryExpression (esNode) {
-    return esNode &&
-        esNode.currentNode.type === syntax.BinaryExpression &&
-        (esNode.currentNode.operator === '===' || esNode.currentNode.operator === '==') &&
-        esNode.isCaptured() &&
-        !(esNode.value());
-}
-
-function isStringDiffTarget(pair) {
-    return typeof pair.left.value === 'string' && typeof pair.right.value === 'string';
-}
-
-module.exports = BinaryExpressionRenderer;
-
-},{"array-foreach":17,"estraverse":22,"object-keys":29,"type-name":35}],4:[function(_dereq_,module,exports){
-'use strict';
-
-var forEach = _dereq_('array-foreach');
-
-function DiagramRenderer (config) {
-    this.config = config;
-    this.events = [];
-    this.stringify = config.stringify;
-    this.widthOf = config.widthOf;
-    this.initialVertivalBarLength = 1;
-}
-
-DiagramRenderer.prototype.init = function (traversal) {
-    var _this = this;
-    traversal.on('start', function (context) {
-        _this.context = context;
-        _this.assertionLine = context.source.content;
-        _this.initializeRows();
-    });
-    traversal.on('esnode', function (esNode) {
-        if (!esNode.isCaptured()) {
-            return;
-        }
-        _this.events.push({value: esNode.value(), loc: esNode.location()});
-    });
-    traversal.on('render', function (writer) {
-        _this.events.sort(rightToLeft);
-        _this.constructRows(_this.events);
-        forEach(_this.rows, function (columns) {
-            writer.write(columns.join(''));
-        });
-    });
-};
-
-DiagramRenderer.prototype.initializeRows = function () {
-    this.rows = [];
-    for (var i = 0; i <= this.initialVertivalBarLength; i += 1) {
-        this.addOneMoreRow();
-    }
-};
-
-DiagramRenderer.prototype.newRowFor = function (assertionLine) {
-    return createRow(this.widthOf(assertionLine), ' ');
-};
-
-DiagramRenderer.prototype.addOneMoreRow = function () {
-    this.rows.push(this.newRowFor(this.assertionLine));
-};
-
-DiagramRenderer.prototype.lastRow = function () {
-    return this.rows[this.rows.length - 1];
-};
-
-DiagramRenderer.prototype.renderVerticalBarAt = function (columnIndex) {
-    var i, lastRowIndex = this.rows.length - 1;
-    for (i = 0; i < lastRowIndex; i += 1) {
-        this.rows[i].splice(columnIndex, 1, '|');
-    }
-};
-
-DiagramRenderer.prototype.renderValueAt = function (columnIndex, dumpedValue) {
-    var i, width = this.widthOf(dumpedValue);
-    for (i = 0; i < width; i += 1) {
-        this.lastRow().splice(columnIndex + i, 1, dumpedValue.charAt(i));
-    }
-};
-
-DiagramRenderer.prototype.isOverlapped = function (prevCapturing, nextCaputuring, dumpedValue) {
-    return (typeof prevCapturing !== 'undefined') && this.startColumnFor(prevCapturing) <= (this.startColumnFor(nextCaputuring) + this.widthOf(dumpedValue));
-};
-
-DiagramRenderer.prototype.constructRows = function (capturedEvents) {
-    var that = this;
-    var prevCaptured;
-    forEach(capturedEvents, function (captured) {
-        var dumpedValue = that.stringify(captured.value);
-        if (that.isOverlapped(prevCaptured, captured, dumpedValue)) {
-            that.addOneMoreRow();
-        }
-        that.renderVerticalBarAt(that.startColumnFor(captured));
-        that.renderValueAt(that.startColumnFor(captured), dumpedValue);
-        prevCaptured = captured;
-    });
-};
-
-DiagramRenderer.prototype.startColumnFor = function (captured) {
-    return this.widthOf(this.assertionLine.slice(0, captured.loc.start.column));
-};
-
-function createRow (numCols, initial) {
-    var row = [], i;
-    for(i = 0; i < numCols; i += 1) {
-        row[i] = initial;
-    }
-    return row;
-}
-
-function rightToLeft (a, b) {
-    return b.loc.start.column - a.loc.start.column;
-}
-
-module.exports = DiagramRenderer;
-
-},{"array-foreach":17}],5:[function(_dereq_,module,exports){
-'use strict';
-
-function FileRenderer (config) {
-}
-
-FileRenderer.prototype.init = function (traversal) {
-    var filepath, lineNumber;
-    traversal.on('start', function (context) {
-        filepath = context.source.filepath;
-        lineNumber = context.source.line;
-    });
-    traversal.on('render', function (writer) {
-        if (filepath) {
-            writer.write('# ' + [filepath, lineNumber].join(':'));
-        } else {
-            writer.write('# at line: ' + lineNumber);
-        }
-    });
-};
-
-module.exports = FileRenderer;
-
-},{}],6:[function(_dereq_,module,exports){
-'use strict';
-
-var stringifier = _dereq_('stringifier');
-var stringWidth = _dereq_('./string-width');
-var StringWriter = _dereq_('./string-writer');
-var ContextTraversal = _dereq_('./traverse');
-var udiff = _dereq_('./udiff');
+var createFormatter = _dereq_('power-assert-context-formatter');
+var appendAst = _dereq_('power-assert-context-reducer-ast');
+var FileRenderer = _dereq_('power-assert-renderer-file');
+var AssertionRenderer = _dereq_('power-assert-renderer-assertion');
+var DiagramRenderer = _dereq_('power-assert-renderer-diagram');
+var ComparisonRenderer = _dereq_('power-assert-renderer-comparison');
 var defaultOptions = _dereq_('./default-options');
-var typeName = _dereq_('type-name');
-var extend = _dereq_('xtend');
-var map = _dereq_('array-map');
-
-var AssertionRenderer = _dereq_('./built-in/assertion');
-var FileRenderer = _dereq_('./built-in/file');
-var DiagramRenderer = _dereq_('./built-in/diagram');
-var BinaryExpressionRenderer = _dereq_('./built-in/binary-expression');
+var assign = _dereq_('core-js/library/fn/object/assign');
+var map = _dereq_('core-js/library/fn/array/map');
 
 // "Browserify can only analyze static requires. It is not in the scope of browserify to handle dynamic requires."
 // https://github.com/substack/node-browserify/issues/377
@@ -421,14 +197,14 @@ var defaultRendererClasses = {
     './built-in/file': FileRenderer,
     './built-in/assertion': AssertionRenderer,
     './built-in/diagram': DiagramRenderer,
-    './built-in/binary-expression': BinaryExpressionRenderer
+    './built-in/binary-expression': ComparisonRenderer
 };
 
 function toRendererClass (rendererName) {
     var RendererClass;
-    if (typeName(rendererName) === 'function') {
+    if (typeof rendererName === 'function') {
         RendererClass = rendererName;
-    } else if (typeName(rendererName) === 'string') {
+    } else if (typeof rendererName === 'string') {
         if (defaultRendererClasses[rendererName]) {
             RendererClass = defaultRendererClasses[rendererName];
         } else {
@@ -438,59 +214,31 @@ function toRendererClass (rendererName) {
     return RendererClass;
 }
 
-function configure (options) {
-    var config = extend(defaultOptions(), options);
-    if (typeof config.widthOf !== 'function') {
-        config.widthOf = stringWidth(extend(config));
-    }
-    if (typeof config.stringify !== 'function') {
-        config.stringify = stringifier(extend(config));
-    }
-    if (typeof config.diff !== 'function') {
-        config.diff = udiff(extend(config));
-    }
-    if (!config.writerClass) {
-        config.writerClass = StringWriter;
-    }
-    return config;
-}
-
 function create (options) {
-    var config = configure(options);
+    var config = assign(defaultOptions(), options);
     var rendererClasses = map(config.renderers, toRendererClass);
-    return function (context) {
-        var traversal = new ContextTraversal(context);
-        var writer = new config.writerClass(extend(config));
-        var renderers = map(rendererClasses, function (RendererClass) {
-            var renderer;
-            if (RendererClass.length === 2) {
-                renderer = new RendererClass(traversal, extend(config));
-            } else {
-                renderer = new RendererClass(extend(config));
-                renderer.init(traversal);
-            }
-            return renderer;
-        });
-        traversal.emit('start', context);
-        traversal.traverse();
-        traversal.emit('render', writer);
-        writer.write('');
-        renderers.length = 0;
-        return writer.flush();
-    };
+    var renderers = map(rendererClasses, function (clazz) {
+        return { ctor: clazz, options: config };
+    });
+    return createFormatter(assign({}, config, {
+        reducers: [
+            appendAst
+        ],
+        renderers: renderers,
+        legacy: true
+    }));
 }
 
 create.renderers = {
     AssertionRenderer: AssertionRenderer,
     FileRenderer: FileRenderer,
     DiagramRenderer: DiagramRenderer,
-    BinaryExpressionRenderer: BinaryExpressionRenderer
+    BinaryExpressionRenderer: ComparisonRenderer
 };
 create.defaultOptions = defaultOptions;
-create.stringWidth = stringWidth;
 module.exports = create;
 
-},{"./built-in/assertion":2,"./built-in/binary-expression":3,"./built-in/diagram":4,"./built-in/file":5,"./default-options":7,"./string-width":10,"./string-writer":11,"./traverse":12,"./udiff":13,"array-map":18,"stringifier":32,"type-name":35,"xtend":38}],7:[function(_dereq_,module,exports){
+},{"./default-options":3,"core-js/library/fn/array/map":10,"core-js/library/fn/object/assign":13,"power-assert-context-formatter":77,"power-assert-context-reducer-ast":82,"power-assert-renderer-assertion":86,"power-assert-renderer-comparison":88,"power-assert-renderer-diagram":91,"power-assert-renderer-file":94}],3:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = function defaultOptions () {
@@ -511,356 +259,24 @@ module.exports = function defaultOptions () {
     };
 };
 
-},{}],8:[function(_dereq_,module,exports){
-'use strict';
-
-var syntax = _dereq_('estraverse').Syntax;
-var locationOf = _dereq_('./location');
-
-function EsNode (path, currentNode, parentNode, espathToValue, jsCode, tokens) {
-    if (path) {
-        this.espath = path.join('/');
-        this.parentEspath = path.slice(0, path.length - 1).join('/');
-        this.currentProp = path[path.length - 1];
-    } else {
-        this.espath = '';
-        this.parentEspath = '';
-        this.currentProp = null;
-    }
-    this.currentNode = currentNode;
-    this.parentNode = parentNode;
-    this.parentEsNode = null;
-    this.espathToValue = espathToValue;
-    this.jsCode = jsCode;
-    this.tokens = tokens;
-}
-
-EsNode.prototype.setParent = function (parentEsNode) {
-    this.parentEsNode = parentEsNode;
-};
-
-EsNode.prototype.getParent = function () {
-    return this.parentEsNode;
-};
-
-EsNode.prototype.code = function () {
-    return this.jsCode.slice(this.currentNode.loc.start.column, this.currentNode.loc.end.column);
-};
-
-EsNode.prototype.value = function () {
-    if (this.currentNode.type === syntax.Literal) {
-        return this.currentNode.value;
-    }
-    return this.espathToValue[this.espath];
-};
-
-EsNode.prototype.isCaptured = function () {
-    return this.espathToValue.hasOwnProperty(this.espath);
-};
-
-EsNode.prototype.location = function () {
-    return locationOf(this.currentNode, this.tokens);
-};
-
-module.exports = EsNode;
-
-},{"./location":9,"estraverse":22}],9:[function(_dereq_,module,exports){
-'use strict';
-
-var syntax = _dereq_('estraverse').Syntax;
-
-function locationOf(currentNode, tokens) {
-    switch(currentNode.type) {
-    case syntax.MemberExpression:
-        return propertyLocationOf(currentNode, tokens);
-    case syntax.CallExpression:
-        if (currentNode.callee.type === syntax.MemberExpression) {
-            return propertyLocationOf(currentNode.callee, tokens);
-        }
-        break;
-    case syntax.BinaryExpression:
-    case syntax.LogicalExpression:
-    case syntax.AssignmentExpression:
-        return infixOperatorLocationOf(currentNode, tokens);
-    default:
-        break;
-    }
-    return currentNode.loc;
-}
-
-function propertyLocationOf(memberExpression, tokens) {
-    var prop = memberExpression.property;
-    var token;
-    if (!memberExpression.computed) {
-        return prop.loc;
-    }
-    token = findLeftBracketTokenOf(memberExpression, tokens);
-    return token ? token.loc : prop.loc;
-}
-
-// calculate location of infix operator for BinaryExpression, AssignmentExpression and LogicalExpression.
-function infixOperatorLocationOf (expression, tokens) {
-    var token = findOperatorTokenOf(expression, tokens);
-    return token ? token.loc : expression.left.loc;
-}
-
-function findLeftBracketTokenOf(expression, tokens) {
-    var fromLine = expression.loc.start.line;
-    var toLine = expression.property.loc.start.line;
-    var fromColumn = expression.property.loc.start.column;
-    return searchToken(tokens, fromLine, toLine, function (token, index) {
-        var prevToken;
-        if (token.loc.start.column === fromColumn) {
-            prevToken = tokens[index - 1];
-            // if (prevToken.type === 'Punctuator' && prevToken.value === '[') {  // esprima
-            if (prevToken.type.label === '[') {  // acorn
-                return prevToken;
-            }
-        }
-        return undefined;
-    });
-}
-
-function findOperatorTokenOf(expression, tokens) {
-    var fromLine = expression.left.loc.end.line;
-    var toLine = expression.right.loc.start.line;
-    var fromColumn = expression.left.loc.end.column;
-    var toColumn = expression.right.loc.start.column;
-    return searchToken(tokens, fromLine, toLine, function (token, index) {
-        if (fromColumn < token.loc.start.column &&
-            token.loc.end.column < toColumn &&
-            token.value === expression.operator) {
-            return token;
-        }
-        return undefined;
-    });
-}
-
-function searchToken(tokens, fromLine, toLine, predicate) {
-    var i, token, found;
-    for(i = 0; i < tokens.length; i += 1) {
-        token = tokens[i];
-        if (token.loc.start.line < fromLine) {
-            continue;
-        }
-        if (toLine < token.loc.end.line) {
-            break;
-        }
-        found = predicate(token, i);
-        if (found) {
-            return found;
-        }
-    }
-    return undefined;
-}
-
-module.exports = locationOf;
-
-},{"estraverse":22}],10:[function(_dereq_,module,exports){
-'use strict';
-
-var eaw = _dereq_('eastasianwidth');
-
-function stringWidth (config) {
-    var ambiguousCharWidth = (config && config.ambiguousEastAsianCharWidth) || 1;
-    return function widthOf (str) {
-        var i, code, width = 0;
-        for(i = 0; i < str.length; i+=1) {
-            code = eaw.eastAsianWidth(str.charAt(i));
-            switch(code) {
-            case 'F':
-            case 'W':
-                width += 2;
-                break;
-            case 'H':
-            case 'Na':
-            case 'N':
-                width += 1;
-                break;
-            case 'A':
-                width += ambiguousCharWidth;
-                break;
-            }
-        }
-        return width;
-    };
-}
-
-module.exports = stringWidth;
-
-},{"eastasianwidth":21}],11:[function(_dereq_,module,exports){
-'use strict';
-
-function spacerStr (len) {
-    var str = '';
-    for(var i = 0; i < len; i += 1) {
-        str += ' ';
-    }
-    return str;
-}
-
-function StringWriter (config) {
-    this.lines = [];
-    this.lineSeparator = config.lineSeparator;
-    this.regex = new RegExp(this.lineSeparator, 'g');
-    this.spacer = spacerStr(config.outputOffset);
-}
-
-StringWriter.prototype.write = function (str) {
-    this.lines.push(this.spacer + str.replace(this.regex, this.lineSeparator + this.spacer));
-};
-
-StringWriter.prototype.flush = function () {
-    var str = this.lines.join(this.lineSeparator);
-    this.lines.length = 0;
-    return str;
-};
-
-module.exports = StringWriter;
-
-},{}],12:[function(_dereq_,module,exports){
-'use strict';
-
-var estraverse = _dereq_('estraverse');
-var parser = _dereq_('acorn');
-_dereq_('acorn-es7-plugin')(parser);
-var EventEmitter = _dereq_('events').EventEmitter;
-var inherits = _dereq_('util').inherits;
-var EsNode = _dereq_('./esnode');
-var forEach = _dereq_('array-foreach');
-var reduce = _dereq_('array-reduce');
-
-function ContextTraversal (context) {
-    this.context = context;
-    EventEmitter.call(this);
-}
-inherits(ContextTraversal, EventEmitter);
-
-ContextTraversal.prototype.traverse = function () {
-    var _this = this;
-    forEach(this.context.args, function (arg) {
-        onEachEsNode(arg, _this.context.source, function (esNode) {
-            _this.emit('esnode', esNode);
-        });
-    });
-};
-
-function onEachEsNode(arg, source, callback) {
-    var parseResult = parse(source);
-    var tokens = parseResult.tokens;
-    var espathToValue = reduce(arg.events, function (accum, ev) {
-        accum[ev.espath] = ev.value;
-        return accum;
-    }, {});
-    var nodeStack = [];
-    estraverse.traverse(parseResult.expression, {
-        enter: function (currentNode, parentNode) {
-            var esNode = new EsNode(this.path(), currentNode, parentNode, espathToValue, source.content, tokens);
-            if (1 < nodeStack.length) {
-                esNode.setParent(nodeStack[nodeStack.length - 1]);
-            }
-            nodeStack.push(esNode);
-            callback(esNode);
-        },
-        leave: function (currentNode, parentNode) {
-            nodeStack.pop();
-        }
-    });
-}
-
-function parserOptions(tokens) {
-    return {
-        sourceType: 'module',
-        ecmaVersion: 7,
-        locations: true,
-        ranges: true,
-        onToken: tokens,
-        plugins: {asyncawait: true}
-    };
-}
-
-function wrappedInGenerator(jsCode) {
-    return 'function *wrapper() {\n' + jsCode + '\n}';
-}
-
-function wrappedInAsync(jsCode) {
-    return 'async function wrapper() {\n' + jsCode + '\n}';
-}
-
-function parse(source) {
-    var ast;
-    var tokens = [];
-
-    function doParse(wrapper) {
-        var content = wrapper ? wrapper(source.content) : source.content;
-        ast = parser.parse(content, parserOptions(tokens));
-        if (wrapper) {
-            ast = ast.body[0].body;
-        }
-    }
-
-    if (source.async) {
-        doParse(wrappedInAsync);
-    } else if (source.generator) {
-        doParse(wrappedInGenerator);
-    } else {
-        doParse();
-    }
-
-    return {
-        tokens: tokens,
-        expression: ast.body[0].expression
-    };
-}
-
-module.exports = ContextTraversal;
-
-},{"./esnode":8,"acorn":15,"acorn-es7-plugin":14,"array-foreach":17,"array-reduce":20,"estraverse":22,"events":24,"util":37}],13:[function(_dereq_,module,exports){
-'use strict';
-
-var DiffMatchPatch = _dereq_('googlediff');
-var dmp = new DiffMatchPatch();
-
-function udiff (config) {
-    return function diff (text1, text2) {
-        var patch;
-        if (config && shouldUseLineLevelDiff(text1, config)) {
-            patch = udiffLines(text1, text2);
-        } else {
-            patch = udiffChars(text1, text2);
-        }
-        return decodeURIComponent(patch);
-    };
-}
-
-function shouldUseLineLevelDiff (text, config) {
-    return config.lineDiffThreshold < text.split(/\r\n|\r|\n/).length;
-}
-
-function udiffLines(text1, text2) {
-    /*jshint camelcase: false */
-    var a = dmp.diff_linesToChars_(text1, text2);
-    var diffs = dmp.diff_main(a.chars1, a.chars2, false);
-    dmp.diff_charsToLines_(diffs, a.lineArray);
-    dmp.diff_cleanupSemantic(diffs);
-    return dmp.patch_toText(dmp.patch_make(text1, diffs));
-}
-
-function udiffChars (text1, text2) {
-    /*jshint camelcase: false */
-    var diffs = dmp.diff_main(text1, text2, false);
-    dmp.diff_cleanupSemantic(diffs);
-    return dmp.patch_toText(dmp.patch_make(text1, diffs));
-}
-
-module.exports = udiff;
-
-},{"googlediff":25}],14:[function(_dereq_,module,exports){
+},{}],4:[function(_dereq_,module,exports){
 var NotAsync = {} ;
 var asyncExit = /^async[\t ]+(return|throw)/ ;
 var asyncFunction = /^async[\t ]+function/ ;
-var atomOrPropertyOrLabel = /^\s*[:;]/ ;
-var asyncAtEndOfLine = /^async[\t ]*\n/ ;
+var atomOrPropertyOrLabel = /^\s*[):;]/ ;
+var removeComments = /([^\n])\/\*(\*(?!\/)|[^\n*])*\*\/([^\n])/g ;
+
+function hasLineTerminatorBeforeNext(st, since) {
+	return st.lineStart >= since;
+}
+
+function test(regex,st,noComment) {
+	var src = st.input.slice(st.start) ;
+	if (noComment) {
+		src = src.replace(removeComments,"$1 $3") ;
+  }
+	return regex.test(src);
+}
 
 /* Return the object holding the parser's 'State'. This is different between acorn ('this')
  * and babylon ('this.state') */
@@ -903,11 +319,24 @@ function asyncAwaitPlugin (parser,options){
 					parser.raise(node.start,"async/await keywords only available when ecmaVersion>=7") ;
 				} ;
 			}
-            this.reservedWords = new RegExp(this.reservedWords.toString().replace(/await|async/g,"").replace("|/","/").replace("/|","/").replace("||","|")) ;
-            this.reservedWordsStrict = new RegExp(this.reservedWordsStrict.toString().replace(/await|async/g,"").replace("|/","/").replace("/|","/").replace("||","|")) ;
-            this.reservedWordsStrictBind = new RegExp(this.reservedWordsStrictBind.toString().replace(/await|async/g,"").replace("|/","/").replace("/|","/").replace("||","|")) ;
+      this.reservedWords = new RegExp(this.reservedWords.toString().replace(/await|async/g,"").replace("|/","/").replace("/|","/").replace("||","|")) ;
+      this.reservedWordsStrict = new RegExp(this.reservedWordsStrict.toString().replace(/await|async/g,"").replace("|/","/").replace("/|","/").replace("||","|")) ;
+      this.reservedWordsStrictBind = new RegExp(this.reservedWordsStrictBind.toString().replace(/await|async/g,"").replace("|/","/").replace("/|","/").replace("||","|")) ;
+			this.inAsyncFunction = options.inAsyncFunction ;
+			if (options.awaitAnywhere && options.inAsyncFunction)
+				parser.raise(node.start,"The options awaitAnywhere and inAsyncFunction are mutually exclusive") ;
+
 			return base.apply(this,arguments);
 		}
+	}) ;
+
+	parser.extend("shouldParseExportStatement",function(base){
+	    return function(){
+	        if (this.type.label==='name' && this.value==='async' && test(asyncFunction,state(this))) {
+	            return true ;
+	        }
+	        return base.apply(this,arguments) ;
+	    }
 	}) ;
 
 	parser.extend("parseStatement",function(base){
@@ -916,20 +345,20 @@ function asyncAwaitPlugin (parser,options){
 			var start = st.start;
 			var startLoc = st.startLoc;
 			if (st.type.label==='name') {
-				if (asyncFunction.test(st.input.slice(st.start))) {
+				if (test(asyncFunction,st,true)) {
 					var wasAsync = st.inAsyncFunction ;
 					try {
 						st.inAsyncFunction = true ;
 						this.next() ;
 						var r = this.parseStatement(declaration, topLevel) ;
-						r.async = true ;
+ 						r.async = true ;
 						r.start = start;
 						r.loc && (r.loc.start = startLoc);
 						return r ;
 					} finally {
 						st.inAsyncFunction = wasAsync ;
 					}
-				} else if ((typeof options==="object" && options.asyncExits) && asyncExit.test(st.input.slice(st.start))) {
+				} else if ((typeof options==="object" && options.asyncExits) && test(asyncExit,st)) {
 					// NON-STANDARD EXTENSION iff. options.asyncExits is set, the
 					// extensions 'async return <expr>?' and 'async throw <expr>?'
 					// are enabled. In each case they are the standard ESTree nodes
@@ -946,6 +375,19 @@ function asyncAwaitPlugin (parser,options){
 		}
 	}) ;
 
+  parser.extend("parseIdent",function(base){
+		return function(liberal){
+				var id = base.apply(this,arguments);
+				var st = state(this) ;
+				if (st.inAsyncFunction && id.name==='await') {
+					if (arguments.length===0) {
+						this.raise(id.start,"'await' is reserved within async functions") ;
+					}
+				}
+				return id ;
+		}
+	}) ;
+
 	parser.extend("parseExprAtom",function(base){
 		return function(refShorthandDefaultPos){
 			var st = state(this) ;
@@ -953,7 +395,7 @@ function asyncAwaitPlugin (parser,options){
 			var startLoc = st.startLoc;
 			var rhs,r = base.apply(this,arguments);
 			if (r.type==='Identifier') {
-				if (r.name==='async' && !asyncAtEndOfLine.test(st.input.slice(start))) {
+				if (r.name==='async' && !hasLineTerminatorBeforeNext(st, r.end)) {
 					// Is this really an async function?
 					var isAsync = st.inAsyncFunction ;
 					try {
@@ -962,7 +404,7 @@ function asyncAwaitPlugin (parser,options){
 						var inBody = false ;
 
 						var parseHooks = {
-							parseFunctionBody:function(){
+							parseFunctionBody:function(node,isArrowFunction){
 								try {
 									var wasInBody = inBody ;
 									inBody = true ;
@@ -1062,7 +504,7 @@ function asyncAwaitPlugin (parser,options){
 		return function (prop) {
 			var st = state(this) ;
 			var key = base.apply(this,arguments) ;
-			if (key.type === "Identifier" && key.name === "async") {
+			if (key.type === "Identifier" && key.name === "async" && !hasLineTerminatorBeforeNext(st, key.end)) {
 				// Look-ahead to see if this is really a property or label called async or await
 				if (!st.input.slice(key.end).match(atomOrPropertyOrLabel)){
 					es7check(prop) ;
@@ -1083,9 +525,10 @@ function asyncAwaitPlugin (parser,options){
 
 module.exports = function(acorn) {
 	acorn.plugins.asyncawait = asyncAwaitPlugin ;
+	return acorn
 }
 
-},{}],15:[function(_dereq_,module,exports){
+},{}],5:[function(_dereq_,module,exports){
 (function (global){
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.acorn = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof _dereq_=="function"&&_dereq_;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw (f.code="MODULE_NOT_FOUND", f)}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof _dereq_=="function"&&_dereq_;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 // A recursive descent parser operates by defining functions for all
@@ -1134,7 +577,7 @@ pp.checkPropClash = function (prop, propHash) {
 
   if (this.options.ecmaVersion >= 6) {
     if (name === "__proto__" && kind === "init") {
-      if (propHash.proto) this.raise(key.start, "Redefinition of __proto__ property");
+      if (propHash.proto) this.raiseRecoverable(key.start, "Redefinition of __proto__ property");
       propHash.proto = true;
     }
     return;
@@ -1143,7 +586,7 @@ pp.checkPropClash = function (prop, propHash) {
   var other = propHash[name];
   if (other) {
     var isGetSet = kind !== "init";
-    if ((this.strict || isGetSet) && other[kind] || !(isGetSet ^ other.init)) this.raise(key.start, "Redefinition of property");
+    if ((this.strict || isGetSet) && other[kind] || !(isGetSet ^ other.init)) this.raiseRecoverable(key.start, "Redefinition of property");
   } else {
     other = propHash[name] = {
       init: false,
@@ -1186,7 +629,7 @@ pp.parseExpression = function (noIn, refDestructuringErrors) {
 // operators like `+=`.
 
 pp.parseMaybeAssign = function (noIn, refDestructuringErrors, afterLeftParse) {
-  if (this.type == _tokentype.types._yield && this.inGenerator) return this.parseYield();
+  if (this.inGenerator && this.isContextual("yield")) return this.parseYield();
 
   var validateDestructuring = false;
   if (!refDestructuringErrors) {
@@ -1237,7 +680,7 @@ pp.parseMaybeConditional = function (noIn, refDestructuringErrors) {
 pp.parseExprOps = function (noIn, refDestructuringErrors) {
   var startPos = this.start,
       startLoc = this.startLoc;
-  var expr = this.parseMaybeUnary(refDestructuringErrors);
+  var expr = this.parseMaybeUnary(refDestructuringErrors, false);
   if (this.checkExpressionErrors(refDestructuringErrors)) return expr;
   return this.parseExprOp(expr, startPos, startLoc, -1, noIn);
 };
@@ -1252,49 +695,58 @@ pp.parseExprOp = function (left, leftStartPos, leftStartLoc, minPrec, noIn) {
   var prec = this.type.binop;
   if (prec != null && (!noIn || this.type !== _tokentype.types._in)) {
     if (prec > minPrec) {
-      var node = this.startNodeAt(leftStartPos, leftStartLoc);
-      node.left = left;
-      node.operator = this.value;
-      var op = this.type;
+      var logical = this.type === _tokentype.types.logicalOR || this.type === _tokentype.types.logicalAND;
+      var op = this.value;
       this.next();
       var startPos = this.start,
           startLoc = this.startLoc;
-      node.right = this.parseExprOp(this.parseMaybeUnary(), startPos, startLoc, prec, noIn);
-      this.finishNode(node, op === _tokentype.types.logicalOR || op === _tokentype.types.logicalAND ? "LogicalExpression" : "BinaryExpression");
+      var right = this.parseExprOp(this.parseMaybeUnary(null, false), startPos, startLoc, prec, noIn);
+      var node = this.buildBinary(leftStartPos, leftStartLoc, left, right, op, logical);
       return this.parseExprOp(node, leftStartPos, leftStartLoc, minPrec, noIn);
     }
   }
   return left;
 };
 
+pp.buildBinary = function (startPos, startLoc, left, right, op, logical) {
+  var node = this.startNodeAt(startPos, startLoc);
+  node.left = left;
+  node.operator = op;
+  node.right = right;
+  return this.finishNode(node, logical ? "LogicalExpression" : "BinaryExpression");
+};
+
 // Parse unary operators, both prefix and postfix.
 
-pp.parseMaybeUnary = function (refDestructuringErrors) {
+pp.parseMaybeUnary = function (refDestructuringErrors, sawUnary) {
+  var startPos = this.start,
+      startLoc = this.startLoc,
+      expr = undefined;
   if (this.type.prefix) {
     var node = this.startNode(),
         update = this.type === _tokentype.types.incDec;
     node.operator = this.value;
     node.prefix = true;
     this.next();
-    node.argument = this.parseMaybeUnary();
+    node.argument = this.parseMaybeUnary(null, true);
     this.checkExpressionErrors(refDestructuringErrors, true);
-    if (update) this.checkLVal(node.argument);else if (this.strict && node.operator === "delete" && node.argument.type === "Identifier") this.raise(node.start, "Deleting local variable in strict mode");
-    return this.finishNode(node, update ? "UpdateExpression" : "UnaryExpression");
+    if (update) this.checkLVal(node.argument);else if (this.strict && node.operator === "delete" && node.argument.type === "Identifier") this.raiseRecoverable(node.start, "Deleting local variable in strict mode");else sawUnary = true;
+    expr = this.finishNode(node, update ? "UpdateExpression" : "UnaryExpression");
+  } else {
+    expr = this.parseExprSubscripts(refDestructuringErrors);
+    if (this.checkExpressionErrors(refDestructuringErrors)) return expr;
+    while (this.type.postfix && !this.canInsertSemicolon()) {
+      var node = this.startNodeAt(startPos, startLoc);
+      node.operator = this.value;
+      node.prefix = false;
+      node.argument = expr;
+      this.checkLVal(expr);
+      this.next();
+      expr = this.finishNode(node, "UpdateExpression");
+    }
   }
-  var startPos = this.start,
-      startLoc = this.startLoc;
-  var expr = this.parseExprSubscripts(refDestructuringErrors);
-  if (this.checkExpressionErrors(refDestructuringErrors)) return expr;
-  while (this.type.postfix && !this.canInsertSemicolon()) {
-    var node = this.startNodeAt(startPos, startLoc);
-    node.operator = this.value;
-    node.prefix = false;
-    node.argument = expr;
-    this.checkLVal(expr);
-    this.next();
-    expr = this.finishNode(node, "UpdateExpression");
-  }
-  return expr;
+
+  if (!sawUnary && this.eat(_tokentype.types.starstar)) return this.buildBinary(startPos, startLoc, expr, this.parseMaybeUnary(null, false), "**", false);else return expr;
 };
 
 // Parse call, dot, and `[]`-subscript expressions.
@@ -1350,14 +802,12 @@ pp.parseExprAtom = function (refDestructuringErrors) {
   switch (this.type) {
     case _tokentype.types._super:
       if (!this.inFunction) this.raise(this.start, "'super' outside of function or class");
+
     case _tokentype.types._this:
       var type = this.type === _tokentype.types._this ? "ThisExpression" : "Super";
       node = this.startNode();
       this.next();
       return this.finishNode(node, type);
-
-    case _tokentype.types._yield:
-      if (this.inGenerator) this.unexpected();
 
     case _tokentype.types.name:
       var startPos = this.start,
@@ -1388,10 +838,6 @@ pp.parseExprAtom = function (refDestructuringErrors) {
     case _tokentype.types.bracketL:
       node = this.startNode();
       this.next();
-      // check whether this is array comprehension or regular array
-      if (this.options.ecmaVersion >= 7 && this.type === _tokentype.types._for) {
-        return this.parseComprehension(node, false);
-      }
       node.elements = this.parseExprList(_tokentype.types.bracketR, true, true, refDestructuringErrors);
       return this.finishNode(node, "ArrayExpression");
 
@@ -1438,10 +884,6 @@ pp.parseParenAndDistinguishExpression = function (canBeArrow) {
       val = undefined;
   if (this.options.ecmaVersion >= 6) {
     this.next();
-
-    if (this.options.ecmaVersion >= 7 && this.type === _tokentype.types._for) {
-      return this.parseComprehension(this.startNodeAt(startPos, startLoc), true);
-    }
 
     var innerStartPos = this.start,
         innerStartLoc = this.startLoc;
@@ -1505,9 +947,11 @@ pp.parseParenArrowList = function (startPos, startLoc, exprList) {
   return this.parseArrowExpression(this.startNodeAt(startPos, startLoc), exprList);
 };
 
-// New's precedence is slightly tricky. It must allow its argument
-// to be a `[]` or dot subscript expression, but not a call — at
-// least, not without wrapping it in parentheses. Thus, it uses the
+// New's precedence is slightly tricky. It must allow its argument to
+// be a `[]` or dot subscript expression, but not a call — at least,
+// not without wrapping it in parentheses. Thus, it uses the noCalls
+// argument to parseSubscripts to prevent it from consuming the
+// argument list.
 
 var empty = [];
 
@@ -1517,8 +961,8 @@ pp.parseNew = function () {
   if (this.options.ecmaVersion >= 6 && this.eat(_tokentype.types.dot)) {
     node.meta = meta;
     node.property = this.parseIdent(true);
-    if (node.property.name !== "target") this.raise(node.property.start, "The only valid meta property for new is new.target");
-    if (!this.inFunction) this.raise(node.start, "new.target can only be used in functions");
+    if (node.property.name !== "target") this.raiseRecoverable(node.property.start, "The only valid meta property for new is new.target");
+    if (!this.inFunction) this.raiseRecoverable(node.start, "new.target can only be used in functions");
     return this.finishNode(node, "MetaProperty");
   }
   var startPos = this.start,
@@ -1601,7 +1045,7 @@ pp.parsePropertyValue = function (prop, isPattern, isGenerator, startPos, startL
     prop.kind = "init";
     prop.method = true;
     prop.value = this.parseMethod(isGenerator);
-  } else if (this.options.ecmaVersion >= 5 && !prop.computed && prop.key.type === "Identifier" && (prop.key.name === "get" || prop.key.name === "set") && (this.type != _tokentype.types.comma && this.type != _tokentype.types.braceR)) {
+  } else if (this.options.ecmaVersion >= 5 && !prop.computed && prop.key.type === "Identifier" && (prop.key.name === "get" || prop.key.name === "set") && this.type != _tokentype.types.comma && this.type != _tokentype.types.braceR) {
     if (isGenerator || isPattern) this.unexpected();
     prop.kind = prop.key.name;
     this.parsePropertyName(prop);
@@ -1609,12 +1053,13 @@ pp.parsePropertyValue = function (prop, isPattern, isGenerator, startPos, startL
     var paramCount = prop.kind === "get" ? 0 : 1;
     if (prop.value.params.length !== paramCount) {
       var start = prop.value.start;
-      if (prop.kind === "get") this.raise(start, "getter should have no params");else this.raise(start, "setter should have exactly one param");
+      if (prop.kind === "get") this.raiseRecoverable(start, "getter should have no params");else this.raiseRecoverable(start, "setter should have exactly one param");
     }
+    if (prop.kind === "set" && prop.value.params[0].type === "RestElement") this.raiseRecoverable(prop.value.params[0].start, "Setter cannot use rest params");
   } else if (this.options.ecmaVersion >= 6 && !prop.computed && prop.key.type === "Identifier") {
     prop.kind = "init";
     if (isPattern) {
-      if (this.keywords.test(prop.key.name) || (this.strict ? this.reservedWordsStrictBind : this.reservedWords).test(prop.key.name)) this.raise(prop.key.start, "Binding " + prop.key.name);
+      if (this.keywords.test(prop.key.name) || (this.strict ? this.reservedWordsStrictBind : this.reservedWords).test(prop.key.name) || this.inGenerator && prop.key.name == "yield") this.raiseRecoverable(prop.key.start, "Binding " + prop.key.name);
       prop.value = this.parseMaybeDefault(startPos, startLoc, prop.key);
     } else if (this.type === _tokentype.types.eq && refDestructuringErrors) {
       if (!refDestructuringErrors.shorthandAssign) refDestructuringErrors.shorthandAssign = this.start;
@@ -1653,21 +1098,27 @@ pp.initFunction = function (node) {
 // Parse object or class method.
 
 pp.parseMethod = function (isGenerator) {
-  var node = this.startNode();
+  var node = this.startNode(),
+      oldInGen = this.inGenerator;
+  this.inGenerator = isGenerator;
   this.initFunction(node);
   this.expect(_tokentype.types.parenL);
   node.params = this.parseBindingList(_tokentype.types.parenR, false, false);
   if (this.options.ecmaVersion >= 6) node.generator = isGenerator;
   this.parseFunctionBody(node, false);
+  this.inGenerator = oldInGen;
   return this.finishNode(node, "FunctionExpression");
 };
 
 // Parse arrow function expression with given parameters.
 
 pp.parseArrowExpression = function (node, params) {
+  var oldInGen = this.inGenerator;
+  this.inGenerator = false;
   this.initFunction(node);
   node.params = this.toAssignableList(params, true);
   this.parseFunctionBody(node, true);
+  this.inGenerator = oldInGen;
   return this.finishNode(node, "ArrowFunctionExpression");
 };
 
@@ -1683,12 +1134,11 @@ pp.parseFunctionBody = function (node, isArrowFunction) {
     // Start a new scope with regard to labels and the `inFunction`
     // flag (restore them to their old value afterwards).
     var oldInFunc = this.inFunction,
-        oldInGen = this.inGenerator,
         oldLabels = this.labels;
-    this.inFunction = true;this.inGenerator = node.generator;this.labels = [];
+    this.inFunction = true;this.labels = [];
     node.body = this.parseBlock(true);
     node.expression = false;
-    this.inFunction = oldInFunc;this.inGenerator = oldInGen;this.labels = oldLabels;
+    this.inFunction = oldInFunc;this.labels = oldLabels;
   }
 
   // If this is a strict mode function, verify that argument names
@@ -1727,14 +1177,16 @@ pp.parseExprList = function (close, allowTrailingComma, allowEmpty, refDestructu
   while (!this.eat(close)) {
     if (!first) {
       this.expect(_tokentype.types.comma);
-      if (this.type === close && refDestructuringErrors && !refDestructuringErrors.trailingComma) {
-        refDestructuringErrors.trailingComma = this.lastTokStart;
-      }
       if (allowTrailingComma && this.afterTrailingComma(close)) break;
     } else first = false;
 
     var elt = undefined;
-    if (allowEmpty && this.type === _tokentype.types.comma) elt = null;else if (this.type === _tokentype.types.ellipsis) elt = this.parseSpread(refDestructuringErrors);else elt = this.parseMaybeAssign(false, refDestructuringErrors);
+    if (allowEmpty && this.type === _tokentype.types.comma) elt = null;else if (this.type === _tokentype.types.ellipsis) {
+      elt = this.parseSpread(refDestructuringErrors);
+      if (this.type === _tokentype.types.comma && refDestructuringErrors && !refDestructuringErrors.trailingComma) {
+        refDestructuringErrors.trailingComma = this.lastTokStart;
+      }
+    } else elt = this.parseMaybeAssign(false, refDestructuringErrors);
     elts.push(elt);
   }
   return elts;
@@ -1748,7 +1200,8 @@ pp.parseIdent = function (liberal) {
   var node = this.startNode();
   if (liberal && this.options.allowReserved == "never") liberal = false;
   if (this.type === _tokentype.types.name) {
-    if (!liberal && (this.strict ? this.reservedWordsStrict : this.reservedWords).test(this.value) && (this.options.ecmaVersion >= 6 || this.input.slice(this.start, this.end).indexOf("\\") == -1)) this.raise(this.start, "The keyword '" + this.value + "' is reserved");
+    if (!liberal && (this.strict ? this.reservedWordsStrict : this.reservedWords).test(this.value) && (this.options.ecmaVersion >= 6 || this.input.slice(this.start, this.end).indexOf("\\") == -1)) this.raiseRecoverable(this.start, "The keyword '" + this.value + "' is reserved");
+    if (!liberal && this.inGenerator && this.value === "yield") this.raiseRecoverable(this.start, "Can not use 'yield' as identifier inside a generator");
     node.name = this.value;
   } else if (liberal && this.type.keyword) {
     node.name = this.type.keyword;
@@ -1774,38 +1227,7 @@ pp.parseYield = function () {
   return this.finishNode(node, "YieldExpression");
 };
 
-// Parses array and generator comprehensions.
-
-pp.parseComprehension = function (node, isGenerator) {
-  node.blocks = [];
-  while (this.type === _tokentype.types._for) {
-    var block = this.startNode();
-    this.next();
-    this.expect(_tokentype.types.parenL);
-    block.left = this.parseBindingAtom();
-    this.checkLVal(block.left, true);
-    this.expectContextual("of");
-    block.right = this.parseExpression();
-    this.expect(_tokentype.types.parenR);
-    node.blocks.push(this.finishNode(block, "ComprehensionBlock"));
-  }
-  node.filter = this.eat(_tokentype.types._if) ? this.parseParenExpression() : null;
-  node.body = this.parseExpression();
-  this.expect(isGenerator ? _tokentype.types.parenR : _tokentype.types.bracketR);
-  node.generator = isGenerator;
-  return this.finishNode(node, "ComprehensionExpression");
-};
-
 },{"./state":10,"./tokentype":14}],2:[function(_dereq_,module,exports){
-// This is a trick taken from Esprima. It turns out that, on
-// non-Chrome browsers, to check whether a string is in a set, a
-// predicate containing a big ugly `switch` statement is faster than
-// a regular expression, and on Chrome the two are about on par.
-// This function uses `eval` (non-lexical) to produce such a
-// predicate from a space-separated string of words.
-//
-// It starts by sorting the words by length.
-
 // Reserved word lists for various dialects of the language
 
 "use strict";
@@ -1817,6 +1239,7 @@ var reservedWords = {
   3: "abstract boolean byte char class double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile",
   5: "class enum extends super const export import",
   6: "enum",
+  7: "enum",
   strict: "implements interface let package private protected public static yield",
   strictBind: "eval arguments"
 };
@@ -1828,7 +1251,7 @@ var ecma5AndLessKeywords = "break case catch continue debugger default do else f
 
 var keywords = {
   5: ecma5AndLessKeywords,
-  6: ecma5AndLessKeywords + " let const class extends export import yield super"
+  6: ecma5AndLessKeywords + " const class extends export import super"
 };
 
 exports.keywords = keywords;
@@ -1840,8 +1263,8 @@ exports.keywords = keywords;
 // code point above 128.
 // Generated by `bin/generate-identifier-regex.js`.
 
-var nonASCIIidentifierStartChars = "ªµºÀ-ÖØ-öø-ˁˆ-ˑˠ-ˤˬˮͰ-ʹͶͷͺ-ͽͿΆΈ-ΊΌΎ-ΡΣ-ϵϷ-ҁҊ-ԯԱ-Ֆՙա-ևא-תװ-ײؠ-يٮٯٱ-ۓەۥۦۮۯۺ-ۼۿܐܒ-ܯݍ-ޥޱߊ-ߪߴߵߺࠀ-ࠕࠚࠤࠨࡀ-ࡘࢠ-ࢲऄ-हऽॐक़-ॡॱ-ঀঅ-ঌএঐও-নপ-রলশ-হঽৎড়ঢ়য়-ৡৰৱਅ-ਊਏਐਓ-ਨਪ-ਰਲਲ਼ਵਸ਼ਸਹਖ਼-ੜਫ਼ੲ-ੴઅ-ઍએ-ઑઓ-નપ-રલળવ-હઽૐૠૡଅ-ଌଏଐଓ-ନପ-ରଲଳଵ-ହଽଡ଼ଢ଼ୟ-ୡୱஃஅ-ஊஎ-ஐஒ-கஙசஜஞடணதந-பம-ஹௐఅ-ఌఎ-ఐఒ-నప-హఽౘౙౠౡಅ-ಌಎ-ಐಒ-ನಪ-ಳವ-ಹಽೞೠೡೱೲഅ-ഌഎ-ഐഒ-ഺഽൎൠൡൺ-ൿඅ-ඖක-නඳ-රලව-ෆก-ะาำเ-ๆກຂຄງຈຊຍດ-ທນ-ຟມ-ຣລວສຫອ-ະາຳຽເ-ໄໆໜ-ໟༀཀ-ཇཉ-ཬྈ-ྌက-ဪဿၐ-ၕၚ-ၝၡၥၦၮ-ၰၵ-ႁႎႠ-ჅჇჍა-ჺჼ-ቈቊ-ቍቐ-ቖቘቚ-ቝበ-ኈኊ-ኍነ-ኰኲ-ኵኸ-ኾዀዂ-ዅወ-ዖዘ-ጐጒ-ጕጘ-ፚᎀ-ᎏᎠ-Ᏼᐁ-ᙬᙯ-ᙿᚁ-ᚚᚠ-ᛪᛮ-ᛸᜀ-ᜌᜎ-ᜑᜠ-ᜱᝀ-ᝑᝠ-ᝬᝮ-ᝰក-ឳៗៜᠠ-ᡷᢀ-ᢨᢪᢰ-ᣵᤀ-ᤞᥐ-ᥭᥰ-ᥴᦀ-ᦫᧁ-ᧇᨀ-ᨖᨠ-ᩔᪧᬅ-ᬳᭅ-ᭋᮃ-ᮠᮮᮯᮺ-ᯥᰀ-ᰣᱍ-ᱏᱚ-ᱽᳩ-ᳬᳮ-ᳱᳵᳶᴀ-ᶿḀ-ἕἘ-Ἕἠ-ὅὈ-Ὅὐ-ὗὙὛὝὟ-ώᾀ-ᾴᾶ-ᾼιῂ-ῄῆ-ῌῐ-ΐῖ-Ίῠ-Ῥῲ-ῴῶ-ῼⁱⁿₐ-ₜℂℇℊ-ℓℕ℘-ℝℤΩℨK-ℹℼ-ℿⅅ-ⅉⅎⅠ-ↈⰀ-Ⱞⰰ-ⱞⱠ-ⳤⳫ-ⳮⳲⳳⴀ-ⴥⴧⴭⴰ-ⵧⵯⶀ-ⶖⶠ-ⶦⶨ-ⶮⶰ-ⶶⶸ-ⶾⷀ-ⷆⷈ-ⷎⷐ-ⷖⷘ-ⷞ々-〇〡-〩〱-〵〸-〼ぁ-ゖ゛-ゟァ-ヺー-ヿㄅ-ㄭㄱ-ㆎㆠ-ㆺㇰ-ㇿ㐀-䶵一-鿌ꀀ-ꒌꓐ-ꓽꔀ-ꘌꘐ-ꘟꘪꘫꙀ-ꙮꙿ-ꚝꚠ-ꛯꜗ-ꜟꜢ-ꞈꞋ-ꞎꞐ-ꞭꞰꞱꟷ-ꠁꠃ-ꠅꠇ-ꠊꠌ-ꠢꡀ-ꡳꢂ-ꢳꣲ-ꣷꣻꤊ-ꤥꤰ-ꥆꥠ-ꥼꦄ-ꦲꧏꧠ-ꧤꧦ-ꧯꧺ-ꧾꨀ-ꨨꩀ-ꩂꩄ-ꩋꩠ-ꩶꩺꩾ-ꪯꪱꪵꪶꪹ-ꪽꫀꫂꫛ-ꫝꫠ-ꫪꫲ-ꫴꬁ-ꬆꬉ-ꬎꬑ-ꬖꬠ-ꬦꬨ-ꬮꬰ-ꭚꭜ-ꭟꭤꭥꯀ-ꯢ가-힣ힰ-ퟆퟋ-ퟻ豈-舘並-龎ﬀ-ﬆﬓ-ﬗיִײַ-ﬨשׁ-זּטּ-לּמּנּסּףּפּצּ-ﮱﯓ-ﴽﵐ-ﶏﶒ-ﷇﷰ-ﷻﹰ-ﹴﹶ-ﻼＡ-Ｚａ-ｚｦ-ﾾￂ-ￇￊ-ￏￒ-ￗￚ-ￜ";
-var nonASCIIidentifierChars = "‌‍·̀-ͯ·҃-֑҇-ׇֽֿׁׂׅׄؐ-ًؚ-٩ٰۖ-ۜ۟-۪ۤۧۨ-ۭ۰-۹ܑܰ-݊ަ-ް߀-߉߫-߳ࠖ-࠙ࠛ-ࠣࠥ-ࠧࠩ-࡙࠭-࡛ࣤ-ःऺ-़ा-ॏ॑-ॗॢॣ०-९ঁ-ঃ়া-ৄেৈো-্ৗৢৣ০-৯ਁ-ਃ਼ਾ-ੂੇੈੋ-੍ੑ੦-ੱੵઁ-ઃ઼ા-ૅે-ૉો-્ૢૣ૦-૯ଁ-ଃ଼ା-ୄେୈୋ-୍ୖୗୢୣ୦-୯ஂா-ூெ-ைொ-்ௗ௦-௯ఀ-ఃా-ౄె-ైొ-్ౕౖౢౣ౦-౯ಁ-ಃ಼ಾ-ೄೆ-ೈೊ-್ೕೖೢೣ೦-೯ഁ-ഃാ-ൄെ-ൈൊ-്ൗൢൣ൦-൯ංඃ්ා-ුූෘ-ෟ෦-෯ෲෳัิ-ฺ็-๎๐-๙ັິ-ູົຼ່-ໍ໐-໙༘༙༠-༩༹༵༷༾༿ཱ-྄྆྇ྍ-ྗྙ-ྼ࿆ါ-ှ၀-၉ၖ-ၙၞ-ၠၢ-ၤၧ-ၭၱ-ၴႂ-ႍႏ-ႝ፝-፟፩-፱ᜒ-᜔ᜲ-᜴ᝒᝓᝲᝳ឴-៓៝០-៩᠋-᠍᠐-᠙ᢩᤠ-ᤫᤰ-᤻᥆-᥏ᦰ-ᧀᧈᧉ᧐-᧚ᨗ-ᨛᩕ-ᩞ᩠-᩿᩼-᪉᪐-᪙᪰-᪽ᬀ-ᬄ᬴-᭄᭐-᭙᭫-᭳ᮀ-ᮂᮡ-ᮭ᮰-᮹᯦-᯳ᰤ-᰷᱀-᱉᱐-᱙᳐-᳔᳒-᳨᳭ᳲ-᳴᳸᳹᷀-᷵᷼-᷿‿⁀⁔⃐-⃥⃜⃡-⃰⳯-⵿⳱ⷠ-〪ⷿ-゙゚〯꘠-꘩꙯ꙴ-꙽ꚟ꛰꛱ꠂ꠆ꠋꠣ-ꠧꢀꢁꢴ-꣄꣐-꣙꣠-꣱꤀-꤉ꤦ-꤭ꥇ-꥓ꦀ-ꦃ꦳-꧀꧐-꧙ꧥ꧰-꧹ꨩ-ꨶꩃꩌꩍ꩐-꩙ꩻ-ꩽꪰꪲ-ꪴꪷꪸꪾ꪿꫁ꫫ-ꫯꫵ꫶ꯣ-ꯪ꯬꯭꯰-꯹ﬞ︀-️︠-︭︳︴﹍-﹏０-９＿";
+var nonASCIIidentifierStartChars = "ªµºÀ-ÖØ-öø-ˁˆ-ˑˠ-ˤˬˮͰ-ʹͶͷͺ-ͽͿΆΈ-ΊΌΎ-ΡΣ-ϵϷ-ҁҊ-ԯԱ-Ֆՙա-ևא-תװ-ײؠ-يٮٯٱ-ۓەۥۦۮۯۺ-ۼۿܐܒ-ܯݍ-ޥޱߊ-ߪߴߵߺࠀ-ࠕࠚࠤࠨࡀ-ࡘࢠ-ࢴऄ-हऽॐक़-ॡॱ-ঀঅ-ঌএঐও-নপ-রলশ-হঽৎড়ঢ়য়-ৡৰৱਅ-ਊਏਐਓ-ਨਪ-ਰਲਲ਼ਵਸ਼ਸਹਖ਼-ੜਫ਼ੲ-ੴઅ-ઍએ-ઑઓ-નપ-રલળવ-હઽૐૠૡૹଅ-ଌଏଐଓ-ନପ-ରଲଳଵ-ହଽଡ଼ଢ଼ୟ-ୡୱஃஅ-ஊஎ-ஐஒ-கஙசஜஞடணதந-பம-ஹௐఅ-ఌఎ-ఐఒ-నప-హఽౘ-ౚౠౡಅ-ಌಎ-ಐಒ-ನಪ-ಳವ-ಹಽೞೠೡೱೲഅ-ഌഎ-ഐഒ-ഺഽൎൟ-ൡൺ-ൿඅ-ඖක-නඳ-රලව-ෆก-ะาำเ-ๆກຂຄງຈຊຍດ-ທນ-ຟມ-ຣລວສຫອ-ະາຳຽເ-ໄໆໜ-ໟༀཀ-ཇཉ-ཬྈ-ྌက-ဪဿၐ-ၕၚ-ၝၡၥၦၮ-ၰၵ-ႁႎႠ-ჅჇჍა-ჺჼ-ቈቊ-ቍቐ-ቖቘቚ-ቝበ-ኈኊ-ኍነ-ኰኲ-ኵኸ-ኾዀዂ-ዅወ-ዖዘ-ጐጒ-ጕጘ-ፚᎀ-ᎏᎠ-Ᏽᏸ-ᏽᐁ-ᙬᙯ-ᙿᚁ-ᚚᚠ-ᛪᛮ-ᛸᜀ-ᜌᜎ-ᜑᜠ-ᜱᝀ-ᝑᝠ-ᝬᝮ-ᝰក-ឳៗៜᠠ-ᡷᢀ-ᢨᢪᢰ-ᣵᤀ-ᤞᥐ-ᥭᥰ-ᥴᦀ-ᦫᦰ-ᧉᨀ-ᨖᨠ-ᩔᪧᬅ-ᬳᭅ-ᭋᮃ-ᮠᮮᮯᮺ-ᯥᰀ-ᰣᱍ-ᱏᱚ-ᱽᳩ-ᳬᳮ-ᳱᳵᳶᴀ-ᶿḀ-ἕἘ-Ἕἠ-ὅὈ-Ὅὐ-ὗὙὛὝὟ-ώᾀ-ᾴᾶ-ᾼιῂ-ῄῆ-ῌῐ-ΐῖ-Ίῠ-Ῥῲ-ῴῶ-ῼⁱⁿₐ-ₜℂℇℊ-ℓℕ℘-ℝℤΩℨK-ℹℼ-ℿⅅ-ⅉⅎⅠ-ↈⰀ-Ⱞⰰ-ⱞⱠ-ⳤⳫ-ⳮⳲⳳⴀ-ⴥⴧⴭⴰ-ⵧⵯⶀ-ⶖⶠ-ⶦⶨ-ⶮⶰ-ⶶⶸ-ⶾⷀ-ⷆⷈ-ⷎⷐ-ⷖⷘ-ⷞ々-〇〡-〩〱-〵〸-〼ぁ-ゖ゛-ゟァ-ヺー-ヿㄅ-ㄭㄱ-ㆎㆠ-ㆺㇰ-ㇿ㐀-䶵一-鿕ꀀ-ꒌꓐ-ꓽꔀ-ꘌꘐ-ꘟꘪꘫꙀ-ꙮꙿ-ꚝꚠ-ꛯꜗ-ꜟꜢ-ꞈꞋ-ꞭꞰ-ꞷꟷ-ꠁꠃ-ꠅꠇ-ꠊꠌ-ꠢꡀ-ꡳꢂ-ꢳꣲ-ꣷꣻꣽꤊ-ꤥꤰ-ꥆꥠ-ꥼꦄ-ꦲꧏꧠ-ꧤꧦ-ꧯꧺ-ꧾꨀ-ꨨꩀ-ꩂꩄ-ꩋꩠ-ꩶꩺꩾ-ꪯꪱꪵꪶꪹ-ꪽꫀꫂꫛ-ꫝꫠ-ꫪꫲ-ꫴꬁ-ꬆꬉ-ꬎꬑ-ꬖꬠ-ꬦꬨ-ꬮꬰ-ꭚꭜ-ꭥꭰ-ꯢ가-힣ힰ-ퟆퟋ-ퟻ豈-舘並-龎ﬀ-ﬆﬓ-ﬗיִײַ-ﬨשׁ-זּטּ-לּמּנּסּףּפּצּ-ﮱﯓ-ﴽﵐ-ﶏﶒ-ﷇﷰ-ﷻﹰ-ﹴﹶ-ﻼＡ-Ｚａ-ｚｦ-ﾾￂ-ￇￊ-ￏￒ-ￗￚ-ￜ";
+var nonASCIIidentifierChars = "‌‍·̀-ͯ·҃-֑҇-ׇֽֿׁׂׅׄؐ-ًؚ-٩ٰۖ-ۜ۟-۪ۤۧۨ-ۭ۰-۹ܑܰ-݊ަ-ް߀-߉߫-߳ࠖ-࠙ࠛ-ࠣࠥ-ࠧࠩ-࡙࠭-࡛ࣣ-ःऺ-़ा-ॏ॑-ॗॢॣ०-९ঁ-ঃ়া-ৄেৈো-্ৗৢৣ০-৯ਁ-ਃ਼ਾ-ੂੇੈੋ-੍ੑ੦-ੱੵઁ-ઃ઼ા-ૅે-ૉો-્ૢૣ૦-૯ଁ-ଃ଼ା-ୄେୈୋ-୍ୖୗୢୣ୦-୯ஂா-ூெ-ைொ-்ௗ௦-௯ఀ-ఃా-ౄె-ైొ-్ౕౖౢౣ౦-౯ಁ-ಃ಼ಾ-ೄೆ-ೈೊ-್ೕೖೢೣ೦-೯ഁ-ഃാ-ൄെ-ൈൊ-്ൗൢൣ൦-൯ංඃ්ා-ුූෘ-ෟ෦-෯ෲෳัิ-ฺ็-๎๐-๙ັິ-ູົຼ່-ໍ໐-໙༘༙༠-༩༹༵༷༾༿ཱ-྄྆྇ྍ-ྗྙ-ྼ࿆ါ-ှ၀-၉ၖ-ၙၞ-ၠၢ-ၤၧ-ၭၱ-ၴႂ-ႍႏ-ႝ፝-፟፩-፱ᜒ-᜔ᜲ-᜴ᝒᝓᝲᝳ឴-៓៝០-៩᠋-᠍᠐-᠙ᢩᤠ-ᤫᤰ-᤻᥆-᥏᧐-᧚ᨗ-ᨛᩕ-ᩞ᩠-᩿᩼-᪉᪐-᪙᪰-᪽ᬀ-ᬄ᬴-᭄᭐-᭙᭫-᭳ᮀ-ᮂᮡ-ᮭ᮰-᮹᯦-᯳ᰤ-᰷᱀-᱉᱐-᱙᳐-᳔᳒-᳨᳭ᳲ-᳴᳸᳹᷀-᷵᷼-᷿‿⁀⁔⃐-⃥⃜⃡-⃰⳯-⵿⳱ⷠ-〪ⷿ-゙゚〯꘠-꘩꙯ꙴ-꙽ꚞꚟ꛰꛱ꠂ꠆ꠋꠣ-ꠧꢀꢁꢴ-꣄꣐-꣙꣠-꣱꤀-꤉ꤦ-꤭ꥇ-꥓ꦀ-ꦃ꦳-꧀꧐-꧙ꧥ꧰-꧹ꨩ-ꨶꩃꩌꩍ꩐-꩙ꩻ-ꩽꪰꪲ-ꪴꪷꪸꪾ꪿꫁ꫫ-ꫯꫵ꫶ꯣ-ꯪ꯬꯭꯰-꯹ﬞ︀-️︠-︯︳︴﹍-﹏０-９＿";
 
 var nonASCIIidentifierStart = new RegExp("[" + nonASCIIidentifierStartChars + "]");
 var nonASCIIidentifier = new RegExp("[" + nonASCIIidentifierStartChars + nonASCIIidentifierChars + "]");
@@ -1852,9 +1275,9 @@ nonASCIIidentifierStartChars = nonASCIIidentifierChars = null;
 // >0xffff code points that are a valid part of identifiers. The
 // offset starts at 0x10000, and each pair of numbers represents an
 // offset to the next range, and then a size of the range. They were
-// generated by tools/generate-identifier-regex.js
-var astralIdentifierStartCodes = [0, 11, 2, 25, 2, 18, 2, 1, 2, 14, 3, 13, 35, 122, 70, 52, 268, 28, 4, 48, 48, 31, 17, 26, 6, 37, 11, 29, 3, 35, 5, 7, 2, 4, 43, 157, 99, 39, 9, 51, 157, 310, 10, 21, 11, 7, 153, 5, 3, 0, 2, 43, 2, 1, 4, 0, 3, 22, 11, 22, 10, 30, 98, 21, 11, 25, 71, 55, 7, 1, 65, 0, 16, 3, 2, 2, 2, 26, 45, 28, 4, 28, 36, 7, 2, 27, 28, 53, 11, 21, 11, 18, 14, 17, 111, 72, 955, 52, 76, 44, 33, 24, 27, 35, 42, 34, 4, 0, 13, 47, 15, 3, 22, 0, 38, 17, 2, 24, 133, 46, 39, 7, 3, 1, 3, 21, 2, 6, 2, 1, 2, 4, 4, 0, 32, 4, 287, 47, 21, 1, 2, 0, 185, 46, 82, 47, 21, 0, 60, 42, 502, 63, 32, 0, 449, 56, 1288, 920, 104, 110, 2962, 1070, 13266, 568, 8, 30, 114, 29, 19, 47, 17, 3, 32, 20, 6, 18, 881, 68, 12, 0, 67, 12, 16481, 1, 3071, 106, 6, 12, 4, 8, 8, 9, 5991, 84, 2, 70, 2, 1, 3, 0, 3, 1, 3, 3, 2, 11, 2, 0, 2, 6, 2, 64, 2, 3, 3, 7, 2, 6, 2, 27, 2, 3, 2, 4, 2, 0, 4, 6, 2, 339, 3, 24, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 7, 4149, 196, 1340, 3, 2, 26, 2, 1, 2, 0, 3, 0, 2, 9, 2, 3, 2, 0, 2, 0, 7, 0, 5, 0, 2, 0, 2, 0, 2, 2, 2, 1, 2, 0, 3, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 2, 0, 3, 3, 2, 6, 2, 3, 2, 3, 2, 0, 2, 9, 2, 16, 6, 2, 2, 4, 2, 16, 4421, 42710, 42, 4148, 12, 221, 16355, 541];
-var astralIdentifierCodes = [509, 0, 227, 0, 150, 4, 294, 9, 1368, 2, 2, 1, 6, 3, 41, 2, 5, 0, 166, 1, 1306, 2, 54, 14, 32, 9, 16, 3, 46, 10, 54, 9, 7, 2, 37, 13, 2, 9, 52, 0, 13, 2, 49, 13, 16, 9, 83, 11, 168, 11, 6, 9, 8, 2, 57, 0, 2, 6, 3, 1, 3, 2, 10, 0, 11, 1, 3, 6, 4, 4, 316, 19, 13, 9, 214, 6, 3, 8, 112, 16, 16, 9, 82, 12, 9, 9, 535, 9, 20855, 9, 135, 4, 60, 6, 26, 9, 1016, 45, 17, 3, 19723, 1, 5319, 4, 4, 5, 9, 7, 3, 6, 31, 3, 149, 2, 1418, 49, 4305, 6, 792618, 239];
+// generated by bin/generate-identifier-regex.js
+var astralIdentifierStartCodes = [0, 11, 2, 25, 2, 18, 2, 1, 2, 14, 3, 13, 35, 122, 70, 52, 268, 28, 4, 48, 48, 31, 17, 26, 6, 37, 11, 29, 3, 35, 5, 7, 2, 4, 43, 157, 99, 39, 9, 51, 157, 310, 10, 21, 11, 7, 153, 5, 3, 0, 2, 43, 2, 1, 4, 0, 3, 22, 11, 22, 10, 30, 66, 18, 2, 1, 11, 21, 11, 25, 71, 55, 7, 1, 65, 0, 16, 3, 2, 2, 2, 26, 45, 28, 4, 28, 36, 7, 2, 27, 28, 53, 11, 21, 11, 18, 14, 17, 111, 72, 56, 50, 14, 50, 785, 52, 76, 44, 33, 24, 27, 35, 42, 34, 4, 0, 13, 47, 15, 3, 22, 0, 2, 0, 36, 17, 2, 24, 85, 6, 2, 0, 2, 3, 2, 14, 2, 9, 8, 46, 39, 7, 3, 1, 3, 21, 2, 6, 2, 1, 2, 4, 4, 0, 19, 0, 13, 4, 287, 47, 21, 1, 2, 0, 185, 46, 42, 3, 37, 47, 21, 0, 60, 42, 86, 25, 391, 63, 32, 0, 449, 56, 1288, 921, 103, 110, 18, 195, 2749, 1070, 4050, 582, 8634, 568, 8, 30, 114, 29, 19, 47, 17, 3, 32, 20, 6, 18, 881, 68, 12, 0, 67, 12, 16481, 1, 3071, 106, 6, 12, 4, 8, 8, 9, 5991, 84, 2, 70, 2, 1, 3, 0, 3, 1, 3, 3, 2, 11, 2, 0, 2, 6, 2, 64, 2, 3, 3, 7, 2, 6, 2, 27, 2, 3, 2, 4, 2, 0, 4, 6, 2, 339, 3, 24, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 7, 4149, 196, 1340, 3, 2, 26, 2, 1, 2, 0, 3, 0, 2, 9, 2, 3, 2, 0, 2, 0, 7, 0, 5, 0, 2, 0, 2, 0, 2, 2, 2, 1, 2, 0, 3, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 2, 0, 3, 3, 2, 6, 2, 3, 2, 3, 2, 0, 2, 9, 2, 16, 6, 2, 2, 4, 2, 16, 4421, 42710, 42, 4148, 12, 221, 3, 5761, 10591, 541];
+var astralIdentifierCodes = [509, 0, 227, 0, 150, 4, 294, 9, 1368, 2, 2, 1, 6, 3, 41, 2, 5, 0, 166, 1, 1306, 2, 54, 14, 32, 9, 16, 3, 46, 10, 54, 9, 7, 2, 37, 13, 2, 9, 52, 0, 13, 2, 49, 13, 10, 2, 4, 9, 83, 11, 168, 11, 6, 9, 7, 3, 57, 0, 2, 6, 3, 1, 3, 2, 10, 0, 11, 1, 3, 6, 4, 4, 316, 19, 13, 9, 214, 6, 3, 8, 28, 1, 83, 16, 16, 9, 82, 12, 9, 9, 84, 14, 5, 9, 423, 9, 20855, 9, 135, 4, 60, 6, 26, 9, 1016, 45, 17, 3, 19723, 1, 5319, 4, 4, 5, 9, 7, 3, 6, 31, 3, 149, 2, 1418, 49, 513, 54, 5, 49, 9, 0, 15, 0, 23, 4, 2, 14, 3617, 6, 792618, 239];
 
 // This has a complexity linear to the value of the code. The
 // assumption is that looking up astral identifier characters is
@@ -1977,7 +1400,7 @@ var _whitespace = _dereq_("./whitespace");
 exports.isNewLine = _whitespace.isNewLine;
 exports.lineBreak = _whitespace.lineBreak;
 exports.lineBreakG = _whitespace.lineBreakG;
-var version = "2.6.4";
+var version = "3.1.0";
 
 exports.version = version;
 // The main exported interface (under `self.acorn` when in the
@@ -2030,6 +1453,8 @@ pp.raise = function (pos, message) {
   err.pos = pos;err.loc = loc;err.raisedAt = this.pos;
   throw err;
 };
+
+pp.raiseRecoverable = pp.raise;
 
 pp.curPosition = function () {
   if (this.options.locations) {
@@ -2241,6 +1666,7 @@ pp.parseBindingList = function (close, allowEmpty, allowTrailingComma, allowNonI
       var rest = this.parseRest(allowNonIdent);
       this.parseBindingListItem(rest);
       elts.push(rest);
+      if (this.type === _tokentype.types.comma) this.raise(this.start, "Comma is not permitted after the rest element");
       this.expect(close);
       break;
     } else {
@@ -2273,15 +1699,15 @@ pp.parseMaybeDefault = function (startPos, startLoc, left) {
 pp.checkLVal = function (expr, isBinding, checkClashes) {
   switch (expr.type) {
     case "Identifier":
-      if (this.strict && this.reservedWordsStrictBind.test(expr.name)) this.raise(expr.start, (isBinding ? "Binding " : "Assigning to ") + expr.name + " in strict mode");
+      if (this.strict && this.reservedWordsStrictBind.test(expr.name)) this.raiseRecoverable(expr.start, (isBinding ? "Binding " : "Assigning to ") + expr.name + " in strict mode");
       if (checkClashes) {
-        if (_util.has(checkClashes, expr.name)) this.raise(expr.start, "Argument name clash");
+        if (_util.has(checkClashes, expr.name)) this.raiseRecoverable(expr.start, "Argument name clash");
         checkClashes[expr.name] = true;
       }
       break;
 
     case "MemberExpression":
-      if (isBinding) this.raise(expr.start, (isBinding ? "Binding" : "Assigning to") + " member expression");
+      if (isBinding) this.raiseRecoverable(expr.start, (isBinding ? "Binding" : "Assigning to") + " member expression");
       break;
 
     case "ObjectPattern":
@@ -2387,8 +1813,8 @@ var defaultOptions = {
   // `ecmaVersion` indicates the ECMAScript version to parse. Must
   // be either 3, or 5, or 6. This influences support for strict
   // mode, the set of reserved words, support for getters and
-  // setters and other features.
-  ecmaVersion: 5,
+  // setters and other features. The default is 6.
+  ecmaVersion: 6,
   // Source type ("script" or "module") for different semantics
   sourceType: "script",
   // `onInsertedSemicolon` can be a callback that will be called
@@ -2592,7 +2018,7 @@ pp.unexpected = function (pos) {
 pp.checkPatternErrors = function (refDestructuringErrors, andThrow) {
   var pos = refDestructuringErrors && refDestructuringErrors.trailingComma;
   if (!andThrow) return !!pos;
-  if (pos) this.raise(pos, "Trailing comma is not permitted in destructuring patterns");
+  if (pos) this.raise(pos, "Comma is not permitted after the rest element");
 };
 
 pp.checkExpressionErrors = function (refDestructuringErrors, andThrow) {
@@ -2736,6 +2162,8 @@ var _state = _dereq_("./state");
 
 var _whitespace = _dereq_("./whitespace");
 
+var _identifier = _dereq_("./identifier");
+
 var pp = _state.Parser.prototype;
 
 // ### Statement parsing
@@ -2766,6 +2194,21 @@ pp.parseTopLevel = function (node) {
 var loopLabel = { kind: "loop" },
     switchLabel = { kind: "switch" };
 
+pp.isLet = function () {
+  if (this.type !== _tokentype.types.name || this.options.ecmaVersion < 6 || this.value != "let") return false;
+  _whitespace.skipWhiteSpace.lastIndex = this.pos;
+  var skip = _whitespace.skipWhiteSpace.exec(this.input);
+  var next = this.pos + skip[0].length,
+      nextCh = this.input.charCodeAt(next);
+  if (nextCh === 91 || nextCh == 123) return true; // '{' and '['
+  if (_identifier.isIdentifierStart(nextCh, true)) {
+    for (var pos = next + 1; _identifier.isIdentifierChar(this.input.charCodeAt(pos, true)); ++pos) {}
+    var ident = this.input.slice(next, pos);
+    if (!this.isKeyword(ident)) return true;
+  }
+  return false;
+};
+
 // Parse a single statement.
 //
 // If expecting a statement and finding a slash operator, parse a
@@ -2775,7 +2218,13 @@ var loopLabel = { kind: "loop" },
 
 pp.parseStatement = function (declaration, topLevel) {
   var starttype = this.type,
-      node = this.startNode();
+      node = this.startNode(),
+      kind = undefined;
+
+  if (this.isLet()) {
+    starttype = _tokentype.types._var;
+    kind = "let";
+  }
 
   // Most types of statements are recognized by the keyword they
   // start with. Many are trivial to parse, some require a bit of
@@ -2806,10 +2255,10 @@ pp.parseStatement = function (declaration, topLevel) {
       return this.parseThrowStatement(node);
     case _tokentype.types._try:
       return this.parseTryStatement(node);
-    case _tokentype.types._let:case _tokentype.types._const:
-      if (!declaration) this.unexpected(); // NOTE: falls through to _var
-    case _tokentype.types._var:
-      return this.parseVarStatement(node, starttype);
+    case _tokentype.types._const:case _tokentype.types._var:
+      kind = kind || this.value;
+      if (!declaration && kind != "var") this.unexpected();
+      return this.parseVarStatement(node, kind);
     case _tokentype.types._while:
       return this.parseWhileStatement(node);
     case _tokentype.types._with:
@@ -2889,13 +2338,14 @@ pp.parseForStatement = function (node) {
   this.labels.push(loopLabel);
   this.expect(_tokentype.types.parenL);
   if (this.type === _tokentype.types.semi) return this.parseFor(node, null);
-  if (this.type === _tokentype.types._var || this.type === _tokentype.types._let || this.type === _tokentype.types._const) {
+  var isLet = this.isLet();
+  if (this.type === _tokentype.types._var || this.type === _tokentype.types._const || isLet) {
     var _init = this.startNode(),
-        varKind = this.type;
+        kind = isLet ? "let" : this.value;
     this.next();
-    this.parseVar(_init, true, varKind);
+    this.parseVar(_init, true, kind);
     this.finishNode(_init, "VariableDeclaration");
-    if ((this.type === _tokentype.types._in || this.options.ecmaVersion >= 6 && this.isContextual("of")) && _init.declarations.length === 1 && !(varKind !== _tokentype.types._var && _init.declarations[0].init)) return this.parseForIn(node, _init);
+    if ((this.type === _tokentype.types._in || this.options.ecmaVersion >= 6 && this.isContextual("of")) && _init.declarations.length === 1 && !(kind !== "var" && _init.declarations[0].init)) return this.parseForIn(node, _init);
     return this.parseFor(node, _init);
   }
   var refDestructuringErrors = { shorthandAssign: 0, trailingComma: 0 };
@@ -2959,7 +2409,7 @@ pp.parseSwitchStatement = function (node) {
       if (isCase) {
         cur.test = this.parseExpression();
       } else {
-        if (sawDefault) this.raise(this.lastTokStart, "Multiple default clauses");
+        if (sawDefault) this.raiseRecoverable(this.lastTokStart, "Multiple default clauses");
         sawDefault = true;
         cur.test = null;
       }
@@ -3116,13 +2566,13 @@ pp.parseForIn = function (node, init) {
 
 pp.parseVar = function (node, isFor, kind) {
   node.declarations = [];
-  node.kind = kind.keyword;
+  node.kind = kind;
   for (;;) {
     var decl = this.startNode();
     this.parseVarId(decl);
     if (this.eat(_tokentype.types.eq)) {
       decl.init = this.parseMaybeAssign(isFor);
-    } else if (kind === _tokentype.types._const && !(this.type === _tokentype.types._in || this.options.ecmaVersion >= 6 && this.isContextual("of"))) {
+    } else if (kind === "const" && !(this.type === _tokentype.types._in || this.options.ecmaVersion >= 6 && this.isContextual("of"))) {
       this.unexpected();
     } else if (decl.id.type != "Identifier" && !(isFor && (this.type === _tokentype.types._in || this.isContextual("of")))) {
       this.raise(this.lastTokEnd, "Complex binding patterns require an initialization value");
@@ -3146,9 +2596,12 @@ pp.parseVarId = function (decl) {
 pp.parseFunction = function (node, isStatement, allowExpressionBody) {
   this.initFunction(node);
   if (this.options.ecmaVersion >= 6) node.generator = this.eat(_tokentype.types.star);
+  var oldInGen = this.inGenerator;
+  this.inGenerator = node.generator;
   if (isStatement || this.type === _tokentype.types.name) node.id = this.parseIdent();
   this.parseFunctionParams(node);
   this.parseFunctionBody(node, allowExpressionBody);
+  this.inGenerator = oldInGen;
   return this.finishNode(node, isStatement ? "FunctionDeclaration" : "FunctionExpression");
 };
 
@@ -3203,8 +2656,9 @@ pp.parseClass = function (node, isStatement) {
       var paramCount = method.kind === "get" ? 0 : 1;
       if (method.value.params.length !== paramCount) {
         var start = method.value.start;
-        if (method.kind === "get") this.raise(start, "getter should have no params");else this.raise(start, "setter should have exactly one param");
+        if (method.kind === "get") this.raiseRecoverable(start, "getter should have no params");else this.raiseRecoverable(start, "setter should have exactly one param");
       }
+      if (method.kind === "set" && method.value.params[0].type === "RestElement") this.raise(method.value.params[0].start, "Setter cannot use rest params");
     }
   }
   node.body = this.finishNode(classBody, "ClassBody");
@@ -3237,9 +2691,10 @@ pp.parseExport = function (node) {
   }
   if (this.eat(_tokentype.types._default)) {
     // export default ...
+    var parens = this.type == _tokentype.types.parenL;
     var expr = this.parseMaybeAssign();
     var needsSemi = true;
-    if (expr.type == "FunctionExpression" || expr.type == "ClassExpression") {
+    if (!parens && (expr.type == "FunctionExpression" || expr.type == "ClassExpression")) {
       needsSemi = false;
       if (expr.id) {
         expr.type = expr.type == "FunctionExpression" ? "FunctionDeclaration" : "ClassDeclaration";
@@ -3276,7 +2731,7 @@ pp.parseExport = function (node) {
 };
 
 pp.shouldParseExportStatement = function () {
-  return this.type.keyword;
+  return this.type.keyword || this.isLet();
 };
 
 // Parses a comma-separated list of module exports.
@@ -3348,14 +2803,20 @@ pp.parseImportSpecifiers = function () {
 
     var node = this.startNode();
     node.imported = this.parseIdent(true);
-    node.local = this.eatContextual("as") ? this.parseIdent() : node.imported;
+    if (this.eatContextual("as")) {
+      node.local = this.parseIdent();
+    } else {
+      node.local = node.imported;
+      if (this.isKeyword(node.local.name)) this.unexpected(node.local.start);
+      if (this.reservedWordsStrict.test(node.local.name)) this.raise(node.local.start, "The keyword '" + node.local.name + "' is reserved");
+    }
     this.checkLVal(node.local, true);
     nodes.push(this.finishNode(node, "ImportSpecifier"));
   }
   return nodes;
 };
 
-},{"./state":10,"./tokentype":14,"./whitespace":16}],12:[function(_dereq_,module,exports){
+},{"./identifier":2,"./state":10,"./tokentype":14,"./whitespace":16}],12:[function(_dereq_,module,exports){
 // The algorithm used to determine whether a regexp can appear at a
 // given point in the program is loosely based on sweet.js' approach.
 // See https://github.com/mozilla/sweet.js/wiki/design
@@ -3456,8 +2917,8 @@ _tokentype.types.incDec.updateContext = function () {
   // tokExprAllowed stays unchanged
 };
 
-_tokentype.types._function.updateContext = function () {
-  if (this.curContext() !== types.b_stat) this.context.push(types.f_expr);
+_tokentype.types._function.updateContext = function (prevType) {
+  if (prevType.beforeExpr && prevType !== _tokentype.types.semi && prevType !== _tokentype.types._else && (prevType !== _tokentype.types.colon || this.curContext() !== types.b_stat)) this.context.push(types.f_expr);
   this.exprAllowed = false;
 };
 
@@ -3708,11 +3169,21 @@ pp.readToken_slash = function () {
   return this.finishOp(_tokentype.types.slash, 1);
 };
 
-pp.readToken_mult_modulo = function (code) {
+pp.readToken_mult_modulo_exp = function (code) {
   // '%*'
   var next = this.input.charCodeAt(this.pos + 1);
-  if (next === 61) return this.finishOp(_tokentype.types.assign, 2);
-  return this.finishOp(code === 42 ? _tokentype.types.star : _tokentype.types.modulo, 1);
+  var size = 1;
+  var tokentype = code === 42 ? _tokentype.types.star : _tokentype.types.modulo;
+
+  // exponentiation operator ** and **=
+  if (this.options.ecmaVersion >= 7 && next === 42) {
+    ++size;
+    tokentype = _tokentype.types.starstar;
+    next = this.input.charCodeAt(this.pos + 2);
+  }
+
+  if (next === 61) return this.finishOp(_tokentype.types.assign, size + 1);
+  return this.finishOp(tokentype, size);
 };
 
 pp.readToken_pipe_amp = function (code) {
@@ -3762,7 +3233,7 @@ pp.readToken_lt_gt = function (code) {
     this.skipSpace();
     return this.nextToken();
   }
-  if (next === 61) size = this.input.charCodeAt(this.pos + 2) === 61 ? 3 : 2;
+  if (next === 61) size = 2;
   return this.finishOp(_tokentype.types.relational, size);
 };
 
@@ -3844,7 +3315,7 @@ pp.getTokenFromCode = function (code) {
 
     case 37:case 42:
       // '%*'
-      return this.readToken_mult_modulo(code);
+      return this.readToken_mult_modulo_exp(code);
 
     case 124:case 38:
       // '|&'
@@ -3919,8 +3390,8 @@ pp.readRegexp = function () {
   var mods = this.readWord1();
   var tmp = content;
   if (mods) {
-    var validFlags = /^[gmsiy]*$/;
-    if (this.options.ecmaVersion >= 6) validFlags = /^[gmsiyu]*$/;
+    var validFlags = /^[gim]*$/;
+    if (this.options.ecmaVersion >= 6) validFlags = /^[gimuy]*$/;
     if (!validFlags.test(mods)) this.raise(start, "Invalid regular expression flag");
     if (mods.indexOf('u') >= 0 && !regexpUnicodeSupport) {
       // Replace each astral symbol and every Unicode escape sequence that
@@ -4148,7 +3619,7 @@ pp.readEscapedChar = function (inTemplate) {
           octalStr = octalStr.slice(0, -1);
           octal = parseInt(octalStr, 8);
         }
-        if (octal > 0 && (this.strict || inTemplate)) {
+        if (octalStr !== "0" && (this.strict || inTemplate)) {
           this.raise(this.pos - 2, "Octal literal in strict mode");
         }
         this.pos += octalStr.length - 1;
@@ -4322,7 +3793,8 @@ var types = {
   plusMin: new TokenType("+/-", { beforeExpr: true, binop: 9, prefix: true, startsExpr: true }),
   modulo: binop("%", 10),
   star: binop("*", 10),
-  slash: binop("/", 10)
+  slash: binop("/", 10),
+  starstar: new TokenType("**", { beforeExpr: true })
 };
 
 exports.types = types;
@@ -4356,7 +3828,6 @@ kw("switch");
 kw("throw", beforeExpr);
 kw("try");
 kw("var");
-kw("let");
 kw("const");
 kw("while", { isLoop: true });
 kw("with");
@@ -4367,7 +3838,6 @@ kw("class");
 kw("extends", beforeExpr);
 kw("export");
 kw("import");
-kw("yield", { beforeExpr: true, startsExpr: true });
 kw("null", startsExpr);
 kw("true", startsExpr);
 kw("false", startsExpr);
@@ -4413,139 +3883,616 @@ function isNewLine(code) {
 }
 
 var nonASCIIwhitespace = /[\u1680\u180e\u2000-\u200a\u202f\u205f\u3000\ufeff]/;
+
 exports.nonASCIIwhitespace = nonASCIIwhitespace;
+var skipWhiteSpace = /(?:\s|\/\/.*|\/\*[^]*?\*\/)*/g;
+exports.skipWhiteSpace = skipWhiteSpace;
 
 },{}]},{},[3])(3)
 });
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],6:[function(_dereq_,module,exports){
+_dereq_('../../modules/es6.array.filter');
+module.exports = _dereq_('../../modules/_core').Array.filter;
+},{"../../modules/_core":23,"../../modules/es6.array.filter":57}],7:[function(_dereq_,module,exports){
+_dereq_('../../modules/es6.array.for-each');
+module.exports = _dereq_('../../modules/_core').Array.forEach;
+},{"../../modules/_core":23,"../../modules/es6.array.for-each":58}],8:[function(_dereq_,module,exports){
+_dereq_('../../modules/es6.array.index-of');
+module.exports = _dereq_('../../modules/_core').Array.indexOf;
+},{"../../modules/_core":23,"../../modules/es6.array.index-of":59}],9:[function(_dereq_,module,exports){
+_dereq_('../../modules/es6.array.is-array');
+module.exports = _dereq_('../../modules/_core').Array.isArray;
+},{"../../modules/_core":23,"../../modules/es6.array.is-array":60}],10:[function(_dereq_,module,exports){
+_dereq_('../../modules/es6.array.map');
+module.exports = _dereq_('../../modules/_core').Array.map;
+},{"../../modules/_core":23,"../../modules/es6.array.map":61}],11:[function(_dereq_,module,exports){
+_dereq_('../../modules/es6.array.reduce-right');
+module.exports = _dereq_('../../modules/_core').Array.reduceRight;
+},{"../../modules/_core":23,"../../modules/es6.array.reduce-right":62}],12:[function(_dereq_,module,exports){
+_dereq_('../../modules/es6.array.reduce');
+module.exports = _dereq_('../../modules/_core').Array.reduce;
+},{"../../modules/_core":23,"../../modules/es6.array.reduce":63}],13:[function(_dereq_,module,exports){
+_dereq_('../../modules/es6.object.assign');
+module.exports = _dereq_('../../modules/_core').Object.assign;
+},{"../../modules/_core":23,"../../modules/es6.object.assign":64}],14:[function(_dereq_,module,exports){
+_dereq_('../../modules/es6.object.keys');
+module.exports = _dereq_('../../modules/_core').Object.keys;
+},{"../../modules/_core":23,"../../modules/es6.object.keys":65}],15:[function(_dereq_,module,exports){
+module.exports = function(it){
+  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
+  return it;
+};
 },{}],16:[function(_dereq_,module,exports){
+var isObject = _dereq_('./_is-object');
+module.exports = function(it){
+  if(!isObject(it))throw TypeError(it + ' is not an object!');
+  return it;
+};
+},{"./_is-object":37}],17:[function(_dereq_,module,exports){
+// false -> Array#indexOf
+// true  -> Array#includes
+var toIObject = _dereq_('./_to-iobject')
+  , toLength  = _dereq_('./_to-length')
+  , toIndex   = _dereq_('./_to-index');
+module.exports = function(IS_INCLUDES){
+  return function($this, el, fromIndex){
+    var O      = toIObject($this)
+      , length = toLength(O.length)
+      , index  = toIndex(fromIndex, length)
+      , value;
+    // Array#includes uses SameValueZero equality algorithm
+    if(IS_INCLUDES && el != el)while(length > index){
+      value = O[index++];
+      if(value != value)return true;
+    // Array#toIndex ignores holes, Array#includes - not
+    } else for(;length > index; index++)if(IS_INCLUDES || index in O){
+      if(O[index] === el)return IS_INCLUDES || index || 0;
+    } return !IS_INCLUDES && -1;
+  };
+};
+},{"./_to-index":49,"./_to-iobject":51,"./_to-length":52}],18:[function(_dereq_,module,exports){
+// 0 -> Array#forEach
+// 1 -> Array#map
+// 2 -> Array#filter
+// 3 -> Array#some
+// 4 -> Array#every
+// 5 -> Array#find
+// 6 -> Array#findIndex
+var ctx      = _dereq_('./_ctx')
+  , IObject  = _dereq_('./_iobject')
+  , toObject = _dereq_('./_to-object')
+  , toLength = _dereq_('./_to-length')
+  , asc      = _dereq_('./_array-species-create');
+module.exports = function(TYPE, $create){
+  var IS_MAP        = TYPE == 1
+    , IS_FILTER     = TYPE == 2
+    , IS_SOME       = TYPE == 3
+    , IS_EVERY      = TYPE == 4
+    , IS_FIND_INDEX = TYPE == 6
+    , NO_HOLES      = TYPE == 5 || IS_FIND_INDEX
+    , create        = $create || asc;
+  return function($this, callbackfn, that){
+    var O      = toObject($this)
+      , self   = IObject(O)
+      , f      = ctx(callbackfn, that, 3)
+      , length = toLength(self.length)
+      , index  = 0
+      , result = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined
+      , val, res;
+    for(;length > index; index++)if(NO_HOLES || index in self){
+      val = self[index];
+      res = f(val, index, O);
+      if(TYPE){
+        if(IS_MAP)result[index] = res;            // map
+        else if(res)switch(TYPE){
+          case 3: return true;                    // some
+          case 5: return val;                     // find
+          case 6: return index;                   // findIndex
+          case 2: result.push(val);               // filter
+        } else if(IS_EVERY)return false;          // every
+      }
+    }
+    return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : result;
+  };
+};
+},{"./_array-species-create":21,"./_ctx":24,"./_iobject":35,"./_to-length":52,"./_to-object":53}],19:[function(_dereq_,module,exports){
+var aFunction = _dereq_('./_a-function')
+  , toObject  = _dereq_('./_to-object')
+  , IObject   = _dereq_('./_iobject')
+  , toLength  = _dereq_('./_to-length');
 
-/**
- * Array#filter.
- *
- * @param {Array} arr
- * @param {Function} fn
- * @param {Object=} self
- * @return {Array}
- * @throw TypeError
- */
-
-module.exports = function (arr, fn, self) {
-  if (arr.filter) return arr.filter(fn, self);
-  if (void 0 === arr || null === arr) throw new TypeError;
-  if ('function' != typeof fn) throw new TypeError;
-  var ret = [];
-  for (var i = 0; i < arr.length; i++) {
-    if (!hasOwn.call(arr, i)) continue;
-    var val = arr[i];
-    if (fn.call(self, val, i, arr)) ret.push(val);
+module.exports = function(that, callbackfn, aLen, memo, isRight){
+  aFunction(callbackfn);
+  var O      = toObject(that)
+    , self   = IObject(O)
+    , length = toLength(O.length)
+    , index  = isRight ? length - 1 : 0
+    , i      = isRight ? -1 : 1;
+  if(aLen < 2)for(;;){
+    if(index in self){
+      memo = self[index];
+      index += i;
+      break;
+    }
+    index += i;
+    if(isRight ? index < 0 : length <= index){
+      throw TypeError('Reduce of empty array with no initial value');
+    }
   }
-  return ret;
+  for(;isRight ? index >= 0 : length > index; index += i)if(index in self){
+    memo = callbackfn(memo, self[index], index, O);
+  }
+  return memo;
 };
+},{"./_a-function":15,"./_iobject":35,"./_to-length":52,"./_to-object":53}],20:[function(_dereq_,module,exports){
+var isObject = _dereq_('./_is-object')
+  , isArray  = _dereq_('./_is-array')
+  , SPECIES  = _dereq_('./_wks')('species');
 
-var hasOwn = Object.prototype.hasOwnProperty;
+module.exports = function(original){
+  var C;
+  if(isArray(original)){
+    C = original.constructor;
+    // cross-realm fallback
+    if(typeof C == 'function' && (C === Array || isArray(C.prototype)))C = undefined;
+    if(isObject(C)){
+      C = C[SPECIES];
+      if(C === null)C = undefined;
+    }
+  } return C === undefined ? Array : C;
+};
+},{"./_is-array":36,"./_is-object":37,"./_wks":56}],21:[function(_dereq_,module,exports){
+// 9.4.2.3 ArraySpeciesCreate(originalArray, length)
+var speciesConstructor = _dereq_('./_array-species-constructor');
 
-},{}],17:[function(_dereq_,module,exports){
-/**
- * array-foreach
- *   Array#forEach ponyfill for older browsers
- *   (Ponyfill: A polyfill that doesn't overwrite the native method)
- * 
- * https://github.com/twada/array-foreach
- *
- * Copyright (c) 2015 Takuto Wada
- * Licensed under the MIT license.
- *   http://twada.mit-license.org/
- */
+module.exports = function(original, length){
+  return new (speciesConstructor(original))(length);
+};
+},{"./_array-species-constructor":20}],22:[function(_dereq_,module,exports){
+var toString = {}.toString;
+
+module.exports = function(it){
+  return toString.call(it).slice(8, -1);
+};
+},{}],23:[function(_dereq_,module,exports){
+var core = module.exports = {version: '2.4.0'};
+if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+},{}],24:[function(_dereq_,module,exports){
+// optional / simple context binding
+var aFunction = _dereq_('./_a-function');
+module.exports = function(fn, that, length){
+  aFunction(fn);
+  if(that === undefined)return fn;
+  switch(length){
+    case 1: return function(a){
+      return fn.call(that, a);
+    };
+    case 2: return function(a, b){
+      return fn.call(that, a, b);
+    };
+    case 3: return function(a, b, c){
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function(/* ...args */){
+    return fn.apply(that, arguments);
+  };
+};
+},{"./_a-function":15}],25:[function(_dereq_,module,exports){
+// 7.2.1 RequireObjectCoercible(argument)
+module.exports = function(it){
+  if(it == undefined)throw TypeError("Can't call method on  " + it);
+  return it;
+};
+},{}],26:[function(_dereq_,module,exports){
+// Thank's IE8 for his funny defineProperty
+module.exports = !_dereq_('./_fails')(function(){
+  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
+});
+},{"./_fails":30}],27:[function(_dereq_,module,exports){
+var isObject = _dereq_('./_is-object')
+  , document = _dereq_('./_global').document
+  // in old IE typeof document.createElement is 'object'
+  , is = isObject(document) && isObject(document.createElement);
+module.exports = function(it){
+  return is ? document.createElement(it) : {};
+};
+},{"./_global":31,"./_is-object":37}],28:[function(_dereq_,module,exports){
+// IE 8- don't enum bug keys
+module.exports = (
+  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
+).split(',');
+},{}],29:[function(_dereq_,module,exports){
+var global    = _dereq_('./_global')
+  , core      = _dereq_('./_core')
+  , ctx       = _dereq_('./_ctx')
+  , hide      = _dereq_('./_hide')
+  , PROTOTYPE = 'prototype';
+
+var $export = function(type, name, source){
+  var IS_FORCED = type & $export.F
+    , IS_GLOBAL = type & $export.G
+    , IS_STATIC = type & $export.S
+    , IS_PROTO  = type & $export.P
+    , IS_BIND   = type & $export.B
+    , IS_WRAP   = type & $export.W
+    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
+    , expProto  = exports[PROTOTYPE]
+    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
+    , key, own, out;
+  if(IS_GLOBAL)source = name;
+  for(key in source){
+    // contains in native
+    own = !IS_FORCED && target && target[key] !== undefined;
+    if(own && key in exports)continue;
+    // export native or passed
+    out = own ? target[key] : source[key];
+    // prevent global pollution for namespaces
+    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+    // bind timers to global for call from export context
+    : IS_BIND && own ? ctx(out, global)
+    // wrap global constructors for prevent change them in library
+    : IS_WRAP && target[key] == out ? (function(C){
+      var F = function(a, b, c){
+        if(this instanceof C){
+          switch(arguments.length){
+            case 0: return new C;
+            case 1: return new C(a);
+            case 2: return new C(a, b);
+          } return new C(a, b, c);
+        } return C.apply(this, arguments);
+      };
+      F[PROTOTYPE] = C[PROTOTYPE];
+      return F;
+    // make static versions for prototype methods
+    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
+    if(IS_PROTO){
+      (exports.virtual || (exports.virtual = {}))[key] = out;
+      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
+      if(type & $export.R && expProto && !expProto[key])hide(expProto, key, out);
+    }
+  }
+};
+// type bitmap
+$export.F = 1;   // forced
+$export.G = 2;   // global
+$export.S = 4;   // static
+$export.P = 8;   // proto
+$export.B = 16;  // bind
+$export.W = 32;  // wrap
+$export.U = 64;  // safe
+$export.R = 128; // real proto method for `library` 
+module.exports = $export;
+},{"./_core":23,"./_ctx":24,"./_global":31,"./_hide":33}],30:[function(_dereq_,module,exports){
+module.exports = function(exec){
+  try {
+    return !!exec();
+  } catch(e){
+    return true;
+  }
+};
+},{}],31:[function(_dereq_,module,exports){
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
+},{}],32:[function(_dereq_,module,exports){
+var hasOwnProperty = {}.hasOwnProperty;
+module.exports = function(it, key){
+  return hasOwnProperty.call(it, key);
+};
+},{}],33:[function(_dereq_,module,exports){
+var dP         = _dereq_('./_object-dp')
+  , createDesc = _dereq_('./_property-desc');
+module.exports = _dereq_('./_descriptors') ? function(object, key, value){
+  return dP.f(object, key, createDesc(1, value));
+} : function(object, key, value){
+  object[key] = value;
+  return object;
+};
+},{"./_descriptors":26,"./_object-dp":39,"./_property-desc":45}],34:[function(_dereq_,module,exports){
+module.exports = !_dereq_('./_descriptors') && !_dereq_('./_fails')(function(){
+  return Object.defineProperty(_dereq_('./_dom-create')('div'), 'a', {get: function(){ return 7; }}).a != 7;
+});
+},{"./_descriptors":26,"./_dom-create":27,"./_fails":30}],35:[function(_dereq_,module,exports){
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var cof = _dereq_('./_cof');
+module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
+  return cof(it) == 'String' ? it.split('') : Object(it);
+};
+},{"./_cof":22}],36:[function(_dereq_,module,exports){
+// 7.2.2 IsArray(argument)
+var cof = _dereq_('./_cof');
+module.exports = Array.isArray || function isArray(arg){
+  return cof(arg) == 'Array';
+};
+},{"./_cof":22}],37:[function(_dereq_,module,exports){
+module.exports = function(it){
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+},{}],38:[function(_dereq_,module,exports){
 'use strict';
+// 19.1.2.1 Object.assign(target, source, ...)
+var getKeys  = _dereq_('./_object-keys')
+  , gOPS     = _dereq_('./_object-gops')
+  , pIE      = _dereq_('./_object-pie')
+  , toObject = _dereq_('./_to-object')
+  , IObject  = _dereq_('./_iobject')
+  , $assign  = Object.assign;
 
-module.exports = function forEach (ary, callback, thisArg) {
-    if (ary.forEach) {
-        ary.forEach(callback, thisArg);
-        return;
-    }
-    for (var i = 0; i < ary.length; i+=1) {
-        callback.call(thisArg, ary[i], i, ary);
-    }
+// should work with symbols and should have deterministic property order (V8 bug)
+module.exports = !$assign || _dereq_('./_fails')(function(){
+  var A = {}
+    , B = {}
+    , S = Symbol()
+    , K = 'abcdefghijklmnopqrst';
+  A[S] = 7;
+  K.split('').forEach(function(k){ B[k] = k; });
+  return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
+}) ? function assign(target, source){ // eslint-disable-line no-unused-vars
+  var T     = toObject(target)
+    , aLen  = arguments.length
+    , index = 1
+    , getSymbols = gOPS.f
+    , isEnum     = pIE.f;
+  while(aLen > index){
+    var S      = IObject(arguments[index++])
+      , keys   = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S)
+      , length = keys.length
+      , j      = 0
+      , key;
+    while(length > j)if(isEnum.call(S, key = keys[j++]))T[key] = S[key];
+  } return T;
+} : $assign;
+},{"./_fails":30,"./_iobject":35,"./_object-gops":40,"./_object-keys":42,"./_object-pie":43,"./_to-object":53}],39:[function(_dereq_,module,exports){
+var anObject       = _dereq_('./_an-object')
+  , IE8_DOM_DEFINE = _dereq_('./_ie8-dom-define')
+  , toPrimitive    = _dereq_('./_to-primitive')
+  , dP             = Object.defineProperty;
+
+exports.f = _dereq_('./_descriptors') ? Object.defineProperty : function defineProperty(O, P, Attributes){
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if(IE8_DOM_DEFINE)try {
+    return dP(O, P, Attributes);
+  } catch(e){ /* empty */ }
+  if('get' in Attributes || 'set' in Attributes)throw TypeError('Accessors not supported!');
+  if('value' in Attributes)O[P] = Attributes.value;
+  return O;
+};
+},{"./_an-object":16,"./_descriptors":26,"./_ie8-dom-define":34,"./_to-primitive":54}],40:[function(_dereq_,module,exports){
+exports.f = Object.getOwnPropertySymbols;
+},{}],41:[function(_dereq_,module,exports){
+var has          = _dereq_('./_has')
+  , toIObject    = _dereq_('./_to-iobject')
+  , arrayIndexOf = _dereq_('./_array-includes')(false)
+  , IE_PROTO     = _dereq_('./_shared-key')('IE_PROTO');
+
+module.exports = function(object, names){
+  var O      = toIObject(object)
+    , i      = 0
+    , result = []
+    , key;
+  for(key in O)if(key != IE_PROTO)has(O, key) && result.push(key);
+  // Don't enum bug & hidden keys
+  while(names.length > i)if(has(O, key = names[i++])){
+    ~arrayIndexOf(result, key) || result.push(key);
+  }
+  return result;
+};
+},{"./_array-includes":17,"./_has":32,"./_shared-key":46,"./_to-iobject":51}],42:[function(_dereq_,module,exports){
+// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+var $keys       = _dereq_('./_object-keys-internal')
+  , enumBugKeys = _dereq_('./_enum-bug-keys');
+
+module.exports = Object.keys || function keys(O){
+  return $keys(O, enumBugKeys);
+};
+},{"./_enum-bug-keys":28,"./_object-keys-internal":41}],43:[function(_dereq_,module,exports){
+exports.f = {}.propertyIsEnumerable;
+},{}],44:[function(_dereq_,module,exports){
+// most Object methods by ES6 should accept primitives
+var $export = _dereq_('./_export')
+  , core    = _dereq_('./_core')
+  , fails   = _dereq_('./_fails');
+module.exports = function(KEY, exec){
+  var fn  = (core.Object || {})[KEY] || Object[KEY]
+    , exp = {};
+  exp[KEY] = exec(fn);
+  $export($export.S + $export.F * fails(function(){ fn(1); }), 'Object', exp);
+};
+},{"./_core":23,"./_export":29,"./_fails":30}],45:[function(_dereq_,module,exports){
+module.exports = function(bitmap, value){
+  return {
+    enumerable  : !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable    : !(bitmap & 4),
+    value       : value
+  };
+};
+},{}],46:[function(_dereq_,module,exports){
+var shared = _dereq_('./_shared')('keys')
+  , uid    = _dereq_('./_uid');
+module.exports = function(key){
+  return shared[key] || (shared[key] = uid(key));
+};
+},{"./_shared":47,"./_uid":55}],47:[function(_dereq_,module,exports){
+var global = _dereq_('./_global')
+  , SHARED = '__core-js_shared__'
+  , store  = global[SHARED] || (global[SHARED] = {});
+module.exports = function(key){
+  return store[key] || (store[key] = {});
+};
+},{"./_global":31}],48:[function(_dereq_,module,exports){
+var fails = _dereq_('./_fails');
+
+module.exports = function(method, arg){
+  return !!method && fails(function(){
+    arg ? method.call(null, function(){}, 1) : method.call(null);
+  });
+};
+},{"./_fails":30}],49:[function(_dereq_,module,exports){
+var toInteger = _dereq_('./_to-integer')
+  , max       = Math.max
+  , min       = Math.min;
+module.exports = function(index, length){
+  index = toInteger(index);
+  return index < 0 ? max(index + length, 0) : min(index, length);
+};
+},{"./_to-integer":50}],50:[function(_dereq_,module,exports){
+// 7.1.4 ToInteger
+var ceil  = Math.ceil
+  , floor = Math.floor;
+module.exports = function(it){
+  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
+};
+},{}],51:[function(_dereq_,module,exports){
+// to indexed object, toObject with fallback for non-array-like ES3 strings
+var IObject = _dereq_('./_iobject')
+  , defined = _dereq_('./_defined');
+module.exports = function(it){
+  return IObject(defined(it));
+};
+},{"./_defined":25,"./_iobject":35}],52:[function(_dereq_,module,exports){
+// 7.1.15 ToLength
+var toInteger = _dereq_('./_to-integer')
+  , min       = Math.min;
+module.exports = function(it){
+  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
+};
+},{"./_to-integer":50}],53:[function(_dereq_,module,exports){
+// 7.1.13 ToObject(argument)
+var defined = _dereq_('./_defined');
+module.exports = function(it){
+  return Object(defined(it));
+};
+},{"./_defined":25}],54:[function(_dereq_,module,exports){
+// 7.1.1 ToPrimitive(input [, PreferredType])
+var isObject = _dereq_('./_is-object');
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+module.exports = function(it, S){
+  if(!isObject(it))return it;
+  var fn, val;
+  if(S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
+  if(typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it)))return val;
+  if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
+  throw TypeError("Can't convert object to primitive value");
+};
+},{"./_is-object":37}],55:[function(_dereq_,module,exports){
+var id = 0
+  , px = Math.random();
+module.exports = function(key){
+  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
+};
+},{}],56:[function(_dereq_,module,exports){
+var store      = _dereq_('./_shared')('wks')
+  , uid        = _dereq_('./_uid')
+  , Symbol     = _dereq_('./_global').Symbol
+  , USE_SYMBOL = typeof Symbol == 'function';
+
+var $exports = module.exports = function(name){
+  return store[name] || (store[name] =
+    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
 };
 
-},{}],18:[function(_dereq_,module,exports){
-module.exports = function (xs, f) {
-    if (xs.map) return xs.map(f);
-    var res = [];
-    for (var i = 0; i < xs.length; i++) {
-        var x = xs[i];
-        if (hasOwn.call(xs, i)) res.push(f(x, i, xs));
-    }
-    return res;
-};
-
-var hasOwn = Object.prototype.hasOwnProperty;
-
-},{}],19:[function(_dereq_,module,exports){
-/**
- * array-reduce-right
- *   Array#reduceRight ponyfill for older browsers
- *   (Ponyfill: A polyfill that doesn't overwrite the native method)
- * 
- * https://github.com/twada/array-reduce-right
- *
- * Copyright (c) 2015 Takuto Wada
- * Licensed under the MIT license.
- *   http://twada.mit-license.org/
- */
+$exports.store = store;
+},{"./_global":31,"./_shared":47,"./_uid":55}],57:[function(_dereq_,module,exports){
 'use strict';
+var $export = _dereq_('./_export')
+  , $filter = _dereq_('./_array-methods')(2);
 
-var slice = Array.prototype.slice;
+$export($export.P + $export.F * !_dereq_('./_strict-method')([].filter, true), 'Array', {
+  // 22.1.3.7 / 15.4.4.20 Array.prototype.filter(callbackfn [, thisArg])
+  filter: function filter(callbackfn /* , thisArg */){
+    return $filter(this, callbackfn, arguments[1]);
+  }
+});
+},{"./_array-methods":18,"./_export":29,"./_strict-method":48}],58:[function(_dereq_,module,exports){
+'use strict';
+var $export  = _dereq_('./_export')
+  , $forEach = _dereq_('./_array-methods')(0)
+  , STRICT   = _dereq_('./_strict-method')([].forEach, true);
 
-module.exports = function reduceRight (ary, callback /*, initialValue*/) {
-    if (ary.reduceRight) {
-        return ary.reduceRight.apply(ary, slice.apply(arguments).slice(1));
-    }
-    if ('function' !== typeof callback) {
-        throw new TypeError(callback + ' is not a function');
-    }
-    var t = Object(ary), len = t.length >>> 0, k = len - 1, value;
-    if (arguments.length >= 3) {
-        value = arguments[2];
-    } else {
-        while (k >= 0 && !(k in t)) {
-            k--;
-        }
-        if (k < 0) {
-            throw new TypeError('Reduce of empty array with no initial value');
-        }
-        value = t[k--];
-    }
-    for (; k >= 0; k--) {
-        if (k in t) {
-            value = callback(value, t[k], k, t);
-        }
-    }
-    return value;
-};
+$export($export.P + $export.F * !STRICT, 'Array', {
+  // 22.1.3.10 / 15.4.4.18 Array.prototype.forEach(callbackfn [, thisArg])
+  forEach: function forEach(callbackfn /* , thisArg */){
+    return $forEach(this, callbackfn, arguments[1]);
+  }
+});
+},{"./_array-methods":18,"./_export":29,"./_strict-method":48}],59:[function(_dereq_,module,exports){
+'use strict';
+var $export       = _dereq_('./_export')
+  , $indexOf      = _dereq_('./_array-includes')(false)
+  , $native       = [].indexOf
+  , NEGATIVE_ZERO = !!$native && 1 / [1].indexOf(1, -0) < 0;
 
-},{}],20:[function(_dereq_,module,exports){
-var hasOwn = Object.prototype.hasOwnProperty;
+$export($export.P + $export.F * (NEGATIVE_ZERO || !_dereq_('./_strict-method')($native)), 'Array', {
+  // 22.1.3.11 / 15.4.4.14 Array.prototype.indexOf(searchElement [, fromIndex])
+  indexOf: function indexOf(searchElement /*, fromIndex = 0 */){
+    return NEGATIVE_ZERO
+      // convert -0 to +0
+      ? $native.apply(this, arguments) || 0
+      : $indexOf(this, searchElement, arguments[1]);
+  }
+});
+},{"./_array-includes":17,"./_export":29,"./_strict-method":48}],60:[function(_dereq_,module,exports){
+// 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
+var $export = _dereq_('./_export');
 
-module.exports = function (xs, f, acc) {
-    var hasAcc = arguments.length >= 3;
-    if (hasAcc && xs.reduce) return xs.reduce(f, acc);
-    if (xs.reduce) return xs.reduce(f);
-    
-    for (var i = 0; i < xs.length; i++) {
-        if (!hasOwn.call(xs, i)) continue;
-        if (!hasAcc) {
-            acc = xs[i];
-            hasAcc = true;
-            continue;
-        }
-        acc = f(acc, xs[i], i);
-    }
-    return acc;
-};
+$export($export.S, 'Array', {isArray: _dereq_('./_is-array')});
+},{"./_export":29,"./_is-array":36}],61:[function(_dereq_,module,exports){
+'use strict';
+var $export = _dereq_('./_export')
+  , $map    = _dereq_('./_array-methods')(1);
 
-},{}],21:[function(_dereq_,module,exports){
+$export($export.P + $export.F * !_dereq_('./_strict-method')([].map, true), 'Array', {
+  // 22.1.3.15 / 15.4.4.19 Array.prototype.map(callbackfn [, thisArg])
+  map: function map(callbackfn /* , thisArg */){
+    return $map(this, callbackfn, arguments[1]);
+  }
+});
+},{"./_array-methods":18,"./_export":29,"./_strict-method":48}],62:[function(_dereq_,module,exports){
+'use strict';
+var $export = _dereq_('./_export')
+  , $reduce = _dereq_('./_array-reduce');
+
+$export($export.P + $export.F * !_dereq_('./_strict-method')([].reduceRight, true), 'Array', {
+  // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
+  reduceRight: function reduceRight(callbackfn /* , initialValue */){
+    return $reduce(this, callbackfn, arguments.length, arguments[1], true);
+  }
+});
+},{"./_array-reduce":19,"./_export":29,"./_strict-method":48}],63:[function(_dereq_,module,exports){
+'use strict';
+var $export = _dereq_('./_export')
+  , $reduce = _dereq_('./_array-reduce');
+
+$export($export.P + $export.F * !_dereq_('./_strict-method')([].reduce, true), 'Array', {
+  // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
+  reduce: function reduce(callbackfn /* , initialValue */){
+    return $reduce(this, callbackfn, arguments.length, arguments[1], false);
+  }
+});
+},{"./_array-reduce":19,"./_export":29,"./_strict-method":48}],64:[function(_dereq_,module,exports){
+// 19.1.3.1 Object.assign(target, source)
+var $export = _dereq_('./_export');
+
+$export($export.S + $export.F, 'Object', {assign: _dereq_('./_object-assign')});
+},{"./_export":29,"./_object-assign":38}],65:[function(_dereq_,module,exports){
+// 19.1.2.14 Object.keys(O)
+var toObject = _dereq_('./_to-object')
+  , $keys    = _dereq_('./_object-keys');
+
+_dereq_('./_object-sap')('keys', function(){
+  return function keys(it){
+    return $keys(toObject(it));
+  };
+});
+},{"./_object-keys":42,"./_object-sap":44,"./_to-object":53}],66:[function(_dereq_,module,exports){
 var eaw = {};
 
 if ('undefined' == typeof module) {
@@ -4838,7 +4785,190 @@ eaw.slice = function(text, start, end) {
   return result;
 };
 
-},{}],22:[function(_dereq_,module,exports){
+},{}],67:[function(_dereq_,module,exports){
+/**
+ * espurify - Clone new AST without extra properties
+ * 
+ * https://github.com/estools/espurify
+ *
+ * Copyright (c) 2014-2016 Takuto Wada
+ * Licensed under the MIT license.
+ *   https://github.com/estools/espurify/blob/master/MIT-LICENSE.txt
+ */
+'use strict';
+
+var createWhitelist = _dereq_('./lib/create-whitelist');
+var cloneWithWhitelist = _dereq_('./lib/clone-ast');
+
+function createCloneFunction (options) {
+    return cloneWithWhitelist(createWhitelist(options));
+}
+
+var espurify = createCloneFunction();
+espurify.customize = createCloneFunction;
+espurify.cloneWithWhitelist = cloneWithWhitelist;
+module.exports = espurify;
+
+},{"./lib/clone-ast":69,"./lib/create-whitelist":70}],68:[function(_dereq_,module,exports){
+module.exports = {
+    ArrayExpression: ['type', 'elements'],
+    ArrayPattern: ['type', 'elements'],
+    ArrowFunctionExpression: ['type', 'id', 'params', 'body', 'generator', 'expression'],
+    AssignmentExpression: ['type', 'operator', 'left', 'right'],
+    AssignmentPattern: ['type', 'left', 'right'],
+    BinaryExpression: ['type', 'operator', 'left', 'right'],
+    BlockStatement: ['type', 'body'],
+    BreakStatement: ['type', 'label'],
+    CallExpression: ['type', 'callee', 'arguments'],
+    CatchClause: ['type', 'param', 'guard', 'body'],
+    ClassBody: ['type', 'body'],
+    ClassDeclaration: ['type', 'id', 'superClass', 'body'],
+    ClassExpression: ['type', 'id', 'superClass', 'body'],
+    ConditionalExpression: ['type', 'test', 'alternate', 'consequent'],
+    ContinueStatement: ['type', 'label'],
+    DebuggerStatement: ['type'],
+    DoWhileStatement: ['type', 'body', 'test'],
+    EmptyStatement: ['type'],
+    ExportAllDeclaration: ['type', 'source'],
+    ExportDefaultDeclaration: ['type', 'declaration'],
+    ExportNamedDeclaration: ['type', 'declaration', 'specifiers', 'source'],
+    ExportSpecifier: ['type', 'exported', 'local'],
+    ExpressionStatement: ['type', 'expression'],
+    ForInStatement: ['type', 'left', 'right', 'body'],
+    ForOfStatement: ['type', 'left', 'right', 'body'],
+    ForStatement: ['type', 'init', 'test', 'update', 'body'],
+    FunctionDeclaration: ['type', 'id', 'params', 'body', 'generator'],
+    FunctionExpression: ['type', 'id', 'params', 'body', 'generator'],
+    Identifier: ['type', 'name'],
+    IfStatement: ['type', 'test', 'consequent', 'alternate'],
+    ImportDeclaration: ['type', 'specifiers', 'source'],
+    ImportDefaultSpecifier: ['type', 'local'],
+    ImportNamespaceSpecifier: ['type', 'local'],
+    ImportSpecifier: ['type', 'imported', 'local'],
+    LabeledStatement: ['type', 'label', 'body'],
+    Literal: ['type', 'value', 'regex'],
+    LogicalExpression: ['type', 'operator', 'left', 'right'],
+    MemberExpression: ['type', 'object', 'property', 'computed'],
+    MetaProperty: ['type', 'meta', 'property'],
+    MethodDefinition: ['type', 'key', 'value', 'kind', 'computed', 'static'],
+    NewExpression: ['type', 'callee', 'arguments'],
+    ObjectExpression: ['type', 'properties'],
+    ObjectPattern: ['type', 'properties'],
+    Program: ['type', 'body', 'sourceType'],
+    Property: ['type', 'key', 'value', 'kind', 'method', 'shorthand', 'computed'],
+    RestElement: ['type', 'argument'],
+    ReturnStatement: ['type', 'argument'],
+    SequenceExpression: ['type', 'expressions'],
+    SpreadElement: ['type', 'argument'],
+    Super: ['type'],
+    SwitchCase: ['type', 'test', 'consequent'],
+    SwitchStatement: ['type', 'discriminant', 'cases', 'lexical'],
+    TaggedTemplateExpression: ['type', 'tag', 'quasi'],
+    TemplateElement: ['type', 'tail', 'value'],
+    TemplateLiteral: ['type', 'quasis', 'expressions'],
+    ThisExpression: ['type'],
+    ThrowStatement: ['type', 'argument'],
+    TryStatement: ['type', 'block', 'handler', 'finalizer'],
+    UnaryExpression: ['type', 'operator', 'prefix', 'argument'],
+    UpdateExpression: ['type', 'operator', 'argument', 'prefix'],
+    VariableDeclaration: ['type', 'declarations', 'kind'],
+    VariableDeclarator: ['type', 'id', 'init'],
+    WhileStatement: ['type', 'test', 'body'],
+    WithStatement: ['type', 'object', 'body'],
+    YieldExpression: ['type', 'argument', 'delegate']
+};
+
+},{}],69:[function(_dereq_,module,exports){
+'use strict';
+
+var isArray = _dereq_('core-js/library/fn/array/is-array');
+var objectKeys = _dereq_('core-js/library/fn/object/keys');
+var indexOf = _dereq_('core-js/library/fn/array/index-of');
+var reduce = _dereq_('core-js/library/fn/array/reduce');
+
+module.exports = function cloneWithWhitelist (astWhiteList) {
+    var whitelist = reduce(objectKeys(astWhiteList), function (props, key) {
+        var propNames = astWhiteList[key];
+        var prepend = (indexOf(propNames, 'type') === -1) ? ['type'] : [];
+        props[key] = prepend.concat(propNames);
+        return props;
+    }, {});
+
+    function cloneNodeOrObject (obj) {
+        var props = obj.type ? whitelist[obj.type] : null;
+        if (props) {
+            return cloneNode(obj, props);
+        } else {
+            return cloneObject(obj);
+        }
+    }
+
+    function cloneArray (ary) {
+        var i = ary.length, clone = [];
+        while (i--) {
+            clone[i] = cloneOf(ary[i]);
+        }
+        return clone;
+    }
+
+    function cloneNode (node, props) {
+        var i, len, key, clone = {};
+        for (i = 0, len = props.length; i < len; i += 1) {
+            key = props[i];
+            if (node.hasOwnProperty(key)) {
+                clone[key] = cloneOf(node[key]);
+            }
+        }
+        return clone;
+    }
+
+    function cloneObject (obj) {
+        var props = objectKeys(obj);
+        var i, len, key, clone = {};
+        for (i = 0, len = props.length; i < len; i += 1) {
+            key = props[i];
+            clone[key] = cloneOf(obj[key]);
+        }
+        return clone;
+    }
+
+    function cloneOf (val) {
+        if (typeof val === 'object' && val !== null) {
+            if (val instanceof RegExp) {
+                return new RegExp(val);
+            } else if (isArray(val)) {
+                return cloneArray(val);
+            } else {
+                return cloneNodeOrObject(val);
+            }
+        } else {
+            return val;
+        }
+    }
+
+    return cloneNodeOrObject;
+};
+
+},{"core-js/library/fn/array/index-of":8,"core-js/library/fn/array/is-array":9,"core-js/library/fn/array/reduce":12,"core-js/library/fn/object/keys":14}],70:[function(_dereq_,module,exports){
+'use strict';
+
+var defaultProps = _dereq_('./ast-properties');
+var objectKeys = _dereq_('core-js/library/fn/object/keys');
+var assign = _dereq_('core-js/library/fn/object/assign');
+
+module.exports = function createWhitelist (options) {
+    var opts = assign({}, options);
+    var typeName, i, len;
+    var keys = objectKeys(defaultProps);
+    var result = {};
+    for (i = 0, len = keys.length; i < len; i += 1) {
+        typeName = keys[i];
+        result[typeName] = defaultProps[typeName].concat(opts.extra);
+    }
+    return result;
+};
+
+},{"./ast-properties":68,"core-js/library/fn/object/assign":13,"core-js/library/fn/object/keys":14}],71:[function(_dereq_,module,exports){
 /*
   Copyright (C) 2012-2013 Yusuke Suzuki <utatane.tea@gmail.com>
   Copyright (C) 2012 Ariya Hidayat <ariya.hidayat@gmail.com>
@@ -5273,7 +5403,13 @@ eaw.slice = function(text, start, end) {
         this.__leavelist = [];
         this.__current = null;
         this.__state = null;
-        this.__fallback = visitor.fallback === 'iteration';
+        this.__fallback = null;
+        if (visitor.fallback === 'iteration') {
+            this.__fallback = objectKeys;
+        } else if (typeof visitor.fallback === 'function') {
+            this.__fallback = visitor.fallback;
+        }
+
         this.__keys = VisitorKeys;
         if (visitor.keys) {
             this.__keys = extend(objectCreate(this.__keys), visitor.keys);
@@ -5351,7 +5487,7 @@ eaw.slice = function(text, start, end) {
                 candidates = this.__keys[nodeType];
                 if (!candidates) {
                     if (this.__fallback) {
-                        candidates = objectKeys(node);
+                        candidates = this.__fallback(node);
                     } else {
                         throw new Error('Unknown node type ' + nodeType + '.');
                     }
@@ -5389,6 +5525,20 @@ eaw.slice = function(text, start, end) {
     };
 
     Controller.prototype.replace = function replace(root, visitor) {
+        var worklist,
+            leavelist,
+            node,
+            nodeType,
+            target,
+            element,
+            current,
+            current2,
+            candidates,
+            candidate,
+            sentinel,
+            outer,
+            key;
+
         function removeElem(element) {
             var i,
                 key,
@@ -5413,20 +5563,6 @@ eaw.slice = function(text, start, end) {
                 }
             }
         }
-
-        var worklist,
-            leavelist,
-            node,
-            nodeType,
-            target,
-            element,
-            current,
-            current2,
-            candidates,
-            candidate,
-            sentinel,
-            outer,
-            key;
 
         this.__initialize(root, visitor);
 
@@ -5505,7 +5641,7 @@ eaw.slice = function(text, start, end) {
             candidates = this.__keys[nodeType];
             if (!candidates) {
                 if (this.__fallback) {
-                    candidates = objectKeys(node);
+                    candidates = this.__fallback(node);
                 } else {
                     throw new Error('Unknown node type ' + nodeType + '.');
                 }
@@ -5683,25 +5819,29 @@ eaw.slice = function(text, start, end) {
 }(exports));
 /* vim: set sw=4 ts=4 et tw=80 : */
 
-},{"./package.json":23}],23:[function(_dereq_,module,exports){
+},{"./package.json":72}],72:[function(_dereq_,module,exports){
 module.exports={
   "_args": [
     [
       "estraverse@^4.1.0",
-      "/Users/takuto/src/github.com/power-assert-js/power-assert-formatter"
+      "/Users/takuto/src/github.com/power-assert-js/power-assert-formatter/node_modules/power-assert-context-traversal"
     ]
   ],
   "_from": "estraverse@>=4.1.0 <5.0.0",
-  "_id": "estraverse@4.1.1",
+  "_id": "estraverse@4.2.0",
   "_inCache": true,
   "_installable": true,
   "_location": "/estraverse",
-  "_nodeVersion": "4.1.1",
-  "_npmUser": {
-    "email": "utatane.tea@gmail.com",
-    "name": "constellation"
+  "_nodeVersion": "0.12.9",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/estraverse-4.2.0.tgz_1457646738925_0.7118953282479197"
   },
-  "_npmVersion": "2.14.4",
+  "_npmUser": {
+    "email": "nicholas@nczconsulting.com",
+    "name": "nzakas"
+  },
+  "_npmVersion": "2.14.9",
   "_phantomChildren": {},
   "_requested": {
     "name": "estraverse",
@@ -5712,24 +5852,28 @@ module.exports={
     "type": "range"
   },
   "_requiredBy": [
-    "/",
+    "/babel-plugin-espower",
+    "/call-matcher",
     "/escallmatch",
     "/espower",
-    "/esrecurse"
+    "/esrecurse",
+    "/power-assert-context-reducer-ast",
+    "/power-assert-context-traversal"
   ],
-  "_resolved": "https://registry.npmjs.org/estraverse/-/estraverse-4.1.1.tgz",
-  "_shasum": "f6caca728933a850ef90661d0e17982ba47111a2",
+  "_resolved": "https://registry.npmjs.org/estraverse/-/estraverse-4.2.0.tgz",
+  "_shasum": "0dee3fed31fcd469618ce7342099fc1afa0bdb13",
   "_shrinkwrap": null,
   "_spec": "estraverse@^4.1.0",
-  "_where": "/Users/takuto/src/github.com/power-assert-js/power-assert-formatter",
+  "_where": "/Users/takuto/src/github.com/power-assert-js/power-assert-formatter/node_modules/power-assert-context-traversal",
   "bugs": {
     "url": "https://github.com/estools/estraverse/issues"
   },
   "dependencies": {},
   "description": "ECMAScript JS AST traversal functions",
   "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babel-register": "^6.3.13",
     "chai": "^2.1.1",
-    "coffee-script": "^1.8.0",
     "espree": "^1.11.0",
     "gulp": "^3.8.10",
     "gulp-bump": "^0.2.2",
@@ -5741,28 +5885,28 @@ module.exports={
   },
   "directories": {},
   "dist": {
-    "shasum": "f6caca728933a850ef90661d0e17982ba47111a2",
-    "tarball": "http://registry.npmjs.org/estraverse/-/estraverse-4.1.1.tgz"
+    "shasum": "0dee3fed31fcd469618ce7342099fc1afa0bdb13",
+    "tarball": "https://registry.npmjs.org/estraverse/-/estraverse-4.2.0.tgz"
   },
   "engines": {
     "node": ">=0.10.0"
   },
-  "gitHead": "bbcccbfe98296585e4311c8755e1d00dcd581e3c",
+  "gitHead": "6f6a4e99653908e859c7c10d04d9518bf4844ede",
   "homepage": "https://github.com/estools/estraverse",
   "license": "BSD-2-Clause",
   "main": "estraverse.js",
   "maintainers": [
     {
-      "name": "constellation",
-      "email": "utatane.tea@gmail.com"
+      "email": "utatane.tea@gmail.com",
+      "name": "constellation"
     },
     {
-      "name": "michaelficarra",
-      "email": "npm@michael.ficarra.me"
+      "email": "npm@michael.ficarra.me",
+      "name": "michaelficarra"
     },
     {
-      "name": "nzakas",
-      "email": "nicholas@nczconsulting.com"
+      "email": "nicholas@nczconsulting.com",
+      "name": "nzakas"
     }
   ],
   "name": "estraverse",
@@ -5775,12 +5919,12 @@ module.exports={
   "scripts": {
     "lint": "jshint estraverse.js",
     "test": "npm run-script lint && npm run-script unit-test",
-    "unit-test": "mocha --compilers coffee:coffee-script/register"
+    "unit-test": "mocha --compilers js:babel-register"
   },
-  "version": "4.1.1"
+  "version": "4.2.0"
 }
 
-},{}],24:[function(_dereq_,module,exports){
+},{}],73:[function(_dereq_,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -5864,18 +6008,11 @@ EventEmitter.prototype.emit = function(type) {
         break;
       // slower
       default:
-        len = arguments.length;
-        args = new Array(len - 1);
-        for (i = 1; i < len; i++)
-          args[i - 1] = arguments[i];
+        args = Array.prototype.slice.call(arguments, 1);
         handler.apply(this, args);
     }
   } else if (isObject(handler)) {
-    len = arguments.length;
-    args = new Array(len - 1);
-    for (i = 1; i < len; i++)
-      args[i - 1] = arguments[i];
-
+    args = Array.prototype.slice.call(arguments, 1);
     listeners = handler.slice();
     len = listeners.length;
     for (i = 0; i < len; i++)
@@ -5913,7 +6050,6 @@ EventEmitter.prototype.addListener = function(type, listener) {
 
   // Check for listener leak
   if (isObject(this._events[type]) && !this._events[type].warned) {
-    var m;
     if (!isUndefined(this._maxListeners)) {
       m = this._maxListeners;
     } else {
@@ -6035,7 +6171,7 @@ EventEmitter.prototype.removeAllListeners = function(type) {
 
   if (isFunction(listeners)) {
     this.removeListener(type, listeners);
-  } else {
+  } else if (listeners) {
     // LIFO order
     while (listeners.length)
       this.removeListener(type, listeners[listeners.length - 1]);
@@ -6056,15 +6192,20 @@ EventEmitter.prototype.listeners = function(type) {
   return ret;
 };
 
+EventEmitter.prototype.listenerCount = function(type) {
+  if (this._events) {
+    var evlistener = this._events[type];
+
+    if (isFunction(evlistener))
+      return 1;
+    else if (evlistener)
+      return evlistener.length;
+  }
+  return 0;
+};
+
 EventEmitter.listenerCount = function(emitter, type) {
-  var ret;
-  if (!emitter._events || !emitter._events[type])
-    ret = 0;
-  else if (isFunction(emitter._events[type]))
-    ret = 1;
-  else
-    ret = emitter._events[type].length;
-  return ret;
+  return emitter.listenerCount(type);
 };
 
 function isFunction(arg) {
@@ -6083,10 +6224,10 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],25:[function(_dereq_,module,exports){
+},{}],74:[function(_dereq_,module,exports){
 module.exports = _dereq_('./javascript/diff_match_patch_uncompressed.js').diff_match_patch;
 
-},{"./javascript/diff_match_patch_uncompressed.js":26}],26:[function(_dereq_,module,exports){
+},{"./javascript/diff_match_patch_uncompressed.js":75}],75:[function(_dereq_,module,exports){
 /**
  * Diff Match and Patch
  *
@@ -8281,18 +8422,7 @@ this['DIFF_DELETE'] = DIFF_DELETE;
 this['DIFF_INSERT'] = DIFF_INSERT;
 this['DIFF_EQUAL'] = DIFF_EQUAL;
 
-},{}],27:[function(_dereq_,module,exports){
-
-var indexOf = [].indexOf;
-
-module.exports = function(arr, obj){
-  if (indexOf) return arr.indexOf(obj);
-  for (var i = 0; i < arr.length; ++i) {
-    if (arr[i] === obj) return i;
-  }
-  return -1;
-};
-},{}],28:[function(_dereq_,module,exports){
+},{}],76:[function(_dereq_,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -8317,156 +8447,852 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],29:[function(_dereq_,module,exports){
+},{}],77:[function(_dereq_,module,exports){
+module.exports = _dereq_('./lib/create-formatter');
+
+},{"./lib/create-formatter":78}],78:[function(_dereq_,module,exports){
 'use strict';
 
-// modified from https://github.com/es-shims/es5-shim
-var has = Object.prototype.hasOwnProperty;
-var toStr = Object.prototype.toString;
+var assign = _dereq_('core-js/library/fn/object/assign');
+var ContextTraversal = _dereq_('power-assert-context-traversal');
+var LegacyContextTraversal = _dereq_('./legacy-context-traversal');
+var StringWriter = _dereq_('./string-writer');
+var defaultOptions = _dereq_('./default-options');
+var reduce = _dereq_('core-js/library/fn/array/reduce');
+
+/**
+ * options.reducers [array]
+ * options.renderers [array]
+ * options.outputOffset [number]
+ * options.lineSeparator [string]
+ * options.legacy [boolean]
+ */
+module.exports = function createFormatter (options) {
+    var formatterConfig = assign({}, defaultOptions(), options);
+    var reducers = formatterConfig.reducers || [];
+    var rendererConfigs = formatterConfig.renderers;
+    var len = rendererConfigs.length;
+
+    return function (powerAssertContext) {
+        var context = reduce(reducers, function (prevContext, reducer) {
+            return reducer(prevContext);
+        }, powerAssertContext);
+        var writer = new StringWriter(formatterConfig);
+        var traversal;
+        if (formatterConfig.legacy) {
+            traversal = new LegacyContextTraversal(context);
+            traversal.setWritable(writer);
+        } else {
+            traversal = new ContextTraversal(context);
+        }
+        for (var i = 0; i < len; i += 1) {
+            var RendererClass;
+            var renderer;
+            var config = rendererConfigs[i];
+            if (typeof config === 'object') {
+                RendererClass = config.ctor;
+                renderer = new RendererClass(config.options);
+            } else if (typeof config === 'function') {
+                RendererClass = config;
+                renderer = new RendererClass();
+            }
+            renderer.init(traversal);
+            if (typeof renderer.setWritable === 'function') {
+                renderer.setWritable(writer);
+            }
+        }
+        traversal.traverse();
+        writer.write('');
+        return writer.toString();
+    };
+};
+
+},{"./default-options":79,"./legacy-context-traversal":80,"./string-writer":81,"core-js/library/fn/array/reduce":12,"core-js/library/fn/object/assign":13,"power-assert-context-traversal":83}],79:[function(_dereq_,module,exports){
+'use strict';
+
+module.exports = function defaultOptions () {
+    return {
+        reducers: [
+        ],
+        legacy: false,
+        outputOffset: 2,
+        lineSeparator: '\n'
+    };
+};
+
+},{}],80:[function(_dereq_,module,exports){
+'use strict';
+
+var ContextTraversal = _dereq_('power-assert-context-traversal');
+var inherits = _dereq_('util').inherits;
 var slice = Array.prototype.slice;
-var isArgs = _dereq_('./isArguments');
-var hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString');
-var hasProtoEnumBug = function () {}.propertyIsEnumerable('prototype');
-var dontEnums = [
-	'toString',
-	'toLocaleString',
-	'valueOf',
-	'hasOwnProperty',
-	'isPrototypeOf',
-	'propertyIsEnumerable',
-	'constructor'
-];
-var equalsConstructorPrototype = function (o) {
-	var ctor = o.constructor;
-	return ctor && ctor.prototype === o;
-};
-var blacklistedKeys = {
-	$console: true,
-	$frame: true,
-	$frameElement: true,
-	$frames: true,
-	$parent: true,
-	$self: true,
-	$webkitIndexedDB: true,
-	$webkitStorageInfo: true,
-	$window: true
-};
-var hasAutomationEqualityBug = (function () {
-	/* global window */
-	if (typeof window === 'undefined') { return false; }
-	for (var k in window) {
-		try {
-			if (!blacklistedKeys['$' + k] && has.call(window, k) && window[k] !== null && typeof window[k] === 'object') {
-				try {
-					equalsConstructorPrototype(window[k]);
-				} catch (e) {
-					return true;
-				}
-			}
-		} catch (e) {
-			return true;
-		}
-	}
-	return false;
-}());
-var equalsConstructorPrototypeIfNotBuggy = function (o) {
-	/* global window */
-	if (typeof window === 'undefined' || !hasAutomationEqualityBug) {
-		return equalsConstructorPrototype(o);
-	}
-	try {
-		return equalsConstructorPrototype(o);
-	} catch (e) {
-		return false;
-	}
+
+function LegacyContextTraversal (powerAssertContext) {
+    ContextTraversal.call(this, powerAssertContext);
+}
+inherits(LegacyContextTraversal, ContextTraversal);
+
+LegacyContextTraversal.prototype.setWritable = function (writer) {
+    this.writer = writer;
 };
 
-var keysShim = function keys(object) {
-	var isObject = object !== null && typeof object === 'object';
-	var isFunction = toStr.call(object) === '[object Function]';
-	var isArguments = isArgs(object);
-	var isString = isObject && toStr.call(object) === '[object String]';
-	var theKeys = [];
-
-	if (!isObject && !isFunction && !isArguments) {
-		throw new TypeError('Object.keys called on a non-object');
-	}
-
-	var skipProto = hasProtoEnumBug && isFunction;
-	if (isString && object.length > 0 && !has.call(object, 0)) {
-		for (var i = 0; i < object.length; ++i) {
-			theKeys.push(String(i));
-		}
-	}
-
-	if (isArguments && object.length > 0) {
-		for (var j = 0; j < object.length; ++j) {
-			theKeys.push(String(j));
-		}
-	} else {
-		for (var name in object) {
-			if (!(skipProto && name === 'prototype') && has.call(object, name)) {
-				theKeys.push(String(name));
-			}
-		}
-	}
-
-	if (hasDontEnumBug) {
-		var skipConstructor = equalsConstructorPrototypeIfNotBuggy(object);
-
-		for (var k = 0; k < dontEnums.length; ++k) {
-			if (!(skipConstructor && dontEnums[k] === 'constructor') && has.call(object, dontEnums[k])) {
-				theKeys.push(dontEnums[k]);
-			}
-		}
-	}
-	return theKeys;
+LegacyContextTraversal.prototype.on = function () {
+    var args = slice.apply(arguments);
+    if (args[0] === 'render') {
+        args[0] = 'end';
+    }
+    ContextTraversal.prototype.on.apply(this, args);
 };
 
-keysShim.shim = function shimObjectKeys() {
-	if (Object.keys) {
-		var keysWorksWithArguments = (function () {
-			// Safari 5.0 bug
-			return (Object.keys(arguments) || '').length === 2;
-		}(1, 2));
-		if (!keysWorksWithArguments) {
-			var originalKeys = Object.keys;
-			Object.keys = function keys(object) {
-				if (isArgs(object)) {
-					return originalKeys(slice.call(object));
-				} else {
-					return originalKeys(object);
-				}
-			};
-		}
-	} else {
-		Object.keys = keysShim;
-	}
-	return Object.keys || keysShim;
+LegacyContextTraversal.prototype.emit = function () {
+    var args = slice.apply(arguments);
+    if (args[0] === 'end') {
+        args[1] = this.writer;
+    }
+    ContextTraversal.prototype.emit.apply(this, args);
 };
 
-module.exports = keysShim;
+module.exports = LegacyContextTraversal;
 
-},{"./isArguments":30}],30:[function(_dereq_,module,exports){
+},{"power-assert-context-traversal":83,"util":101}],81:[function(_dereq_,module,exports){
 'use strict';
 
-var toStr = Object.prototype.toString;
+function spacerStr (len) {
+    var str = '';
+    for(var i = 0; i < len; i += 1) {
+        str += ' ';
+    }
+    return str;
+}
 
-module.exports = function isArguments(value) {
-	var str = toStr.call(value);
-	var isArgs = str === '[object Arguments]';
-	if (!isArgs) {
-		isArgs = str !== '[object Array]' &&
-			value !== null &&
-			typeof value === 'object' &&
-			typeof value.length === 'number' &&
-			value.length >= 0 &&
-			toStr.call(value.callee) === '[object Function]';
-	}
-	return isArgs;
+function StringWriter (config) {
+    this.lines = [];
+    this.lineSeparator = config.lineSeparator;
+    this.regex = new RegExp(this.lineSeparator, 'g');
+    this.spacer = spacerStr(config.outputOffset);
+}
+
+StringWriter.prototype.write = function (str) {
+    this.lines.push(this.spacer + str.replace(this.regex, this.lineSeparator + this.spacer));
 };
 
-},{}],31:[function(_dereq_,module,exports){
+StringWriter.prototype.toString = function () {
+    var str = this.lines.join(this.lineSeparator);
+    this.lines.length = 0;
+    return str;
+};
+
+module.exports = StringWriter;
+
+},{}],82:[function(_dereq_,module,exports){
+'use strict';
+
+var parser = _dereq_('acorn');
+_dereq_('acorn-es7-plugin')(parser);
+var estraverse = _dereq_('estraverse');
+var purifyAst = _dereq_('espurify').customize({extra: ['range']});
+var assign = _dereq_('core-js/library/fn/object/assign');
+
+module.exports = function (powerAssertContext) {
+    var source = powerAssertContext.source;
+    if (source.ast && source.tokens && source.visitorKeys) {
+        return powerAssertContext;
+    }
+    var astAndTokens = parse(source);
+    var newSource = assign({}, source, {
+        ast: purifyAst(astAndTokens.expression),
+        tokens: astAndTokens.tokens,
+        visitorKeys: estraverse.VisitorKeys
+    });
+    return assign({}, powerAssertContext, { source: newSource });
+};
+
+function parserOptions(tokens) {
+    return {
+        sourceType: 'module',
+        ecmaVersion: 7,
+        locations: true,
+        ranges: false,
+        onToken: tokens,
+        plugins: {asyncawait: true}
+    };
+}
+
+function parse (source) {
+    var code = source.content;
+    var ast, tokens;
+
+    function doParse(wrapper) {
+        var content = wrapper ? wrapper(code) : code;
+        var tokenBag = [];
+        ast = parser.parse(content, parserOptions(tokenBag));
+        if (wrapper) {
+            ast = ast.body[0].body;
+            tokens = tokenBag.slice(6, -2);
+        } else {
+            tokens = tokenBag.slice(0, -1);
+        }
+    }
+
+    if (source.async) {
+        doParse(wrappedInAsync);
+    } else if (source.generator) {
+        doParse(wrappedInGenerator);
+    } else {
+        doParse();
+    }
+
+    var exp = ast.body[0].expression;
+    var columnOffset = exp.loc.start.column;
+    var offsetTree = estraverse.replace(exp, {
+        keys: estraverse.VisitorKeys,
+        enter: function (eachNode) {
+            if (!eachNode.loc && eachNode.range) {
+                // skip already visited node
+                return eachNode;
+            }
+            eachNode.range = [
+                eachNode.loc.start.column - columnOffset,
+                eachNode.loc.end.column - columnOffset
+            ];
+            delete eachNode.loc;
+            return eachNode;
+        }
+    });
+
+    return {
+        tokens: offsetAndSlimDownTokens(tokens),
+        expression: offsetTree
+    };
+}
+
+function wrappedInGenerator (jsCode) {
+    return 'function *wrapper() { ' + jsCode + ' }';
+}
+
+function wrappedInAsync (jsCode) {
+    return 'async function wrapper() { ' + jsCode + ' }';
+}
+
+function offsetAndSlimDownTokens (tokens) {
+    var i, token, newToken, result = [];
+    var columnOffset;
+    for(i = 0; i < tokens.length; i += 1) {
+        token = tokens[i];
+        if (i === 0) {
+            columnOffset = token.loc.start.column;
+        }
+        newToken = {
+            type: {
+                label: token.type.label
+            }
+        };
+        if (typeof token.value !== 'undefined') {
+            newToken.value = token.value;
+        }
+        newToken.range = [
+            token.loc.start.column - columnOffset,
+            token.loc.end.column - columnOffset
+        ];
+        result.push(newToken);
+    }
+    return result;
+}
+
+},{"acorn":5,"acorn-es7-plugin":4,"core-js/library/fn/object/assign":13,"espurify":67,"estraverse":71}],83:[function(_dereq_,module,exports){
+module.exports = _dereq_('./lib/context-traversal');
+
+},{"./lib/context-traversal":84}],84:[function(_dereq_,module,exports){
+'use strict';
+
+var EventEmitter = _dereq_('events').EventEmitter;
+var inherits = _dereq_('util').inherits;
+var estraverse = _dereq_('estraverse');
+var forEach = _dereq_('core-js/library/fn/array/for-each');
+var reduce = _dereq_('core-js/library/fn/array/reduce');
+var locationOf = _dereq_('./location');
+var literalPattern = /^(?:String|Numeric|Null|Boolean|RegExp)?Literal$/;
+var assign = _dereq_('core-js/library/fn/object/assign');
+
+function ContextTraversal (powerAssertContext) {
+    this.powerAssertContext = powerAssertContext;
+    EventEmitter.call(this);
+}
+inherits(ContextTraversal, EventEmitter);
+
+ContextTraversal.prototype.traverse = function () {
+    var _this = this;
+    var source = _this.powerAssertContext.source;
+    parseIfJson(source, 'ast');
+    parseIfJson(source, 'tokens');
+    parseIfJson(source, 'visitorKeys');
+    _this.emit('start', this.powerAssertContext);
+    forEach(this.powerAssertContext.args, function (capturedArgument) {
+        onEachEsNode(capturedArgument, source, function (esNode) {
+            _this.emit('data', esNode);
+        });
+    });
+    _this.emit('end');
+};
+
+function parseIfJson (source, propName) {
+    if (typeof source[propName] === 'string') {
+        source[propName] = JSON.parse(source[propName]);
+    }
+}
+
+function onEachEsNode(capturedArgument, source, callback) {
+    var espathToValue = reduce(capturedArgument.events, function (accum, ev) {
+        accum[ev.espath] = ev.value;
+        return accum;
+    }, {});
+    var nodeStack = [];
+    estraverse.traverse(source.ast, {
+        keys: source.visitorKeys,
+        enter: function (currentNode, parentNode) {
+            var parentEsNode = (0 < nodeStack.length) ? nodeStack[nodeStack.length - 1] : null;
+            var esNode = createEsNode(this.path(), currentNode, espathToValue, source.content, source.tokens, parentEsNode);
+            nodeStack.push(esNode);
+            callback(esNode);
+        },
+        leave: function (currentNode, parentNode) {
+            nodeStack.pop();
+        }
+    });
+}
+
+function isLiteral (node) {
+    return literalPattern.test(node.type);
+}
+
+function createEsNode (path, currentNode, espathToValue, jsCode, tokens, parent) {
+    var espath = path ? path.join('/') : '';
+    return {
+        espath: espath,
+        parent: parent,
+        key: path ? path[path.length - 1] : null,
+        node: currentNode,
+        code: jsCode.slice(currentNode.range[0], currentNode.range[1]),
+        value: isLiteral(currentNode) ? currentNode.value : espathToValue[espath],
+        isCaptured: espathToValue.hasOwnProperty(espath),
+        range: locationOf(currentNode, tokens)
+    };
+}
+
+module.exports = ContextTraversal;
+
+},{"./location":85,"core-js/library/fn/array/for-each":7,"core-js/library/fn/array/reduce":12,"core-js/library/fn/object/assign":13,"estraverse":71,"events":73,"util":101}],85:[function(_dereq_,module,exports){
+'use strict';
+
+var syntax = _dereq_('estraverse').Syntax;
+
+function locationOf(currentNode, tokens) {
+    switch(currentNode.type) {
+    case syntax.MemberExpression:
+        return propertyLocationOf(currentNode, tokens);
+    case syntax.CallExpression:
+        if (currentNode.callee.type === syntax.MemberExpression) {
+            return propertyLocationOf(currentNode.callee, tokens);
+        }
+        break;
+    case syntax.BinaryExpression:
+    case syntax.LogicalExpression:
+    case syntax.AssignmentExpression:
+        return infixOperatorLocationOf(currentNode, tokens);
+    default:
+        break;
+    }
+    return currentNode.range;
+}
+
+function propertyLocationOf(memberExpression, tokens) {
+    var prop = memberExpression.property;
+    var token;
+    if (!memberExpression.computed) {
+        return prop.range;
+    }
+    token = findLeftBracketTokenOf(memberExpression, tokens);
+    return token ? token.range : prop.range;
+}
+
+// calculate location of infix operator for BinaryExpression, AssignmentExpression and LogicalExpression.
+function infixOperatorLocationOf (expression, tokens) {
+    var token = findOperatorTokenOf(expression, tokens);
+    return token ? token.range : expression.left.range;
+}
+
+function findLeftBracketTokenOf(expression, tokens) {
+    var fromColumn = expression.property.range[0];
+    return searchToken(tokens, function (token, index) {
+        var prevToken;
+        if (token.range[0] === fromColumn) {
+            prevToken = tokens[index - 1];
+            // if (prevToken.type === 'Punctuator' && prevToken.value === '[') {  // esprima
+            if (prevToken.type.label === '[') {  // acorn
+                return prevToken;
+            }
+        }
+        return undefined;
+    });
+}
+
+function findOperatorTokenOf(expression, tokens) {
+    var fromColumn = expression.left.range[1];
+    var toColumn = expression.right.range[0];
+    return searchToken(tokens, function (token, index) {
+        if (fromColumn < token.range[0] &&
+            token.range[1] < toColumn &&
+            token.value === expression.operator) {
+            return token;
+        }
+        return undefined;
+    });
+}
+
+function searchToken(tokens, predicate) {
+    var i, token, found;
+    for(i = 0; i < tokens.length; i += 1) {
+        token = tokens[i];
+        found = predicate(token, i);
+        if (found) {
+            return found;
+        }
+    }
+    return undefined;
+}
+
+module.exports = locationOf;
+
+},{"estraverse":71}],86:[function(_dereq_,module,exports){
+'use strict';
+
+var BaseRenderer = _dereq_('power-assert-renderer-base');
+var inherits = _dereq_('util').inherits;
+
+function AssertionRenderer () {
+    BaseRenderer.call(this);
+}
+inherits(AssertionRenderer, BaseRenderer);
+
+AssertionRenderer.prototype.onStart = function (context) {
+    this.assertionLine = context.source.content;
+};
+
+AssertionRenderer.prototype.onEnd = function () {
+    this.write('');
+    this.write(this.assertionLine);
+};
+
+module.exports = AssertionRenderer;
+
+},{"power-assert-renderer-base":87,"util":101}],87:[function(_dereq_,module,exports){
+'use strict';
+
+function BaseRenderer () {
+}
+
+BaseRenderer.prototype.init = function (traversal) {
+    var _this = this;
+    traversal.on('start', function (context) {
+        _this.onStart(context);
+    });
+    traversal.on('data', function (esNode) {
+        _this.onData(esNode);
+    });
+    traversal.on('end', function () {
+        _this.onEnd();
+    });
+};
+
+BaseRenderer.prototype.setWritable = function (writable) {
+    this.writable = writable;
+};
+
+// API
+BaseRenderer.prototype.onStart = function (context) {
+};
+
+// API
+BaseRenderer.prototype.onData = function (esNode) {
+};
+
+// API
+BaseRenderer.prototype.onEnd = function () {
+};
+
+// API
+BaseRenderer.prototype.write = function (str) {
+    this.writable.write(str);
+};
+
+module.exports = BaseRenderer;
+
+},{}],88:[function(_dereq_,module,exports){
+'use strict';
+
+var BaseRenderer = _dereq_('power-assert-renderer-base');
+var inherits = _dereq_('util').inherits;
+var typeName = _dereq_('type-name');
+var keys = _dereq_('core-js/library/fn/object/keys');
+var forEach = _dereq_('core-js/library/fn/array/for-each');
+var udiff = _dereq_('./lib/udiff');
+var stringifier = _dereq_('stringifier');
+var assign = _dereq_('core-js/library/fn/object/assign');
+var defaultOptions = _dereq_('./lib/default-options');
+var literalPattern = /^(?:String|Numeric|Null|Boolean|RegExp)?Literal$/;
+
+function isLiteral (node) {
+    return literalPattern.test(node.type);
+}
+
+/**
+ * options.stringify [function]
+ * options.maxDepth [number]
+ * options.lineSeparator [string]
+ * options.anonymous [string]
+ * options.circular [string]
+ * 
+ * options.diff [function]
+ * options.lineDiffThreshold [number]
+ */
+function ComparisonRenderer (config) {
+    BaseRenderer.call(this);
+    this.config = assign({}, defaultOptions(), config);
+    if (typeof this.config.stringify !== 'function') {
+        this.stringify = stringifier(this.config);
+    }
+    if (typeof this.config.diff !== 'function') {
+        this.diff = udiff(this.config);
+    }
+    this.espathToPair = {};
+}
+inherits(ComparisonRenderer, BaseRenderer);
+
+ComparisonRenderer.prototype.onData = function (esNode) {
+    var pair;
+    if (!esNode.isCaptured) {
+        if (isTargetBinaryExpression(esNode.parent) && isLiteral(esNode.node)) {
+            this.espathToPair[esNode.parent.espath][esNode.key] = {code: esNode.code, value: esNode.value};
+        }
+        return;
+    }
+    if (isTargetBinaryExpression(esNode.parent)) {
+        this.espathToPair[esNode.parent.espath][esNode.key] = {code: esNode.code, value: esNode.value};
+    }
+    if (isTargetBinaryExpression(esNode)) {
+        pair = {
+            operator: esNode.node.operator,
+            value: esNode.value
+        };
+        this.espathToPair[esNode.espath] = pair;
+    }
+};
+
+ComparisonRenderer.prototype.onEnd = function () {
+    var _this = this;
+    var pairs = [];
+    forEach(keys(this.espathToPair), function (espath) {
+        var pair = _this.espathToPair[espath];
+        if (pair.left && pair.right) {
+            pairs.push(pair);
+        }
+    });
+    forEach(pairs, function (pair) {
+        _this.compare(pair);
+    });
+};
+
+ComparisonRenderer.prototype.compare = function (pair) {
+    if (isStringDiffTarget(pair)) {
+        this.showStringDiff(pair);
+    } else {
+        this.showExpectedAndActual(pair);
+    }
+};
+
+ComparisonRenderer.prototype.showExpectedAndActual = function (pair) {
+    this.write('');
+    this.write('[' + typeName(pair.right.value) + '] ' + pair.right.code);
+    this.write('=> ' + this.stringify(pair.right.value));
+    this.write('[' + typeName(pair.left.value)  + '] ' + pair.left.code);
+    this.write('=> ' + this.stringify(pair.left.value));
+};
+
+ComparisonRenderer.prototype.showStringDiff = function (pair) {
+    this.write('');
+    this.write('--- [string] ' + pair.right.code);
+    this.write('+++ [string] ' + pair.left.code);
+    this.write(this.diff(pair.right.value, pair.left.value, this.config));
+};
+
+function isTargetBinaryExpression (esNode) {
+    return esNode &&
+        esNode.node.type === 'BinaryExpression' &&
+        (esNode.node.operator === '===' || esNode.node.operator === '==') &&
+        esNode.isCaptured &&
+        !(esNode.value);
+}
+
+function isStringDiffTarget(pair) {
+    return typeof pair.left.value === 'string' && typeof pair.right.value === 'string';
+}
+
+module.exports = ComparisonRenderer;
+
+},{"./lib/default-options":89,"./lib/udiff":90,"core-js/library/fn/array/for-each":7,"core-js/library/fn/object/assign":13,"core-js/library/fn/object/keys":14,"power-assert-renderer-base":87,"stringifier":96,"type-name":99,"util":101}],89:[function(_dereq_,module,exports){
+'use strict';
+
+module.exports = function defaultOptions () {
+    return {
+        lineDiffThreshold: 5,
+        maxDepth: 2,
+        indent: null,
+        outputOffset: 2,
+        anonymous: 'Object',
+        circular: '#@Circular#',
+        lineSeparator: '\n'
+    };
+};
+
+},{}],90:[function(_dereq_,module,exports){
+'use strict';
+
+var DiffMatchPatch = _dereq_('googlediff');
+var dmp = new DiffMatchPatch();
+
+function udiff (config) {
+    return function diff (text1, text2) {
+        var patch;
+        if (config && shouldUseLineLevelDiff(text1, config)) {
+            patch = udiffLines(text1, text2);
+        } else {
+            patch = udiffChars(text1, text2);
+        }
+        return decodeURIComponent(patch);
+    };
+}
+
+function shouldUseLineLevelDiff (text, config) {
+    return config.lineDiffThreshold < text.split(/\r\n|\r|\n/).length;
+}
+
+function udiffLines(text1, text2) {
+    /*jshint camelcase: false */
+    var a = dmp.diff_linesToChars_(text1, text2);
+    var diffs = dmp.diff_main(a.chars1, a.chars2, false);
+    dmp.diff_charsToLines_(diffs, a.lineArray);
+    dmp.diff_cleanupSemantic(diffs);
+    return dmp.patch_toText(dmp.patch_make(text1, diffs));
+}
+
+function udiffChars (text1, text2) {
+    /*jshint camelcase: false */
+    var diffs = dmp.diff_main(text1, text2, false);
+    dmp.diff_cleanupSemantic(diffs);
+    return dmp.patch_toText(dmp.patch_make(text1, diffs));
+}
+
+module.exports = udiff;
+
+},{"googlediff":74}],91:[function(_dereq_,module,exports){
+'use strict';
+
+var BaseRenderer = _dereq_('power-assert-renderer-base');
+var inherits = _dereq_('util').inherits;
+var forEach = _dereq_('core-js/library/fn/array/for-each');
+var stringifier = _dereq_('stringifier');
+var stringWidth = _dereq_('./lib/string-width');
+var assign = _dereq_('core-js/library/fn/object/assign');
+var defaultOptions = _dereq_('./lib/default-options');
+
+/**
+ * options.stringify [function]
+ * options.maxDepth [number]
+ * options.lineSeparator [string]
+ * options.anonymous [string]
+ * options.circular [string]
+ * 
+ * options.widthOf [function]
+ * options.ambiguousEastAsianCharWidth [number]
+ */
+function DiagramRenderer (config) {
+    BaseRenderer.call(this);
+    this.config = assign({}, defaultOptions(), config);
+    this.events = [];
+    if (typeof this.config.stringify !== 'function') {
+        this.stringify = stringifier(this.config);
+    }
+    if (typeof this.config.widthOf !== 'function') {
+        this.widthOf = stringWidth(this.config);
+    }
+    this.initialVertivalBarLength = 1;
+}
+inherits(DiagramRenderer, BaseRenderer);
+
+DiagramRenderer.prototype.onStart = function (context) {
+    this.assertionLine = context.source.content;
+    this.initializeRows();
+};
+
+DiagramRenderer.prototype.onData = function (esNode) {
+    if (!esNode.isCaptured) {
+        return;
+    }
+    this.events.push({value: esNode.value, leftIndex: esNode.range[0]});
+};
+
+DiagramRenderer.prototype.onEnd = function () {
+    this.events.sort(rightToLeft);
+    this.constructRows(this.events);
+    var _this = this;
+    forEach(this.rows, function (columns) {
+        _this.write(columns.join(''));
+    });
+};
+
+DiagramRenderer.prototype.initializeRows = function () {
+    this.rows = [];
+    for (var i = 0; i <= this.initialVertivalBarLength; i += 1) {
+        this.addOneMoreRow();
+    }
+};
+
+DiagramRenderer.prototype.newRowFor = function (assertionLine) {
+    return createRow(this.widthOf(assertionLine), ' ');
+};
+
+DiagramRenderer.prototype.addOneMoreRow = function () {
+    this.rows.push(this.newRowFor(this.assertionLine));
+};
+
+DiagramRenderer.prototype.lastRow = function () {
+    return this.rows[this.rows.length - 1];
+};
+
+DiagramRenderer.prototype.renderVerticalBarAt = function (columnIndex) {
+    var i, lastRowIndex = this.rows.length - 1;
+    for (i = 0; i < lastRowIndex; i += 1) {
+        this.rows[i].splice(columnIndex, 1, '|');
+    }
+};
+
+DiagramRenderer.prototype.renderValueAt = function (columnIndex, dumpedValue) {
+    var i, width = this.widthOf(dumpedValue);
+    for (i = 0; i < width; i += 1) {
+        this.lastRow().splice(columnIndex + i, 1, dumpedValue.charAt(i));
+    }
+};
+
+DiagramRenderer.prototype.isOverlapped = function (prevCapturing, nextCaputuring, dumpedValue) {
+    return (typeof prevCapturing !== 'undefined') && this.startColumnFor(prevCapturing) <= (this.startColumnFor(nextCaputuring) + this.widthOf(dumpedValue));
+};
+
+DiagramRenderer.prototype.constructRows = function (capturedEvents) {
+    var that = this;
+    var prevCaptured;
+    forEach(capturedEvents, function (captured) {
+        var dumpedValue = that.stringify(captured.value);
+        if (that.isOverlapped(prevCaptured, captured, dumpedValue)) {
+            that.addOneMoreRow();
+        }
+        that.renderVerticalBarAt(that.startColumnFor(captured));
+        that.renderValueAt(that.startColumnFor(captured), dumpedValue);
+        prevCaptured = captured;
+    });
+};
+
+DiagramRenderer.prototype.startColumnFor = function (captured) {
+    return this.widthOf(this.assertionLine.slice(0, captured.leftIndex));
+};
+
+function createRow (numCols, initial) {
+    var row = [], i;
+    for(i = 0; i < numCols; i += 1) {
+        row[i] = initial;
+    }
+    return row;
+}
+
+function rightToLeft (a, b) {
+    return b.leftIndex - a.leftIndex;
+}
+
+module.exports = DiagramRenderer;
+
+},{"./lib/default-options":92,"./lib/string-width":93,"core-js/library/fn/array/for-each":7,"core-js/library/fn/object/assign":13,"power-assert-renderer-base":87,"stringifier":96,"util":101}],92:[function(_dereq_,module,exports){
+'use strict';
+
+module.exports = function defaultOptions () {
+    return {
+        ambiguousEastAsianCharWidth: 2,
+        maxDepth: 2,
+        indent: null,
+        outputOffset: 2,
+        anonymous: 'Object',
+        circular: '#@Circular#',
+        lineSeparator: '\n'
+    };
+};
+
+},{}],93:[function(_dereq_,module,exports){
+'use strict';
+
+var eaw = _dereq_('eastasianwidth');
+
+function stringWidth (config) {
+    var ambiguousCharWidth = (config && config.ambiguousEastAsianCharWidth) || 1;
+    return function widthOf (str) {
+        var i, code, width = 0;
+        for(i = 0; i < str.length; i+=1) {
+            code = eaw.eastAsianWidth(str.charAt(i));
+            switch(code) {
+            case 'F':
+            case 'W':
+                width += 2;
+                break;
+            case 'H':
+            case 'Na':
+            case 'N':
+                width += 1;
+                break;
+            case 'A':
+                width += ambiguousCharWidth;
+                break;
+            }
+        }
+        return width;
+    };
+}
+
+module.exports = stringWidth;
+
+},{"eastasianwidth":66}],94:[function(_dereq_,module,exports){
+'use strict';
+
+var BaseRenderer = _dereq_('power-assert-renderer-base');
+var inherits = _dereq_('util').inherits;
+
+function FileRenderer () {
+    BaseRenderer.call(this);
+}
+inherits(FileRenderer, BaseRenderer);
+
+FileRenderer.prototype.onStart = function (context) {
+    this.filepath = context.source.filepath;
+    this.lineNumber = context.source.line;
+};
+
+FileRenderer.prototype.onEnd = function () {
+    if (this.filepath) {
+        this.write('# ' + [this.filepath, this.lineNumber].join(':'));
+    } else {
+        this.write('# at line: ' + this.lineNumber);
+    }
+};
+
+module.exports = FileRenderer;
+
+},{"power-assert-renderer-base":87,"util":101}],95:[function(_dereq_,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -8476,6 +9302,9 @@ var currentQueue;
 var queueIndex = -1;
 
 function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
     draining = false;
     if (currentQueue.length) {
         queue = currentQueue.concat(queue);
@@ -8559,7 +9388,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],32:[function(_dereq_,module,exports){
+},{}],96:[function(_dereq_,module,exports){
 /**
  * stringifier
  * 
@@ -8573,7 +9402,7 @@ process.umask = function() { return 0; };
 
 var traverse = _dereq_('traverse');
 var typeName = _dereq_('type-name');
-var extend = _dereq_('xtend');
+var assign = _dereq_('core-js/library/fn/object/assign');
 var s = _dereq_('./strategies');
 
 function defaultHandlers () {
@@ -8609,8 +9438,8 @@ function defaultOptions () {
 }
 
 function createStringifier (customOptions) {
-    var options = extend(defaultOptions(), customOptions);
-    var handlers = extend(defaultHandlers(), options.handlers);
+    var options = assign({}, defaultOptions(), customOptions);
+    var handlers = assign({}, defaultHandlers(), options.handlers);
     return function stringifyAny (push, x) {
         var context = this;
         var handler = handlerFor(context.node, options, handlers);
@@ -8668,14 +9497,14 @@ stringifier.defaultOptions = defaultOptions;
 stringifier.defaultHandlers = defaultHandlers;
 module.exports = stringifier;
 
-},{"./strategies":33,"traverse":34,"type-name":35,"xtend":38}],33:[function(_dereq_,module,exports){
+},{"./strategies":97,"core-js/library/fn/object/assign":13,"traverse":98,"type-name":99}],97:[function(_dereq_,module,exports){
 'use strict';
 
 var typeName = _dereq_('type-name');
-var forEach = _dereq_('array-foreach');
-var arrayFilter = _dereq_('array-filter');
-var reduceRight = _dereq_('array-reduce-right');
-var indexOf = _dereq_('indexof');
+var forEach = _dereq_('core-js/library/fn/array/for-each');
+var arrayFilter = _dereq_('core-js/library/fn/array/filter');
+var reduceRight = _dereq_('core-js/library/fn/array/reduce-right');
+var indexOf = _dereq_('core-js/library/fn/array/index-of');
 var slice = Array.prototype.slice;
 var END = {};
 var ITERATE = {};
@@ -9005,6 +9834,7 @@ var omitMaxDepth = when(maxDepth, prune);
 module.exports = {
     filters: {
         always: always,
+        optionValue: optionValue,
         constructorName: constructorName,
         json: json,
         toStr: toStr,
@@ -9018,6 +9848,7 @@ module.exports = {
         when: when,
         allowedKeys: allowedKeys,
         safeKeys: safeKeys,
+        arrayIndicesToKeys: arrayIndicesToKeys,
         filter: filter,
         iterate: iterate,
         end: end
@@ -9081,7 +9912,7 @@ module.exports = {
     }
 };
 
-},{"array-filter":16,"array-foreach":17,"array-reduce-right":19,"indexof":27,"type-name":35}],34:[function(_dereq_,module,exports){
+},{"core-js/library/fn/array/filter":6,"core-js/library/fn/array/for-each":7,"core-js/library/fn/array/index-of":8,"core-js/library/fn/array/reduce-right":11,"type-name":99}],98:[function(_dereq_,module,exports){
 var traverse = module.exports = function (obj) {
     return new Traverse(obj);
 };
@@ -9397,15 +10228,15 @@ var hasOwnProperty = Object.hasOwnProperty || function (obj, key) {
     return key in obj;
 };
 
-},{}],35:[function(_dereq_,module,exports){
+},{}],99:[function(_dereq_,module,exports){
 /**
  * type-name - Just a reasonable typeof
  * 
  * https://github.com/twada/type-name
  *
- * Copyright (c) 2014-2015 Takuto Wada
+ * Copyright (c) 2014-2016 Takuto Wada
  * Licensed under the MIT license.
- *   http://twada.mit-license.org/2014-2015
+ *   http://twada.mit-license.org/2014-2016
  */
 'use strict';
 
@@ -9417,7 +10248,7 @@ function funcName (f) {
 
 function ctorName (obj) {
     var strName = toStr.call(obj).slice(8, -1);
-    if (strName === 'Object' && obj.constructor) {
+    if ((strName === 'Object' || strName === 'Error') && obj.constructor) {
         return funcName(obj.constructor);
     }
     return strName;
@@ -9437,14 +10268,14 @@ function typeName (val) {
 
 module.exports = typeName;
 
-},{}],36:[function(_dereq_,module,exports){
+},{}],100:[function(_dereq_,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],37:[function(_dereq_,module,exports){
+},{}],101:[function(_dereq_,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -10034,26 +10865,5 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,_dereq_('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":36,"_process":31,"inherits":28}],38:[function(_dereq_,module,exports){
-module.exports = extend
-
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-function extend() {
-    var target = {}
-
-    for (var i = 0; i < arguments.length; i++) {
-        var source = arguments[i]
-
-        for (var key in source) {
-            if (hasOwnProperty.call(source, key)) {
-                target[key] = source[key]
-            }
-        }
-    }
-
-    return target
-}
-
-},{}]},{},[1])(1)
+},{"./support/isBuffer":100,"_process":95,"inherits":76}]},{},[1])(1)
 });
