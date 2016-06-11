@@ -31,7 +31,7 @@
     "babel-polyfill": "^6.0.0",
     "babel-preset-es2015": "^6.0.0",
     "babel-preset-stage-3": "^6.0.0",
-    "blanket": "^1.2.3",
+    "blanket": "1.1.9",
     "browserify": "^13.0.0",
     "del": "^2.2.0",
     "empower": "^1.1.0",
