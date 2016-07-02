@@ -13,6 +13,7 @@ var source = require('vinyl-source-stream');
 var through = require('through2');
 var browserify = require('browserify');
 var licensify = require('licensify');
+var packageJsonVersionify = require('package-json-versionify');
 var derequire = require('gulp-derequire');
 var dereserve = require('gulp-dereserve');
 var config = {
@@ -136,6 +137,7 @@ gulp.task('clean_coverage', function () {
 gulp.task('bundle', ['clean_bundle'], function() {
     var b = browserify({entries: config.bundle.srcFile, standalone: config.bundle.standalone});
     b.plugin(licensify);
+    b.transform(packageJsonVersionify, {global: true});
     var bundleStream = b.bundle();
     return bundleStream
         .pipe(source(config.bundle.destName))
@@ -176,6 +178,7 @@ LOCAL_BUILDS.forEach(function (name) {
     });
     gulp.task(name + '_bundle', ['clean_' + name + '_bundle'], function() {
         var b = browserify({standalone: config[name + '_bundle'].standalone});
+        b.transform(packageJsonVersionify, {global: true});
         if (config[name + '_bundle'].srcFile) {
             b.add(config[name + '_bundle'].srcFile);
         }
