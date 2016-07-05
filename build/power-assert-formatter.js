@@ -7,27 +7,33 @@
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   contributors: James Talmage
  *   homepage: https://github.com/power-assert-js/power-assert-formatter
- *   version: 1.4.0
+ *   version: 1.4.1
  *
  * acorn:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   maintainers: marijn <marijnh@gmail.com>, rreverser <me@rreverser.com>
- *   contributors: List of Acorn contributors. Updated before every release., Adrian Rakovsky, Alistair Braidwood, Andres Suarez, Angelo, Aparajita Fishman, Arian Stolwijk, Artem Govorov, Brandon Mills, Charles Hughes, Conrad Irwin, David Bonnet, Domenico Matteo, ForbesLindesay, Forbes Lindesay, Gilad Peleg, impinball, Ingvar Stepanyan, Jackson Ray Hamilton, Jesse McCarthy, Jiaxing Wang, Joel Kemp, Johannes Herr, Jordan Klassen, Jürg Lehni, keeyipchan, Keheliya Gallaba, Kevin Kwok, krator, Marijn Haverbeke, Martin Carlberg, Mathias Bynens, Mathieu 'p01' Henri, Matthew Bastien, Max Schaefer, Max Zerzouri, Mihai Bazon, Mike Rennie, Nicholas C. Zakas, Nick Fitzgerald, Oskar Schöldström, Paul Harper, Peter Rust, PlNG, Prayag Verma, ReadmeCritic, r-e-d, Richard Gibson, Rich Harris, Sebastian McKenzie, Timothy Gu, Toru Nagashima, zsjforcn
+ *   contributors: -e List of Acorn contributors. Updated before every release., Adrian Rakovsky, Alistair Braidwood, Andres Suarez, Angelo, Aparajita Fishman, Arian Stolwijk, Artem Govorov, Brandon Mills, Charles Hughes, Conrad Irwin, David Bonnet, Domenico Matteo, ForbesLindesay, Forbes Lindesay, Gilad Peleg, impinball, Ingvar Stepanyan, Jackson Ray Hamilton, Jesse McCarthy, Jiaxing Wang, Joel Kemp, Johannes Herr, Jordan Klassen, Jürg Lehni, keeyipchan, Keheliya Gallaba, Kevin Kwok, krator, Marijn Haverbeke, Martin Carlberg, Mathias Bynens, Mathieu 'p01' Henri, Matthew Bastien, Max Schaefer, Max Zerzouri, Mihai Bazon, Mike Rennie, Nicholas C. Zakas, Nick Fitzgerald, Olivier Thomann, Oskar Schöldström, Paul Harper, Peter Rust, PlNG, Prayag Verma, ReadmeCritic, r-e-d, Richard Gibson, Rich Harris, Sebastian McKenzie, Timothy Gu, Toru Nagashima, zsjforcn
  *   homepage: https://github.com/ternjs/acorn
- *   version: 3.1.0
+ *   version: 3.2.0
  *
  * acorn-es7-plugin:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: matatbread
  *   maintainers: matatbread <npm@mailed.me.uk>
  *   homepage: https://github.com/MatAtBread/acorn-es7-plugin#readme
- *   version: 1.0.14
+ *   version: 1.0.15
  *
  * core-js:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   maintainers: zloirock <zloirock@zloirock.ru>
  *   homepage: https://github.com/zloirock/core-js#readme
  *   version: 2.4.0
+ *
+ * diff-match-patch:
+ *   license: http://www.apache.org/licenses/LICENSE-2.0
+ *   maintainers: forbeslindesay <forbes@lindeay.co.uk>
+ *   homepage: https://github.com/ForbesLindesay/diff-match-patch#readme
+ *   version: 1.0.0
  *
  * eastasianwidth:
  *   license: MIT (http://opensource.org/licenses/MIT)
@@ -54,15 +60,7 @@
  *   author: Irakli Gozalishvili <rfobic@gmail.com>
  *   maintainers: gozala <rfobic@gmail.com>, defunctzombie <shtylman@gmail.com>
  *   homepage: https://github.com/Gozala/events#readme
- *   version: 1.1.0
- *
- * googlediff:
- *   licenses: Apache (http://opensource.org/licenses/Apache-2.0)
- *   author: Neil Fraser <root@neil.fraser.name>
- *   maintainers: shimondoodkin <helpmepro1@gmail.com>
- *   contributors: Shimon Doodkin <helpmepro1@gmail.com>, Ryan Graham <r.m.graham@gmail.com>
- *   homepage: http://code.google.com/p/google-diff-match-patch/
- *   version: 0.1.0
+ *   version: 1.1.1
  *
  * inherits:
  *   license: ISC (http://opensource.org/licenses/ISC)
@@ -75,63 +73,63 @@
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   maintainers: twada <takuto.wada@gmail.com>
  *   homepage: https://github.com/twada/power-assert-runtime
- *   version: 1.0.4
+ *   version: 1.0.7
  *
  * power-assert-context-reducer-ast:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   maintainers: twada <takuto.wada@gmail.com>
  *   homepage: https://github.com/twada/power-assert-runtime
- *   version: 1.0.2
+ *   version: 1.0.7
  *
  * power-assert-context-traversal:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   maintainers: twada <takuto.wada@gmail.com>
  *   homepage: https://github.com/twada/power-assert-runtime
- *   version: 1.0.0
+ *   version: 1.0.7
  *
  * power-assert-renderer-assertion:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   maintainers: twada <takuto.wada@gmail.com>
  *   homepage: https://github.com/twada/power-assert-runtime
- *   version: 1.0.1
+ *   version: 1.0.7
  *
  * power-assert-renderer-base:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   maintainers: twada <takuto.wada@gmail.com>
  *   homepage: https://github.com/twada/power-assert-runtime
- *   version: 1.0.2
+ *   version: 1.0.7
  *
  * power-assert-renderer-comparison:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   maintainers: twada <takuto.wada@gmail.com>
  *   homepage: https://github.com/twada/power-assert-runtime
- *   version: 1.0.1
+ *   version: 1.0.7
  *
  * power-assert-renderer-diagram:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   maintainers: twada <takuto.wada@gmail.com>
  *   homepage: https://github.com/twada/power-assert-runtime
- *   version: 1.0.1
+ *   version: 1.0.7
  *
  * power-assert-renderer-file:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Takuto Wada <takuto.wada@gmail.com>
  *   maintainers: twada <takuto.wada@gmail.com>
  *   homepage: https://github.com/twada/power-assert-runtime
- *   version: 1.0.1
+ *   version: 1.0.7
  *
  * process:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Roman Shtylman <shtylman@gmail.com>
  *   maintainers: coolaj86 <coolaj86@gmail.com>, cwmma <calvin.metcalf@gmail.com>, defunctzombie <shtylman@gmail.com>
  *   homepage: https://github.com/shtylman/node-process#readme
- *   version: 0.11.3
+ *   version: 0.11.5
  *
  * stringifier:
  *   license: MIT (http://opensource.org/licenses/MIT)
@@ -238,7 +236,7 @@ create.renderers = {
 create.defaultOptions = defaultOptions;
 module.exports = create;
 
-},{"./default-options":3,"core-js/library/fn/array/map":10,"core-js/library/fn/object/assign":13,"power-assert-context-formatter":77,"power-assert-context-reducer-ast":82,"power-assert-renderer-assertion":86,"power-assert-renderer-comparison":88,"power-assert-renderer-diagram":91,"power-assert-renderer-file":94}],3:[function(_dereq_,module,exports){
+},{"./default-options":3,"core-js/library/fn/array/map":10,"core-js/library/fn/object/assign":13,"power-assert-context-formatter":76,"power-assert-context-reducer-ast":81,"power-assert-renderer-assertion":85,"power-assert-renderer-comparison":87,"power-assert-renderer-diagram":90,"power-assert-renderer-file":93}],3:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = function defaultOptions () {
@@ -267,265 +265,297 @@ var atomOrPropertyOrLabel = /^\s*[):;]/ ;
 var removeComments = /([^\n])\/\*(\*(?!\/)|[^\n*])*\*\/([^\n])/g ;
 
 function hasLineTerminatorBeforeNext(st, since) {
-	return st.lineStart >= since;
+    return st.lineStart >= since;
 }
 
 function test(regex,st,noComment) {
-	var src = st.input.slice(st.start) ;
-	if (noComment) {
-		src = src.replace(removeComments,"$1 $3") ;
+    var src = st.input.slice(st.start) ;
+    if (noComment) {
+        src = src.replace(removeComments,"$1 $3") ;
   }
-	return regex.test(src);
+    return regex.test(src);
 }
 
 /* Return the object holding the parser's 'State'. This is different between acorn ('this')
  * and babylon ('this.state') */
 function state(p) {
-	if (('state' in p) && p.state.constructor && p.state.constructor.name==='State')
-		return p.state ; // Probably babylon
-	return p ; // Probably acorn
+    if (('state' in p) && p.state.constructor && p.state.constructor.name==='State')
+        return p.state ; // Probably babylon
+    return p ; // Probably acorn
 }
 
 /* Create a new parser derived from the specified parser, so that in the
  * event of an error we can back out and try again */
 function subParse(parser, pos, extensions) {
-	// NB: The Babylon constructor does NOT expect 'pos' as an argument, and so
-	// the input needs truncation at the start position, however at present
-	// this doesn't work nicely as all the node location/start/end values
-	// are therefore offset. Consequently, this plug-in is NOT currently working
-	// with the (undocumented) Babylon plug-in interface.
-	var p = new parser.constructor(parser.options, parser.input, pos);
-	if (extensions)
-		for (var k in extensions)
-			p[k] = extensions[k] ;
+    // NB: The Babylon constructor does NOT expect 'pos' as an argument, and so
+    // the input needs truncation at the start position, however at present
+    // this doesn't work nicely as all the node location/start/end values
+    // are therefore offset. Consequently, this plug-in is NOT currently working
+    // with the (undocumented) Babylon plug-in interface.
+    var p = new parser.constructor(parser.options, parser.input, pos);
+    if (extensions)
+        for (var k in extensions)
+            p[k] = extensions[k] ;
 
-	var src = state(parser) ;
-	var dest = state(p) ;
-	['inFunction','inAsyncFunction','inAsync','inGenerator','inModule'].forEach(function(k){
-		if (k in src)
-			dest[k] = src[k] ;
-	}) ;
-	p.nextToken();
-	return p;
+    var src = state(parser) ;
+    var dest = state(p) ;
+    ['inFunction','inAsyncFunction','inAsync','inGenerator','inModule'].forEach(function(k){
+        if (k in src)
+            dest[k] = src[k] ;
+    }) ;
+    p.nextToken();
+    return p;
 }
 
 function asyncAwaitPlugin (parser,options){
-	var es7check = function(){} ;
+    var es7check = function(){} ;
 
-	parser.extend("initialContext",function(base){
-		return function(){
-			if (this.options.ecmaVersion < 7) {
-				es7check = function(node) {
-					parser.raise(node.start,"async/await keywords only available when ecmaVersion>=7") ;
-				} ;
-			}
+    parser.extend("initialContext",function(base){
+        return function(){
+            if (this.options.ecmaVersion < 7) {
+                es7check = function(node) {
+                    parser.raise(node.start,"async/await keywords only available when ecmaVersion>=7") ;
+                } ;
+            }
       this.reservedWords = new RegExp(this.reservedWords.toString().replace(/await|async/g,"").replace("|/","/").replace("/|","/").replace("||","|")) ;
       this.reservedWordsStrict = new RegExp(this.reservedWordsStrict.toString().replace(/await|async/g,"").replace("|/","/").replace("/|","/").replace("||","|")) ;
       this.reservedWordsStrictBind = new RegExp(this.reservedWordsStrictBind.toString().replace(/await|async/g,"").replace("|/","/").replace("/|","/").replace("||","|")) ;
-			this.inAsyncFunction = options.inAsyncFunction ;
-			if (options.awaitAnywhere && options.inAsyncFunction)
-				parser.raise(node.start,"The options awaitAnywhere and inAsyncFunction are mutually exclusive") ;
+            this.inAsyncFunction = options.inAsyncFunction ;
+            if (options.awaitAnywhere && options.inAsyncFunction)
+                parser.raise(node.start,"The options awaitAnywhere and inAsyncFunction are mutually exclusive") ;
 
-			return base.apply(this,arguments);
-		}
-	}) ;
+            return base.apply(this,arguments);
+        }
+    }) ;
 
-	parser.extend("shouldParseExportStatement",function(base){
-	    return function(){
-	        if (this.type.label==='name' && this.value==='async' && test(asyncFunction,state(this))) {
-	            return true ;
-	        }
-	        return base.apply(this,arguments) ;
-	    }
-	}) ;
+    parser.extend("shouldParseExportStatement",function(base){
+        return function(){
+            if (this.type.label==='name' && this.value==='async' && test(asyncFunction,state(this))) {
+                return true ;
+            }
+            return base.apply(this,arguments) ;
+        }
+    }) ;
 
-	parser.extend("parseStatement",function(base){
-		return function (declaration, topLevel) {
-			var st = state(this) ;
-			var start = st.start;
-			var startLoc = st.startLoc;
-			if (st.type.label==='name') {
-				if (test(asyncFunction,st,true)) {
-					var wasAsync = st.inAsyncFunction ;
-					try {
-						st.inAsyncFunction = true ;
-						this.next() ;
-						var r = this.parseStatement(declaration, topLevel) ;
- 						r.async = true ;
-						r.start = start;
-						r.loc && (r.loc.start = startLoc);
-						return r ;
-					} finally {
-						st.inAsyncFunction = wasAsync ;
-					}
-				} else if ((typeof options==="object" && options.asyncExits) && test(asyncExit,st)) {
-					// NON-STANDARD EXTENSION iff. options.asyncExits is set, the
-					// extensions 'async return <expr>?' and 'async throw <expr>?'
-					// are enabled. In each case they are the standard ESTree nodes
-					// with the flag 'async:true'
-					this.next() ;
-					var r = this.parseStatement(declaration, topLevel) ;
-					r.async = true ;
-					r.start = start;
-					r.loc && (r.loc.start = startLoc);
-					return r ;
-				}
-			}
-			return base.apply(this,arguments);
-		}
-	}) ;
+    parser.extend("parseStatement",function(base){
+        return function (declaration, topLevel) {
+            var st = state(this) ;
+            var start = st.start;
+            var startLoc = st.startLoc;
+            if (st.type.label==='name') {
+                if (test(asyncFunction,st,true)) {
+                    var wasAsync = st.inAsyncFunction ;
+                    try {
+                        st.inAsyncFunction = true ;
+                        this.next() ;
+                        var r = this.parseStatement(declaration, topLevel) ;
+                        r.async = true ;
+                        r.start = start;
+                        r.loc && (r.loc.start = startLoc);
+                        return r ;
+                    } finally {
+                        st.inAsyncFunction = wasAsync ;
+                    }
+                } else if ((typeof options==="object" && options.asyncExits) && test(asyncExit,st)) {
+                    // NON-STANDARD EXTENSION iff. options.asyncExits is set, the
+                    // extensions 'async return <expr>?' and 'async throw <expr>?'
+                    // are enabled. In each case they are the standard ESTree nodes
+                    // with the flag 'async:true'
+                    this.next() ;
+                    var r = this.parseStatement(declaration, topLevel) ;
+                    r.async = true ;
+                    r.start = start;
+                    r.loc && (r.loc.start = startLoc);
+                    return r ;
+                }
+            }
+            return base.apply(this,arguments);
+        }
+    }) ;
 
   parser.extend("parseIdent",function(base){
-		return function(liberal){
-				var id = base.apply(this,arguments);
-				var st = state(this) ;
-				if (st.inAsyncFunction && id.name==='await') {
-					if (arguments.length===0) {
-						this.raise(id.start,"'await' is reserved within async functions") ;
-					}
-				}
-				return id ;
-		}
-	}) ;
+        return function(liberal){
+                var id = base.apply(this,arguments);
+                var st = state(this) ;
+                if (st.inAsyncFunction && id.name==='await') {
+                    if (arguments.length===0) {
+                        this.raise(id.start,"'await' is reserved within async functions") ;
+                    }
+                }
+                return id ;
+        }
+    }) ;
 
-	parser.extend("parseExprAtom",function(base){
-		return function(refShorthandDefaultPos){
-			var st = state(this) ;
-			var start = st.start ;
-			var startLoc = st.startLoc;
-			var rhs,r = base.apply(this,arguments);
-			if (r.type==='Identifier') {
-				if (r.name==='async' && !hasLineTerminatorBeforeNext(st, r.end)) {
-					// Is this really an async function?
-					var isAsync = st.inAsyncFunction ;
-					try {
-						st.inAsyncFunction = true ;
-						var pp = this ;
-						var inBody = false ;
+    parser.extend("parseExprAtom",function(base){
+        return function(refShorthandDefaultPos){
+            var st = state(this) ;
+            var start = st.start ;
+            var startLoc = st.startLoc;
+            var rhs,r = base.apply(this,arguments);
+            if (r.type==='Identifier') {
+                if (r.name==='async' && !hasLineTerminatorBeforeNext(st, r.end)) {
+                    // Is this really an async function?
+                    var isAsync = st.inAsyncFunction ;
+                    try {
+                        st.inAsyncFunction = true ;
+                        var pp = this ;
+                        var inBody = false ;
 
-						var parseHooks = {
-							parseFunctionBody:function(node,isArrowFunction){
-								try {
-									var wasInBody = inBody ;
-									inBody = true ;
-									return pp.parseFunctionBody.apply(this,arguments) ;
-								} finally {
-									inBody = wasInBody ;
-								}
-							},
-							raise:function(){
-								try {
-									return pp.raise.apply(this,arguments) ;
-								} catch(ex) {
-									throw inBody?ex:NotAsync ;
-								}
-							}
-						} ;
+                        var parseHooks = {
+                            parseFunctionBody:function(node,isArrowFunction){
+                                try {
+                                    var wasInBody = inBody ;
+                                    inBody = true ;
+                                    return pp.parseFunctionBody.apply(this,arguments) ;
+                                } finally {
+                                    inBody = wasInBody ;
+                                }
+                            },
+                            raise:function(){
+                                try {
+                                    return pp.raise.apply(this,arguments) ;
+                                } catch(ex) {
+                                    throw inBody?ex:NotAsync ;
+                                }
+                            }
+                        } ;
 
-						rhs = subParse(this,st.start,parseHooks).parseExpression() ;
-						if (rhs.type==='SequenceExpression')
-							rhs = rhs.expressions[0] ;
-						if (rhs.type==='FunctionExpression' || rhs.type==='FunctionDeclaration' || rhs.type==='ArrowFunctionExpression') {
-							rhs.async = true ;
-							rhs.start = start;
-							rhs.loc && (rhs.loc.start = startLoc);
-							st.pos = rhs.end;
-							this.next();
-							es7check(rhs) ;
-							return rhs ;
-						}
-					} catch (ex) {
-						if (ex!==NotAsync)
-							throw ex ;
-					}
-					finally {
-						st.inAsyncFunction = isAsync ;
-					}
-				}
-				else if (r.name==='await') {
-					var n = this.startNodeAt(r.start, r.loc && r.loc.start);
-					if (st.inAsyncFunction) {
-						rhs = this.parseExprSubscripts() ;
-						n.operator = 'await' ;
-						n.argument = rhs ;
-						n = this.finishNodeAt(n,'AwaitExpression', rhs.end, rhs.loc && rhs.loc.end) ;
-						es7check(n) ;
-						return n ;
-					} else
-						// NON-STANDARD EXTENSION iff. options.awaitAnywhere is true,
-						// an 'AwaitExpression' is allowed anywhere the token 'await'
-						// could not be an identifier with the name 'await'.
+                        rhs = subParse(this,st.start,parseHooks).parseExpression() ;
+                        if (rhs.type==='SequenceExpression')
+                            rhs = rhs.expressions[0] ;
+                        if (rhs.type==='FunctionExpression' || rhs.type==='FunctionDeclaration' || rhs.type==='ArrowFunctionExpression') {
+                            rhs.async = true ;
+                            rhs.start = start;
+                            rhs.loc && (rhs.loc.start = startLoc);
+                            st.pos = rhs.end;
+                            this.next();
+                            es7check(rhs) ;
+                            return rhs ;
+                        }
+                    } catch (ex) {
+                        if (ex!==NotAsync)
+                            throw ex ;
+                    }
+                    finally {
+                        st.inAsyncFunction = isAsync ;
+                    }
+                }
+                else if (r.name==='await') {
+                    var n = this.startNodeAt(r.start, r.loc && r.loc.start);
+                    if (st.inAsyncFunction) {
+                        rhs = this.parseExprSubscripts() ;
+                        n.operator = 'await' ;
+                        n.argument = rhs ;
+                        n = this.finishNodeAt(n,'AwaitExpression', rhs.end, rhs.loc && rhs.loc.end) ;
+                        es7check(n) ;
+                        return n ;
+                    } else
+                        // NON-STANDARD EXTENSION iff. options.awaitAnywhere is true,
+                        // an 'AwaitExpression' is allowed anywhere the token 'await'
+                        // could not be an identifier with the name 'await'.
 
-						// Look-ahead to see if this is really a property or label called async or await
-						if (st.input.slice(r.end).match(atomOrPropertyOrLabel))
-							return r ; // This is a valid property name or label
+                        // Look-ahead to see if this is really a property or label called async or await
+                        if (st.input.slice(r.end).match(atomOrPropertyOrLabel))
+                            return r ; // This is a valid property name or label
 
-						if (typeof options==="object" && options.awaitAnywhere) {
-							start = st.start ;
-							rhs = subParse(this,start-4).parseExprSubscripts() ;
-							if (rhs.end<=start) {
-								rhs = subParse(this,start).parseExprSubscripts() ;
-								n.operator = 'await' ;
-								n.argument = rhs ;
-								n = this.finishNodeAt(n,'AwaitExpression', rhs.end, rhs.loc && rhs.loc.end) ;
-								st.pos = rhs.end;
-								this.next();
-								es7check(n) ;
-								return n ;
-							}
-						}
-				}
-			}
-			return r ;
-		}
-	}) ;
+                        if (typeof options==="object" && options.awaitAnywhere) {
+                            start = st.start ;
+                            rhs = subParse(this,start-4).parseExprSubscripts() ;
+                            if (rhs.end<=start) {
+                                rhs = subParse(this,start).parseExprSubscripts() ;
+                                n.operator = 'await' ;
+                                n.argument = rhs ;
+                                n = this.finishNodeAt(n,'AwaitExpression', rhs.end, rhs.loc && rhs.loc.end) ;
+                                st.pos = rhs.end;
+                                this.next();
+                                es7check(n) ;
+                                return n ;
+                            }
+                        }
+                }
+            }
+            return r ;
+        }
+    }) ;
 
-	parser.extend('finishNodeAt',function(base){
-			return function(node,type,pos,loc) {
-				if (node.__asyncValue) {
-					delete node.__asyncValue ;
-					node.value.async = true ;
-				}
-				return base.apply(this,arguments) ;
-			}
-	}) ;
+    parser.extend('finishNodeAt',function(base){
+            return function(node,type,pos,loc) {
+                if (node.__asyncValue) {
+                    delete node.__asyncValue ;
+                    node.value.async = true ;
+                }
+                return base.apply(this,arguments) ;
+            }
+    }) ;
 
-	parser.extend('finishNode',function(base){
-			return function(node,type) {
-				if (node.__asyncValue) {
-					delete node.__asyncValue ;
-					node.value.async = true ;
-				}
-				return base.apply(this,arguments) ;
-			}
-	}) ;
+    parser.extend('finishNode',function(base){
+            return function(node,type) {
+                if (node.__asyncValue) {
+                    delete node.__asyncValue ;
+                    node.value.async = true ;
+                }
+                return base.apply(this,arguments) ;
+            }
+    }) ;
 
-	parser.extend("parsePropertyName",function(base){
-		return function (prop) {
-			var st = state(this) ;
-			var key = base.apply(this,arguments) ;
-			if (key.type === "Identifier" && key.name === "async" && !hasLineTerminatorBeforeNext(st, key.end)) {
-				// Look-ahead to see if this is really a property or label called async or await
-				if (!st.input.slice(key.end).match(atomOrPropertyOrLabel)){
-					es7check(prop) ;
-					key = base.apply(this,arguments) ;
-					if (key.type==='Identifier') {
-						if (key.name==='constructor')
-							this.raise(key.start,"'constructor()' cannot be be async") ;
-						else if (key.name==='set')
-							this.raise(key.start,"'set <member>(value)' cannot be be async") ;
-					}
-					prop.__asyncValue = true ;
-				}
-			}
-			return key;
-		};
-	}) ;
+    parser.extend("parsePropertyName",function(base){
+        return function (prop) {
+            var st = state(this) ;
+            var key = base.apply(this,arguments) ;
+            if (key.type === "Identifier" && key.name === "async" && !hasLineTerminatorBeforeNext(st, key.end)) {
+                // Look-ahead to see if this is really a property or label called async or await
+                if (!st.input.slice(key.end).match(atomOrPropertyOrLabel)){
+                    es7check(prop) ;
+                    key = base.apply(this,arguments) ;
+                    if (key.type==='Identifier') {
+                        if (key.name==='constructor')
+                            this.raise(key.start,"'constructor()' cannot be be async") ;
+                        else if (key.name==='set')
+                            this.raise(key.start,"'set <member>(value)' cannot be be async") ;
+                    }
+                    prop.__asyncValue = true ;
+                }
+            }
+            return key;
+        };
+    }) ;
+
+    parser.extend("parseClassMethod",function(base){
+        return function (classBody, method, isGenerator) {
+            var st, wasAsync ;
+            if (method.__asyncValue) {
+                st = state(this) ;
+                wasAsync = st.inAsyncFunction ;
+                st.inAsyncFunction = true ;
+            }
+            var r = base.apply(this,arguments) ;
+            if (st) {
+                st.inAsyncFunction = wasAsync ;
+            }
+            return r ;
+        }
+    }) ;
+    
+    parser.extend("parsePropertyValue",function(base){
+        return function (prop, isPattern, isGenerator, startPos, startLoc, refDestructuringErrors) {
+            var st, wasAsync ;
+            if (prop.__asyncValue) {
+                st = state(this) ;
+                wasAsync = st.inAsyncFunction ;
+                st.inAsyncFunction = true ;
+            }
+            var r = base.apply(this,arguments) ;
+            if (st) {
+                st.inAsyncFunction = wasAsync ;
+            }
+            return r ;
+        }
+    }) ;
 }
 
 module.exports = function(acorn) {
-	acorn.plugins.asyncawait = asyncAwaitPlugin ;
-	return acorn
+    acorn.plugins.asyncawait = asyncAwaitPlugin ;
+    return acorn
 }
 
 },{}],5:[function(_dereq_,module,exports){
@@ -554,6 +584,8 @@ module.exports = function(acorn) {
 var _tokentype = _dereq_("./tokentype");
 
 var _state = _dereq_("./state");
+
+var _parseutil = _dereq_("./parseutil");
 
 var pp = _state.Parser.prototype;
 
@@ -631,10 +663,10 @@ pp.parseExpression = function (noIn, refDestructuringErrors) {
 pp.parseMaybeAssign = function (noIn, refDestructuringErrors, afterLeftParse) {
   if (this.inGenerator && this.isContextual("yield")) return this.parseYield();
 
-  var validateDestructuring = false;
+  var ownDestructuringErrors = false;
   if (!refDestructuringErrors) {
-    refDestructuringErrors = { shorthandAssign: 0, trailingComma: 0 };
-    validateDestructuring = true;
+    refDestructuringErrors = new _parseutil.DestructuringErrors();
+    ownDestructuringErrors = true;
   }
   var startPos = this.start,
       startLoc = this.startLoc;
@@ -642,7 +674,8 @@ pp.parseMaybeAssign = function (noIn, refDestructuringErrors, afterLeftParse) {
   var left = this.parseMaybeConditional(noIn, refDestructuringErrors);
   if (afterLeftParse) left = afterLeftParse.call(this, left, startPos, startLoc);
   if (this.type.isAssign) {
-    if (validateDestructuring) this.checkPatternErrors(refDestructuringErrors, true);
+    this.checkPatternErrors(refDestructuringErrors, true);
+    if (!ownDestructuringErrors) _parseutil.DestructuringErrors.call(refDestructuringErrors);
     var node = this.startNodeAt(startPos, startLoc);
     node.operator = this.value;
     node.left = this.type === _tokentype.types.eq ? this.toAssignable(left) : left;
@@ -652,7 +685,7 @@ pp.parseMaybeAssign = function (noIn, refDestructuringErrors, afterLeftParse) {
     node.right = this.parseMaybeAssign(noIn);
     return this.finishNode(node, "AssignmentExpression");
   } else {
-    if (validateDestructuring) this.checkExpressionErrors(refDestructuringErrors, true);
+    if (ownDestructuringErrors) this.checkExpressionErrors(refDestructuringErrors, true);
   }
   return left;
 };
@@ -889,7 +922,7 @@ pp.parseParenAndDistinguishExpression = function (canBeArrow) {
         innerStartLoc = this.startLoc;
     var exprList = [],
         first = true;
-    var refDestructuringErrors = { shorthandAssign: 0, trailingComma: 0 },
+    var refDestructuringErrors = new _parseutil.DestructuringErrors(),
         spreadStart = undefined,
         innerParenStart = undefined;
     while (this.type !== _tokentype.types.parenR) {
@@ -1057,9 +1090,9 @@ pp.parsePropertyValue = function (prop, isPattern, isGenerator, startPos, startL
     }
     if (prop.kind === "set" && prop.value.params[0].type === "RestElement") this.raiseRecoverable(prop.value.params[0].start, "Setter cannot use rest params");
   } else if (this.options.ecmaVersion >= 6 && !prop.computed && prop.key.type === "Identifier") {
+    if (this.keywords.test(prop.key.name) || (this.strict ? this.reservedWordsStrictBind : this.reservedWords).test(prop.key.name) || this.inGenerator && prop.key.name == "yield") this.raiseRecoverable(prop.key.start, "'" + prop.key.name + "' can not be used as shorthand property");
     prop.kind = "init";
     if (isPattern) {
-      if (this.keywords.test(prop.key.name) || (this.strict ? this.reservedWordsStrictBind : this.reservedWords).test(prop.key.name) || this.inGenerator && prop.key.name == "yield") this.raiseRecoverable(prop.key.start, "Binding " + prop.key.name);
       prop.value = this.parseMaybeDefault(startPos, startLoc, prop.key);
     } else if (this.type === _tokentype.types.eq && refDestructuringErrors) {
       if (!refDestructuringErrors.shorthandAssign) refDestructuringErrors.shorthandAssign = this.start;
@@ -1227,7 +1260,7 @@ pp.parseYield = function () {
   return this.finishNode(node, "YieldExpression");
 };
 
-},{"./state":10,"./tokentype":14}],2:[function(_dereq_,module,exports){
+},{"./parseutil":9,"./state":10,"./tokentype":14}],2:[function(_dereq_,module,exports){
 // Reserved word lists for various dialects of the language
 
 "use strict";
@@ -1928,6 +1961,10 @@ function pushComment(options, array) {
 },{"./locutil":5,"./util":15}],9:[function(_dereq_,module,exports){
 "use strict";
 
+exports.__esModule = true;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var _tokentype = _dereq_("./tokentype");
 
 var _state = _dereq_("./state");
@@ -2015,10 +2052,19 @@ pp.unexpected = function (pos) {
   this.raise(pos != null ? pos : this.start, "Unexpected token");
 };
 
+var DestructuringErrors = function DestructuringErrors() {
+  _classCallCheck(this, DestructuringErrors);
+
+  this.shorthandAssign = 0;
+  this.trailingComma = 0;
+};
+
+exports.DestructuringErrors = DestructuringErrors;
+
 pp.checkPatternErrors = function (refDestructuringErrors, andThrow) {
-  var pos = refDestructuringErrors && refDestructuringErrors.trailingComma;
-  if (!andThrow) return !!pos;
-  if (pos) this.raise(pos, "Comma is not permitted after the rest element");
+  var trailing = refDestructuringErrors && refDestructuringErrors.trailingComma;
+  if (!andThrow) return !!trailing;
+  if (trailing) this.raise(trailing, "Comma is not permitted after the rest element");
 };
 
 pp.checkExpressionErrors = function (refDestructuringErrors, andThrow) {
@@ -2163,6 +2209,8 @@ var _state = _dereq_("./state");
 var _whitespace = _dereq_("./whitespace");
 
 var _identifier = _dereq_("./identifier");
+
+var _parseutil = _dereq_("./parseutil");
 
 var pp = _state.Parser.prototype;
 
@@ -2348,7 +2396,7 @@ pp.parseForStatement = function (node) {
     if ((this.type === _tokentype.types._in || this.options.ecmaVersion >= 6 && this.isContextual("of")) && _init.declarations.length === 1 && !(kind !== "var" && _init.declarations[0].init)) return this.parseForIn(node, _init);
     return this.parseFor(node, _init);
   }
-  var refDestructuringErrors = { shorthandAssign: 0, trailingComma: 0 };
+  var refDestructuringErrors = new _parseutil.DestructuringErrors();
   var init = this.parseExpression(true, refDestructuringErrors);
   if (this.type === _tokentype.types._in || this.options.ecmaVersion >= 6 && this.isContextual("of")) {
     this.checkPatternErrors(refDestructuringErrors, true);
@@ -2816,7 +2864,7 @@ pp.parseImportSpecifiers = function () {
   return nodes;
 };
 
-},{"./identifier":2,"./state":10,"./tokentype":14,"./whitespace":16}],12:[function(_dereq_,module,exports){
+},{"./identifier":2,"./parseutil":9,"./state":10,"./tokentype":14,"./whitespace":16}],12:[function(_dereq_,module,exports){
 // The algorithm used to determine whether a regexp can appear at a
 // given point in the program is loosely based on sweet.js' approach.
 // See https://github.com/mozilla/sweet.js/wiki/design
@@ -3388,26 +3436,32 @@ pp.readRegexp = function () {
   // Need to use `readWord1` because '\uXXXX' sequences are allowed
   // here (don't ask).
   var mods = this.readWord1();
-  var tmp = content;
+  var tmp = content,
+      tmpFlags = "";
   if (mods) {
     var validFlags = /^[gim]*$/;
     if (this.options.ecmaVersion >= 6) validFlags = /^[gimuy]*$/;
     if (!validFlags.test(mods)) this.raise(start, "Invalid regular expression flag");
-    if (mods.indexOf('u') >= 0 && !regexpUnicodeSupport) {
-      // Replace each astral symbol and every Unicode escape sequence that
-      // possibly represents an astral symbol or a paired surrogate with a
-      // single ASCII symbol to avoid throwing on regular expressions that
-      // are only valid in combination with the `/u` flag.
-      // Note: replacing with the ASCII symbol `x` might cause false
-      // negatives in unlikely scenarios. For example, `[\u{61}-b]` is a
-      // perfectly valid pattern that is equivalent to `[a-b]`, but it would
-      // be replaced by `[x-b]` which throws an error.
-      tmp = tmp.replace(/\\u\{([0-9a-fA-F]+)\}/g, function (_match, code, offset) {
-        code = Number("0x" + code);
-        if (code > 0x10FFFF) _this.raise(start + offset + 3, "Code point out of bounds");
-        return "x";
-      });
-      tmp = tmp.replace(/\\u([a-fA-F0-9]{4})|[\uD800-\uDBFF][\uDC00-\uDFFF]/g, "x");
+    if (mods.indexOf("u") >= 0) {
+      if (regexpUnicodeSupport) {
+        tmpFlags = "u";
+      } else {
+        // Replace each astral symbol and every Unicode escape sequence that
+        // possibly represents an astral symbol or a paired surrogate with a
+        // single ASCII symbol to avoid throwing on regular expressions that
+        // are only valid in combination with the `/u` flag.
+        // Note: replacing with the ASCII symbol `x` might cause false
+        // negatives in unlikely scenarios. For example, `[\u{61}-b]` is a
+        // perfectly valid pattern that is equivalent to `[a-b]`, but it would
+        // be replaced by `[x-b]` which throws an error.
+        tmp = tmp.replace(/\\u\{([0-9a-fA-F]+)\}/g, function (_match, code, offset) {
+          code = Number("0x" + code);
+          if (code > 0x10FFFF) _this.raise(start + offset + 3, "Code point out of bounds");
+          return "x";
+        });
+        tmp = tmp.replace(/\\u([a-fA-F0-9]{4})|[\uD800-\uDBFF][\uDC00-\uDFFF]/g, "x");
+        tmpFlags = tmpFlags.replace("u", "");
+      }
     }
   }
   // Detect invalid regular expressions.
@@ -3415,7 +3469,7 @@ pp.readRegexp = function () {
   // Rhino's regular expression parser is flaky and throws uncatchable exceptions,
   // so don't do detection if we are running under Rhino
   if (!isRhino) {
-    tryCreateRegexp(tmp, undefined, start, this);
+    tryCreateRegexp(tmp, tmpFlags, start, this);
     // Get a regular expression object for this pattern-flag pair, or `null` in
     // case the current environment doesn't support the flags it uses.
     value = tryCreateRegexp(content, mods);
@@ -4493,1741 +4547,8 @@ _dereq_('./_object-sap')('keys', function(){
   };
 });
 },{"./_object-keys":42,"./_object-sap":44,"./_to-object":53}],66:[function(_dereq_,module,exports){
-var eaw = {};
+'use strict'
 
-if ('undefined' == typeof module) {
-  window.eastasianwidth = eaw;
-} else {
-  module.exports = eaw;
-}
-
-eaw.eastAsianWidth = function(character) {
-  var x = character.charCodeAt(0);
-  var y = (character.length == 2) ? character.charCodeAt(1) : 0;
-  var codePoint = x;
-  if ((0xD800 <= x && x <= 0xDBFF) && (0xDC00 <= y && y <= 0xDFFF)) {
-    x &= 0x3FF;
-    y &= 0x3FF;
-    codePoint = (x << 10) | y;
-    codePoint += 0x10000;
-  }
-
-  if ((0x3000 == codePoint) ||
-      (0xFF01 <= codePoint && codePoint <= 0xFF60) ||
-      (0xFFE0 <= codePoint && codePoint <= 0xFFE6)) {
-    return 'F';
-  }
-  if ((0x20A9 == codePoint) ||
-      (0xFF61 <= codePoint && codePoint <= 0xFFBE) ||
-      (0xFFC2 <= codePoint && codePoint <= 0xFFC7) ||
-      (0xFFCA <= codePoint && codePoint <= 0xFFCF) ||
-      (0xFFD2 <= codePoint && codePoint <= 0xFFD7) ||
-      (0xFFDA <= codePoint && codePoint <= 0xFFDC) ||
-      (0xFFE8 <= codePoint && codePoint <= 0xFFEE)) {
-    return 'H';
-  }
-  if ((0x1100 <= codePoint && codePoint <= 0x115F) ||
-      (0x11A3 <= codePoint && codePoint <= 0x11A7) ||
-      (0x11FA <= codePoint && codePoint <= 0x11FF) ||
-      (0x2329 <= codePoint && codePoint <= 0x232A) ||
-      (0x2E80 <= codePoint && codePoint <= 0x2E99) ||
-      (0x2E9B <= codePoint && codePoint <= 0x2EF3) ||
-      (0x2F00 <= codePoint && codePoint <= 0x2FD5) ||
-      (0x2FF0 <= codePoint && codePoint <= 0x2FFB) ||
-      (0x3001 <= codePoint && codePoint <= 0x303E) ||
-      (0x3041 <= codePoint && codePoint <= 0x3096) ||
-      (0x3099 <= codePoint && codePoint <= 0x30FF) ||
-      (0x3105 <= codePoint && codePoint <= 0x312D) ||
-      (0x3131 <= codePoint && codePoint <= 0x318E) ||
-      (0x3190 <= codePoint && codePoint <= 0x31BA) ||
-      (0x31C0 <= codePoint && codePoint <= 0x31E3) ||
-      (0x31F0 <= codePoint && codePoint <= 0x321E) ||
-      (0x3220 <= codePoint && codePoint <= 0x3247) ||
-      (0x3250 <= codePoint && codePoint <= 0x32FE) ||
-      (0x3300 <= codePoint && codePoint <= 0x4DBF) ||
-      (0x4E00 <= codePoint && codePoint <= 0xA48C) ||
-      (0xA490 <= codePoint && codePoint <= 0xA4C6) ||
-      (0xA960 <= codePoint && codePoint <= 0xA97C) ||
-      (0xAC00 <= codePoint && codePoint <= 0xD7A3) ||
-      (0xD7B0 <= codePoint && codePoint <= 0xD7C6) ||
-      (0xD7CB <= codePoint && codePoint <= 0xD7FB) ||
-      (0xF900 <= codePoint && codePoint <= 0xFAFF) ||
-      (0xFE10 <= codePoint && codePoint <= 0xFE19) ||
-      (0xFE30 <= codePoint && codePoint <= 0xFE52) ||
-      (0xFE54 <= codePoint && codePoint <= 0xFE66) ||
-      (0xFE68 <= codePoint && codePoint <= 0xFE6B) ||
-      (0x1B000 <= codePoint && codePoint <= 0x1B001) ||
-      (0x1F200 <= codePoint && codePoint <= 0x1F202) ||
-      (0x1F210 <= codePoint && codePoint <= 0x1F23A) ||
-      (0x1F240 <= codePoint && codePoint <= 0x1F248) ||
-      (0x1F250 <= codePoint && codePoint <= 0x1F251) ||
-      (0x20000 <= codePoint && codePoint <= 0x2F73F) ||
-      (0x2B740 <= codePoint && codePoint <= 0x2FFFD) ||
-      (0x30000 <= codePoint && codePoint <= 0x3FFFD)) {
-    return 'W';
-  }
-  if ((0x0020 <= codePoint && codePoint <= 0x007E) ||
-      (0x00A2 <= codePoint && codePoint <= 0x00A3) ||
-      (0x00A5 <= codePoint && codePoint <= 0x00A6) ||
-      (0x00AC == codePoint) ||
-      (0x00AF == codePoint) ||
-      (0x27E6 <= codePoint && codePoint <= 0x27ED) ||
-      (0x2985 <= codePoint && codePoint <= 0x2986)) {
-    return 'Na';
-  }
-  if ((0x00A1 == codePoint) ||
-      (0x00A4 == codePoint) ||
-      (0x00A7 <= codePoint && codePoint <= 0x00A8) ||
-      (0x00AA == codePoint) ||
-      (0x00AD <= codePoint && codePoint <= 0x00AE) ||
-      (0x00B0 <= codePoint && codePoint <= 0x00B4) ||
-      (0x00B6 <= codePoint && codePoint <= 0x00BA) ||
-      (0x00BC <= codePoint && codePoint <= 0x00BF) ||
-      (0x00C6 == codePoint) ||
-      (0x00D0 == codePoint) ||
-      (0x00D7 <= codePoint && codePoint <= 0x00D8) ||
-      (0x00DE <= codePoint && codePoint <= 0x00E1) ||
-      (0x00E6 == codePoint) ||
-      (0x00E8 <= codePoint && codePoint <= 0x00EA) ||
-      (0x00EC <= codePoint && codePoint <= 0x00ED) ||
-      (0x00F0 == codePoint) ||
-      (0x00F2 <= codePoint && codePoint <= 0x00F3) ||
-      (0x00F7 <= codePoint && codePoint <= 0x00FA) ||
-      (0x00FC == codePoint) ||
-      (0x00FE == codePoint) ||
-      (0x0101 == codePoint) ||
-      (0x0111 == codePoint) ||
-      (0x0113 == codePoint) ||
-      (0x011B == codePoint) ||
-      (0x0126 <= codePoint && codePoint <= 0x0127) ||
-      (0x012B == codePoint) ||
-      (0x0131 <= codePoint && codePoint <= 0x0133) ||
-      (0x0138 == codePoint) ||
-      (0x013F <= codePoint && codePoint <= 0x0142) ||
-      (0x0144 == codePoint) ||
-      (0x0148 <= codePoint && codePoint <= 0x014B) ||
-      (0x014D == codePoint) ||
-      (0x0152 <= codePoint && codePoint <= 0x0153) ||
-      (0x0166 <= codePoint && codePoint <= 0x0167) ||
-      (0x016B == codePoint) ||
-      (0x01CE == codePoint) ||
-      (0x01D0 == codePoint) ||
-      (0x01D2 == codePoint) ||
-      (0x01D4 == codePoint) ||
-      (0x01D6 == codePoint) ||
-      (0x01D8 == codePoint) ||
-      (0x01DA == codePoint) ||
-      (0x01DC == codePoint) ||
-      (0x0251 == codePoint) ||
-      (0x0261 == codePoint) ||
-      (0x02C4 == codePoint) ||
-      (0x02C7 == codePoint) ||
-      (0x02C9 <= codePoint && codePoint <= 0x02CB) ||
-      (0x02CD == codePoint) ||
-      (0x02D0 == codePoint) ||
-      (0x02D8 <= codePoint && codePoint <= 0x02DB) ||
-      (0x02DD == codePoint) ||
-      (0x02DF == codePoint) ||
-      (0x0300 <= codePoint && codePoint <= 0x036F) ||
-      (0x0391 <= codePoint && codePoint <= 0x03A1) ||
-      (0x03A3 <= codePoint && codePoint <= 0x03A9) ||
-      (0x03B1 <= codePoint && codePoint <= 0x03C1) ||
-      (0x03C3 <= codePoint && codePoint <= 0x03C9) ||
-      (0x0401 == codePoint) ||
-      (0x0410 <= codePoint && codePoint <= 0x044F) ||
-      (0x0451 == codePoint) ||
-      (0x2010 == codePoint) ||
-      (0x2013 <= codePoint && codePoint <= 0x2016) ||
-      (0x2018 <= codePoint && codePoint <= 0x2019) ||
-      (0x201C <= codePoint && codePoint <= 0x201D) ||
-      (0x2020 <= codePoint && codePoint <= 0x2022) ||
-      (0x2024 <= codePoint && codePoint <= 0x2027) ||
-      (0x2030 == codePoint) ||
-      (0x2032 <= codePoint && codePoint <= 0x2033) ||
-      (0x2035 == codePoint) ||
-      (0x203B == codePoint) ||
-      (0x203E == codePoint) ||
-      (0x2074 == codePoint) ||
-      (0x207F == codePoint) ||
-      (0x2081 <= codePoint && codePoint <= 0x2084) ||
-      (0x20AC == codePoint) ||
-      (0x2103 == codePoint) ||
-      (0x2105 == codePoint) ||
-      (0x2109 == codePoint) ||
-      (0x2113 == codePoint) ||
-      (0x2116 == codePoint) ||
-      (0x2121 <= codePoint && codePoint <= 0x2122) ||
-      (0x2126 == codePoint) ||
-      (0x212B == codePoint) ||
-      (0x2153 <= codePoint && codePoint <= 0x2154) ||
-      (0x215B <= codePoint && codePoint <= 0x215E) ||
-      (0x2160 <= codePoint && codePoint <= 0x216B) ||
-      (0x2170 <= codePoint && codePoint <= 0x2179) ||
-      (0x2189 == codePoint) ||
-      (0x2190 <= codePoint && codePoint <= 0x2199) ||
-      (0x21B8 <= codePoint && codePoint <= 0x21B9) ||
-      (0x21D2 == codePoint) ||
-      (0x21D4 == codePoint) ||
-      (0x21E7 == codePoint) ||
-      (0x2200 == codePoint) ||
-      (0x2202 <= codePoint && codePoint <= 0x2203) ||
-      (0x2207 <= codePoint && codePoint <= 0x2208) ||
-      (0x220B == codePoint) ||
-      (0x220F == codePoint) ||
-      (0x2211 == codePoint) ||
-      (0x2215 == codePoint) ||
-      (0x221A == codePoint) ||
-      (0x221D <= codePoint && codePoint <= 0x2220) ||
-      (0x2223 == codePoint) ||
-      (0x2225 == codePoint) ||
-      (0x2227 <= codePoint && codePoint <= 0x222C) ||
-      (0x222E == codePoint) ||
-      (0x2234 <= codePoint && codePoint <= 0x2237) ||
-      (0x223C <= codePoint && codePoint <= 0x223D) ||
-      (0x2248 == codePoint) ||
-      (0x224C == codePoint) ||
-      (0x2252 == codePoint) ||
-      (0x2260 <= codePoint && codePoint <= 0x2261) ||
-      (0x2264 <= codePoint && codePoint <= 0x2267) ||
-      (0x226A <= codePoint && codePoint <= 0x226B) ||
-      (0x226E <= codePoint && codePoint <= 0x226F) ||
-      (0x2282 <= codePoint && codePoint <= 0x2283) ||
-      (0x2286 <= codePoint && codePoint <= 0x2287) ||
-      (0x2295 == codePoint) ||
-      (0x2299 == codePoint) ||
-      (0x22A5 == codePoint) ||
-      (0x22BF == codePoint) ||
-      (0x2312 == codePoint) ||
-      (0x2460 <= codePoint && codePoint <= 0x24E9) ||
-      (0x24EB <= codePoint && codePoint <= 0x254B) ||
-      (0x2550 <= codePoint && codePoint <= 0x2573) ||
-      (0x2580 <= codePoint && codePoint <= 0x258F) ||
-      (0x2592 <= codePoint && codePoint <= 0x2595) ||
-      (0x25A0 <= codePoint && codePoint <= 0x25A1) ||
-      (0x25A3 <= codePoint && codePoint <= 0x25A9) ||
-      (0x25B2 <= codePoint && codePoint <= 0x25B3) ||
-      (0x25B6 <= codePoint && codePoint <= 0x25B7) ||
-      (0x25BC <= codePoint && codePoint <= 0x25BD) ||
-      (0x25C0 <= codePoint && codePoint <= 0x25C1) ||
-      (0x25C6 <= codePoint && codePoint <= 0x25C8) ||
-      (0x25CB == codePoint) ||
-      (0x25CE <= codePoint && codePoint <= 0x25D1) ||
-      (0x25E2 <= codePoint && codePoint <= 0x25E5) ||
-      (0x25EF == codePoint) ||
-      (0x2605 <= codePoint && codePoint <= 0x2606) ||
-      (0x2609 == codePoint) ||
-      (0x260E <= codePoint && codePoint <= 0x260F) ||
-      (0x2614 <= codePoint && codePoint <= 0x2615) ||
-      (0x261C == codePoint) ||
-      (0x261E == codePoint) ||
-      (0x2640 == codePoint) ||
-      (0x2642 == codePoint) ||
-      (0x2660 <= codePoint && codePoint <= 0x2661) ||
-      (0x2663 <= codePoint && codePoint <= 0x2665) ||
-      (0x2667 <= codePoint && codePoint <= 0x266A) ||
-      (0x266C <= codePoint && codePoint <= 0x266D) ||
-      (0x266F == codePoint) ||
-      (0x269E <= codePoint && codePoint <= 0x269F) ||
-      (0x26BE <= codePoint && codePoint <= 0x26BF) ||
-      (0x26C4 <= codePoint && codePoint <= 0x26CD) ||
-      (0x26CF <= codePoint && codePoint <= 0x26E1) ||
-      (0x26E3 == codePoint) ||
-      (0x26E8 <= codePoint && codePoint <= 0x26FF) ||
-      (0x273D == codePoint) ||
-      (0x2757 == codePoint) ||
-      (0x2776 <= codePoint && codePoint <= 0x277F) ||
-      (0x2B55 <= codePoint && codePoint <= 0x2B59) ||
-      (0x3248 <= codePoint && codePoint <= 0x324F) ||
-      (0xE000 <= codePoint && codePoint <= 0xF8FF) ||
-      (0xFE00 <= codePoint && codePoint <= 0xFE0F) ||
-      (0xFFFD == codePoint) ||
-      (0x1F100 <= codePoint && codePoint <= 0x1F10A) ||
-      (0x1F110 <= codePoint && codePoint <= 0x1F12D) ||
-      (0x1F130 <= codePoint && codePoint <= 0x1F169) ||
-      (0x1F170 <= codePoint && codePoint <= 0x1F19A) ||
-      (0xE0100 <= codePoint && codePoint <= 0xE01EF) ||
-      (0xF0000 <= codePoint && codePoint <= 0xFFFFD) ||
-      (0x100000 <= codePoint && codePoint <= 0x10FFFD)) {
-    return 'A';
-  }
-
-  return 'N';
-};
-
-eaw.characterLength = function(character) {
-  var code = this.eastAsianWidth(character);
-  if (code == 'F' || code == 'W' || code == 'A') {
-    return 2;
-  } else {
-    return 1;
-  }
-};
-
-eaw.length = function(string) {
-  var len = 0;
-  for (var i = 0; i < string.length; i++) {
-    len = len + this.characterLength(string.charAt(i));
-  }
-  return len;
-};
-
-eaw.slice = function(text, start, end) {
-  start = start ? start : 0;
-  end = end ? end : 1;
-  var result = '';
-  for (var i = 0; i < text.length; i++) {
-    var char = text.charAt(i);
-    var eawLen = eaw.length(result + char);
-    if (eawLen >= 1 + start && eawLen < 1 + end) {
-      result += char
-    }
-  }
-  return result;
-};
-
-},{}],67:[function(_dereq_,module,exports){
-/**
- * espurify - Clone new AST without extra properties
- * 
- * https://github.com/estools/espurify
- *
- * Copyright (c) 2014-2016 Takuto Wada
- * Licensed under the MIT license.
- *   https://github.com/estools/espurify/blob/master/MIT-LICENSE.txt
- */
-'use strict';
-
-var createWhitelist = _dereq_('./lib/create-whitelist');
-var cloneWithWhitelist = _dereq_('./lib/clone-ast');
-
-function createCloneFunction (options) {
-    return cloneWithWhitelist(createWhitelist(options));
-}
-
-var espurify = createCloneFunction();
-espurify.customize = createCloneFunction;
-espurify.cloneWithWhitelist = cloneWithWhitelist;
-module.exports = espurify;
-
-},{"./lib/clone-ast":69,"./lib/create-whitelist":70}],68:[function(_dereq_,module,exports){
-module.exports = {
-    ArrayExpression: ['type', 'elements'],
-    ArrayPattern: ['type', 'elements'],
-    ArrowFunctionExpression: ['type', 'id', 'params', 'body', 'generator', 'expression'],
-    AssignmentExpression: ['type', 'operator', 'left', 'right'],
-    AssignmentPattern: ['type', 'left', 'right'],
-    BinaryExpression: ['type', 'operator', 'left', 'right'],
-    BlockStatement: ['type', 'body'],
-    BreakStatement: ['type', 'label'],
-    CallExpression: ['type', 'callee', 'arguments'],
-    CatchClause: ['type', 'param', 'guard', 'body'],
-    ClassBody: ['type', 'body'],
-    ClassDeclaration: ['type', 'id', 'superClass', 'body'],
-    ClassExpression: ['type', 'id', 'superClass', 'body'],
-    ConditionalExpression: ['type', 'test', 'alternate', 'consequent'],
-    ContinueStatement: ['type', 'label'],
-    DebuggerStatement: ['type'],
-    DoWhileStatement: ['type', 'body', 'test'],
-    EmptyStatement: ['type'],
-    ExportAllDeclaration: ['type', 'source'],
-    ExportDefaultDeclaration: ['type', 'declaration'],
-    ExportNamedDeclaration: ['type', 'declaration', 'specifiers', 'source'],
-    ExportSpecifier: ['type', 'exported', 'local'],
-    ExpressionStatement: ['type', 'expression'],
-    ForInStatement: ['type', 'left', 'right', 'body'],
-    ForOfStatement: ['type', 'left', 'right', 'body'],
-    ForStatement: ['type', 'init', 'test', 'update', 'body'],
-    FunctionDeclaration: ['type', 'id', 'params', 'body', 'generator'],
-    FunctionExpression: ['type', 'id', 'params', 'body', 'generator'],
-    Identifier: ['type', 'name'],
-    IfStatement: ['type', 'test', 'consequent', 'alternate'],
-    ImportDeclaration: ['type', 'specifiers', 'source'],
-    ImportDefaultSpecifier: ['type', 'local'],
-    ImportNamespaceSpecifier: ['type', 'local'],
-    ImportSpecifier: ['type', 'imported', 'local'],
-    LabeledStatement: ['type', 'label', 'body'],
-    Literal: ['type', 'value', 'regex'],
-    LogicalExpression: ['type', 'operator', 'left', 'right'],
-    MemberExpression: ['type', 'object', 'property', 'computed'],
-    MetaProperty: ['type', 'meta', 'property'],
-    MethodDefinition: ['type', 'key', 'value', 'kind', 'computed', 'static'],
-    NewExpression: ['type', 'callee', 'arguments'],
-    ObjectExpression: ['type', 'properties'],
-    ObjectPattern: ['type', 'properties'],
-    Program: ['type', 'body', 'sourceType'],
-    Property: ['type', 'key', 'value', 'kind', 'method', 'shorthand', 'computed'],
-    RestElement: ['type', 'argument'],
-    ReturnStatement: ['type', 'argument'],
-    SequenceExpression: ['type', 'expressions'],
-    SpreadElement: ['type', 'argument'],
-    Super: ['type'],
-    SwitchCase: ['type', 'test', 'consequent'],
-    SwitchStatement: ['type', 'discriminant', 'cases', 'lexical'],
-    TaggedTemplateExpression: ['type', 'tag', 'quasi'],
-    TemplateElement: ['type', 'tail', 'value'],
-    TemplateLiteral: ['type', 'quasis', 'expressions'],
-    ThisExpression: ['type'],
-    ThrowStatement: ['type', 'argument'],
-    TryStatement: ['type', 'block', 'handler', 'finalizer'],
-    UnaryExpression: ['type', 'operator', 'prefix', 'argument'],
-    UpdateExpression: ['type', 'operator', 'argument', 'prefix'],
-    VariableDeclaration: ['type', 'declarations', 'kind'],
-    VariableDeclarator: ['type', 'id', 'init'],
-    WhileStatement: ['type', 'test', 'body'],
-    WithStatement: ['type', 'object', 'body'],
-    YieldExpression: ['type', 'argument', 'delegate']
-};
-
-},{}],69:[function(_dereq_,module,exports){
-'use strict';
-
-var isArray = _dereq_('core-js/library/fn/array/is-array');
-var objectKeys = _dereq_('core-js/library/fn/object/keys');
-var indexOf = _dereq_('core-js/library/fn/array/index-of');
-var reduce = _dereq_('core-js/library/fn/array/reduce');
-
-module.exports = function cloneWithWhitelist (astWhiteList) {
-    var whitelist = reduce(objectKeys(astWhiteList), function (props, key) {
-        var propNames = astWhiteList[key];
-        var prepend = (indexOf(propNames, 'type') === -1) ? ['type'] : [];
-        props[key] = prepend.concat(propNames);
-        return props;
-    }, {});
-
-    function cloneNodeOrObject (obj) {
-        var props = obj.type ? whitelist[obj.type] : null;
-        if (props) {
-            return cloneNode(obj, props);
-        } else {
-            return cloneObject(obj);
-        }
-    }
-
-    function cloneArray (ary) {
-        var i = ary.length, clone = [];
-        while (i--) {
-            clone[i] = cloneOf(ary[i]);
-        }
-        return clone;
-    }
-
-    function cloneNode (node, props) {
-        var i, len, key, clone = {};
-        for (i = 0, len = props.length; i < len; i += 1) {
-            key = props[i];
-            if (node.hasOwnProperty(key)) {
-                clone[key] = cloneOf(node[key]);
-            }
-        }
-        return clone;
-    }
-
-    function cloneObject (obj) {
-        var props = objectKeys(obj);
-        var i, len, key, clone = {};
-        for (i = 0, len = props.length; i < len; i += 1) {
-            key = props[i];
-            clone[key] = cloneOf(obj[key]);
-        }
-        return clone;
-    }
-
-    function cloneOf (val) {
-        if (typeof val === 'object' && val !== null) {
-            if (val instanceof RegExp) {
-                return new RegExp(val);
-            } else if (isArray(val)) {
-                return cloneArray(val);
-            } else {
-                return cloneNodeOrObject(val);
-            }
-        } else {
-            return val;
-        }
-    }
-
-    return cloneNodeOrObject;
-};
-
-},{"core-js/library/fn/array/index-of":8,"core-js/library/fn/array/is-array":9,"core-js/library/fn/array/reduce":12,"core-js/library/fn/object/keys":14}],70:[function(_dereq_,module,exports){
-'use strict';
-
-var defaultProps = _dereq_('./ast-properties');
-var objectKeys = _dereq_('core-js/library/fn/object/keys');
-var assign = _dereq_('core-js/library/fn/object/assign');
-
-module.exports = function createWhitelist (options) {
-    var opts = assign({}, options);
-    var typeName, i, len;
-    var keys = objectKeys(defaultProps);
-    var result = {};
-    for (i = 0, len = keys.length; i < len; i += 1) {
-        typeName = keys[i];
-        result[typeName] = defaultProps[typeName].concat(opts.extra);
-    }
-    return result;
-};
-
-},{"./ast-properties":68,"core-js/library/fn/object/assign":13,"core-js/library/fn/object/keys":14}],71:[function(_dereq_,module,exports){
-/*
-  Copyright (C) 2012-2013 Yusuke Suzuki <utatane.tea@gmail.com>
-  Copyright (C) 2012 Ariya Hidayat <ariya.hidayat@gmail.com>
-
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are met:
-
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-  ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
-  DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-/*jslint vars:false, bitwise:true*/
-/*jshint indent:4*/
-/*global exports:true*/
-(function clone(exports) {
-    'use strict';
-
-    var Syntax,
-        isArray,
-        VisitorOption,
-        VisitorKeys,
-        objectCreate,
-        objectKeys,
-        BREAK,
-        SKIP,
-        REMOVE;
-
-    function ignoreJSHintError() { }
-
-    isArray = Array.isArray;
-    if (!isArray) {
-        isArray = function isArray(array) {
-            return Object.prototype.toString.call(array) === '[object Array]';
-        };
-    }
-
-    function deepCopy(obj) {
-        var ret = {}, key, val;
-        for (key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                val = obj[key];
-                if (typeof val === 'object' && val !== null) {
-                    ret[key] = deepCopy(val);
-                } else {
-                    ret[key] = val;
-                }
-            }
-        }
-        return ret;
-    }
-
-    function shallowCopy(obj) {
-        var ret = {}, key;
-        for (key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                ret[key] = obj[key];
-            }
-        }
-        return ret;
-    }
-    ignoreJSHintError(shallowCopy);
-
-    // based on LLVM libc++ upper_bound / lower_bound
-    // MIT License
-
-    function upperBound(array, func) {
-        var diff, len, i, current;
-
-        len = array.length;
-        i = 0;
-
-        while (len) {
-            diff = len >>> 1;
-            current = i + diff;
-            if (func(array[current])) {
-                len = diff;
-            } else {
-                i = current + 1;
-                len -= diff + 1;
-            }
-        }
-        return i;
-    }
-
-    function lowerBound(array, func) {
-        var diff, len, i, current;
-
-        len = array.length;
-        i = 0;
-
-        while (len) {
-            diff = len >>> 1;
-            current = i + diff;
-            if (func(array[current])) {
-                i = current + 1;
-                len -= diff + 1;
-            } else {
-                len = diff;
-            }
-        }
-        return i;
-    }
-    ignoreJSHintError(lowerBound);
-
-    objectCreate = Object.create || (function () {
-        function F() { }
-
-        return function (o) {
-            F.prototype = o;
-            return new F();
-        };
-    })();
-
-    objectKeys = Object.keys || function (o) {
-        var keys = [], key;
-        for (key in o) {
-            keys.push(key);
-        }
-        return keys;
-    };
-
-    function extend(to, from) {
-        var keys = objectKeys(from), key, i, len;
-        for (i = 0, len = keys.length; i < len; i += 1) {
-            key = keys[i];
-            to[key] = from[key];
-        }
-        return to;
-    }
-
-    Syntax = {
-        AssignmentExpression: 'AssignmentExpression',
-        AssignmentPattern: 'AssignmentPattern',
-        ArrayExpression: 'ArrayExpression',
-        ArrayPattern: 'ArrayPattern',
-        ArrowFunctionExpression: 'ArrowFunctionExpression',
-        AwaitExpression: 'AwaitExpression', // CAUTION: It's deferred to ES7.
-        BlockStatement: 'BlockStatement',
-        BinaryExpression: 'BinaryExpression',
-        BreakStatement: 'BreakStatement',
-        CallExpression: 'CallExpression',
-        CatchClause: 'CatchClause',
-        ClassBody: 'ClassBody',
-        ClassDeclaration: 'ClassDeclaration',
-        ClassExpression: 'ClassExpression',
-        ComprehensionBlock: 'ComprehensionBlock',  // CAUTION: It's deferred to ES7.
-        ComprehensionExpression: 'ComprehensionExpression',  // CAUTION: It's deferred to ES7.
-        ConditionalExpression: 'ConditionalExpression',
-        ContinueStatement: 'ContinueStatement',
-        DebuggerStatement: 'DebuggerStatement',
-        DirectiveStatement: 'DirectiveStatement',
-        DoWhileStatement: 'DoWhileStatement',
-        EmptyStatement: 'EmptyStatement',
-        ExportAllDeclaration: 'ExportAllDeclaration',
-        ExportDefaultDeclaration: 'ExportDefaultDeclaration',
-        ExportNamedDeclaration: 'ExportNamedDeclaration',
-        ExportSpecifier: 'ExportSpecifier',
-        ExpressionStatement: 'ExpressionStatement',
-        ForStatement: 'ForStatement',
-        ForInStatement: 'ForInStatement',
-        ForOfStatement: 'ForOfStatement',
-        FunctionDeclaration: 'FunctionDeclaration',
-        FunctionExpression: 'FunctionExpression',
-        GeneratorExpression: 'GeneratorExpression',  // CAUTION: It's deferred to ES7.
-        Identifier: 'Identifier',
-        IfStatement: 'IfStatement',
-        ImportDeclaration: 'ImportDeclaration',
-        ImportDefaultSpecifier: 'ImportDefaultSpecifier',
-        ImportNamespaceSpecifier: 'ImportNamespaceSpecifier',
-        ImportSpecifier: 'ImportSpecifier',
-        Literal: 'Literal',
-        LabeledStatement: 'LabeledStatement',
-        LogicalExpression: 'LogicalExpression',
-        MemberExpression: 'MemberExpression',
-        MetaProperty: 'MetaProperty',
-        MethodDefinition: 'MethodDefinition',
-        ModuleSpecifier: 'ModuleSpecifier',
-        NewExpression: 'NewExpression',
-        ObjectExpression: 'ObjectExpression',
-        ObjectPattern: 'ObjectPattern',
-        Program: 'Program',
-        Property: 'Property',
-        RestElement: 'RestElement',
-        ReturnStatement: 'ReturnStatement',
-        SequenceExpression: 'SequenceExpression',
-        SpreadElement: 'SpreadElement',
-        Super: 'Super',
-        SwitchStatement: 'SwitchStatement',
-        SwitchCase: 'SwitchCase',
-        TaggedTemplateExpression: 'TaggedTemplateExpression',
-        TemplateElement: 'TemplateElement',
-        TemplateLiteral: 'TemplateLiteral',
-        ThisExpression: 'ThisExpression',
-        ThrowStatement: 'ThrowStatement',
-        TryStatement: 'TryStatement',
-        UnaryExpression: 'UnaryExpression',
-        UpdateExpression: 'UpdateExpression',
-        VariableDeclaration: 'VariableDeclaration',
-        VariableDeclarator: 'VariableDeclarator',
-        WhileStatement: 'WhileStatement',
-        WithStatement: 'WithStatement',
-        YieldExpression: 'YieldExpression'
-    };
-
-    VisitorKeys = {
-        AssignmentExpression: ['left', 'right'],
-        AssignmentPattern: ['left', 'right'],
-        ArrayExpression: ['elements'],
-        ArrayPattern: ['elements'],
-        ArrowFunctionExpression: ['params', 'body'],
-        AwaitExpression: ['argument'], // CAUTION: It's deferred to ES7.
-        BlockStatement: ['body'],
-        BinaryExpression: ['left', 'right'],
-        BreakStatement: ['label'],
-        CallExpression: ['callee', 'arguments'],
-        CatchClause: ['param', 'body'],
-        ClassBody: ['body'],
-        ClassDeclaration: ['id', 'superClass', 'body'],
-        ClassExpression: ['id', 'superClass', 'body'],
-        ComprehensionBlock: ['left', 'right'],  // CAUTION: It's deferred to ES7.
-        ComprehensionExpression: ['blocks', 'filter', 'body'],  // CAUTION: It's deferred to ES7.
-        ConditionalExpression: ['test', 'consequent', 'alternate'],
-        ContinueStatement: ['label'],
-        DebuggerStatement: [],
-        DirectiveStatement: [],
-        DoWhileStatement: ['body', 'test'],
-        EmptyStatement: [],
-        ExportAllDeclaration: ['source'],
-        ExportDefaultDeclaration: ['declaration'],
-        ExportNamedDeclaration: ['declaration', 'specifiers', 'source'],
-        ExportSpecifier: ['exported', 'local'],
-        ExpressionStatement: ['expression'],
-        ForStatement: ['init', 'test', 'update', 'body'],
-        ForInStatement: ['left', 'right', 'body'],
-        ForOfStatement: ['left', 'right', 'body'],
-        FunctionDeclaration: ['id', 'params', 'body'],
-        FunctionExpression: ['id', 'params', 'body'],
-        GeneratorExpression: ['blocks', 'filter', 'body'],  // CAUTION: It's deferred to ES7.
-        Identifier: [],
-        IfStatement: ['test', 'consequent', 'alternate'],
-        ImportDeclaration: ['specifiers', 'source'],
-        ImportDefaultSpecifier: ['local'],
-        ImportNamespaceSpecifier: ['local'],
-        ImportSpecifier: ['imported', 'local'],
-        Literal: [],
-        LabeledStatement: ['label', 'body'],
-        LogicalExpression: ['left', 'right'],
-        MemberExpression: ['object', 'property'],
-        MetaProperty: ['meta', 'property'],
-        MethodDefinition: ['key', 'value'],
-        ModuleSpecifier: [],
-        NewExpression: ['callee', 'arguments'],
-        ObjectExpression: ['properties'],
-        ObjectPattern: ['properties'],
-        Program: ['body'],
-        Property: ['key', 'value'],
-        RestElement: [ 'argument' ],
-        ReturnStatement: ['argument'],
-        SequenceExpression: ['expressions'],
-        SpreadElement: ['argument'],
-        Super: [],
-        SwitchStatement: ['discriminant', 'cases'],
-        SwitchCase: ['test', 'consequent'],
-        TaggedTemplateExpression: ['tag', 'quasi'],
-        TemplateElement: [],
-        TemplateLiteral: ['quasis', 'expressions'],
-        ThisExpression: [],
-        ThrowStatement: ['argument'],
-        TryStatement: ['block', 'handler', 'finalizer'],
-        UnaryExpression: ['argument'],
-        UpdateExpression: ['argument'],
-        VariableDeclaration: ['declarations'],
-        VariableDeclarator: ['id', 'init'],
-        WhileStatement: ['test', 'body'],
-        WithStatement: ['object', 'body'],
-        YieldExpression: ['argument']
-    };
-
-    // unique id
-    BREAK = {};
-    SKIP = {};
-    REMOVE = {};
-
-    VisitorOption = {
-        Break: BREAK,
-        Skip: SKIP,
-        Remove: REMOVE
-    };
-
-    function Reference(parent, key) {
-        this.parent = parent;
-        this.key = key;
-    }
-
-    Reference.prototype.replace = function replace(node) {
-        this.parent[this.key] = node;
-    };
-
-    Reference.prototype.remove = function remove() {
-        if (isArray(this.parent)) {
-            this.parent.splice(this.key, 1);
-            return true;
-        } else {
-            this.replace(null);
-            return false;
-        }
-    };
-
-    function Element(node, path, wrap, ref) {
-        this.node = node;
-        this.path = path;
-        this.wrap = wrap;
-        this.ref = ref;
-    }
-
-    function Controller() { }
-
-    // API:
-    // return property path array from root to current node
-    Controller.prototype.path = function path() {
-        var i, iz, j, jz, result, element;
-
-        function addToPath(result, path) {
-            if (isArray(path)) {
-                for (j = 0, jz = path.length; j < jz; ++j) {
-                    result.push(path[j]);
-                }
-            } else {
-                result.push(path);
-            }
-        }
-
-        // root node
-        if (!this.__current.path) {
-            return null;
-        }
-
-        // first node is sentinel, second node is root element
-        result = [];
-        for (i = 2, iz = this.__leavelist.length; i < iz; ++i) {
-            element = this.__leavelist[i];
-            addToPath(result, element.path);
-        }
-        addToPath(result, this.__current.path);
-        return result;
-    };
-
-    // API:
-    // return type of current node
-    Controller.prototype.type = function () {
-        var node = this.current();
-        return node.type || this.__current.wrap;
-    };
-
-    // API:
-    // return array of parent elements
-    Controller.prototype.parents = function parents() {
-        var i, iz, result;
-
-        // first node is sentinel
-        result = [];
-        for (i = 1, iz = this.__leavelist.length; i < iz; ++i) {
-            result.push(this.__leavelist[i].node);
-        }
-
-        return result;
-    };
-
-    // API:
-    // return current node
-    Controller.prototype.current = function current() {
-        return this.__current.node;
-    };
-
-    Controller.prototype.__execute = function __execute(callback, element) {
-        var previous, result;
-
-        result = undefined;
-
-        previous  = this.__current;
-        this.__current = element;
-        this.__state = null;
-        if (callback) {
-            result = callback.call(this, element.node, this.__leavelist[this.__leavelist.length - 1].node);
-        }
-        this.__current = previous;
-
-        return result;
-    };
-
-    // API:
-    // notify control skip / break
-    Controller.prototype.notify = function notify(flag) {
-        this.__state = flag;
-    };
-
-    // API:
-    // skip child nodes of current node
-    Controller.prototype.skip = function () {
-        this.notify(SKIP);
-    };
-
-    // API:
-    // break traversals
-    Controller.prototype['break'] = function () {
-        this.notify(BREAK);
-    };
-
-    // API:
-    // remove node
-    Controller.prototype.remove = function () {
-        this.notify(REMOVE);
-    };
-
-    Controller.prototype.__initialize = function(root, visitor) {
-        this.visitor = visitor;
-        this.root = root;
-        this.__worklist = [];
-        this.__leavelist = [];
-        this.__current = null;
-        this.__state = null;
-        this.__fallback = null;
-        if (visitor.fallback === 'iteration') {
-            this.__fallback = objectKeys;
-        } else if (typeof visitor.fallback === 'function') {
-            this.__fallback = visitor.fallback;
-        }
-
-        this.__keys = VisitorKeys;
-        if (visitor.keys) {
-            this.__keys = extend(objectCreate(this.__keys), visitor.keys);
-        }
-    };
-
-    function isNode(node) {
-        if (node == null) {
-            return false;
-        }
-        return typeof node === 'object' && typeof node.type === 'string';
-    }
-
-    function isProperty(nodeType, key) {
-        return (nodeType === Syntax.ObjectExpression || nodeType === Syntax.ObjectPattern) && 'properties' === key;
-    }
-
-    Controller.prototype.traverse = function traverse(root, visitor) {
-        var worklist,
-            leavelist,
-            element,
-            node,
-            nodeType,
-            ret,
-            key,
-            current,
-            current2,
-            candidates,
-            candidate,
-            sentinel;
-
-        this.__initialize(root, visitor);
-
-        sentinel = {};
-
-        // reference
-        worklist = this.__worklist;
-        leavelist = this.__leavelist;
-
-        // initialize
-        worklist.push(new Element(root, null, null, null));
-        leavelist.push(new Element(null, null, null, null));
-
-        while (worklist.length) {
-            element = worklist.pop();
-
-            if (element === sentinel) {
-                element = leavelist.pop();
-
-                ret = this.__execute(visitor.leave, element);
-
-                if (this.__state === BREAK || ret === BREAK) {
-                    return;
-                }
-                continue;
-            }
-
-            if (element.node) {
-
-                ret = this.__execute(visitor.enter, element);
-
-                if (this.__state === BREAK || ret === BREAK) {
-                    return;
-                }
-
-                worklist.push(sentinel);
-                leavelist.push(element);
-
-                if (this.__state === SKIP || ret === SKIP) {
-                    continue;
-                }
-
-                node = element.node;
-                nodeType = node.type || element.wrap;
-                candidates = this.__keys[nodeType];
-                if (!candidates) {
-                    if (this.__fallback) {
-                        candidates = this.__fallback(node);
-                    } else {
-                        throw new Error('Unknown node type ' + nodeType + '.');
-                    }
-                }
-
-                current = candidates.length;
-                while ((current -= 1) >= 0) {
-                    key = candidates[current];
-                    candidate = node[key];
-                    if (!candidate) {
-                        continue;
-                    }
-
-                    if (isArray(candidate)) {
-                        current2 = candidate.length;
-                        while ((current2 -= 1) >= 0) {
-                            if (!candidate[current2]) {
-                                continue;
-                            }
-                            if (isProperty(nodeType, candidates[current])) {
-                                element = new Element(candidate[current2], [key, current2], 'Property', null);
-                            } else if (isNode(candidate[current2])) {
-                                element = new Element(candidate[current2], [key, current2], null, null);
-                            } else {
-                                continue;
-                            }
-                            worklist.push(element);
-                        }
-                    } else if (isNode(candidate)) {
-                        worklist.push(new Element(candidate, key, null, null));
-                    }
-                }
-            }
-        }
-    };
-
-    Controller.prototype.replace = function replace(root, visitor) {
-        var worklist,
-            leavelist,
-            node,
-            nodeType,
-            target,
-            element,
-            current,
-            current2,
-            candidates,
-            candidate,
-            sentinel,
-            outer,
-            key;
-
-        function removeElem(element) {
-            var i,
-                key,
-                nextElem,
-                parent;
-
-            if (element.ref.remove()) {
-                // When the reference is an element of an array.
-                key = element.ref.key;
-                parent = element.ref.parent;
-
-                // If removed from array, then decrease following items' keys.
-                i = worklist.length;
-                while (i--) {
-                    nextElem = worklist[i];
-                    if (nextElem.ref && nextElem.ref.parent === parent) {
-                        if  (nextElem.ref.key < key) {
-                            break;
-                        }
-                        --nextElem.ref.key;
-                    }
-                }
-            }
-        }
-
-        this.__initialize(root, visitor);
-
-        sentinel = {};
-
-        // reference
-        worklist = this.__worklist;
-        leavelist = this.__leavelist;
-
-        // initialize
-        outer = {
-            root: root
-        };
-        element = new Element(root, null, null, new Reference(outer, 'root'));
-        worklist.push(element);
-        leavelist.push(element);
-
-        while (worklist.length) {
-            element = worklist.pop();
-
-            if (element === sentinel) {
-                element = leavelist.pop();
-
-                target = this.__execute(visitor.leave, element);
-
-                // node may be replaced with null,
-                // so distinguish between undefined and null in this place
-                if (target !== undefined && target !== BREAK && target !== SKIP && target !== REMOVE) {
-                    // replace
-                    element.ref.replace(target);
-                }
-
-                if (this.__state === REMOVE || target === REMOVE) {
-                    removeElem(element);
-                }
-
-                if (this.__state === BREAK || target === BREAK) {
-                    return outer.root;
-                }
-                continue;
-            }
-
-            target = this.__execute(visitor.enter, element);
-
-            // node may be replaced with null,
-            // so distinguish between undefined and null in this place
-            if (target !== undefined && target !== BREAK && target !== SKIP && target !== REMOVE) {
-                // replace
-                element.ref.replace(target);
-                element.node = target;
-            }
-
-            if (this.__state === REMOVE || target === REMOVE) {
-                removeElem(element);
-                element.node = null;
-            }
-
-            if (this.__state === BREAK || target === BREAK) {
-                return outer.root;
-            }
-
-            // node may be null
-            node = element.node;
-            if (!node) {
-                continue;
-            }
-
-            worklist.push(sentinel);
-            leavelist.push(element);
-
-            if (this.__state === SKIP || target === SKIP) {
-                continue;
-            }
-
-            nodeType = node.type || element.wrap;
-            candidates = this.__keys[nodeType];
-            if (!candidates) {
-                if (this.__fallback) {
-                    candidates = this.__fallback(node);
-                } else {
-                    throw new Error('Unknown node type ' + nodeType + '.');
-                }
-            }
-
-            current = candidates.length;
-            while ((current -= 1) >= 0) {
-                key = candidates[current];
-                candidate = node[key];
-                if (!candidate) {
-                    continue;
-                }
-
-                if (isArray(candidate)) {
-                    current2 = candidate.length;
-                    while ((current2 -= 1) >= 0) {
-                        if (!candidate[current2]) {
-                            continue;
-                        }
-                        if (isProperty(nodeType, candidates[current])) {
-                            element = new Element(candidate[current2], [key, current2], 'Property', new Reference(candidate, current2));
-                        } else if (isNode(candidate[current2])) {
-                            element = new Element(candidate[current2], [key, current2], null, new Reference(candidate, current2));
-                        } else {
-                            continue;
-                        }
-                        worklist.push(element);
-                    }
-                } else if (isNode(candidate)) {
-                    worklist.push(new Element(candidate, key, null, new Reference(node, key)));
-                }
-            }
-        }
-
-        return outer.root;
-    };
-
-    function traverse(root, visitor) {
-        var controller = new Controller();
-        return controller.traverse(root, visitor);
-    }
-
-    function replace(root, visitor) {
-        var controller = new Controller();
-        return controller.replace(root, visitor);
-    }
-
-    function extendCommentRange(comment, tokens) {
-        var target;
-
-        target = upperBound(tokens, function search(token) {
-            return token.range[0] > comment.range[0];
-        });
-
-        comment.extendedRange = [comment.range[0], comment.range[1]];
-
-        if (target !== tokens.length) {
-            comment.extendedRange[1] = tokens[target].range[0];
-        }
-
-        target -= 1;
-        if (target >= 0) {
-            comment.extendedRange[0] = tokens[target].range[1];
-        }
-
-        return comment;
-    }
-
-    function attachComments(tree, providedComments, tokens) {
-        // At first, we should calculate extended comment ranges.
-        var comments = [], comment, len, i, cursor;
-
-        if (!tree.range) {
-            throw new Error('attachComments needs range information');
-        }
-
-        // tokens array is empty, we attach comments to tree as 'leadingComments'
-        if (!tokens.length) {
-            if (providedComments.length) {
-                for (i = 0, len = providedComments.length; i < len; i += 1) {
-                    comment = deepCopy(providedComments[i]);
-                    comment.extendedRange = [0, tree.range[0]];
-                    comments.push(comment);
-                }
-                tree.leadingComments = comments;
-            }
-            return tree;
-        }
-
-        for (i = 0, len = providedComments.length; i < len; i += 1) {
-            comments.push(extendCommentRange(deepCopy(providedComments[i]), tokens));
-        }
-
-        // This is based on John Freeman's implementation.
-        cursor = 0;
-        traverse(tree, {
-            enter: function (node) {
-                var comment;
-
-                while (cursor < comments.length) {
-                    comment = comments[cursor];
-                    if (comment.extendedRange[1] > node.range[0]) {
-                        break;
-                    }
-
-                    if (comment.extendedRange[1] === node.range[0]) {
-                        if (!node.leadingComments) {
-                            node.leadingComments = [];
-                        }
-                        node.leadingComments.push(comment);
-                        comments.splice(cursor, 1);
-                    } else {
-                        cursor += 1;
-                    }
-                }
-
-                // already out of owned node
-                if (cursor === comments.length) {
-                    return VisitorOption.Break;
-                }
-
-                if (comments[cursor].extendedRange[0] > node.range[1]) {
-                    return VisitorOption.Skip;
-                }
-            }
-        });
-
-        cursor = 0;
-        traverse(tree, {
-            leave: function (node) {
-                var comment;
-
-                while (cursor < comments.length) {
-                    comment = comments[cursor];
-                    if (node.range[1] < comment.extendedRange[0]) {
-                        break;
-                    }
-
-                    if (node.range[1] === comment.extendedRange[0]) {
-                        if (!node.trailingComments) {
-                            node.trailingComments = [];
-                        }
-                        node.trailingComments.push(comment);
-                        comments.splice(cursor, 1);
-                    } else {
-                        cursor += 1;
-                    }
-                }
-
-                // already out of owned node
-                if (cursor === comments.length) {
-                    return VisitorOption.Break;
-                }
-
-                if (comments[cursor].extendedRange[0] > node.range[1]) {
-                    return VisitorOption.Skip;
-                }
-            }
-        });
-
-        return tree;
-    }
-
-    exports.version = _dereq_('./package.json').version;
-    exports.Syntax = Syntax;
-    exports.traverse = traverse;
-    exports.replace = replace;
-    exports.attachComments = attachComments;
-    exports.VisitorKeys = VisitorKeys;
-    exports.VisitorOption = VisitorOption;
-    exports.Controller = Controller;
-    exports.cloneEnvironment = function () { return clone({}); };
-
-    return exports;
-}(exports));
-/* vim: set sw=4 ts=4 et tw=80 : */
-
-},{"./package.json":72}],72:[function(_dereq_,module,exports){
-module.exports={
-  "_args": [
-    [
-      "estraverse@^4.1.0",
-      "/Users/takuto/src/github.com/power-assert-js/power-assert-formatter/node_modules/power-assert-context-traversal"
-    ]
-  ],
-  "_from": "estraverse@>=4.1.0 <5.0.0",
-  "_id": "estraverse@4.2.0",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/estraverse",
-  "_nodeVersion": "0.12.9",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/estraverse-4.2.0.tgz_1457646738925_0.7118953282479197"
-  },
-  "_npmUser": {
-    "email": "nicholas@nczconsulting.com",
-    "name": "nzakas"
-  },
-  "_npmVersion": "2.14.9",
-  "_phantomChildren": {},
-  "_requested": {
-    "name": "estraverse",
-    "raw": "estraverse@^4.1.0",
-    "rawSpec": "^4.1.0",
-    "scope": null,
-    "spec": ">=4.1.0 <5.0.0",
-    "type": "range"
-  },
-  "_requiredBy": [
-    "/babel-plugin-espower",
-    "/call-matcher",
-    "/escallmatch",
-    "/espower",
-    "/esrecurse",
-    "/power-assert-context-reducer-ast",
-    "/power-assert-context-traversal"
-  ],
-  "_resolved": "https://registry.npmjs.org/estraverse/-/estraverse-4.2.0.tgz",
-  "_shasum": "0dee3fed31fcd469618ce7342099fc1afa0bdb13",
-  "_shrinkwrap": null,
-  "_spec": "estraverse@^4.1.0",
-  "_where": "/Users/takuto/src/github.com/power-assert-js/power-assert-formatter/node_modules/power-assert-context-traversal",
-  "bugs": {
-    "url": "https://github.com/estools/estraverse/issues"
-  },
-  "dependencies": {},
-  "description": "ECMAScript JS AST traversal functions",
-  "devDependencies": {
-    "babel-preset-es2015": "^6.3.13",
-    "babel-register": "^6.3.13",
-    "chai": "^2.1.1",
-    "espree": "^1.11.0",
-    "gulp": "^3.8.10",
-    "gulp-bump": "^0.2.2",
-    "gulp-filter": "^2.0.0",
-    "gulp-git": "^1.0.1",
-    "gulp-tag-version": "^1.2.1",
-    "jshint": "^2.5.6",
-    "mocha": "^2.1.0"
-  },
-  "directories": {},
-  "dist": {
-    "shasum": "0dee3fed31fcd469618ce7342099fc1afa0bdb13",
-    "tarball": "https://registry.npmjs.org/estraverse/-/estraverse-4.2.0.tgz"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "gitHead": "6f6a4e99653908e859c7c10d04d9518bf4844ede",
-  "homepage": "https://github.com/estools/estraverse",
-  "license": "BSD-2-Clause",
-  "main": "estraverse.js",
-  "maintainers": [
-    {
-      "email": "utatane.tea@gmail.com",
-      "name": "constellation"
-    },
-    {
-      "email": "npm@michael.ficarra.me",
-      "name": "michaelficarra"
-    },
-    {
-      "email": "nicholas@nczconsulting.com",
-      "name": "nzakas"
-    }
-  ],
-  "name": "estraverse",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/estools/estraverse.git"
-  },
-  "scripts": {
-    "lint": "jshint estraverse.js",
-    "test": "npm run-script lint && npm run-script unit-test",
-    "unit-test": "mocha --compilers js:babel-register"
-  },
-  "version": "4.2.0"
-}
-
-},{}],73:[function(_dereq_,module,exports){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-function EventEmitter() {
-  this._events = this._events || {};
-  this._maxListeners = this._maxListeners || undefined;
-}
-module.exports = EventEmitter;
-
-// Backwards-compat with node 0.10.x
-EventEmitter.EventEmitter = EventEmitter;
-
-EventEmitter.prototype._events = undefined;
-EventEmitter.prototype._maxListeners = undefined;
-
-// By default EventEmitters will print a warning if more than 10 listeners are
-// added to it. This is a useful default which helps finding memory leaks.
-EventEmitter.defaultMaxListeners = 10;
-
-// Obviously not all Emitters should be limited to 10. This function allows
-// that to be increased. Set to zero for unlimited.
-EventEmitter.prototype.setMaxListeners = function(n) {
-  if (!isNumber(n) || n < 0 || isNaN(n))
-    throw TypeError('n must be a positive number');
-  this._maxListeners = n;
-  return this;
-};
-
-EventEmitter.prototype.emit = function(type) {
-  var er, handler, len, args, i, listeners;
-
-  if (!this._events)
-    this._events = {};
-
-  // If there is no 'error' event listener then throw.
-  if (type === 'error') {
-    if (!this._events.error ||
-        (isObject(this._events.error) && !this._events.error.length)) {
-      er = arguments[1];
-      if (er instanceof Error) {
-        throw er; // Unhandled 'error' event
-      }
-      throw TypeError('Uncaught, unspecified "error" event.');
-    }
-  }
-
-  handler = this._events[type];
-
-  if (isUndefined(handler))
-    return false;
-
-  if (isFunction(handler)) {
-    switch (arguments.length) {
-      // fast cases
-      case 1:
-        handler.call(this);
-        break;
-      case 2:
-        handler.call(this, arguments[1]);
-        break;
-      case 3:
-        handler.call(this, arguments[1], arguments[2]);
-        break;
-      // slower
-      default:
-        args = Array.prototype.slice.call(arguments, 1);
-        handler.apply(this, args);
-    }
-  } else if (isObject(handler)) {
-    args = Array.prototype.slice.call(arguments, 1);
-    listeners = handler.slice();
-    len = listeners.length;
-    for (i = 0; i < len; i++)
-      listeners[i].apply(this, args);
-  }
-
-  return true;
-};
-
-EventEmitter.prototype.addListener = function(type, listener) {
-  var m;
-
-  if (!isFunction(listener))
-    throw TypeError('listener must be a function');
-
-  if (!this._events)
-    this._events = {};
-
-  // To avoid recursion in the case that type === "newListener"! Before
-  // adding it to the listeners, first emit "newListener".
-  if (this._events.newListener)
-    this.emit('newListener', type,
-              isFunction(listener.listener) ?
-              listener.listener : listener);
-
-  if (!this._events[type])
-    // Optimize the case of one listener. Don't need the extra array object.
-    this._events[type] = listener;
-  else if (isObject(this._events[type]))
-    // If we've already got an array, just append.
-    this._events[type].push(listener);
-  else
-    // Adding the second element, need to change to array.
-    this._events[type] = [this._events[type], listener];
-
-  // Check for listener leak
-  if (isObject(this._events[type]) && !this._events[type].warned) {
-    if (!isUndefined(this._maxListeners)) {
-      m = this._maxListeners;
-    } else {
-      m = EventEmitter.defaultMaxListeners;
-    }
-
-    if (m && m > 0 && this._events[type].length > m) {
-      this._events[type].warned = true;
-      console.error('(node) warning: possible EventEmitter memory ' +
-                    'leak detected. %d listeners added. ' +
-                    'Use emitter.setMaxListeners() to increase limit.',
-                    this._events[type].length);
-      if (typeof console.trace === 'function') {
-        // not supported in IE 10
-        console.trace();
-      }
-    }
-  }
-
-  return this;
-};
-
-EventEmitter.prototype.on = EventEmitter.prototype.addListener;
-
-EventEmitter.prototype.once = function(type, listener) {
-  if (!isFunction(listener))
-    throw TypeError('listener must be a function');
-
-  var fired = false;
-
-  function g() {
-    this.removeListener(type, g);
-
-    if (!fired) {
-      fired = true;
-      listener.apply(this, arguments);
-    }
-  }
-
-  g.listener = listener;
-  this.on(type, g);
-
-  return this;
-};
-
-// emits a 'removeListener' event iff the listener was removed
-EventEmitter.prototype.removeListener = function(type, listener) {
-  var list, position, length, i;
-
-  if (!isFunction(listener))
-    throw TypeError('listener must be a function');
-
-  if (!this._events || !this._events[type])
-    return this;
-
-  list = this._events[type];
-  length = list.length;
-  position = -1;
-
-  if (list === listener ||
-      (isFunction(list.listener) && list.listener === listener)) {
-    delete this._events[type];
-    if (this._events.removeListener)
-      this.emit('removeListener', type, listener);
-
-  } else if (isObject(list)) {
-    for (i = length; i-- > 0;) {
-      if (list[i] === listener ||
-          (list[i].listener && list[i].listener === listener)) {
-        position = i;
-        break;
-      }
-    }
-
-    if (position < 0)
-      return this;
-
-    if (list.length === 1) {
-      list.length = 0;
-      delete this._events[type];
-    } else {
-      list.splice(position, 1);
-    }
-
-    if (this._events.removeListener)
-      this.emit('removeListener', type, listener);
-  }
-
-  return this;
-};
-
-EventEmitter.prototype.removeAllListeners = function(type) {
-  var key, listeners;
-
-  if (!this._events)
-    return this;
-
-  // not listening for removeListener, no need to emit
-  if (!this._events.removeListener) {
-    if (arguments.length === 0)
-      this._events = {};
-    else if (this._events[type])
-      delete this._events[type];
-    return this;
-  }
-
-  // emit removeListener for all listeners on all events
-  if (arguments.length === 0) {
-    for (key in this._events) {
-      if (key === 'removeListener') continue;
-      this.removeAllListeners(key);
-    }
-    this.removeAllListeners('removeListener');
-    this._events = {};
-    return this;
-  }
-
-  listeners = this._events[type];
-
-  if (isFunction(listeners)) {
-    this.removeListener(type, listeners);
-  } else if (listeners) {
-    // LIFO order
-    while (listeners.length)
-      this.removeListener(type, listeners[listeners.length - 1]);
-  }
-  delete this._events[type];
-
-  return this;
-};
-
-EventEmitter.prototype.listeners = function(type) {
-  var ret;
-  if (!this._events || !this._events[type])
-    ret = [];
-  else if (isFunction(this._events[type]))
-    ret = [this._events[type]];
-  else
-    ret = this._events[type].slice();
-  return ret;
-};
-
-EventEmitter.prototype.listenerCount = function(type) {
-  if (this._events) {
-    var evlistener = this._events[type];
-
-    if (isFunction(evlistener))
-      return 1;
-    else if (evlistener)
-      return evlistener.length;
-  }
-  return 0;
-};
-
-EventEmitter.listenerCount = function(emitter, type) {
-  return emitter.listenerCount(type);
-};
-
-function isFunction(arg) {
-  return typeof arg === 'function';
-}
-
-function isNumber(arg) {
-  return typeof arg === 'number';
-}
-
-function isObject(arg) {
-  return typeof arg === 'object' && arg !== null;
-}
-
-function isUndefined(arg) {
-  return arg === void 0;
-}
-
-},{}],74:[function(_dereq_,module,exports){
-module.exports = _dereq_('./javascript/diff_match_patch_uncompressed.js').diff_match_patch;
-
-},{"./javascript/diff_match_patch_uncompressed.js":75}],75:[function(_dereq_,module,exports){
 /**
  * Diff Match and Patch
  *
@@ -8413,16 +6734,1647 @@ diff_match_patch.patch_obj.prototype.toString = function() {
 };
 
 
-// Export these global variables so that they survive Google's JS compiler.
-// In a browser, 'this' will be 'window'.
-// Users of node.js should 'require' the uncompressed version since Google's
-// JS compiler may break the following exports for non-browser environments.
-this['diff_match_patch'] = diff_match_patch;
-this['DIFF_DELETE'] = DIFF_DELETE;
-this['DIFF_INSERT'] = DIFF_INSERT;
-this['DIFF_EQUAL'] = DIFF_EQUAL;
+// The following export code was added by @ForbesLindesay
+module.exports = diff_match_patch;
+module.exports['diff_match_patch'] = diff_match_patch;
+module.exports['DIFF_DELETE'] = DIFF_DELETE;
+module.exports['DIFF_INSERT'] = DIFF_INSERT;
+module.exports['DIFF_EQUAL'] = DIFF_EQUAL;
 
-},{}],76:[function(_dereq_,module,exports){
+},{}],67:[function(_dereq_,module,exports){
+var eaw = {};
+
+if ('undefined' == typeof module) {
+  window.eastasianwidth = eaw;
+} else {
+  module.exports = eaw;
+}
+
+eaw.eastAsianWidth = function(character) {
+  var x = character.charCodeAt(0);
+  var y = (character.length == 2) ? character.charCodeAt(1) : 0;
+  var codePoint = x;
+  if ((0xD800 <= x && x <= 0xDBFF) && (0xDC00 <= y && y <= 0xDFFF)) {
+    x &= 0x3FF;
+    y &= 0x3FF;
+    codePoint = (x << 10) | y;
+    codePoint += 0x10000;
+  }
+
+  if ((0x3000 == codePoint) ||
+      (0xFF01 <= codePoint && codePoint <= 0xFF60) ||
+      (0xFFE0 <= codePoint && codePoint <= 0xFFE6)) {
+    return 'F';
+  }
+  if ((0x20A9 == codePoint) ||
+      (0xFF61 <= codePoint && codePoint <= 0xFFBE) ||
+      (0xFFC2 <= codePoint && codePoint <= 0xFFC7) ||
+      (0xFFCA <= codePoint && codePoint <= 0xFFCF) ||
+      (0xFFD2 <= codePoint && codePoint <= 0xFFD7) ||
+      (0xFFDA <= codePoint && codePoint <= 0xFFDC) ||
+      (0xFFE8 <= codePoint && codePoint <= 0xFFEE)) {
+    return 'H';
+  }
+  if ((0x1100 <= codePoint && codePoint <= 0x115F) ||
+      (0x11A3 <= codePoint && codePoint <= 0x11A7) ||
+      (0x11FA <= codePoint && codePoint <= 0x11FF) ||
+      (0x2329 <= codePoint && codePoint <= 0x232A) ||
+      (0x2E80 <= codePoint && codePoint <= 0x2E99) ||
+      (0x2E9B <= codePoint && codePoint <= 0x2EF3) ||
+      (0x2F00 <= codePoint && codePoint <= 0x2FD5) ||
+      (0x2FF0 <= codePoint && codePoint <= 0x2FFB) ||
+      (0x3001 <= codePoint && codePoint <= 0x303E) ||
+      (0x3041 <= codePoint && codePoint <= 0x3096) ||
+      (0x3099 <= codePoint && codePoint <= 0x30FF) ||
+      (0x3105 <= codePoint && codePoint <= 0x312D) ||
+      (0x3131 <= codePoint && codePoint <= 0x318E) ||
+      (0x3190 <= codePoint && codePoint <= 0x31BA) ||
+      (0x31C0 <= codePoint && codePoint <= 0x31E3) ||
+      (0x31F0 <= codePoint && codePoint <= 0x321E) ||
+      (0x3220 <= codePoint && codePoint <= 0x3247) ||
+      (0x3250 <= codePoint && codePoint <= 0x32FE) ||
+      (0x3300 <= codePoint && codePoint <= 0x4DBF) ||
+      (0x4E00 <= codePoint && codePoint <= 0xA48C) ||
+      (0xA490 <= codePoint && codePoint <= 0xA4C6) ||
+      (0xA960 <= codePoint && codePoint <= 0xA97C) ||
+      (0xAC00 <= codePoint && codePoint <= 0xD7A3) ||
+      (0xD7B0 <= codePoint && codePoint <= 0xD7C6) ||
+      (0xD7CB <= codePoint && codePoint <= 0xD7FB) ||
+      (0xF900 <= codePoint && codePoint <= 0xFAFF) ||
+      (0xFE10 <= codePoint && codePoint <= 0xFE19) ||
+      (0xFE30 <= codePoint && codePoint <= 0xFE52) ||
+      (0xFE54 <= codePoint && codePoint <= 0xFE66) ||
+      (0xFE68 <= codePoint && codePoint <= 0xFE6B) ||
+      (0x1B000 <= codePoint && codePoint <= 0x1B001) ||
+      (0x1F200 <= codePoint && codePoint <= 0x1F202) ||
+      (0x1F210 <= codePoint && codePoint <= 0x1F23A) ||
+      (0x1F240 <= codePoint && codePoint <= 0x1F248) ||
+      (0x1F250 <= codePoint && codePoint <= 0x1F251) ||
+      (0x20000 <= codePoint && codePoint <= 0x2F73F) ||
+      (0x2B740 <= codePoint && codePoint <= 0x2FFFD) ||
+      (0x30000 <= codePoint && codePoint <= 0x3FFFD)) {
+    return 'W';
+  }
+  if ((0x0020 <= codePoint && codePoint <= 0x007E) ||
+      (0x00A2 <= codePoint && codePoint <= 0x00A3) ||
+      (0x00A5 <= codePoint && codePoint <= 0x00A6) ||
+      (0x00AC == codePoint) ||
+      (0x00AF == codePoint) ||
+      (0x27E6 <= codePoint && codePoint <= 0x27ED) ||
+      (0x2985 <= codePoint && codePoint <= 0x2986)) {
+    return 'Na';
+  }
+  if ((0x00A1 == codePoint) ||
+      (0x00A4 == codePoint) ||
+      (0x00A7 <= codePoint && codePoint <= 0x00A8) ||
+      (0x00AA == codePoint) ||
+      (0x00AD <= codePoint && codePoint <= 0x00AE) ||
+      (0x00B0 <= codePoint && codePoint <= 0x00B4) ||
+      (0x00B6 <= codePoint && codePoint <= 0x00BA) ||
+      (0x00BC <= codePoint && codePoint <= 0x00BF) ||
+      (0x00C6 == codePoint) ||
+      (0x00D0 == codePoint) ||
+      (0x00D7 <= codePoint && codePoint <= 0x00D8) ||
+      (0x00DE <= codePoint && codePoint <= 0x00E1) ||
+      (0x00E6 == codePoint) ||
+      (0x00E8 <= codePoint && codePoint <= 0x00EA) ||
+      (0x00EC <= codePoint && codePoint <= 0x00ED) ||
+      (0x00F0 == codePoint) ||
+      (0x00F2 <= codePoint && codePoint <= 0x00F3) ||
+      (0x00F7 <= codePoint && codePoint <= 0x00FA) ||
+      (0x00FC == codePoint) ||
+      (0x00FE == codePoint) ||
+      (0x0101 == codePoint) ||
+      (0x0111 == codePoint) ||
+      (0x0113 == codePoint) ||
+      (0x011B == codePoint) ||
+      (0x0126 <= codePoint && codePoint <= 0x0127) ||
+      (0x012B == codePoint) ||
+      (0x0131 <= codePoint && codePoint <= 0x0133) ||
+      (0x0138 == codePoint) ||
+      (0x013F <= codePoint && codePoint <= 0x0142) ||
+      (0x0144 == codePoint) ||
+      (0x0148 <= codePoint && codePoint <= 0x014B) ||
+      (0x014D == codePoint) ||
+      (0x0152 <= codePoint && codePoint <= 0x0153) ||
+      (0x0166 <= codePoint && codePoint <= 0x0167) ||
+      (0x016B == codePoint) ||
+      (0x01CE == codePoint) ||
+      (0x01D0 == codePoint) ||
+      (0x01D2 == codePoint) ||
+      (0x01D4 == codePoint) ||
+      (0x01D6 == codePoint) ||
+      (0x01D8 == codePoint) ||
+      (0x01DA == codePoint) ||
+      (0x01DC == codePoint) ||
+      (0x0251 == codePoint) ||
+      (0x0261 == codePoint) ||
+      (0x02C4 == codePoint) ||
+      (0x02C7 == codePoint) ||
+      (0x02C9 <= codePoint && codePoint <= 0x02CB) ||
+      (0x02CD == codePoint) ||
+      (0x02D0 == codePoint) ||
+      (0x02D8 <= codePoint && codePoint <= 0x02DB) ||
+      (0x02DD == codePoint) ||
+      (0x02DF == codePoint) ||
+      (0x0300 <= codePoint && codePoint <= 0x036F) ||
+      (0x0391 <= codePoint && codePoint <= 0x03A1) ||
+      (0x03A3 <= codePoint && codePoint <= 0x03A9) ||
+      (0x03B1 <= codePoint && codePoint <= 0x03C1) ||
+      (0x03C3 <= codePoint && codePoint <= 0x03C9) ||
+      (0x0401 == codePoint) ||
+      (0x0410 <= codePoint && codePoint <= 0x044F) ||
+      (0x0451 == codePoint) ||
+      (0x2010 == codePoint) ||
+      (0x2013 <= codePoint && codePoint <= 0x2016) ||
+      (0x2018 <= codePoint && codePoint <= 0x2019) ||
+      (0x201C <= codePoint && codePoint <= 0x201D) ||
+      (0x2020 <= codePoint && codePoint <= 0x2022) ||
+      (0x2024 <= codePoint && codePoint <= 0x2027) ||
+      (0x2030 == codePoint) ||
+      (0x2032 <= codePoint && codePoint <= 0x2033) ||
+      (0x2035 == codePoint) ||
+      (0x203B == codePoint) ||
+      (0x203E == codePoint) ||
+      (0x2074 == codePoint) ||
+      (0x207F == codePoint) ||
+      (0x2081 <= codePoint && codePoint <= 0x2084) ||
+      (0x20AC == codePoint) ||
+      (0x2103 == codePoint) ||
+      (0x2105 == codePoint) ||
+      (0x2109 == codePoint) ||
+      (0x2113 == codePoint) ||
+      (0x2116 == codePoint) ||
+      (0x2121 <= codePoint && codePoint <= 0x2122) ||
+      (0x2126 == codePoint) ||
+      (0x212B == codePoint) ||
+      (0x2153 <= codePoint && codePoint <= 0x2154) ||
+      (0x215B <= codePoint && codePoint <= 0x215E) ||
+      (0x2160 <= codePoint && codePoint <= 0x216B) ||
+      (0x2170 <= codePoint && codePoint <= 0x2179) ||
+      (0x2189 == codePoint) ||
+      (0x2190 <= codePoint && codePoint <= 0x2199) ||
+      (0x21B8 <= codePoint && codePoint <= 0x21B9) ||
+      (0x21D2 == codePoint) ||
+      (0x21D4 == codePoint) ||
+      (0x21E7 == codePoint) ||
+      (0x2200 == codePoint) ||
+      (0x2202 <= codePoint && codePoint <= 0x2203) ||
+      (0x2207 <= codePoint && codePoint <= 0x2208) ||
+      (0x220B == codePoint) ||
+      (0x220F == codePoint) ||
+      (0x2211 == codePoint) ||
+      (0x2215 == codePoint) ||
+      (0x221A == codePoint) ||
+      (0x221D <= codePoint && codePoint <= 0x2220) ||
+      (0x2223 == codePoint) ||
+      (0x2225 == codePoint) ||
+      (0x2227 <= codePoint && codePoint <= 0x222C) ||
+      (0x222E == codePoint) ||
+      (0x2234 <= codePoint && codePoint <= 0x2237) ||
+      (0x223C <= codePoint && codePoint <= 0x223D) ||
+      (0x2248 == codePoint) ||
+      (0x224C == codePoint) ||
+      (0x2252 == codePoint) ||
+      (0x2260 <= codePoint && codePoint <= 0x2261) ||
+      (0x2264 <= codePoint && codePoint <= 0x2267) ||
+      (0x226A <= codePoint && codePoint <= 0x226B) ||
+      (0x226E <= codePoint && codePoint <= 0x226F) ||
+      (0x2282 <= codePoint && codePoint <= 0x2283) ||
+      (0x2286 <= codePoint && codePoint <= 0x2287) ||
+      (0x2295 == codePoint) ||
+      (0x2299 == codePoint) ||
+      (0x22A5 == codePoint) ||
+      (0x22BF == codePoint) ||
+      (0x2312 == codePoint) ||
+      (0x2460 <= codePoint && codePoint <= 0x24E9) ||
+      (0x24EB <= codePoint && codePoint <= 0x254B) ||
+      (0x2550 <= codePoint && codePoint <= 0x2573) ||
+      (0x2580 <= codePoint && codePoint <= 0x258F) ||
+      (0x2592 <= codePoint && codePoint <= 0x2595) ||
+      (0x25A0 <= codePoint && codePoint <= 0x25A1) ||
+      (0x25A3 <= codePoint && codePoint <= 0x25A9) ||
+      (0x25B2 <= codePoint && codePoint <= 0x25B3) ||
+      (0x25B6 <= codePoint && codePoint <= 0x25B7) ||
+      (0x25BC <= codePoint && codePoint <= 0x25BD) ||
+      (0x25C0 <= codePoint && codePoint <= 0x25C1) ||
+      (0x25C6 <= codePoint && codePoint <= 0x25C8) ||
+      (0x25CB == codePoint) ||
+      (0x25CE <= codePoint && codePoint <= 0x25D1) ||
+      (0x25E2 <= codePoint && codePoint <= 0x25E5) ||
+      (0x25EF == codePoint) ||
+      (0x2605 <= codePoint && codePoint <= 0x2606) ||
+      (0x2609 == codePoint) ||
+      (0x260E <= codePoint && codePoint <= 0x260F) ||
+      (0x2614 <= codePoint && codePoint <= 0x2615) ||
+      (0x261C == codePoint) ||
+      (0x261E == codePoint) ||
+      (0x2640 == codePoint) ||
+      (0x2642 == codePoint) ||
+      (0x2660 <= codePoint && codePoint <= 0x2661) ||
+      (0x2663 <= codePoint && codePoint <= 0x2665) ||
+      (0x2667 <= codePoint && codePoint <= 0x266A) ||
+      (0x266C <= codePoint && codePoint <= 0x266D) ||
+      (0x266F == codePoint) ||
+      (0x269E <= codePoint && codePoint <= 0x269F) ||
+      (0x26BE <= codePoint && codePoint <= 0x26BF) ||
+      (0x26C4 <= codePoint && codePoint <= 0x26CD) ||
+      (0x26CF <= codePoint && codePoint <= 0x26E1) ||
+      (0x26E3 == codePoint) ||
+      (0x26E8 <= codePoint && codePoint <= 0x26FF) ||
+      (0x273D == codePoint) ||
+      (0x2757 == codePoint) ||
+      (0x2776 <= codePoint && codePoint <= 0x277F) ||
+      (0x2B55 <= codePoint && codePoint <= 0x2B59) ||
+      (0x3248 <= codePoint && codePoint <= 0x324F) ||
+      (0xE000 <= codePoint && codePoint <= 0xF8FF) ||
+      (0xFE00 <= codePoint && codePoint <= 0xFE0F) ||
+      (0xFFFD == codePoint) ||
+      (0x1F100 <= codePoint && codePoint <= 0x1F10A) ||
+      (0x1F110 <= codePoint && codePoint <= 0x1F12D) ||
+      (0x1F130 <= codePoint && codePoint <= 0x1F169) ||
+      (0x1F170 <= codePoint && codePoint <= 0x1F19A) ||
+      (0xE0100 <= codePoint && codePoint <= 0xE01EF) ||
+      (0xF0000 <= codePoint && codePoint <= 0xFFFFD) ||
+      (0x100000 <= codePoint && codePoint <= 0x10FFFD)) {
+    return 'A';
+  }
+
+  return 'N';
+};
+
+eaw.characterLength = function(character) {
+  var code = this.eastAsianWidth(character);
+  if (code == 'F' || code == 'W' || code == 'A') {
+    return 2;
+  } else {
+    return 1;
+  }
+};
+
+eaw.length = function(string) {
+  var len = 0;
+  for (var i = 0; i < string.length; i++) {
+    len = len + this.characterLength(string.charAt(i));
+  }
+  return len;
+};
+
+eaw.slice = function(text, start, end) {
+  start = start ? start : 0;
+  end = end ? end : 1;
+  var result = '';
+  for (var i = 0; i < text.length; i++) {
+    var char = text.charAt(i);
+    var eawLen = eaw.length(result + char);
+    if (eawLen >= 1 + start && eawLen < 1 + end) {
+      result += char
+    }
+  }
+  return result;
+};
+
+},{}],68:[function(_dereq_,module,exports){
+/**
+ * espurify - Clone new AST without extra properties
+ * 
+ * https://github.com/estools/espurify
+ *
+ * Copyright (c) 2014-2016 Takuto Wada
+ * Licensed under the MIT license.
+ *   https://github.com/estools/espurify/blob/master/MIT-LICENSE.txt
+ */
+'use strict';
+
+var createWhitelist = _dereq_('./lib/create-whitelist');
+var cloneWithWhitelist = _dereq_('./lib/clone-ast');
+
+function createCloneFunction (options) {
+    return cloneWithWhitelist(createWhitelist(options));
+}
+
+var espurify = createCloneFunction();
+espurify.customize = createCloneFunction;
+espurify.cloneWithWhitelist = cloneWithWhitelist;
+module.exports = espurify;
+
+},{"./lib/clone-ast":70,"./lib/create-whitelist":71}],69:[function(_dereq_,module,exports){
+module.exports = {
+    ArrayExpression: ['type', 'elements'],
+    ArrayPattern: ['type', 'elements'],
+    ArrowFunctionExpression: ['type', 'id', 'params', 'body', 'generator', 'expression'],
+    AssignmentExpression: ['type', 'operator', 'left', 'right'],
+    AssignmentPattern: ['type', 'left', 'right'],
+    BinaryExpression: ['type', 'operator', 'left', 'right'],
+    BlockStatement: ['type', 'body'],
+    BreakStatement: ['type', 'label'],
+    CallExpression: ['type', 'callee', 'arguments'],
+    CatchClause: ['type', 'param', 'guard', 'body'],
+    ClassBody: ['type', 'body'],
+    ClassDeclaration: ['type', 'id', 'superClass', 'body'],
+    ClassExpression: ['type', 'id', 'superClass', 'body'],
+    ConditionalExpression: ['type', 'test', 'alternate', 'consequent'],
+    ContinueStatement: ['type', 'label'],
+    DebuggerStatement: ['type'],
+    DoWhileStatement: ['type', 'body', 'test'],
+    EmptyStatement: ['type'],
+    ExportAllDeclaration: ['type', 'source'],
+    ExportDefaultDeclaration: ['type', 'declaration'],
+    ExportNamedDeclaration: ['type', 'declaration', 'specifiers', 'source'],
+    ExportSpecifier: ['type', 'exported', 'local'],
+    ExpressionStatement: ['type', 'expression'],
+    ForInStatement: ['type', 'left', 'right', 'body'],
+    ForOfStatement: ['type', 'left', 'right', 'body'],
+    ForStatement: ['type', 'init', 'test', 'update', 'body'],
+    FunctionDeclaration: ['type', 'id', 'params', 'body', 'generator'],
+    FunctionExpression: ['type', 'id', 'params', 'body', 'generator'],
+    Identifier: ['type', 'name'],
+    IfStatement: ['type', 'test', 'consequent', 'alternate'],
+    ImportDeclaration: ['type', 'specifiers', 'source'],
+    ImportDefaultSpecifier: ['type', 'local'],
+    ImportNamespaceSpecifier: ['type', 'local'],
+    ImportSpecifier: ['type', 'imported', 'local'],
+    LabeledStatement: ['type', 'label', 'body'],
+    Literal: ['type', 'value', 'regex'],
+    LogicalExpression: ['type', 'operator', 'left', 'right'],
+    MemberExpression: ['type', 'object', 'property', 'computed'],
+    MetaProperty: ['type', 'meta', 'property'],
+    MethodDefinition: ['type', 'key', 'value', 'kind', 'computed', 'static'],
+    NewExpression: ['type', 'callee', 'arguments'],
+    ObjectExpression: ['type', 'properties'],
+    ObjectPattern: ['type', 'properties'],
+    Program: ['type', 'body', 'sourceType'],
+    Property: ['type', 'key', 'value', 'kind', 'method', 'shorthand', 'computed'],
+    RestElement: ['type', 'argument'],
+    ReturnStatement: ['type', 'argument'],
+    SequenceExpression: ['type', 'expressions'],
+    SpreadElement: ['type', 'argument'],
+    Super: ['type'],
+    SwitchCase: ['type', 'test', 'consequent'],
+    SwitchStatement: ['type', 'discriminant', 'cases', 'lexical'],
+    TaggedTemplateExpression: ['type', 'tag', 'quasi'],
+    TemplateElement: ['type', 'tail', 'value'],
+    TemplateLiteral: ['type', 'quasis', 'expressions'],
+    ThisExpression: ['type'],
+    ThrowStatement: ['type', 'argument'],
+    TryStatement: ['type', 'block', 'handler', 'finalizer'],
+    UnaryExpression: ['type', 'operator', 'prefix', 'argument'],
+    UpdateExpression: ['type', 'operator', 'argument', 'prefix'],
+    VariableDeclaration: ['type', 'declarations', 'kind'],
+    VariableDeclarator: ['type', 'id', 'init'],
+    WhileStatement: ['type', 'test', 'body'],
+    WithStatement: ['type', 'object', 'body'],
+    YieldExpression: ['type', 'argument', 'delegate']
+};
+
+},{}],70:[function(_dereq_,module,exports){
+'use strict';
+
+var isArray = _dereq_('core-js/library/fn/array/is-array');
+var objectKeys = _dereq_('core-js/library/fn/object/keys');
+var indexOf = _dereq_('core-js/library/fn/array/index-of');
+var reduce = _dereq_('core-js/library/fn/array/reduce');
+
+module.exports = function cloneWithWhitelist (astWhiteList) {
+    var whitelist = reduce(objectKeys(astWhiteList), function (props, key) {
+        var propNames = astWhiteList[key];
+        var prepend = (indexOf(propNames, 'type') === -1) ? ['type'] : [];
+        props[key] = prepend.concat(propNames);
+        return props;
+    }, {});
+
+    function cloneNodeOrObject (obj) {
+        var props = obj.type ? whitelist[obj.type] : null;
+        if (props) {
+            return cloneNode(obj, props);
+        } else {
+            return cloneObject(obj);
+        }
+    }
+
+    function cloneArray (ary) {
+        var i = ary.length, clone = [];
+        while (i--) {
+            clone[i] = cloneOf(ary[i]);
+        }
+        return clone;
+    }
+
+    function cloneNode (node, props) {
+        var i, len, key, clone = {};
+        for (i = 0, len = props.length; i < len; i += 1) {
+            key = props[i];
+            if (node.hasOwnProperty(key)) {
+                clone[key] = cloneOf(node[key]);
+            }
+        }
+        return clone;
+    }
+
+    function cloneObject (obj) {
+        var props = objectKeys(obj);
+        var i, len, key, clone = {};
+        for (i = 0, len = props.length; i < len; i += 1) {
+            key = props[i];
+            clone[key] = cloneOf(obj[key]);
+        }
+        return clone;
+    }
+
+    function cloneOf (val) {
+        if (typeof val === 'object' && val !== null) {
+            if (val instanceof RegExp) {
+                return new RegExp(val);
+            } else if (isArray(val)) {
+                return cloneArray(val);
+            } else {
+                return cloneNodeOrObject(val);
+            }
+        } else {
+            return val;
+        }
+    }
+
+    return cloneNodeOrObject;
+};
+
+},{"core-js/library/fn/array/index-of":8,"core-js/library/fn/array/is-array":9,"core-js/library/fn/array/reduce":12,"core-js/library/fn/object/keys":14}],71:[function(_dereq_,module,exports){
+'use strict';
+
+var defaultProps = _dereq_('./ast-properties');
+var objectKeys = _dereq_('core-js/library/fn/object/keys');
+var assign = _dereq_('core-js/library/fn/object/assign');
+
+module.exports = function createWhitelist (options) {
+    var opts = assign({}, options);
+    var typeName, i, len;
+    var keys = objectKeys(defaultProps);
+    var result = {};
+    for (i = 0, len = keys.length; i < len; i += 1) {
+        typeName = keys[i];
+        result[typeName] = defaultProps[typeName].concat(opts.extra);
+    }
+    return result;
+};
+
+},{"./ast-properties":69,"core-js/library/fn/object/assign":13,"core-js/library/fn/object/keys":14}],72:[function(_dereq_,module,exports){
+/*
+  Copyright (C) 2012-2013 Yusuke Suzuki <utatane.tea@gmail.com>
+  Copyright (C) 2012 Ariya Hidayat <ariya.hidayat@gmail.com>
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+  DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+/*jslint vars:false, bitwise:true*/
+/*jshint indent:4*/
+/*global exports:true*/
+(function clone(exports) {
+    'use strict';
+
+    var Syntax,
+        isArray,
+        VisitorOption,
+        VisitorKeys,
+        objectCreate,
+        objectKeys,
+        BREAK,
+        SKIP,
+        REMOVE;
+
+    function ignoreJSHintError() { }
+
+    isArray = Array.isArray;
+    if (!isArray) {
+        isArray = function isArray(array) {
+            return Object.prototype.toString.call(array) === '[object Array]';
+        };
+    }
+
+    function deepCopy(obj) {
+        var ret = {}, key, val;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                val = obj[key];
+                if (typeof val === 'object' && val !== null) {
+                    ret[key] = deepCopy(val);
+                } else {
+                    ret[key] = val;
+                }
+            }
+        }
+        return ret;
+    }
+
+    function shallowCopy(obj) {
+        var ret = {}, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                ret[key] = obj[key];
+            }
+        }
+        return ret;
+    }
+    ignoreJSHintError(shallowCopy);
+
+    // based on LLVM libc++ upper_bound / lower_bound
+    // MIT License
+
+    function upperBound(array, func) {
+        var diff, len, i, current;
+
+        len = array.length;
+        i = 0;
+
+        while (len) {
+            diff = len >>> 1;
+            current = i + diff;
+            if (func(array[current])) {
+                len = diff;
+            } else {
+                i = current + 1;
+                len -= diff + 1;
+            }
+        }
+        return i;
+    }
+
+    function lowerBound(array, func) {
+        var diff, len, i, current;
+
+        len = array.length;
+        i = 0;
+
+        while (len) {
+            diff = len >>> 1;
+            current = i + diff;
+            if (func(array[current])) {
+                i = current + 1;
+                len -= diff + 1;
+            } else {
+                len = diff;
+            }
+        }
+        return i;
+    }
+    ignoreJSHintError(lowerBound);
+
+    objectCreate = Object.create || (function () {
+        function F() { }
+
+        return function (o) {
+            F.prototype = o;
+            return new F();
+        };
+    })();
+
+    objectKeys = Object.keys || function (o) {
+        var keys = [], key;
+        for (key in o) {
+            keys.push(key);
+        }
+        return keys;
+    };
+
+    function extend(to, from) {
+        var keys = objectKeys(from), key, i, len;
+        for (i = 0, len = keys.length; i < len; i += 1) {
+            key = keys[i];
+            to[key] = from[key];
+        }
+        return to;
+    }
+
+    Syntax = {
+        AssignmentExpression: 'AssignmentExpression',
+        AssignmentPattern: 'AssignmentPattern',
+        ArrayExpression: 'ArrayExpression',
+        ArrayPattern: 'ArrayPattern',
+        ArrowFunctionExpression: 'ArrowFunctionExpression',
+        AwaitExpression: 'AwaitExpression', // CAUTION: It's deferred to ES7.
+        BlockStatement: 'BlockStatement',
+        BinaryExpression: 'BinaryExpression',
+        BreakStatement: 'BreakStatement',
+        CallExpression: 'CallExpression',
+        CatchClause: 'CatchClause',
+        ClassBody: 'ClassBody',
+        ClassDeclaration: 'ClassDeclaration',
+        ClassExpression: 'ClassExpression',
+        ComprehensionBlock: 'ComprehensionBlock',  // CAUTION: It's deferred to ES7.
+        ComprehensionExpression: 'ComprehensionExpression',  // CAUTION: It's deferred to ES7.
+        ConditionalExpression: 'ConditionalExpression',
+        ContinueStatement: 'ContinueStatement',
+        DebuggerStatement: 'DebuggerStatement',
+        DirectiveStatement: 'DirectiveStatement',
+        DoWhileStatement: 'DoWhileStatement',
+        EmptyStatement: 'EmptyStatement',
+        ExportAllDeclaration: 'ExportAllDeclaration',
+        ExportDefaultDeclaration: 'ExportDefaultDeclaration',
+        ExportNamedDeclaration: 'ExportNamedDeclaration',
+        ExportSpecifier: 'ExportSpecifier',
+        ExpressionStatement: 'ExpressionStatement',
+        ForStatement: 'ForStatement',
+        ForInStatement: 'ForInStatement',
+        ForOfStatement: 'ForOfStatement',
+        FunctionDeclaration: 'FunctionDeclaration',
+        FunctionExpression: 'FunctionExpression',
+        GeneratorExpression: 'GeneratorExpression',  // CAUTION: It's deferred to ES7.
+        Identifier: 'Identifier',
+        IfStatement: 'IfStatement',
+        ImportDeclaration: 'ImportDeclaration',
+        ImportDefaultSpecifier: 'ImportDefaultSpecifier',
+        ImportNamespaceSpecifier: 'ImportNamespaceSpecifier',
+        ImportSpecifier: 'ImportSpecifier',
+        Literal: 'Literal',
+        LabeledStatement: 'LabeledStatement',
+        LogicalExpression: 'LogicalExpression',
+        MemberExpression: 'MemberExpression',
+        MetaProperty: 'MetaProperty',
+        MethodDefinition: 'MethodDefinition',
+        ModuleSpecifier: 'ModuleSpecifier',
+        NewExpression: 'NewExpression',
+        ObjectExpression: 'ObjectExpression',
+        ObjectPattern: 'ObjectPattern',
+        Program: 'Program',
+        Property: 'Property',
+        RestElement: 'RestElement',
+        ReturnStatement: 'ReturnStatement',
+        SequenceExpression: 'SequenceExpression',
+        SpreadElement: 'SpreadElement',
+        Super: 'Super',
+        SwitchStatement: 'SwitchStatement',
+        SwitchCase: 'SwitchCase',
+        TaggedTemplateExpression: 'TaggedTemplateExpression',
+        TemplateElement: 'TemplateElement',
+        TemplateLiteral: 'TemplateLiteral',
+        ThisExpression: 'ThisExpression',
+        ThrowStatement: 'ThrowStatement',
+        TryStatement: 'TryStatement',
+        UnaryExpression: 'UnaryExpression',
+        UpdateExpression: 'UpdateExpression',
+        VariableDeclaration: 'VariableDeclaration',
+        VariableDeclarator: 'VariableDeclarator',
+        WhileStatement: 'WhileStatement',
+        WithStatement: 'WithStatement',
+        YieldExpression: 'YieldExpression'
+    };
+
+    VisitorKeys = {
+        AssignmentExpression: ['left', 'right'],
+        AssignmentPattern: ['left', 'right'],
+        ArrayExpression: ['elements'],
+        ArrayPattern: ['elements'],
+        ArrowFunctionExpression: ['params', 'body'],
+        AwaitExpression: ['argument'], // CAUTION: It's deferred to ES7.
+        BlockStatement: ['body'],
+        BinaryExpression: ['left', 'right'],
+        BreakStatement: ['label'],
+        CallExpression: ['callee', 'arguments'],
+        CatchClause: ['param', 'body'],
+        ClassBody: ['body'],
+        ClassDeclaration: ['id', 'superClass', 'body'],
+        ClassExpression: ['id', 'superClass', 'body'],
+        ComprehensionBlock: ['left', 'right'],  // CAUTION: It's deferred to ES7.
+        ComprehensionExpression: ['blocks', 'filter', 'body'],  // CAUTION: It's deferred to ES7.
+        ConditionalExpression: ['test', 'consequent', 'alternate'],
+        ContinueStatement: ['label'],
+        DebuggerStatement: [],
+        DirectiveStatement: [],
+        DoWhileStatement: ['body', 'test'],
+        EmptyStatement: [],
+        ExportAllDeclaration: ['source'],
+        ExportDefaultDeclaration: ['declaration'],
+        ExportNamedDeclaration: ['declaration', 'specifiers', 'source'],
+        ExportSpecifier: ['exported', 'local'],
+        ExpressionStatement: ['expression'],
+        ForStatement: ['init', 'test', 'update', 'body'],
+        ForInStatement: ['left', 'right', 'body'],
+        ForOfStatement: ['left', 'right', 'body'],
+        FunctionDeclaration: ['id', 'params', 'body'],
+        FunctionExpression: ['id', 'params', 'body'],
+        GeneratorExpression: ['blocks', 'filter', 'body'],  // CAUTION: It's deferred to ES7.
+        Identifier: [],
+        IfStatement: ['test', 'consequent', 'alternate'],
+        ImportDeclaration: ['specifiers', 'source'],
+        ImportDefaultSpecifier: ['local'],
+        ImportNamespaceSpecifier: ['local'],
+        ImportSpecifier: ['imported', 'local'],
+        Literal: [],
+        LabeledStatement: ['label', 'body'],
+        LogicalExpression: ['left', 'right'],
+        MemberExpression: ['object', 'property'],
+        MetaProperty: ['meta', 'property'],
+        MethodDefinition: ['key', 'value'],
+        ModuleSpecifier: [],
+        NewExpression: ['callee', 'arguments'],
+        ObjectExpression: ['properties'],
+        ObjectPattern: ['properties'],
+        Program: ['body'],
+        Property: ['key', 'value'],
+        RestElement: [ 'argument' ],
+        ReturnStatement: ['argument'],
+        SequenceExpression: ['expressions'],
+        SpreadElement: ['argument'],
+        Super: [],
+        SwitchStatement: ['discriminant', 'cases'],
+        SwitchCase: ['test', 'consequent'],
+        TaggedTemplateExpression: ['tag', 'quasi'],
+        TemplateElement: [],
+        TemplateLiteral: ['quasis', 'expressions'],
+        ThisExpression: [],
+        ThrowStatement: ['argument'],
+        TryStatement: ['block', 'handler', 'finalizer'],
+        UnaryExpression: ['argument'],
+        UpdateExpression: ['argument'],
+        VariableDeclaration: ['declarations'],
+        VariableDeclarator: ['id', 'init'],
+        WhileStatement: ['test', 'body'],
+        WithStatement: ['object', 'body'],
+        YieldExpression: ['argument']
+    };
+
+    // unique id
+    BREAK = {};
+    SKIP = {};
+    REMOVE = {};
+
+    VisitorOption = {
+        Break: BREAK,
+        Skip: SKIP,
+        Remove: REMOVE
+    };
+
+    function Reference(parent, key) {
+        this.parent = parent;
+        this.key = key;
+    }
+
+    Reference.prototype.replace = function replace(node) {
+        this.parent[this.key] = node;
+    };
+
+    Reference.prototype.remove = function remove() {
+        if (isArray(this.parent)) {
+            this.parent.splice(this.key, 1);
+            return true;
+        } else {
+            this.replace(null);
+            return false;
+        }
+    };
+
+    function Element(node, path, wrap, ref) {
+        this.node = node;
+        this.path = path;
+        this.wrap = wrap;
+        this.ref = ref;
+    }
+
+    function Controller() { }
+
+    // API:
+    // return property path array from root to current node
+    Controller.prototype.path = function path() {
+        var i, iz, j, jz, result, element;
+
+        function addToPath(result, path) {
+            if (isArray(path)) {
+                for (j = 0, jz = path.length; j < jz; ++j) {
+                    result.push(path[j]);
+                }
+            } else {
+                result.push(path);
+            }
+        }
+
+        // root node
+        if (!this.__current.path) {
+            return null;
+        }
+
+        // first node is sentinel, second node is root element
+        result = [];
+        for (i = 2, iz = this.__leavelist.length; i < iz; ++i) {
+            element = this.__leavelist[i];
+            addToPath(result, element.path);
+        }
+        addToPath(result, this.__current.path);
+        return result;
+    };
+
+    // API:
+    // return type of current node
+    Controller.prototype.type = function () {
+        var node = this.current();
+        return node.type || this.__current.wrap;
+    };
+
+    // API:
+    // return array of parent elements
+    Controller.prototype.parents = function parents() {
+        var i, iz, result;
+
+        // first node is sentinel
+        result = [];
+        for (i = 1, iz = this.__leavelist.length; i < iz; ++i) {
+            result.push(this.__leavelist[i].node);
+        }
+
+        return result;
+    };
+
+    // API:
+    // return current node
+    Controller.prototype.current = function current() {
+        return this.__current.node;
+    };
+
+    Controller.prototype.__execute = function __execute(callback, element) {
+        var previous, result;
+
+        result = undefined;
+
+        previous  = this.__current;
+        this.__current = element;
+        this.__state = null;
+        if (callback) {
+            result = callback.call(this, element.node, this.__leavelist[this.__leavelist.length - 1].node);
+        }
+        this.__current = previous;
+
+        return result;
+    };
+
+    // API:
+    // notify control skip / break
+    Controller.prototype.notify = function notify(flag) {
+        this.__state = flag;
+    };
+
+    // API:
+    // skip child nodes of current node
+    Controller.prototype.skip = function () {
+        this.notify(SKIP);
+    };
+
+    // API:
+    // break traversals
+    Controller.prototype['break'] = function () {
+        this.notify(BREAK);
+    };
+
+    // API:
+    // remove node
+    Controller.prototype.remove = function () {
+        this.notify(REMOVE);
+    };
+
+    Controller.prototype.__initialize = function(root, visitor) {
+        this.visitor = visitor;
+        this.root = root;
+        this.__worklist = [];
+        this.__leavelist = [];
+        this.__current = null;
+        this.__state = null;
+        this.__fallback = null;
+        if (visitor.fallback === 'iteration') {
+            this.__fallback = objectKeys;
+        } else if (typeof visitor.fallback === 'function') {
+            this.__fallback = visitor.fallback;
+        }
+
+        this.__keys = VisitorKeys;
+        if (visitor.keys) {
+            this.__keys = extend(objectCreate(this.__keys), visitor.keys);
+        }
+    };
+
+    function isNode(node) {
+        if (node == null) {
+            return false;
+        }
+        return typeof node === 'object' && typeof node.type === 'string';
+    }
+
+    function isProperty(nodeType, key) {
+        return (nodeType === Syntax.ObjectExpression || nodeType === Syntax.ObjectPattern) && 'properties' === key;
+    }
+
+    Controller.prototype.traverse = function traverse(root, visitor) {
+        var worklist,
+            leavelist,
+            element,
+            node,
+            nodeType,
+            ret,
+            key,
+            current,
+            current2,
+            candidates,
+            candidate,
+            sentinel;
+
+        this.__initialize(root, visitor);
+
+        sentinel = {};
+
+        // reference
+        worklist = this.__worklist;
+        leavelist = this.__leavelist;
+
+        // initialize
+        worklist.push(new Element(root, null, null, null));
+        leavelist.push(new Element(null, null, null, null));
+
+        while (worklist.length) {
+            element = worklist.pop();
+
+            if (element === sentinel) {
+                element = leavelist.pop();
+
+                ret = this.__execute(visitor.leave, element);
+
+                if (this.__state === BREAK || ret === BREAK) {
+                    return;
+                }
+                continue;
+            }
+
+            if (element.node) {
+
+                ret = this.__execute(visitor.enter, element);
+
+                if (this.__state === BREAK || ret === BREAK) {
+                    return;
+                }
+
+                worklist.push(sentinel);
+                leavelist.push(element);
+
+                if (this.__state === SKIP || ret === SKIP) {
+                    continue;
+                }
+
+                node = element.node;
+                nodeType = node.type || element.wrap;
+                candidates = this.__keys[nodeType];
+                if (!candidates) {
+                    if (this.__fallback) {
+                        candidates = this.__fallback(node);
+                    } else {
+                        throw new Error('Unknown node type ' + nodeType + '.');
+                    }
+                }
+
+                current = candidates.length;
+                while ((current -= 1) >= 0) {
+                    key = candidates[current];
+                    candidate = node[key];
+                    if (!candidate) {
+                        continue;
+                    }
+
+                    if (isArray(candidate)) {
+                        current2 = candidate.length;
+                        while ((current2 -= 1) >= 0) {
+                            if (!candidate[current2]) {
+                                continue;
+                            }
+                            if (isProperty(nodeType, candidates[current])) {
+                                element = new Element(candidate[current2], [key, current2], 'Property', null);
+                            } else if (isNode(candidate[current2])) {
+                                element = new Element(candidate[current2], [key, current2], null, null);
+                            } else {
+                                continue;
+                            }
+                            worklist.push(element);
+                        }
+                    } else if (isNode(candidate)) {
+                        worklist.push(new Element(candidate, key, null, null));
+                    }
+                }
+            }
+        }
+    };
+
+    Controller.prototype.replace = function replace(root, visitor) {
+        var worklist,
+            leavelist,
+            node,
+            nodeType,
+            target,
+            element,
+            current,
+            current2,
+            candidates,
+            candidate,
+            sentinel,
+            outer,
+            key;
+
+        function removeElem(element) {
+            var i,
+                key,
+                nextElem,
+                parent;
+
+            if (element.ref.remove()) {
+                // When the reference is an element of an array.
+                key = element.ref.key;
+                parent = element.ref.parent;
+
+                // If removed from array, then decrease following items' keys.
+                i = worklist.length;
+                while (i--) {
+                    nextElem = worklist[i];
+                    if (nextElem.ref && nextElem.ref.parent === parent) {
+                        if  (nextElem.ref.key < key) {
+                            break;
+                        }
+                        --nextElem.ref.key;
+                    }
+                }
+            }
+        }
+
+        this.__initialize(root, visitor);
+
+        sentinel = {};
+
+        // reference
+        worklist = this.__worklist;
+        leavelist = this.__leavelist;
+
+        // initialize
+        outer = {
+            root: root
+        };
+        element = new Element(root, null, null, new Reference(outer, 'root'));
+        worklist.push(element);
+        leavelist.push(element);
+
+        while (worklist.length) {
+            element = worklist.pop();
+
+            if (element === sentinel) {
+                element = leavelist.pop();
+
+                target = this.__execute(visitor.leave, element);
+
+                // node may be replaced with null,
+                // so distinguish between undefined and null in this place
+                if (target !== undefined && target !== BREAK && target !== SKIP && target !== REMOVE) {
+                    // replace
+                    element.ref.replace(target);
+                }
+
+                if (this.__state === REMOVE || target === REMOVE) {
+                    removeElem(element);
+                }
+
+                if (this.__state === BREAK || target === BREAK) {
+                    return outer.root;
+                }
+                continue;
+            }
+
+            target = this.__execute(visitor.enter, element);
+
+            // node may be replaced with null,
+            // so distinguish between undefined and null in this place
+            if (target !== undefined && target !== BREAK && target !== SKIP && target !== REMOVE) {
+                // replace
+                element.ref.replace(target);
+                element.node = target;
+            }
+
+            if (this.__state === REMOVE || target === REMOVE) {
+                removeElem(element);
+                element.node = null;
+            }
+
+            if (this.__state === BREAK || target === BREAK) {
+                return outer.root;
+            }
+
+            // node may be null
+            node = element.node;
+            if (!node) {
+                continue;
+            }
+
+            worklist.push(sentinel);
+            leavelist.push(element);
+
+            if (this.__state === SKIP || target === SKIP) {
+                continue;
+            }
+
+            nodeType = node.type || element.wrap;
+            candidates = this.__keys[nodeType];
+            if (!candidates) {
+                if (this.__fallback) {
+                    candidates = this.__fallback(node);
+                } else {
+                    throw new Error('Unknown node type ' + nodeType + '.');
+                }
+            }
+
+            current = candidates.length;
+            while ((current -= 1) >= 0) {
+                key = candidates[current];
+                candidate = node[key];
+                if (!candidate) {
+                    continue;
+                }
+
+                if (isArray(candidate)) {
+                    current2 = candidate.length;
+                    while ((current2 -= 1) >= 0) {
+                        if (!candidate[current2]) {
+                            continue;
+                        }
+                        if (isProperty(nodeType, candidates[current])) {
+                            element = new Element(candidate[current2], [key, current2], 'Property', new Reference(candidate, current2));
+                        } else if (isNode(candidate[current2])) {
+                            element = new Element(candidate[current2], [key, current2], null, new Reference(candidate, current2));
+                        } else {
+                            continue;
+                        }
+                        worklist.push(element);
+                    }
+                } else if (isNode(candidate)) {
+                    worklist.push(new Element(candidate, key, null, new Reference(node, key)));
+                }
+            }
+        }
+
+        return outer.root;
+    };
+
+    function traverse(root, visitor) {
+        var controller = new Controller();
+        return controller.traverse(root, visitor);
+    }
+
+    function replace(root, visitor) {
+        var controller = new Controller();
+        return controller.replace(root, visitor);
+    }
+
+    function extendCommentRange(comment, tokens) {
+        var target;
+
+        target = upperBound(tokens, function search(token) {
+            return token.range[0] > comment.range[0];
+        });
+
+        comment.extendedRange = [comment.range[0], comment.range[1]];
+
+        if (target !== tokens.length) {
+            comment.extendedRange[1] = tokens[target].range[0];
+        }
+
+        target -= 1;
+        if (target >= 0) {
+            comment.extendedRange[0] = tokens[target].range[1];
+        }
+
+        return comment;
+    }
+
+    function attachComments(tree, providedComments, tokens) {
+        // At first, we should calculate extended comment ranges.
+        var comments = [], comment, len, i, cursor;
+
+        if (!tree.range) {
+            throw new Error('attachComments needs range information');
+        }
+
+        // tokens array is empty, we attach comments to tree as 'leadingComments'
+        if (!tokens.length) {
+            if (providedComments.length) {
+                for (i = 0, len = providedComments.length; i < len; i += 1) {
+                    comment = deepCopy(providedComments[i]);
+                    comment.extendedRange = [0, tree.range[0]];
+                    comments.push(comment);
+                }
+                tree.leadingComments = comments;
+            }
+            return tree;
+        }
+
+        for (i = 0, len = providedComments.length; i < len; i += 1) {
+            comments.push(extendCommentRange(deepCopy(providedComments[i]), tokens));
+        }
+
+        // This is based on John Freeman's implementation.
+        cursor = 0;
+        traverse(tree, {
+            enter: function (node) {
+                var comment;
+
+                while (cursor < comments.length) {
+                    comment = comments[cursor];
+                    if (comment.extendedRange[1] > node.range[0]) {
+                        break;
+                    }
+
+                    if (comment.extendedRange[1] === node.range[0]) {
+                        if (!node.leadingComments) {
+                            node.leadingComments = [];
+                        }
+                        node.leadingComments.push(comment);
+                        comments.splice(cursor, 1);
+                    } else {
+                        cursor += 1;
+                    }
+                }
+
+                // already out of owned node
+                if (cursor === comments.length) {
+                    return VisitorOption.Break;
+                }
+
+                if (comments[cursor].extendedRange[0] > node.range[1]) {
+                    return VisitorOption.Skip;
+                }
+            }
+        });
+
+        cursor = 0;
+        traverse(tree, {
+            leave: function (node) {
+                var comment;
+
+                while (cursor < comments.length) {
+                    comment = comments[cursor];
+                    if (node.range[1] < comment.extendedRange[0]) {
+                        break;
+                    }
+
+                    if (node.range[1] === comment.extendedRange[0]) {
+                        if (!node.trailingComments) {
+                            node.trailingComments = [];
+                        }
+                        node.trailingComments.push(comment);
+                        comments.splice(cursor, 1);
+                    } else {
+                        cursor += 1;
+                    }
+                }
+
+                // already out of owned node
+                if (cursor === comments.length) {
+                    return VisitorOption.Break;
+                }
+
+                if (comments[cursor].extendedRange[0] > node.range[1]) {
+                    return VisitorOption.Skip;
+                }
+            }
+        });
+
+        return tree;
+    }
+
+    exports.version = _dereq_('./package.json').version;
+    exports.Syntax = Syntax;
+    exports.traverse = traverse;
+    exports.replace = replace;
+    exports.attachComments = attachComments;
+    exports.VisitorKeys = VisitorKeys;
+    exports.VisitorOption = VisitorOption;
+    exports.Controller = Controller;
+    exports.cloneEnvironment = function () { return clone({}); };
+
+    return exports;
+}(exports));
+/* vim: set sw=4 ts=4 et tw=80 : */
+
+},{"./package.json":73}],73:[function(_dereq_,module,exports){
+module.exports={"version":"4.2.0"}
+},{}],74:[function(_dereq_,module,exports){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+function EventEmitter() {
+  this._events = this._events || {};
+  this._maxListeners = this._maxListeners || undefined;
+}
+module.exports = EventEmitter;
+
+// Backwards-compat with node 0.10.x
+EventEmitter.EventEmitter = EventEmitter;
+
+EventEmitter.prototype._events = undefined;
+EventEmitter.prototype._maxListeners = undefined;
+
+// By default EventEmitters will print a warning if more than 10 listeners are
+// added to it. This is a useful default which helps finding memory leaks.
+EventEmitter.defaultMaxListeners = 10;
+
+// Obviously not all Emitters should be limited to 10. This function allows
+// that to be increased. Set to zero for unlimited.
+EventEmitter.prototype.setMaxListeners = function(n) {
+  if (!isNumber(n) || n < 0 || isNaN(n))
+    throw TypeError('n must be a positive number');
+  this._maxListeners = n;
+  return this;
+};
+
+EventEmitter.prototype.emit = function(type) {
+  var er, handler, len, args, i, listeners;
+
+  if (!this._events)
+    this._events = {};
+
+  // If there is no 'error' event listener then throw.
+  if (type === 'error') {
+    if (!this._events.error ||
+        (isObject(this._events.error) && !this._events.error.length)) {
+      er = arguments[1];
+      if (er instanceof Error) {
+        throw er; // Unhandled 'error' event
+      } else {
+        // At least give some kind of context to the user
+        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
+        err.context = er;
+        throw err;
+      }
+    }
+  }
+
+  handler = this._events[type];
+
+  if (isUndefined(handler))
+    return false;
+
+  if (isFunction(handler)) {
+    switch (arguments.length) {
+      // fast cases
+      case 1:
+        handler.call(this);
+        break;
+      case 2:
+        handler.call(this, arguments[1]);
+        break;
+      case 3:
+        handler.call(this, arguments[1], arguments[2]);
+        break;
+      // slower
+      default:
+        args = Array.prototype.slice.call(arguments, 1);
+        handler.apply(this, args);
+    }
+  } else if (isObject(handler)) {
+    args = Array.prototype.slice.call(arguments, 1);
+    listeners = handler.slice();
+    len = listeners.length;
+    for (i = 0; i < len; i++)
+      listeners[i].apply(this, args);
+  }
+
+  return true;
+};
+
+EventEmitter.prototype.addListener = function(type, listener) {
+  var m;
+
+  if (!isFunction(listener))
+    throw TypeError('listener must be a function');
+
+  if (!this._events)
+    this._events = {};
+
+  // To avoid recursion in the case that type === "newListener"! Before
+  // adding it to the listeners, first emit "newListener".
+  if (this._events.newListener)
+    this.emit('newListener', type,
+              isFunction(listener.listener) ?
+              listener.listener : listener);
+
+  if (!this._events[type])
+    // Optimize the case of one listener. Don't need the extra array object.
+    this._events[type] = listener;
+  else if (isObject(this._events[type]))
+    // If we've already got an array, just append.
+    this._events[type].push(listener);
+  else
+    // Adding the second element, need to change to array.
+    this._events[type] = [this._events[type], listener];
+
+  // Check for listener leak
+  if (isObject(this._events[type]) && !this._events[type].warned) {
+    if (!isUndefined(this._maxListeners)) {
+      m = this._maxListeners;
+    } else {
+      m = EventEmitter.defaultMaxListeners;
+    }
+
+    if (m && m > 0 && this._events[type].length > m) {
+      this._events[type].warned = true;
+      console.error('(node) warning: possible EventEmitter memory ' +
+                    'leak detected. %d listeners added. ' +
+                    'Use emitter.setMaxListeners() to increase limit.',
+                    this._events[type].length);
+      if (typeof console.trace === 'function') {
+        // not supported in IE 10
+        console.trace();
+      }
+    }
+  }
+
+  return this;
+};
+
+EventEmitter.prototype.on = EventEmitter.prototype.addListener;
+
+EventEmitter.prototype.once = function(type, listener) {
+  if (!isFunction(listener))
+    throw TypeError('listener must be a function');
+
+  var fired = false;
+
+  function g() {
+    this.removeListener(type, g);
+
+    if (!fired) {
+      fired = true;
+      listener.apply(this, arguments);
+    }
+  }
+
+  g.listener = listener;
+  this.on(type, g);
+
+  return this;
+};
+
+// emits a 'removeListener' event iff the listener was removed
+EventEmitter.prototype.removeListener = function(type, listener) {
+  var list, position, length, i;
+
+  if (!isFunction(listener))
+    throw TypeError('listener must be a function');
+
+  if (!this._events || !this._events[type])
+    return this;
+
+  list = this._events[type];
+  length = list.length;
+  position = -1;
+
+  if (list === listener ||
+      (isFunction(list.listener) && list.listener === listener)) {
+    delete this._events[type];
+    if (this._events.removeListener)
+      this.emit('removeListener', type, listener);
+
+  } else if (isObject(list)) {
+    for (i = length; i-- > 0;) {
+      if (list[i] === listener ||
+          (list[i].listener && list[i].listener === listener)) {
+        position = i;
+        break;
+      }
+    }
+
+    if (position < 0)
+      return this;
+
+    if (list.length === 1) {
+      list.length = 0;
+      delete this._events[type];
+    } else {
+      list.splice(position, 1);
+    }
+
+    if (this._events.removeListener)
+      this.emit('removeListener', type, listener);
+  }
+
+  return this;
+};
+
+EventEmitter.prototype.removeAllListeners = function(type) {
+  var key, listeners;
+
+  if (!this._events)
+    return this;
+
+  // not listening for removeListener, no need to emit
+  if (!this._events.removeListener) {
+    if (arguments.length === 0)
+      this._events = {};
+    else if (this._events[type])
+      delete this._events[type];
+    return this;
+  }
+
+  // emit removeListener for all listeners on all events
+  if (arguments.length === 0) {
+    for (key in this._events) {
+      if (key === 'removeListener') continue;
+      this.removeAllListeners(key);
+    }
+    this.removeAllListeners('removeListener');
+    this._events = {};
+    return this;
+  }
+
+  listeners = this._events[type];
+
+  if (isFunction(listeners)) {
+    this.removeListener(type, listeners);
+  } else if (listeners) {
+    // LIFO order
+    while (listeners.length)
+      this.removeListener(type, listeners[listeners.length - 1]);
+  }
+  delete this._events[type];
+
+  return this;
+};
+
+EventEmitter.prototype.listeners = function(type) {
+  var ret;
+  if (!this._events || !this._events[type])
+    ret = [];
+  else if (isFunction(this._events[type]))
+    ret = [this._events[type]];
+  else
+    ret = this._events[type].slice();
+  return ret;
+};
+
+EventEmitter.prototype.listenerCount = function(type) {
+  if (this._events) {
+    var evlistener = this._events[type];
+
+    if (isFunction(evlistener))
+      return 1;
+    else if (evlistener)
+      return evlistener.length;
+  }
+  return 0;
+};
+
+EventEmitter.listenerCount = function(emitter, type) {
+  return emitter.listenerCount(type);
+};
+
+function isFunction(arg) {
+  return typeof arg === 'function';
+}
+
+function isNumber(arg) {
+  return typeof arg === 'number';
+}
+
+function isObject(arg) {
+  return typeof arg === 'object' && arg !== null;
+}
+
+function isUndefined(arg) {
+  return arg === void 0;
+}
+
+},{}],75:[function(_dereq_,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -8447,10 +8399,10 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],77:[function(_dereq_,module,exports){
+},{}],76:[function(_dereq_,module,exports){
 module.exports = _dereq_('./lib/create-formatter');
 
-},{"./lib/create-formatter":78}],78:[function(_dereq_,module,exports){
+},{"./lib/create-formatter":77}],77:[function(_dereq_,module,exports){
 'use strict';
 
 var assign = _dereq_('core-js/library/fn/object/assign');
@@ -8467,7 +8419,7 @@ var reduce = _dereq_('core-js/library/fn/array/reduce');
  * options.lineSeparator [string]
  * options.legacy [boolean]
  */
-module.exports = function createFormatter (options) {
+function createFormatter (options) {
     var formatterConfig = assign({}, defaultOptions(), options);
     var reducers = formatterConfig.reducers || [];
     var rendererConfigs = formatterConfig.renderers;
@@ -8505,9 +8457,12 @@ module.exports = function createFormatter (options) {
         writer.write('');
         return writer.toString();
     };
-};
+}
 
-},{"./default-options":79,"./legacy-context-traversal":80,"./string-writer":81,"core-js/library/fn/array/reduce":12,"core-js/library/fn/object/assign":13,"power-assert-context-traversal":83}],79:[function(_dereq_,module,exports){
+createFormatter.StringWriter = StringWriter;
+module.exports = createFormatter;
+
+},{"./default-options":78,"./legacy-context-traversal":79,"./string-writer":80,"core-js/library/fn/array/reduce":12,"core-js/library/fn/object/assign":13,"power-assert-context-traversal":82}],78:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = function defaultOptions () {
@@ -8520,7 +8475,7 @@ module.exports = function defaultOptions () {
     };
 };
 
-},{}],80:[function(_dereq_,module,exports){
+},{}],79:[function(_dereq_,module,exports){
 'use strict';
 
 var ContextTraversal = _dereq_('power-assert-context-traversal');
@@ -8554,7 +8509,7 @@ LegacyContextTraversal.prototype.emit = function () {
 
 module.exports = LegacyContextTraversal;
 
-},{"power-assert-context-traversal":83,"util":101}],81:[function(_dereq_,module,exports){
+},{"power-assert-context-traversal":82,"util":100}],80:[function(_dereq_,module,exports){
 'use strict';
 
 function spacerStr (len) {
@@ -8584,7 +8539,7 @@ StringWriter.prototype.toString = function () {
 
 module.exports = StringWriter;
 
-},{}],82:[function(_dereq_,module,exports){
+},{}],81:[function(_dereq_,module,exports){
 'use strict';
 
 var parser = _dereq_('acorn');
@@ -8699,10 +8654,10 @@ function offsetAndSlimDownTokens (tokens) {
     return result;
 }
 
-},{"acorn":5,"acorn-es7-plugin":4,"core-js/library/fn/object/assign":13,"espurify":67,"estraverse":71}],83:[function(_dereq_,module,exports){
+},{"acorn":5,"acorn-es7-plugin":4,"core-js/library/fn/object/assign":13,"espurify":68,"estraverse":72}],82:[function(_dereq_,module,exports){
 module.exports = _dereq_('./lib/context-traversal');
 
-},{"./lib/context-traversal":84}],84:[function(_dereq_,module,exports){
+},{"./lib/context-traversal":83}],83:[function(_dereq_,module,exports){
 'use strict';
 
 var EventEmitter = _dereq_('events').EventEmitter;
@@ -8781,7 +8736,7 @@ function createEsNode (path, currentNode, espathToValue, jsCode, tokens, parent)
 
 module.exports = ContextTraversal;
 
-},{"./location":85,"core-js/library/fn/array/for-each":7,"core-js/library/fn/array/reduce":12,"core-js/library/fn/object/assign":13,"estraverse":71,"events":73,"util":101}],85:[function(_dereq_,module,exports){
+},{"./location":84,"core-js/library/fn/array/for-each":7,"core-js/library/fn/array/reduce":12,"core-js/library/fn/object/assign":13,"estraverse":72,"events":74,"util":100}],84:[function(_dereq_,module,exports){
 'use strict';
 
 var syntax = _dereq_('estraverse').Syntax;
@@ -8863,7 +8818,7 @@ function searchToken(tokens, predicate) {
 
 module.exports = locationOf;
 
-},{"estraverse":71}],86:[function(_dereq_,module,exports){
+},{"estraverse":72}],85:[function(_dereq_,module,exports){
 'use strict';
 
 var BaseRenderer = _dereq_('power-assert-renderer-base');
@@ -8885,7 +8840,7 @@ AssertionRenderer.prototype.onEnd = function () {
 
 module.exports = AssertionRenderer;
 
-},{"power-assert-renderer-base":87,"util":101}],87:[function(_dereq_,module,exports){
+},{"power-assert-renderer-base":86,"util":100}],86:[function(_dereq_,module,exports){
 'use strict';
 
 function BaseRenderer () {
@@ -8927,7 +8882,7 @@ BaseRenderer.prototype.write = function (str) {
 
 module.exports = BaseRenderer;
 
-},{}],88:[function(_dereq_,module,exports){
+},{}],87:[function(_dereq_,module,exports){
 'use strict';
 
 var BaseRenderer = _dereq_('power-assert-renderer-base');
@@ -8958,10 +8913,14 @@ function isLiteral (node) {
 function ComparisonRenderer (config) {
     BaseRenderer.call(this);
     this.config = assign({}, defaultOptions(), config);
-    if (typeof this.config.stringify !== 'function') {
+    if (typeof this.config.stringify === 'function') {
+        this.stringify = this.config.stringify;
+    } else {
         this.stringify = stringifier(this.config);
     }
-    if (typeof this.config.diff !== 'function') {
+    if (typeof this.config.diff === 'function') {
+        this.diff = this.config.diff;
+    } else {
         this.diff = udiff(this.config);
     }
     this.espathToPair = {};
@@ -9037,9 +8996,10 @@ function isStringDiffTarget(pair) {
     return typeof pair.left.value === 'string' && typeof pair.right.value === 'string';
 }
 
+ComparisonRenderer.udiff = udiff;
 module.exports = ComparisonRenderer;
 
-},{"./lib/default-options":89,"./lib/udiff":90,"core-js/library/fn/array/for-each":7,"core-js/library/fn/object/assign":13,"core-js/library/fn/object/keys":14,"power-assert-renderer-base":87,"stringifier":96,"type-name":99,"util":101}],89:[function(_dereq_,module,exports){
+},{"./lib/default-options":88,"./lib/udiff":89,"core-js/library/fn/array/for-each":7,"core-js/library/fn/object/assign":13,"core-js/library/fn/object/keys":14,"power-assert-renderer-base":86,"stringifier":95,"type-name":98,"util":100}],88:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = function defaultOptions () {
@@ -9054,10 +9014,10 @@ module.exports = function defaultOptions () {
     };
 };
 
-},{}],90:[function(_dereq_,module,exports){
+},{}],89:[function(_dereq_,module,exports){
 'use strict';
 
-var DiffMatchPatch = _dereq_('googlediff');
+var DiffMatchPatch = _dereq_('diff-match-patch');
 var dmp = new DiffMatchPatch();
 
 function udiff (config) {
@@ -9094,7 +9054,7 @@ function udiffChars (text1, text2) {
 
 module.exports = udiff;
 
-},{"googlediff":74}],91:[function(_dereq_,module,exports){
+},{"diff-match-patch":66}],90:[function(_dereq_,module,exports){
 'use strict';
 
 var BaseRenderer = _dereq_('power-assert-renderer-base');
@@ -9119,10 +9079,14 @@ function DiagramRenderer (config) {
     BaseRenderer.call(this);
     this.config = assign({}, defaultOptions(), config);
     this.events = [];
-    if (typeof this.config.stringify !== 'function') {
+    if (typeof this.config.stringify === 'function') {
+        this.stringify = this.config.stringify;
+    } else {
         this.stringify = stringifier(this.config);
     }
-    if (typeof this.config.widthOf !== 'function') {
+    if (typeof this.config.widthOf === 'function') {
+        this.widthOf = this.config.widthOf;
+    } else {
         this.widthOf = stringWidth(this.config);
     }
     this.initialVertivalBarLength = 1;
@@ -9217,9 +9181,10 @@ function rightToLeft (a, b) {
     return b.leftIndex - a.leftIndex;
 }
 
+DiagramRenderer.stringWidth = stringWidth;
 module.exports = DiagramRenderer;
 
-},{"./lib/default-options":92,"./lib/string-width":93,"core-js/library/fn/array/for-each":7,"core-js/library/fn/object/assign":13,"power-assert-renderer-base":87,"stringifier":96,"util":101}],92:[function(_dereq_,module,exports){
+},{"./lib/default-options":91,"./lib/string-width":92,"core-js/library/fn/array/for-each":7,"core-js/library/fn/object/assign":13,"power-assert-renderer-base":86,"stringifier":95,"util":100}],91:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = function defaultOptions () {
@@ -9234,7 +9199,7 @@ module.exports = function defaultOptions () {
     };
 };
 
-},{}],93:[function(_dereq_,module,exports){
+},{}],92:[function(_dereq_,module,exports){
 'use strict';
 
 var eaw = _dereq_('eastasianwidth');
@@ -9266,7 +9231,7 @@ function stringWidth (config) {
 
 module.exports = stringWidth;
 
-},{"eastasianwidth":66}],94:[function(_dereq_,module,exports){
+},{"eastasianwidth":67}],93:[function(_dereq_,module,exports){
 'use strict';
 
 var BaseRenderer = _dereq_('power-assert-renderer-base');
@@ -9292,10 +9257,35 @@ FileRenderer.prototype.onEnd = function () {
 
 module.exports = FileRenderer;
 
-},{"power-assert-renderer-base":87,"util":101}],95:[function(_dereq_,module,exports){
+},{"power-assert-renderer-base":86,"util":100}],94:[function(_dereq_,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+(function () {
+  try {
+    cachedSetTimeout = setTimeout;
+  } catch (e) {
+    cachedSetTimeout = function () {
+      throw new Error('setTimeout is not defined');
+    }
+  }
+  try {
+    cachedClearTimeout = clearTimeout;
+  } catch (e) {
+    cachedClearTimeout = function () {
+      throw new Error('clearTimeout is not defined');
+    }
+  }
+} ())
 var queue = [];
 var draining = false;
 var currentQueue;
@@ -9320,7 +9310,7 @@ function drainQueue() {
     if (draining) {
         return;
     }
-    var timeout = setTimeout(cleanUpNextTick);
+    var timeout = cachedSetTimeout(cleanUpNextTick);
     draining = true;
 
     var len = queue.length;
@@ -9337,7 +9327,7 @@ function drainQueue() {
     }
     currentQueue = null;
     draining = false;
-    clearTimeout(timeout);
+    cachedClearTimeout(timeout);
 }
 
 process.nextTick = function (fun) {
@@ -9349,7 +9339,7 @@ process.nextTick = function (fun) {
     }
     queue.push(new Item(fun, args));
     if (queue.length === 1 && !draining) {
-        setTimeout(drainQueue, 0);
+        cachedSetTimeout(drainQueue, 0);
     }
 };
 
@@ -9388,7 +9378,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],96:[function(_dereq_,module,exports){
+},{}],95:[function(_dereq_,module,exports){
 /**
  * stringifier
  * 
@@ -9497,7 +9487,7 @@ stringifier.defaultOptions = defaultOptions;
 stringifier.defaultHandlers = defaultHandlers;
 module.exports = stringifier;
 
-},{"./strategies":97,"core-js/library/fn/object/assign":13,"traverse":98,"type-name":99}],97:[function(_dereq_,module,exports){
+},{"./strategies":96,"core-js/library/fn/object/assign":13,"traverse":97,"type-name":98}],96:[function(_dereq_,module,exports){
 'use strict';
 
 var typeName = _dereq_('type-name');
@@ -9912,7 +9902,7 @@ module.exports = {
     }
 };
 
-},{"core-js/library/fn/array/filter":6,"core-js/library/fn/array/for-each":7,"core-js/library/fn/array/index-of":8,"core-js/library/fn/array/reduce-right":11,"type-name":99}],98:[function(_dereq_,module,exports){
+},{"core-js/library/fn/array/filter":6,"core-js/library/fn/array/for-each":7,"core-js/library/fn/array/index-of":8,"core-js/library/fn/array/reduce-right":11,"type-name":98}],97:[function(_dereq_,module,exports){
 var traverse = module.exports = function (obj) {
     return new Traverse(obj);
 };
@@ -10228,7 +10218,7 @@ var hasOwnProperty = Object.hasOwnProperty || function (obj, key) {
     return key in obj;
 };
 
-},{}],99:[function(_dereq_,module,exports){
+},{}],98:[function(_dereq_,module,exports){
 /**
  * type-name - Just a reasonable typeof
  * 
@@ -10268,14 +10258,14 @@ function typeName (val) {
 
 module.exports = typeName;
 
-},{}],100:[function(_dereq_,module,exports){
+},{}],99:[function(_dereq_,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],101:[function(_dereq_,module,exports){
+},{}],100:[function(_dereq_,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -10865,5 +10855,5 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,_dereq_('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":100,"_process":95,"inherits":76}]},{},[1])(1)
+},{"./support/isBuffer":99,"_process":94,"inherits":75}]},{},[1])(1)
 });
