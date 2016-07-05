@@ -1,3 +1,11 @@
+### [1.4.1](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.4.1) (2016-07-05)
+
+
+* introduce package-json-versionify to reduce content of package.json to be embedded into web bundle ([d97f00b](https://github.com/power-assert-js/power-assert-formatter/commit/d97f00b1288222f48580ee3fc09bec066a988f3c))
+* update power-assert-runtime related packages ([6d622e1](https://github.com/power-assert-js/power-assert-formatter/commit/6d622e14bc4c05450f0e6740bcf1ca90c5e32d42))
+  * [Use diff-match-patch instead of googlediff since googlediff manipulates this directly](https://github.com/twada/power-assert-runtime/pull/13)
+
+
 ## [1.4.0](https://github.com/power-assert-js/power-assert-formatter/releases/tag/v1.4.0) (2016-06-05)
 
 
