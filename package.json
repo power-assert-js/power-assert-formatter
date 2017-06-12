@@ -17,7 +17,7 @@
     }
   ],
   "dependencies": {
-    "power-assert-context-formatter": "^1.0.7",
+    "power-assert-context-formatter": "^1.1.1",
     "power-assert-context-reducer-ast": "^1.0.7",
     "power-assert-renderer-file": "^1.0.7",
     "power-assert-renderer-assertion": "^1.0.7",
